@@ -30,7 +30,7 @@ public class Slider_4 extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(com.example.gwangun_project.Slider_4.this, Slider_5.class);
+                Intent intent = new Intent(com.example.myproject.Slider_4.this, Slider_5.class);
                 startActivity(intent);
             }
         });
@@ -39,7 +39,7 @@ public class Slider_4 extends AppCompatActivity {
         imageButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(com.example.gwangun_project.Slider_4.this, Slider_6.class);
+                Intent intent = new Intent(com.example.myproject.Slider_4.this, Slider_6.class);
                 startActivity(intent);
             }
         });

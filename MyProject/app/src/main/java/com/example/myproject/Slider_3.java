@@ -27,7 +27,7 @@ public class Slider_3 extends AppCompatActivity {
         join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(com.example.gwangun_project.Slider_3.this, com.example.gwangun_project.Slider_4.class);
+                Intent intent = new Intent(com.example.myproject.Slider_3.this, com.example.myproject.Slider_4.class);
                 startActivity(intent);
             }
         });

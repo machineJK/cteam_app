@@ -24,34 +24,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <!--API30 권한-->
-        <queries>
-            <!-- WebView -->
-            <intent>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" />
-            </intent>
-            <intent>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" />
-            </intent>
 
-            <!-- Camera -->
-            <intent>
-                <action android:name="android.media.action.IMAGE_CAPTURE" />
-            </intent>
-
-            <!-- Gallery -->
-            <intent>
-                <action android:name="android.intent.action.GET_CONTENT" />
-            </intent>
-            <!-- Youtube -->
-            <intent>
-                <action android:name="android.media.browse.MediaBrowserService" />
-            </intent>
-        </queries>
 
         <activity android:name=".MyInfo" />
         <activity android:name=".BoardWriteForm" />

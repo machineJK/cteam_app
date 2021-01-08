@@ -26,7 +26,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="128dp"
-        android:entries="@array/test"
         app:layout_constraintStart_toEndOf="@+id/address"
         app:layout_constraintTop_toTopOf="parent"></Spinner>
 
@@ -65,7 +64,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="36dp"
-        android:entries="@array/school"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toEndOf="@+id/address3"
@@ -93,7 +91,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="44dp"
-        android:entries="@array/major"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/address4"
         app:layout_constraintTop_toBottomOf="@+id/spinner2"></Spinner>

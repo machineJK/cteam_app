@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(com.example.cteam_app.LoginActivity.this, JoinActivity.class);
+                Intent intent = new Intent(com.example.myproject.LoginActivity.this, JoinActivity.class);
                 startActivity(intent);
             }
         });

@@ -25,7 +25,7 @@ public class Slider_5 extends AppCompatActivity {
         goJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(com.example.gwangun_project.Slider_5.this, Slider_5_1.class);
+                Intent intent = new Intent(com.example.myproject.Slider_5.this, Slider_5_1.class);
                 startActivity(intent);
             }
         });
@@ -35,7 +35,7 @@ public class Slider_5 extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(com.example.gwangun_project.Slider_5.this, com.example.gwangun_project.Slider_4.class);
+                Intent intent = new Intent(com.example.myproject.Slider_5.this, com.example.myproject.Slider_4.class);
                 startActivity(intent);
             }
         });

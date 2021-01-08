@@ -18,7 +18,7 @@ public class Intro extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(com.example.cteam_app.Intro.this, com.example.cteam_app.LoginActivity.class);
+                Intent intent = new Intent(com.example.myproject.Intro.this, com.example.myproject.LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
