@@ -10,22 +10,19 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject"
-
-        android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".ModifyMyInfo"></activity>
+        <activity android:name=".ModifyMyInfo" />
 
         <!-- http 라이브러리 사용 -->
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
-
-
-
+        <activity android:name=".JoinActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MyInfo" />
         <activity android:name=".BoardWriteForm" />
         <activity android:name=".BoardDetailForm" />
