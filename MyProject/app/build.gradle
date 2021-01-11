@@ -46,5 +46,11 @@ dependencies {
     implementation group: 'org.apache.httpcomponents', name: 'httpclient-android', version: '4.3.5.1'
     implementation('org.apache.httpcomponents:httpmime:4.3') {
         exclude module: "httpclient"
+
+/*    //ted permission(안드로이드 마시멜로우 버전 이상부터는 권한에 대한 허용을 사용자로부터 받아야 합니다.)
+    //카메라
+    implementation "gun0912.ted:tedpermission:2.1.0"*/
+
+
     }
 }
