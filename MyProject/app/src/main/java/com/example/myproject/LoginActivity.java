@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button btnLogin, btnJoin;
+    Button btnLogin, btnSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,20 +17,22 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         btnLogin = findViewById(R.id.btnLogin);
-        btnJoin = findViewById(R.id.btnJoin);
+        btnSignUp = findViewById(R.id.btnSignUp);
 
-        btnJoin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(com.example.myproject.LoginActivity.this, JoinActivity.class);
-                startActivity(intent);
-            }
-        });
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(com.example.myproject.LoginActivity.this, JoinActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

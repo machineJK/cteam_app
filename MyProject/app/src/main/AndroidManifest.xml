@@ -23,19 +23,34 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.MyProject"
+<<<<<<< HEAD
         android:usesCleartextTraffic="true" >
         <activity android:name="com.example.myproject.ModifyMyInfo" />
+=======
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ModifyMyInfo" />
+>>>>>>> ccc8ba0cd455548780844befb95fef8dacf8e2b0
 
         <!-- http 라이브러리 사용 -->
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+<<<<<<< HEAD
 
         <activity android:name="com.example.myproject.MyInfo" />
         <activity android:name="com.example.myproject.BoardWriteForm" />
         <activity android:name="com.example.myproject.BoardDetailForm" />
         <activity android:name="com.example.myproject.StudentDetail" />
         <activity android:name="com.example.myproject.MainActivity" >
+=======
+        <activity android:name=".JoinActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MyInfo" />
+        <activity android:name=".BoardWriteForm" />
+        <activity android:name=".BoardDetailForm" />
+        <activity android:name=".StudentDetail" />
+        <activity android:name=".MainActivity">
+>>>>>>> ccc8ba0cd455548780844befb95fef8dacf8e2b0
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

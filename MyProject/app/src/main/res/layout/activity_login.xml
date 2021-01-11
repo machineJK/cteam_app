@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="30dp"
-        android:text="과외구하자"
+        android:text="튜더스"
+        android:textColor="@color/black"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/member_id"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,13 +56,13 @@
         android:layout_marginRight="40dp"
         android:text="로그인"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/btnJoin"
-        app:layout_constraintHorizontal_bias="0.644"
+        app:layout_constraintEnd_toStartOf="@+id/btnSignUp"
+        app:layout_constraintHorizontal_bias="0.985"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/member_pw" />
 
     <Button
-        android:id="@+id/btnJoin"
+        android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
