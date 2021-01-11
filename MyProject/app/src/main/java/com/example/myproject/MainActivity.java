@@ -5,8 +5,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,15 +18,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+<<<<<<< HEAD
         /*권한*/
+=======
+        //로딩화면
+        startLoading();
+        //권한 위임
+>>>>>>> ac21150162e153a2815c12e77179131c854306a2
         checkDangerousPermissions();
+
+
     }
 
+    //로딩 화면
+    private void startLoading(){
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);  //login 화면을 띄운다
+                finish();   //현재 액티비티 종료
+            }
+        }, 3000);   //화면에 logo 3초간 보이기
+    }
+    
+    //권한 위임
     private void checkDangerousPermissions() {
         String[] permissions = {
                 Manifest.permission.INTERNET,
                 Manifest.permission.ACCESS_NETWORK_STATE,
-                Manifest.permission.ACCESS_WIFI_STATE
+                Manifest.permission.ACCESS_WIFI_STATE,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.CAMERA
         };
 
         int permissionCheck = PackageManager.PERMISSION_GRANTED;
