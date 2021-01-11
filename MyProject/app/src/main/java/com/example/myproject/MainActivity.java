@@ -18,13 +18,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-<<<<<<< HEAD
+
         /*권한*/
-=======
+
         //로딩화면
         startLoading();
         //권한 위임
->>>>>>> ac21150162e153a2815c12e77179131c854306a2
         checkDangerousPermissions();
 
 
