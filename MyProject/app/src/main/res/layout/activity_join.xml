@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/member_id"
         android:layout_width="269dp"
         android:layout_height="43dp"
         android:layout_marginTop="32dp"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView61" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName8"
+        android:id="@+id/member_pw"
         android:layout_width="280dp"
         android:layout_height="41dp"
         android:layout_marginTop="24dp"
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.692"
         app:layout_constraintStart_toEndOf="@+id/textView61"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7" />
+        app:layout_constraintTop_toBottomOf="@+id/member_id" />
 
     <TextView
         android:id="@+id/textView63"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView62" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName9"
+        android:id="@+id/member_nickname"
         android:layout_width="277dp"
         android:layout_height="38dp"
         android:layout_marginTop="20dp"
@@ -69,7 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.854"
         app:layout_constraintStart_toEndOf="@+id/textView61"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName8" />
+        app:layout_constraintTop_toBottomOf="@+id/member_pw" />
 
     <TextView
         android:id="@+id/textView64"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView63" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName10"
+        android:id="@+id/member_name"
         android:layout_width="282dp"
         android:layout_height="39dp"
         android:layout_marginTop="216dp"
@@ -106,6 +106,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView64" />
 
     <RadioGroup
+        android:id="@+id/rg_gender"
         android:layout_width="207dp"
         android:layout_height="45dp"
         android:layout_marginTop="16dp"
@@ -113,10 +114,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toEndOf="@+id/textView66"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName10">
+        app:layout_constraintTop_toBottomOf="@+id/member_name">
 
         <RadioButton
-            android:id="@+id/radioButton9"
+            android:id="@+id/rb_male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -124,7 +125,7 @@
             android:text="남자" />
 
         <RadioButton
-            android:id="@+id/radioButton8"
+            android:id="@+id/rb_female"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -191,7 +192,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView66" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName13"
+        android:id="@+id/member_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"

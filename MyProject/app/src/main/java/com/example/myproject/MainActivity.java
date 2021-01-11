@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);  //login 화면을 띄운다
                 finish();   //현재 액티비티 종료
             }
-        }, 2000);   //화면에 logo 2초간 보이기
+        }, 3000);   //화면에 logo 3초간 보이기
     }
     
     //권한 위임
@@ -44,7 +44,10 @@ public class MainActivity extends AppCompatActivity {
         String[] permissions = {
                 Manifest.permission.INTERNET,
                 Manifest.permission.ACCESS_NETWORK_STATE,
-                Manifest.permission.ACCESS_WIFI_STATE
+                Manifest.permission.ACCESS_WIFI_STATE,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.CAMERA
         };
 
         int permissionCheck = PackageManager.PERMISSION_GRANTED;
