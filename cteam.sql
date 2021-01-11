@@ -11,7 +11,7 @@ CREATE TABLE member(
 
 DROP TABlE member;
 
-INSERT INTO member VALUES('ska907','0000','양주바라기','김종건','남자','950105','wai95@naver.com','R.drawble.123');
+INSERT INTO member VALUES('ska907','0000','소주바라기','김종건','남자','950106','wai95@naver.com','R.drawble.123');
 
 SELECT * FROM member;
 
@@ -26,7 +26,7 @@ CREATE TABLE student(
 
 DROP TABlE student;
 
-INSERT INTO student VALUES('ska907','광주 북구','과학,수학','초1','안녕하세요 반갑습니다 저는 김종건입니다.');
+INSERT INTO student VALUES('ska907','광주 북구','과학,수학','초3','안녕하세요 반갑습니다 저는 김종건입니다.');
 
 SELECT * FROM student;
 ----------------------------------------------------
