@@ -20,13 +20,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ModifyMyInfo" />
+
+        <!-- API24 이상부터 Url 이 file:// 로 시작되면 안되서 content:// 으로 변환시키는 부분 -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.myproject.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
 
         <!-- http 라이브러리 사용 -->
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+        <activity android:name=".ModifyMyInfo" />
         <activity android:name=".JoinActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MyInfo" />

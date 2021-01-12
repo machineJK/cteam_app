@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -28,17 +30,22 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class JoinActivity extends AppCompatActivity {
     private static final String TAG = "main:JoinActivity";
     
     private static final int PICK_FROM_CAMERA = 0;
     private static final int PICK_FROM_ALBUM = 1;
-    static String SAMPLEIMG = "camera_image";
 
+    //경로변수
+    String mCurrentPhotoPath;
 
     Button btnJoin,btnJoinCancel;
     Spinner spinnerYear,spinnerMonth,spinnerDay,spinnerAddr1,spinnerAddr2;
@@ -146,7 +153,7 @@ public class JoinActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+                intent.setType("image/*");
                 startActivityForResult(intent, PICK_FROM_ALBUM);
                 //PICK_FROM_ALBUM = 1
             }
@@ -160,6 +167,24 @@ public class JoinActivity extends AppCompatActivity {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent,PICK_FROM_CAMERA);
                 //PICK_FROM_CAMERA == 0
+                /*Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if(intent.resolveActivity(getPackageManager()) != null){
+                    File photoFile = null;
+
+                    try {
+                        photoFile = createImageFile();
+                    }catch (IOException e){
+                        e.printStackTrace();
+                    }
+
+                    if(photoFile != null){
+                        Uri photoURI = FileProvider.getUriForFile(JoinActivity.this,
+                                "com.example.myproject.fileprovider",photoFile);
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                        startActivityForResult(intent,PICK_FROM_CAMERA);
+                    }
+
+                }*/
             }
         });
 
@@ -246,6 +271,17 @@ public class JoinActivity extends AppCompatActivity {
         });
     }
 
+/*    //촬영한 사진을 이미지 파일로 저장
+    private File createImageFile() throws IOException{
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmsss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(imageFileName,".jpg",storageDir);
+
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }*/
+
     //앨범 및 카메라
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -253,10 +289,8 @@ public class JoinActivity extends AppCompatActivity {
             if(resultCode == RESULT_OK){
                 try {
                     //선택한 이미지에서 비트맵 생성
-
                     InputStream in = getContentResolver().openInputStream(data.getData());
                     Bitmap img = BitmapFactory.decodeStream(in);
-
                     in.close();
 
                     //이미지뷰에 세팅
@@ -272,12 +306,35 @@ public class JoinActivity extends AppCompatActivity {
             if(resultCode == RESULT_OK){
                 Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                 if(bitmap != null){
-                    picture.setImageBitmap(bitmap);
-                }
+                    picture.setImageBitmap(bitmap);}
+                /*File file = new File(mCurrentPhotoPath);
+                Bitmap bitmap;
+                if(Build.VERSION.SDK_INT >= 29){
+                    ImageDecoder.Source source =
+                            ImageDecoder.createSource(getContentResolver(),Uri.fromFile(file));
+                    try {
+                        bitmap = ImageDecoder.decodeBitmap(source);
+                        if(bitmap != null){picture.setImageBitmap(bitmap);}
+                    }catch(IOException e){
+                            e.printStackTrace();
+                        }
+                }else{
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.fromFile(file));
+                        if (bitmap != null){picture.setImageBitmap(bitmap);}
+                    }catch (IOException e){
+                        e.printStackTrace();
+                    }
+                }*/
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
+
+
+
 
     //권한 위임
     private void checkDangerousPermissions() {
@@ -290,6 +347,7 @@ public class JoinActivity extends AppCompatActivity {
                 Manifest.permission.CAMERA
         };
 
+        //카메라
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
                     && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
