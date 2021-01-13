@@ -5,11 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import static com.example.myproject.Common.Common.loginDTO;
 
-//5번 슬라이드
+//과외 매칭
 public class Matching extends AppCompatActivity {
 
     Button teacher, student, add;
