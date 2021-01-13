@@ -21,7 +21,7 @@ public class Slider_6 extends AppCompatActivity {
         before.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(com.example.myproject.Slider_6.this, com.example.myproject.Slider_4.class);
+                Intent intent = new Intent(com.example.myproject.Slider_6.this, Matching.class);
                 startActivity(intent);
             }
         });
