@@ -53,7 +53,14 @@ public class JoinInsert extends AsyncTask<Void, Void, String> {
             builder.setCharset(Charset.forName("UTF-8"));
 
             // 문자열 및 데이터 추가
-            //builder.addTextBody("member_id", member_id, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("member_id", member_id, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("member_pw", member_pw, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("member_nickname", member_nickname, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("member_name", member_name, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("member_gender", member_gender, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("member_birth", member_birth, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("member_email", member_email, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("member_picture", member_picture, ContentType.create("Multipart/related", "UTF-8"));
 
 
             String postURL = Common.ipConfig + "/app/anJoin";
