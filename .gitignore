@@ -2,4 +2,4 @@ app/build/
 .gradle/
 .idea/
 
-app/src/main/java/com/example/myproject/common
+app/src/main/java/com/example/myproject/common/
