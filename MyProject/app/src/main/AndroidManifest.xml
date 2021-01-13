@@ -39,6 +39,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+        <activity android:name=".Matching" />
         <activity android:name=".ModifyMyInfo" />
         <activity android:name=".JoinActivity" />
         <activity android:name=".LoginActivity" />

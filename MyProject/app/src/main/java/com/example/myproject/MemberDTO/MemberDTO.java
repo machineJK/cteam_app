@@ -1,82 +1,101 @@
 package com.example.myproject.MemberDTO;
 
 public class MemberDTO {
-    String member_id,member_pw, member_nickname, member_name,
-            member_gender, member_birth, member_email, member_picture;
+    String id, pw, nickname, name, gender,
+            birth, email, addr1, addr2, picture;
 
-    public MemberDTO(String member_id, String member_pw, String member_nickname, String member_name,
-                     String member_gender, String member_birth, String member_email, String member_picture) {
-        this.member_id = member_id;
-        this.member_pw = member_pw;
-        this.member_nickname = member_nickname;
-        this.member_name = member_name;
-        this.member_gender = member_gender;
-        this.member_birth = member_birth;
-        this.member_email = member_email;
-        this.member_picture = member_picture;
+    //회원가입
+    public MemberDTO(String id, String pw, String nickname, String name, String gender,
+                     String birth, String email, String addr1, String addr2, String picture) {
+        this.id = id;
+        this.pw = pw;
+        this.nickname = nickname;
+        this.name = name;
+        this.gender = gender;
+        this.birth = birth;
+        this.email = email;
+        this.addr1 = addr1;
+        this.addr2 = addr2;
+        this.picture = picture;
     }
 
-    public String getMember_id() {
-        return member_id;
+    public String getId() {
+        return id;
     }
 
-    public void setMember_id(String member_id) {
-        this.member_id = member_id;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getMember_pw() {
-        return member_pw;
+    public String getPw() {
+        return pw;
     }
 
-    public void setMember_pw(String member_pw) {
-        this.member_pw = member_pw;
+    public void setPw(String pw) {
+        this.pw = pw;
     }
 
-    public String getMember_nickname() {
-        return member_nickname;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setMember_nickname(String member_nickname) {
-        this.member_nickname = member_nickname;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public String getMember_name() {
-        return member_name;
+    public String getName() {
+        return name;
     }
 
-    public void setMember_name(String member_name) {
-        this.member_name = member_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getMember_gender() {
-        return member_gender;
+    public String getGender() {
+        return gender;
     }
 
-    public void setMember_gender(String member_gender) {
-        this.member_gender = member_gender;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getMember_birth() {
-        return member_birth;
+    public String getBirth() {
+        return birth;
     }
 
-    public void setMember_birth(String member_birth) {
-        this.member_birth = member_birth;
+    public void setBirth(String birth) {
+        this.birth = birth;
     }
 
-    public String getMember_email() {
-        return member_email;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMember_email(String member_email) {
-        this.member_email = member_email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getMember_picture() {
-        return member_picture;
+    public String getAddr1() {
+        return addr1;
     }
 
-    public void setMember_picture(String member_picture) {
-        this.member_picture = member_picture;
+    public void setAddr1(String addr1) {
+        this.addr1 = addr1;
+    }
+
+    public String getAddr2() {
+        return addr2;
+    }
+
+    public void setAddr2(String addr2) {
+        this.addr2 = addr2;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

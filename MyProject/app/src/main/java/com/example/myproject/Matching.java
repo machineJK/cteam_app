@@ -7,10 +7,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import static com.example.myproject.Common.Common.loginDTO;
 
 //5번 슬라이드
-public class Slider_4 extends AppCompatActivity {
+public class Matching extends AppCompatActivity {
 
     Button teacher, student, add;
     ImageButton imageButton1, imageButton2;
@@ -18,8 +18,7 @@ public class Slider_4 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_slider_4);
-
+        setContentView(R.layout.activity_matching);
         teacher = findViewById(R.id.teacher);
         student = findViewById(R.id.student);
         add = findViewById(R.id.add);
@@ -30,7 +29,7 @@ public class Slider_4 extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(com.example.myproject.Slider_4.this, Slider_5.class);
+                Intent intent = new Intent(Matching.this, Slider_5.class);
                 startActivity(intent);
             }
         });
@@ -39,7 +38,7 @@ public class Slider_4 extends AppCompatActivity {
         imageButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(com.example.myproject.Slider_4.this, Slider_6.class);
+                Intent intent = new Intent(Matching.this, Slider_6.class);
                 startActivity(intent);
             }
         });
