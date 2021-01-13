@@ -50,6 +50,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<<<<<<< HEAD
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="168dp"
+        android:layout_marginLeft="168dp"
+        android:layout_marginTop="544dp"
+        android:text="간단한 내용, 누르면 이동"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView46"
+        android:layout_width="187dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="468dp"
+        android:text="매칭된 과외"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+=======
+>>>>>>> 42fafac5ca53ab5bfe7e7d25b9b9b1746fa329ac
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
@@ -65,13 +92,15 @@
         android:id="@+id/textView44"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
-        android:layout_marginLeft="184dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginLeft="176dp"
         android:layout_marginTop="212dp"
         android:text="닉네임"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<<<<<<< HEAD
+=======
     <TextView
         android:id="@+id/textView45"
         android:layout_width="187dp"
@@ -107,14 +136,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+>>>>>>> 42fafac5ca53ab5bfe7e7d25b9b9b1746fa329ac
     <Button
         android:id="@+id/button13"
         android:layout_width="74dp"
         android:layout_height="59dp"
         android:layout_marginStart="312dp"
         android:layout_marginLeft="312dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="48dp"
         android:text="수정"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="121dp"
+        android:layout_height="126dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView46"
+        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

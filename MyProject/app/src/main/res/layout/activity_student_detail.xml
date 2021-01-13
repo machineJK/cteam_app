@@ -87,9 +87,9 @@
         android:id="@+id/button4"
         android:layout_width="108dp"
         android:layout_height="37dp"
-        android:layout_marginStart="244dp"
-        android:layout_marginLeft="244dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="176dp"
         android:text="사진버튼"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

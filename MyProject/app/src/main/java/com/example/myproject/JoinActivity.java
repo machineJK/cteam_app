@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -209,8 +207,14 @@ public class JoinActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
+        //
+        btnJoin = findViewById(R.id.btnUpdate);
+        btnJoinCancel = findViewById(R.id.btnUpdateCancel);
+=======
         btnJoin = findViewById(R.id.btnJoin);
         btnJoinCancel = findViewById(R.id.btnJoinCancel);
+>>>>>>> 42fafac5ca53ab5bfe7e7d25b9b9b1746fa329ac
 
         //체크용
         findViewById(R.id.btnCheck).setOnClickListener(new View.OnClickListener() {
