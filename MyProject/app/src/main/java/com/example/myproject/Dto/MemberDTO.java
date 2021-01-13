@@ -1,4 +1,4 @@
-package com.example.myproject.MemberDTO;
+package com.example.myproject.Dto;
 
 public class MemberDTO {
     String member_id,member_pw, member_nickname, member_name,

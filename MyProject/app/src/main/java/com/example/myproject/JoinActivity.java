@@ -2,11 +2,9 @@ package com.example.myproject;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,8 +39,8 @@ public class JoinActivity extends AppCompatActivity {
         spinnerDay.setAdapter(dayAdapter);
 
         //
-        btnJoin = findViewById(R.id.btnJoin);
-        btnJoinCancel = findViewById(R.id.btnJoinCancel);
+        btnJoin = findViewById(R.id.btnUpdate);
+        btnJoinCancel = findViewById(R.id.btnUpdateCancel);
 
         //회원가입
         btnJoin.setOnClickListener(new View.OnClickListener() {

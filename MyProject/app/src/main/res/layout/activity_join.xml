@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/etId"
         android:layout_width="269dp"
         android:layout_height="43dp"
         android:layout_marginTop="32dp"
@@ -37,16 +37,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textView61" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName8"
+        android:id="@+id/etPw"
         android:layout_width="280dp"
         android:layout_height="41dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintHorizontal_bias="0.788"
         app:layout_constraintStart_toEndOf="@+id/textView61"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7" />
+        app:layout_constraintTop_toBottomOf="@+id/etId" />
 
     <TextView
         android:id="@+id/textView63"
@@ -60,16 +60,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textView62" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName9"
+        android:id="@+id/etNick"
         android:layout_width="277dp"
         android:layout_height="38dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.854"
+        app:layout_constraintHorizontal_bias="0.709"
         app:layout_constraintStart_toEndOf="@+id/textView61"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName8" />
+        app:layout_constraintTop_toBottomOf="@+id/etPw" />
 
     <TextView
         android:id="@+id/textView64"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView63" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName10"
+        android:id="@+id/etName"
         android:layout_width="282dp"
         android:layout_height="39dp"
         android:layout_marginTop="216dp"
@@ -113,7 +113,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toEndOf="@+id/textView66"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName10">
+        app:layout_constraintTop_toBottomOf="@+id/etName">
 
         <RadioButton
             android:id="@+id/radioButton9"
@@ -191,7 +191,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView66" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName13"
+        android:id="@+id/etEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
@@ -214,7 +214,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView68" />
 
     <Button
-        android:id="@+id/btnJoin"
+        android:id="@+id/btnUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
@@ -225,7 +225,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnJoinCancel"
+        android:id="@+id/btnUpdateCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
@@ -234,7 +234,7 @@
         android:text="취소"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.325"
-        app:layout_constraintStart_toEndOf="@+id/btnJoin"
+        app:layout_constraintStart_toEndOf="@+id/btnUpdate"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
