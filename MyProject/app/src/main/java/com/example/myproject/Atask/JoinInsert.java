@@ -3,8 +3,6 @@ package com.example.myproject.Atask;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 
-import com.example.myproject.Common.Common;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -18,21 +16,25 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
+import static com.example.myproject.Common.Common.ipConfig;
+
 public class JoinInsert extends AsyncTask<Void, Void, String> {
 
-    String member_id,member_pw, member_nickname, member_name,
-            member_gender, member_birth, member_email, member_picture;
+    String id,pw,nickname,name,gender,
+            birth, email, addr1, addr2, picture;
 
-    public JoinInsert(String member_id, String member_pw, String member_nickname, String member_name,
-                      String member_gender, String member_birth, String member_email, String member_picture) {
-        this.member_id = member_id;
-        this.member_pw = member_pw;
-        this.member_nickname = member_nickname;
-        this.member_name = member_name;
-        this.member_gender = member_gender;
-        this.member_birth = member_birth;
-        this.member_email = member_email;
-        this.member_picture = member_picture;
+    public JoinInsert(String id, String pw, String nickname, String name, String gender,
+                      String birth, String email, String addr1, String addr2, String picture) {
+        this.id = id;
+        this.pw = pw;
+        this.nickname = nickname;
+        this.name = name;
+        this.gender = gender;
+        this.birth = birth;
+        this.email = email;
+        this.addr1 = addr1;
+        this.addr2 = addr2;
+        this.picture = picture;
     }
 
     // 데이터베이스에 삽입결과 0보다크면 삽입성공, 같거나 작으면 실패
@@ -53,17 +55,18 @@ public class JoinInsert extends AsyncTask<Void, Void, String> {
             builder.setCharset(Charset.forName("UTF-8"));
 
             // 문자열 및 데이터 추가
-            builder.addTextBody("member_id", member_id, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("member_pw", member_pw, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("member_nickname", member_nickname, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("member_name", member_name, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("member_gender", member_gender, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("member_birth", member_birth, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("member_email", member_email, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("member_picture", member_picture, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("id", id, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("pw", pw, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("nickname", nickname, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("name", name, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("gender", gender, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("birth", birth, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("email", email, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("addr1", addr1, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("addr2", addr2, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("picture", picture, ContentType.create("Multipart/related", "UTF-8"));
 
-
-            String postURL = Common.ipConfig + "/app/anJoin";
+            String postURL = ipConfig + "/app/anJoin";
             // 전송
             InputStream inputStream = null;
             httpClient = AndroidHttpClient.newInstance("Android");

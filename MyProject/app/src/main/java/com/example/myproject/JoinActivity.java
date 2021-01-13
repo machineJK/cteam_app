@@ -5,18 +5,14 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.ImageDecoder;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -26,17 +22,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 
-import java.io.File;
-import java.io.IOException;
+import com.example.myproject.Atask.JoinInsert;
+
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 public class JoinActivity extends AppCompatActivity {
     private static final String TAG = "main:JoinActivity";
@@ -44,16 +37,17 @@ public class JoinActivity extends AppCompatActivity {
     private static final int PICK_FROM_CAMERA = 0;
     private static final int PICK_FROM_ALBUM = 1;
 
+    String state;
     //경로변수
     String mCurrentPhotoPath;
 
     Button btnJoin,btnJoinCancel;
     Spinner spinnerYear,spinnerMonth,spinnerDay,spinnerAddr1,spinnerAddr2;
-    EditText eT_member_id,eT_member_pw,eT_member_nickname,eT_member_name,eT_member_email;
-    String member_gender;
+    EditText et_id,et_pw,et_nickname,et_name,et_email;
+    String gender, picture;
     RadioGroup rg_gender;
     RadioButton rb_male,rb_female;
-    ImageView picture;
+    //ImageView picture;
 
 
     @Override
@@ -63,7 +57,6 @@ public class JoinActivity extends AppCompatActivity {
 
         //권한 위임
         checkDangerousPermissions();
-
         //생년월일 스피너
         spinnerYear = findViewById(R.id.spinnerYear);
         spinnerMonth = findViewById(R.id.spinnerMonth);
@@ -148,7 +141,8 @@ public class JoinActivity extends AppCompatActivity {
         });
 
         //이미지 클릭해서 앨범 불러오기
-        picture = findViewById(R.id.member_picture);
+/*
+        picture = findViewById(R.id.picture);
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,16 +152,17 @@ public class JoinActivity extends AppCompatActivity {
                 //PICK_FROM_ALBUM = 1
             }
         });
+*/
 
         //카메라 불러오기 버튼
-        ImageButton btnCamera = findViewById(R.id.btnCamera);
+/*        ImageButton btnCamera = findViewById(R.id.btnCamera);
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent,PICK_FROM_CAMERA);
                 //PICK_FROM_CAMERA == 0
-                /*Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                *//*Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if(intent.resolveActivity(getPackageManager()) != null){
                     File photoFile = null;
 
@@ -184,80 +179,130 @@ public class JoinActivity extends AppCompatActivity {
                         startActivityForResult(intent,PICK_FROM_CAMERA);
                     }
 
-                }*/
+                }*//*
             }
-        });
+        });*/
 
 
 
 
-        //회원가입 데이터
-        eT_member_id = findViewById(R.id.member_id);
-        eT_member_pw = findViewById(R.id.member_pw);
-        eT_member_nickname = findViewById(R.id.member_nickname);
-        eT_member_name = findViewById(R.id.member_name);
-        eT_member_email = findViewById(R.id.member_email);
+        
+        et_id = findViewById(R.id.et_id);
+        et_pw = findViewById(R.id.et_pw);
+        et_nickname = findViewById(R.id.et_nickname);
+        et_name = findViewById(R.id.et_name);
+        et_email = findViewById(R.id.et_email);
         rg_gender = findViewById(R.id.rg_gender);
         rb_male = findViewById(R.id.rb_male);
         rb_female = findViewById(R.id.rb_female);
 
+        //기본으로 지정
+        gender = "남자";
         rg_gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(checkedId == R.id.rb_male){
-                    member_gender = rb_male.getText().toString();
+                    gender = rb_male.getText().toString();
                 }else if(checkedId == R.id.rb_female){
-                    member_gender = rb_female.getText().toString();
+                    gender = rb_female.getText().toString();
                 }
             }
         });
 
-
         btnJoin = findViewById(R.id.btnJoin);
         btnJoinCancel = findViewById(R.id.btnJoinCancel);
+
+        //체크용
+        findViewById(R.id.btnCheck).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = et_email.getText().toString();
+                String birth = spinnerYear.getSelectedItem().toString() + "." + spinnerMonth.getSelectedItem().toString()
+                        + "." + spinnerDay.getSelectedItem().toString();
+
+                Toast.makeText(JoinActivity.this, "" + email, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + birth, Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         //회원가입 버튼
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //반드시 개인정보를 입력하게 하기
-                if(eT_member_id.getText().toString().length() == 0){
+                if(et_id.getText().toString().length() == 0){
                     Toast.makeText(JoinActivity.this, "아이디를 작성하세요!!!", Toast.LENGTH_SHORT).show();
-                    eT_member_id.requestFocus();
+                    et_id.requestFocus();
                     return;
                 }
-                if(eT_member_pw.getText().toString().length() == 0){
+                if(et_pw.getText().toString().length() == 0){
                     Toast.makeText(JoinActivity.this, "비밀번호를 작성하세요!!!", Toast.LENGTH_SHORT).show();
-                    eT_member_pw.requestFocus();
+                    et_pw.requestFocus();
                     return;
                 }
-                if(eT_member_nickname.getText().toString().length() == 0){
+                if(et_nickname.getText().toString().length() == 0){
                     Toast.makeText(JoinActivity.this, "닉네임을 작성하세요!!!", Toast.LENGTH_SHORT).show();
-                    eT_member_nickname.requestFocus();
+                    et_nickname.requestFocus();
                     return;
                 }
-                if(eT_member_name.getText().toString().length() == 0){
+                if(et_name.getText().toString().length() == 0){
                     Toast.makeText(JoinActivity.this, "이름은 작성하세요!!!", Toast.LENGTH_SHORT).show();
-                    eT_member_name.requestFocus();
+                    et_name.requestFocus();
                     return;
                 }
-                if(eT_member_email.getText().toString().length() == 0){
+                if(et_email.getText().toString().length() == 0){
                     Toast.makeText(JoinActivity.this, "이메일을 작성하세요!!!", Toast.LENGTH_SHORT).show();
-                    eT_member_email.requestFocus();
+                    et_email.requestFocus();
                     return;
                 }
-                String member_id = eT_member_id.getText().toString();
-                String member_pw = eT_member_pw.getText().toString();
-                String member_nickname = eT_member_nickname.getText().toString();
-                String member_name = eT_member_name.getText().toString();
-                String member_email = eT_member_email.getText().toString();
-                String member_birth = spinnerYear.getSelectedItem().toString() + "." + spinnerMonth.getSelectedItem().toString()
+                
+                //회원가입 데이터
+                String id = et_id.getText().toString();
+                String pw = et_pw.getText().toString();
+                String nickname = et_nickname.getText().toString();
+                String name = et_name.getText().toString();
+                //gender는 위에 있음
+                String email = et_email.getText().toString();
+                String birth = spinnerYear.getSelectedItem().toString() + "." + spinnerMonth.getSelectedItem().toString()
                                         + "." + spinnerDay.getSelectedItem().toString();
+                String addr1 = spinnerAddr1.getSelectedItem().toString();
+                String addr2 = spinnerAddr2.getSelectedItem().toString();
+                String picture = "default.jpg";
 
-                String member_addr1 = spinnerAddr1.getSelectedItem().toString();
-                String member_adddr2 = spinnerAddr2.getSelectedItem().toString();
+                //Toast.makeText(JoinActivity.this, "" + id, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(JoinActivity.this, "" + pw, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(JoinActivity.this, "" + nickname, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(JoinActivity.this, "" + name, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(JoinActivity.this, "" + gender, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(JoinActivity.this, "" + email, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(JoinActivity.this, "" + birth, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(JoinActivity.this, "" + addr1, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(JoinActivity.this, "" + addr2, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(JoinActivity.this, "" + picture, Toast.LENGTH_SHORT).show();
 
 
+                //서버와의 연결을 위한 JoinInsert(AsyncTest 상속받음)
+                JoinInsert joinInsert = new JoinInsert(id,pw,nickname, name,gender,
+                                         birth,email,addr1, addr2, picture);
+                try{
+                    state = joinInsert.execute().get().trim();
+                    Log.d("main:joinact0 : ", state);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                if(state.equals("1")){
+                    Toast.makeText(JoinActivity.this, "삽입성공 !!!", Toast.LENGTH_SHORT).show();
+                    Log.d("main:joinact", "삽입성공 !!!");
+                    finish();
+                }else{
+                    Toast.makeText(JoinActivity.this, "삽입실패 !!!", Toast.LENGTH_SHORT).show();
+                    Log.d("main:joinact", "삽입실패 !!!");
+                    finish();
+                }
 
             }
         });
@@ -282,7 +327,7 @@ public class JoinActivity extends AppCompatActivity {
         return image;
     }*/
 
-    //앨범 및 카메라
+    /*//앨범 및 카메라
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == PICK_FROM_ALBUM){ //앨범
@@ -307,7 +352,7 @@ public class JoinActivity extends AppCompatActivity {
                 Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                 if(bitmap != null){
                     picture.setImageBitmap(bitmap);}
-                /*File file = new File(mCurrentPhotoPath);
+                *//*File file = new File(mCurrentPhotoPath);
                 Bitmap bitmap;
                 if(Build.VERSION.SDK_INT >= 29){
                     ImageDecoder.Source source =
@@ -325,11 +370,11 @@ public class JoinActivity extends AppCompatActivity {
                     }catch (IOException e){
                         e.printStackTrace();
                     }
-                }*/
+                }*//*
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
+    }*/
 
 
 
