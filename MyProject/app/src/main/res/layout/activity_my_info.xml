@@ -50,7 +50,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<<<<<<< HEAD
     <TextView
         android:id="@+id/textView48"
         android:layout_width="wrap_content"
@@ -99,8 +98,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<<<<<<< HEAD
-=======
+    =======
     <TextView
         android:id="@+id/textView45"
         android:layout_width="187dp"

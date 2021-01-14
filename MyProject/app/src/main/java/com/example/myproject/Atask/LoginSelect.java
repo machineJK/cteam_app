@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 import android.util.JsonReader;
 import android.util.Log;
 
-import com.example.myproject.MemberDTO.MemberDTO;
+import com.example.myproject.Dto.MemberDTO;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;

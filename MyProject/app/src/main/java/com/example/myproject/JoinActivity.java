@@ -1,32 +1,26 @@
 package com.example.myproject;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.myproject.Atask.JoinInsert;
 
-import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
 
 public class JoinActivity extends AppCompatActivity {
@@ -207,25 +201,38 @@ public class JoinActivity extends AppCompatActivity {
             }
         });
 
-<<<<<<< HEAD
-        //
-        btnJoin = findViewById(R.id.btnUpdate);
-        btnJoinCancel = findViewById(R.id.btnUpdateCancel);
-=======
+
         btnJoin = findViewById(R.id.btnJoin);
         btnJoinCancel = findViewById(R.id.btnJoinCancel);
->>>>>>> 42fafac5ca53ab5bfe7e7d25b9b9b1746fa329ac
+
 
         //체크용
         findViewById(R.id.btnCheck).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //회원가입 데이터
+                String id = et_id.getText().toString();
+                String pw = et_pw.getText().toString();
+                String nickname = et_nickname.getText().toString();
+                String name = et_name.getText().toString();
+                //gender는 위에 있음
                 String email = et_email.getText().toString();
                 String birth = spinnerYear.getSelectedItem().toString() + "." + spinnerMonth.getSelectedItem().toString()
                         + "." + spinnerDay.getSelectedItem().toString();
+                String addr1 = spinnerAddr1.getSelectedItem().toString();
+                String addr2 = spinnerAddr2.getSelectedItem().toString();
+                String picture = "default.jpg";
 
-                Toast.makeText(JoinActivity.this, "" + email, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + id, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + pw, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + nickname, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + name, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + gender, Toast.LENGTH_SHORT).show();
                 Toast.makeText(JoinActivity.this, "" + birth, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + email, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + addr1, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + addr2, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + picture, Toast.LENGTH_SHORT).show();
             }
         });
 
