@@ -217,12 +217,28 @@ public class JoinActivity extends AppCompatActivity {
         findViewById(R.id.btnCheck).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String id = et_id.getText().toString();
+                String pw = et_pw.getText().toString();
+                String nickname = et_nickname.getText().toString();
+                String name = et_name.getText().toString();
+                //gender는 위에 있음
                 String email = et_email.getText().toString();
                 String birth = spinnerYear.getSelectedItem().toString() + "." + spinnerMonth.getSelectedItem().toString()
                         + "." + spinnerDay.getSelectedItem().toString();
+                String addr1 = spinnerAddr1.getSelectedItem().toString();
+                String addr2 = spinnerAddr2.getSelectedItem().toString();
+                String picture = "default.jpg";
 
-                Toast.makeText(JoinActivity.this, "" + email, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + id, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + pw, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + nickname, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + name, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + gender, Toast.LENGTH_SHORT).show();
                 Toast.makeText(JoinActivity.this, "" + birth, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + email, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + addr1, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + addr2, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + picture, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -271,16 +287,16 @@ public class JoinActivity extends AppCompatActivity {
                 String addr2 = spinnerAddr2.getSelectedItem().toString();
                 String picture = "default.jpg";
 
-                //Toast.makeText(JoinActivity.this, "" + id, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(JoinActivity.this, "" + pw, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(JoinActivity.this, "" + nickname, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(JoinActivity.this, "" + name, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(JoinActivity.this, "" + gender, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(JoinActivity.this, "" + email, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(JoinActivity.this, "" + birth, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(JoinActivity.this, "" + addr1, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(JoinActivity.this, "" + addr2, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(JoinActivity.this, "" + picture, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + id, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + pw, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + nickname, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + name, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + gender, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + birth, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + email, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + addr1, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + addr2, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity.this, "" + picture, Toast.LENGTH_SHORT).show();
 
 
                 //서버와의 연결을 위한 JoinInsert(AsyncTest 상속받음)
