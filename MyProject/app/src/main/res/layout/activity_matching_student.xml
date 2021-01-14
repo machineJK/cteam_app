@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Matching">
+    tools:context=".MatchingStudent">
 
     <TextView
         android:id="@+id/textView50"
@@ -15,7 +15,6 @@
         android:text="과외 매칭"
         android:textColor="#000000"
         android:textSize="30sp"
-        app:backgroundTint="#DD8181"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/floatingActionButton2"
         app:layout_constraintHorizontal_bias="0.276"
@@ -30,7 +29,6 @@
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
         android:text="선생"
-        app:backgroundTint="#DD8181"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/student"
         app:layout_constraintHorizontal_bias="0.472"
@@ -45,6 +43,7 @@
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
         android:text="학생"
+        app:backgroundTint="#DD8181"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -69,7 +68,7 @@
         android:layout_height="167dp"
         android:layout_marginBottom="40dp"
         android:gravity="center|right"
-        android:text="고려대 자연학과 19 남자\n 국어, 수학 \n 서울, 인천\n 가르치는 과목: 수학"
+        android:text="고1 남자 \n 서울, 인천\n 과목: 수학"
         app:layout_constraintBottom_toTopOf="@+id/describe4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.536"
@@ -82,7 +81,7 @@
         android:layout_width="316dp"
         android:layout_height="167dp"
         android:gravity="center|right"
-        android:text="전남대 컴퓨터공학과 80 남자\n 자바, 코틀린 \n 광주, 나주\n 가르치는 과목: 코딩"
+        android:text="초5 남자 \n 광주, 나주\n 가르치는 과목: 코딩"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.536"

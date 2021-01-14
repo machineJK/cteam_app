@@ -24,7 +24,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.myproject.ATask.ListMyInfo;
 import com.example.myproject.Common.Common;
 import com.example.myproject.Dto.Myupdate;
 
@@ -38,7 +37,8 @@ import static com.example.myproject.Common.Common.isNetworkConnected;
 
 public class ModifyMyInfo extends AppCompatActivity {
 
-    Button photoLoad, photoBtn;
+    Button modify,cancel;
+/*    Button photoLoad, photoBtn;
     ImageView imageView11;
     Spinner spinnerYear, spinnerMonth, spinnerDay;
     String id, pw, nickname, name, email;
@@ -56,7 +56,7 @@ public class ModifyMyInfo extends AppCompatActivity {
     final int LOAD_IMAGE = 1011;
 
     File file = null;
-    long fileSize = 0;
+    long fileSize = 0;*/
 
 
     @Override
@@ -64,7 +64,24 @@ public class ModifyMyInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_my_info);
 
-        etId = findViewById(R.id.etUId);
+        modify = findViewById(R.id.modify_modify);
+        cancel = findViewById(R.id.modify_cancel);
+
+        modify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ModifyMyInfo.this, MyInfo.class);
+                startActivity(intent);
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+ /*       etId = findViewById(R.id.etUId);
         etPw = findViewById(R.id.etUPw);
         etNick = findViewById(R.id.etUNick);
         etName = findViewById(R.id.etUName);
@@ -273,5 +290,6 @@ public class ModifyMyInfo extends AppCompatActivity {
     }
     public void btnCancelClicked(View view){
         finish();
+    }*/
     }
 }

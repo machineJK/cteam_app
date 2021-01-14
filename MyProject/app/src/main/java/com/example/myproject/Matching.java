@@ -5,24 +5,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import static com.example.myproject.Common.Common.loginDTO;
 
 //과외 매칭
 public class Matching extends AppCompatActivity {
 
-    Button teacher, student, add;
+    Button teacher, student, add, matching, talk, board, my;
     ImageButton imageButton1, imageButton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matching);
-        teacher = findViewById(R.id.teacher);
+        teacher = findViewById(R.id.teacher2);
         student = findViewById(R.id.student);
-        add = findViewById(R.id.add);
+        add = findViewById(R.id.add2);
         imageButton1 = findViewById(R.id.imageButton1);
         imageButton2 = findViewById(R.id.imageButton2);
 
@@ -30,7 +28,7 @@ public class Matching extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Matching.this, Slider_5.class);
+                Intent intent = new Intent(Matching.this, TeacherForm.class);
                 startActivity(intent);
             }
         });
@@ -52,6 +50,45 @@ public class Matching extends AppCompatActivity {
             }
         });*/
 
+        //학생 등록 화면 이동
+        student.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Matching.this, MatchingStudent.class);
+                startActivity(intent);
+            }
+        });
+        
+        
+        //화면이동
+        matching = findViewById(R.id.matchingst_matching);
+        talk = findViewById(R.id.matchingst_talk);
+        board = findViewById(R.id.matchingst_board);
+        my = findViewById(R.id.matchingst_my);
+        
+        talk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Matching.this, Chat.class);
+                startActivity(intent);
+            }
+        });
 
+        board.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Matching.this, Board.class);
+                startActivity(intent);
+            }
+        });
+
+        my.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Matching.this, MyInfo.class);
+                startActivity(intent);
+            }
+        });
+        
     }
 }

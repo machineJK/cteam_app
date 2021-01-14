@@ -7,20 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class BoardWriteForm extends AppCompatActivity {
-    Button write, cancel;
+public class TeacherForm extends AppCompatActivity {
+    Button join, cancel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_board_write_form);
+        setContentView(R.layout.activity_teacher_form);
 
-        write = findViewById(R.id.board_write);
-        cancel = findViewById(R.id.board_cancel);
+        join = findViewById(R.id.teacher_join);
+        cancel = findViewById(R.id.teacher_cancel);
 
-        write.setOnClickListener(new View.OnClickListener() {
+        join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BoardWriteForm.this, Board.class);
+                Intent intent = new Intent(TeacherForm.this, Matching.class);
                 startActivity(intent);
             }
         });
@@ -31,6 +31,5 @@ public class BoardWriteForm extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }

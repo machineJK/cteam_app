@@ -69,10 +69,10 @@
         android:layout_height="56dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="588dp"
+        android:layout_marginTop="532dp"
         android:text="댓글쓰기"
-        android:textSize="20sp"
         android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="276dp"
         android:layout_marginLeft="276dp"
-        android:layout_marginTop="588dp"
+        android:layout_marginTop="532dp"
         android:text="보내기"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
