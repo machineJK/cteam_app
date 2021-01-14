@@ -50,7 +50,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d6c1b696d214179798eac2ae5177cbfa7b55f979
     <TextView
         android:id="@+id/textView48"
         android:layout_width="wrap_content"
@@ -98,6 +101,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<<<<<<< HEAD
+=======
+    =======
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="187dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="340dp"
+        android:text="매칭된 사람"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+>>>>>>> d6c1b696d214179798eac2ae5177cbfa7b55f979
 
 
     <Button
