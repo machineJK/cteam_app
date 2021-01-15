@@ -74,7 +74,7 @@ public class Common {
     }
 
     // 이미지 돌리기
-    public static Bitmap imgRotate(Bitmap bitmap, int orientation){
+    public static Bitmap imgRotate(Bitmap bitmap, int orientation) {
 
         Matrix matrix = new Matrix();
 
@@ -112,15 +112,12 @@ public class Common {
             Bitmap bmRotated = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
             bitmap.recycle();
             return bmRotated;
-        }
-        catch (OutOfMemoryError e) {
+        } catch (OutOfMemoryError e) {
             e.printStackTrace();
             return null;
         }
 
+
     }
-
-
-
 
 }

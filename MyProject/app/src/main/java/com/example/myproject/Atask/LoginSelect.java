@@ -105,7 +105,7 @@ public class LoginSelect extends AsyncTask<Void, Void, Void> {
         JsonReader reader = new JsonReader(new InputStreamReader(inputStream, "UTF-8"));
 
         String id = "", pw = "", nickname = "", name = "", gender = "",
-                birth = "", email = "", addr1 = "", addr2 = "", picture = "";
+                birth = "", email = "", addr1 = "", addr2 = "", dbImgPath = "";
 
         reader.beginObject();
         while (reader.hasNext()) {
@@ -128,15 +128,15 @@ public class LoginSelect extends AsyncTask<Void, Void, Void> {
                 addr1 = reader.nextString();
             }else if (readStr.equals("addr2")) {
                 addr2 = reader.nextString();
-            }else if (readStr.equals("picture")) {
-                picture = reader.nextString();
+            }else if (readStr.equals("dbImgPath")) {
+                dbImgPath = reader.nextString();
             }else {
                 reader.skipValue();
             }
         }
         reader.endObject();
         Log.d("main:loginselect : ", id + "," + pw);
-        return new MemberDTO(id, pw, nickname, name, gender, birth, email, addr1, addr2, picture);
+        return new MemberDTO(id, pw, nickname, name, gender, birth, email, addr1, addr2, dbImgPath);
 
     }
 }
