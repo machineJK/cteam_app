@@ -21,6 +21,7 @@ public class Common {
 
     public static MemberDTO loginDTO = null;
 
+
     // 네트워크에 연결되어 있는가
     public static boolean isNetworkConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager)

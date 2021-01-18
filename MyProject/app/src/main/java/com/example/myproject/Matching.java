@@ -12,17 +12,15 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Matching extends AppCompatActivity {
 
     Button teacher, student, add, matching, talk, board, my;
-    ImageButton imageButton1, imageButton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matching);
-        teacher = findViewById(R.id.teacher2);
+        teacher = findViewById(R.id.teacher);
         student = findViewById(R.id.student);
         add = findViewById(R.id.add2);
-        imageButton1 = findViewById(R.id.imageButton1);
-        imageButton2 = findViewById(R.id.imageButton2);
+
 
         //과외 등록 했을 때 액티비티 넘어가는 것!!!!
         add.setOnClickListener(new View.OnClickListener() {
@@ -33,22 +31,6 @@ public class Matching extends AppCompatActivity {
             }
         });
 
-        //누르면 선생님 상세 정보로 이동합니다.
-        imageButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Matching.this, Slider_6.class);
-                startActivity(intent);
-            }
-        });
-
-/*        imageButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Slider_4.this, Slider_6.class);
-                startActivity(intent);
-            }
-        });*/
 
         //학생 등록 화면 이동
         student.setOnClickListener(new View.OnClickListener() {
@@ -59,8 +41,10 @@ public class Matching extends AppCompatActivity {
             }
         });
         
-        
-        //화면이동
+
+
+
+        //하단 화면이동
         matching = findViewById(R.id.matchingst_matching);
         talk = findViewById(R.id.matchingst_talk);
         board = findViewById(R.id.matchingst_board);

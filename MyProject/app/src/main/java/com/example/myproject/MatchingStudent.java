@@ -23,7 +23,7 @@ public class MatchingStudent extends AppCompatActivity {
             }
         });
         
-        teacher2 = findViewById(R.id.teacher2);
+        teacher2 = findViewById(R.id.teacher);
         teacher2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
