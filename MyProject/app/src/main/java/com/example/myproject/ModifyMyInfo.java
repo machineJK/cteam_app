@@ -22,7 +22,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.myproject.ATask.ListMyInfo;
 import com.example.myproject.Common.Common;
 import com.example.myproject.Dto.Myupdate;
 
@@ -75,7 +74,7 @@ public class ModifyMyInfo extends AppCompatActivity {
             }
         });*/
 
-        etUPw = findViewById(R.id.etUPw);
+/*        etUPw = findViewById(R.id.etUPw);
         etUNickname = findViewById(R.id.etUNick);
         etUEmail = findViewById(R.id.etUEmail);
 
@@ -102,9 +101,9 @@ public class ModifyMyInfo extends AppCompatActivity {
 
         imageView8.setVisibility(View.VISIBLE);
         // 선택된 이미지 보여주기
-        Glide.with(this).load(imagePath).into(imageView8);
+        Glide.with(this).load(imagePath).into(imageView8);*/
 
-        photoBtn.setOnClickListener(new View.OnClickListener() {
+/*        photoBtn.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             try{
@@ -136,8 +135,8 @@ public class ModifyMyInfo extends AppCompatActivity {
                 }
 
             }
-        });
-        photoLoad.setOnClickListener(new View.OnClickListener() {
+        });*/
+/*        photoLoad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 imageView8.setVisibility(View.VISIBLE);
@@ -147,7 +146,7 @@ public class ModifyMyInfo extends AppCompatActivity {
                 intent.setAction(Intent.ACTION_PICK);
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), LOAD_IMAGE);
             }
-        });
+        });*/
 
 
     }
@@ -155,7 +154,7 @@ public class ModifyMyInfo extends AppCompatActivity {
 
 
 
-    private File createFile() throws IOException {
+/*    private File createFile() throws IOException {
         java.text.SimpleDateFormat tmpDateFormat = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss");
 
         String imageFileName = "My" + tmpDateFormat.format(new Date()) + ".jpg";
@@ -163,8 +162,9 @@ public class ModifyMyInfo extends AppCompatActivity {
         File curFile = new File(storageDir, imageFileName);
 
         return curFile;
-    }
-    @Override
+    }*/
+
+/*    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
@@ -217,9 +217,9 @@ public class ModifyMyInfo extends AppCompatActivity {
             }
         }
 
-    }
+    }*/
 
-    public String getPathFromURI(Uri contentUri) {
+/*    public String getPathFromURI(Uri contentUri) {
         String res = null;
         String[] proj = {MediaStore.Images.Media.DATA};
         Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
@@ -229,9 +229,9 @@ public class ModifyMyInfo extends AppCompatActivity {
         }
         cursor.close();
         return res;
-    }
+    }*/
 
-    public void btnUpdateClicked(View view){
+/*    public void btnUpdateClicked(View view){
         if(isNetworkConnected(this) == true){
             if(fileSize <= 500000000) {  // 파일크기가 500메가 보다 작아야 업로드 할수 있음
                 pw = etUPw.getText().toString();
@@ -269,8 +269,8 @@ public class ModifyMyInfo extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
 
-    }
-    public void btnCancelClicked(View view){
+    }*/
+/*    public void btnCancelClicked(View view){
         finish();
-    }
+    }*/
 }
