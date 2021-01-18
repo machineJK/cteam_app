@@ -9,13 +9,15 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 
 public class MyInfo extends AppCompatActivity {
 
-    Button button13,matching, talk, board, my, modify;
+    Button matching, talk, board, my, modify;
     ImageView imageView6;
+    ImageButton imageButton;
 
 
 
@@ -24,21 +26,21 @@ public class MyInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_info);
 
-        button13 = findViewById(R.id.my_modify);
-        imageView6 = findViewById(R.id.imageView6);
-        button13.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(com.example.myproject.MyInfo.this, ModifyMyInfo.class);
-                startActivity(intent);
-            }
-        });
 
+        imageView6 = findViewById(R.id.imageView6);
         modify = findViewById(R.id.my_modify);
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MyInfo.this, ModifyMyInfo.class);
+                startActivity(intent);
+            }
+        });
+        imageButton = findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyInfo.this, Slider_6.class);
                 startActivity(intent);
             }
         });

@@ -70,15 +70,7 @@
         android:layout_marginTop="212dp"
         android:text="닉네임"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
-
-    =======
-    =======
-
-    >>>>>>> d6c1b696d214179798eac2ae5177cbfa7b55f979
-
-
-    ]]>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/my_modify"
