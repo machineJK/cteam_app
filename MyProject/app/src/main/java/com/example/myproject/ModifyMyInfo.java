@@ -18,12 +18,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.myproject.ATask.ListMyInfo;
 import com.example.myproject.Common.Common;
 import com.example.myproject.Dto.Myupdate;
 
@@ -37,16 +36,11 @@ import static com.example.myproject.Common.Common.isNetworkConnected;
 
 public class ModifyMyInfo extends AppCompatActivity {
 
-    Button modify,cancel;
-/*    Button photoLoad, photoBtn;
-    ImageView imageView11;
-    Spinner spinnerYear, spinnerMonth, spinnerDay;
-    String id, pw, nickname, name, email;
-    EditText etId, etPw, etNick, etName, etEmail;
-    ImageButton imageButton;
-
-
-
+    //Button modify,cancel;
+    Button photoLoad, photoBtn;
+    ImageView imageView8;
+    String pw, nickname, email;
+    EditText etUPw, etUNickname, etUEmail;
 
     public String imagePath;
     public String pImgDbPathU;
@@ -56,15 +50,14 @@ public class ModifyMyInfo extends AppCompatActivity {
     final int LOAD_IMAGE = 1011;
 
     File file = null;
-    long fileSize = 0;*/
-
+    long fileSize = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_my_info);
 
-        modify = findViewById(R.id.modify_modify);
+       /* modify = findViewById(R.id.modify_modify);
         cancel = findViewById(R.id.modify_cancel);
 
         modify.setOnClickListener(new View.OnClickListener() {
@@ -80,48 +73,36 @@ public class ModifyMyInfo extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
             }
-        });
- /*       etId = findViewById(R.id.etUId);
-        etPw = findViewById(R.id.etUPw);
-        etNick = findViewById(R.id.etUNick);
-        etName = findViewById(R.id.etUName);
-        etEmail = findViewById(R.id.etUEmail);
+        });*/
 
-        imageView11 = findViewById(R.id.imageView11);
+        etUPw = findViewById(R.id.etUPw);
+        etUNickname = findViewById(R.id.etUNick);
+        etUEmail = findViewById(R.id.etUEmail);
+
+        imageView8 = findViewById(R.id.imageView8);
 
         photoLoad = findViewById(R.id.btnLoad);
         photoBtn = findViewById(R.id.btnPhoto);
-        imageButton = findViewById(R.id.imageButton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(com.example.myproject.ModifyMyInfo.this, Slider_6.class);
-                startActivity(intent);
-            }
-        });
-
-        // 업데이트시 아이디 변경불가
-        etId.setEnabled(false);
 
         // 보내온 값 파싱
         Intent intent = getIntent();
         Myupdate selItem = (Myupdate) intent.getSerializableExtra("selItem");
 
-        id = selItem.getId();
         pw = selItem.getPw();
         nickname = selItem.getNickname();
-        name = selItem.getName();
         email = selItem.getEmail();
 
-        // 날짜 몰라
+        etUPw.setText(pw);
+        etUNickname.setText(nickname);
+        etUEmail.setText(email);
 
         imagePath = selItem.getImage_path();
         pImgDbPathU = imagePath;
         imageDbPathU = imagePath;
 
-        imageView11.setVisibility(View.VISIBLE);
+        imageView8.setVisibility(View.VISIBLE);
         // 선택된 이미지 보여주기
-        Glide.with(this).load(imagePath).into(imageView11);
+        Glide.with(this).load(imagePath).into(imageView8);
 
         photoBtn.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -134,7 +115,7 @@ public class ModifyMyInfo extends AppCompatActivity {
                     Log.d("Sub1Update:error1", "Something Wrong", e);
                 }
 
-                imageView11.setVisibility(View.VISIBLE);
+                imageView8.setVisibility(View.VISIBLE);
 
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { // API24 이상 부터
@@ -150,16 +131,16 @@ public class ModifyMyInfo extends AppCompatActivity {
                     startActivityForResult(intent, CAMERA_REQUEST);
                 }
 
-            }catch(Exception e){
-                Log.d("Sub1Update:error2", "Something Wrong", e);
-            }
+                }catch(Exception e){
+                     Log.d("Sub1Update:error2", "Something Wrong", e);
+                }
 
-        }
-    });
+            }
+        });
         photoLoad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                imageView11.setVisibility(View.VISIBLE);
+                imageView8.setVisibility(View.VISIBLE);
 
                 Intent intent = new Intent();
                 intent.setType("image/*");
@@ -192,7 +173,7 @@ public class ModifyMyInfo extends AppCompatActivity {
                 // 이미지 돌리기 및 리사이즈
                 Bitmap newBitmap = Common.imageRotateAndResize(file.getAbsolutePath());
                 if(newBitmap != null){
-                    imageView11.setImageBitmap(newBitmap);
+                    imageView8.setImageBitmap(newBitmap);
                 }else{
                     Toast.makeText(this, "이미지가 null 입니다...", Toast.LENGTH_SHORT).show();
                 }
@@ -222,7 +203,7 @@ public class ModifyMyInfo extends AppCompatActivity {
                 // 이미지 돌리기 및 리사이즈
                 Bitmap newBitmap = Common.imageRotateAndResize(path);
                 if(newBitmap != null){
-                    imageView11.setImageBitmap(newBitmap);
+                    imageView8.setImageBitmap(newBitmap);
                 }else{
                     Toast.makeText(this, "이미지가 null 입니다...", Toast.LENGTH_SHORT).show();
                 }
@@ -252,12 +233,13 @@ public class ModifyMyInfo extends AppCompatActivity {
 
     public void btnUpdateClicked(View view){
         if(isNetworkConnected(this) == true){
-            if(fileSize <= 30000000) {  // 파일크기가 30메가 보다 작아야 업로드 할수 있음
+            if(fileSize <= 500000000) {  // 파일크기가 500메가 보다 작아야 업로드 할수 있음
+                pw = etUPw.getText().toString();
+                nickname = etUNickname.getText().toString();
+                email = etUEmail.getText().toString();
 
-                ListMyInfo listMyInfo = new ListMyInfo(pImgDbPathU, imageDbPathU, imageRealPathU);
+                ListMyInfo listMyInfo = new ListMyInfo(pw, nickname, email, pImgDbPathU, imageDbPathU, imageRealPathU);
                 listMyInfo.execute();
-
-
 
                 //Toast.makeText(getApplicationContext(), "수정성공", Toast.LENGTH_LONG).show();
 
@@ -272,7 +254,7 @@ public class ModifyMyInfo extends AppCompatActivity {
                 // 알림창 띄움
                 final AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("알림");
-                builder.setMessage("파일 크기가 30MB초과하는 파일은 업로드가 제한되어 있습니다.\n30MB이하 파일로 선택해 주십시요!!!");
+                builder.setMessage("파일 크기가 500MB초과하는 파일은 업로드가 제한되어 있습니다.\n30MB이하 파일로 선택해 주십시요!!!");
                 builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -290,6 +272,5 @@ public class ModifyMyInfo extends AppCompatActivity {
     }
     public void btnCancelClicked(View view){
         finish();
-    }*/
     }
 }

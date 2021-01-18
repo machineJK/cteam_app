@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ModifyMyInfo">
 
-    <Button
-        android:id="@+id/btnJoinCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="644dp"
-        android:text="취소"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toEndOf="@+id/btnJoin"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/etUPw"
         android:layout_width="280dp"
@@ -65,19 +52,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUPw" />
 
-    <Button
-        android:id="@+id/btnJoin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
-        android:layout_marginTop="644dp"
-        android:text="수정하기"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    =======
-    =======
 
     <ImageView
         android:id="@+id/imageView8"
@@ -147,27 +121,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/modify_modify"
+        android:id="@+id/btnUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
         android:layout_marginLeft="96dp"
         android:layout_marginTop="496dp"
+        android:onClick="btnUpdateClicked"
         android:text="수정"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/modify_cancel"
+        android:id="@+id/btnCancle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="260dp"
         android:layout_marginLeft="260dp"
         android:layout_marginTop="496dp"
+        android:onClick="btnCancelClicked"
         android:text="취소"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    >>>>>>> d6c1b696d214179798eac2ae5177cbfa7b55f979
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
