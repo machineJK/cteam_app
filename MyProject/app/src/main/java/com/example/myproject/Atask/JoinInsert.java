@@ -10,8 +10,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.FileBody;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
@@ -21,10 +23,11 @@ import static com.example.myproject.Common.Common.ipConfig;
 public class JoinInsert extends AsyncTask<Void, Void, String> {
 
     String id,pw,nickname,name,gender,
-            birth, email, addr1, addr2, picture;
+            birth, email, addr1, addr2, imageDbPathA, imageRealPathA ;
 
-    public JoinInsert(String id, String pw, String nickname, String name, String gender,
-                      String birth, String email, String addr1, String addr2, String picture) {
+    public JoinInsert(String id, String pw, String nickname, String name,
+                      String gender, String birth, String email, String addr1,
+                      String addr2, String imageDbPathA, String imageRealPathA) {
         this.id = id;
         this.pw = pw;
         this.nickname = nickname;
@@ -34,7 +37,8 @@ public class JoinInsert extends AsyncTask<Void, Void, String> {
         this.email = email;
         this.addr1 = addr1;
         this.addr2 = addr2;
-        this.picture = picture;
+        this.imageDbPathA = imageDbPathA;
+        this.imageRealPathA = imageRealPathA;
     }
 
     // 데이터베이스에 삽입결과 0보다크면 삽입성공, 같거나 작으면 실패
@@ -64,7 +68,8 @@ public class JoinInsert extends AsyncTask<Void, Void, String> {
             builder.addTextBody("email", email, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("addr1", addr1, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("addr2", addr2, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("picture", picture, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("dbImgPath", imageDbPathA, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addPart("image", new FileBody(new File(imageRealPathA)));
 
             String postURL = ipConfig + "/app/anJoin";
             // 전송

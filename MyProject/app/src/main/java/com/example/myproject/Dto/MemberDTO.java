@@ -2,11 +2,11 @@ package com.example.myproject.Dto;
 
 public class MemberDTO {
     String id, pw, nickname, name, gender,
-            birth, email, addr1, addr2, picture;
+            birth, email, addr1, addr2, dbImgPath;
 
     //회원가입
     public MemberDTO(String id, String pw, String nickname, String name, String gender,
-                     String birth, String email, String addr1, String addr2, String picture) {
+                     String birth, String email, String addr1, String addr2, String dbImgPath) {
         this.id = id;
         this.pw = pw;
         this.nickname = nickname;
@@ -16,7 +16,7 @@ public class MemberDTO {
         this.email = email;
         this.addr1 = addr1;
         this.addr2 = addr2;
-        this.picture = picture;
+        this.dbImgPath = dbImgPath;
     }
 
     public String getId() {
@@ -91,11 +91,11 @@ public class MemberDTO {
         this.addr2 = addr2;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getdbImgPath() {
+        return dbImgPath;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setdbImgPath(String dbImgPath) {
+        this.dbImgPath = dbImgPath;
     }
 }
