@@ -68,7 +68,7 @@
                     android:gravity="center_vertical" />
 
                 <TextView
-                    android:id="@+id/tv_subject1"
+                    android:id="@+id/tv_subject"
                     android:text="과학"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"

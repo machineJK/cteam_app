@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.util.Log;
 
 import com.example.myproject.Dto.MemberDTO;
+import com.example.myproject.Dto.TeacherDTO;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class Common {
     //public static String ipConfig = "http://121.148.239.200:80";
 
     public static MemberDTO loginDTO = null;
+    public static TeacherDTO selItem = null;
 
 
     // 네트워크에 연결되어 있는가
