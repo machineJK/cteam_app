@@ -23,7 +23,7 @@ public class TeacherForm extends AppCompatActivity {
 
     Button join, cancel;
     Spinner spinner_teacher_subject;
-    EditText et_teacher_univ,et_teacher_major,et_teacher_univNum,
+    EditText et_teacher_univ,et_teacher_major,et_teacher_univnum,
             et_teacher_pay,et_teacher_worktime,et_teacher_intro;
 
 
@@ -43,7 +43,7 @@ public class TeacherForm extends AppCompatActivity {
 
         et_teacher_univ = findViewById(R.id.et_teacher_univ);
         et_teacher_major = findViewById(R.id.et_teacher_major);
-        et_teacher_univNum = findViewById(R.id.et_teacher_univNum);
+        et_teacher_univnum = findViewById(R.id.et_teacher_univnum);
         et_teacher_pay = findViewById(R.id.et_teacher_pay);
         et_teacher_worktime = findViewById(R.id.et_teacher_worktime);
         et_teacher_intro = findViewById(R.id.et_teacher_intro);
@@ -66,9 +66,9 @@ public class TeacherForm extends AppCompatActivity {
                     et_teacher_major.requestFocus();
                     return;
                 }
-                if(et_teacher_univNum.getText().toString().length() == 0){
+                if(et_teacher_univnum.getText().toString().length() == 0){
                     Toast.makeText(TeacherForm.this, "학번을 작성하세요!!!", Toast.LENGTH_SHORT).show();
-                    et_teacher_univNum.requestFocus();
+                    et_teacher_univnum.requestFocus();
                     return;
                 }
                 if(et_teacher_pay.getText().toString().length() == 0){
@@ -95,7 +95,7 @@ public class TeacherForm extends AppCompatActivity {
                     String teacher_id = loginDTO.getId();
                     String teacher_univ = et_teacher_univ.getText().toString();
                     String teacher_major = et_teacher_major.getText().toString();
-                    String teacher_univNum = et_teacher_univNum.getText().toString();
+                    String teacher_univnum = et_teacher_univnum.getText().toString();
                     String teacher_subject = spinner_teacher_subject.getSelectedItem().toString();
                     String teacher_worktime = et_teacher_worktime.getText().toString();
                     String teacher_pay = et_teacher_pay.getText().toString();
@@ -103,7 +103,7 @@ public class TeacherForm extends AppCompatActivity {
                     String teacher_image_path = loginDTO.getdbImgPath();
 
                     TeacherInsert teacherInsert = new TeacherInsert(teacher_id, teacher_univ, teacher_major,
-                            teacher_univNum, teacher_subject, teacher_worktime, teacher_pay, teacher_intro,
+                            teacher_univnum, teacher_subject, teacher_worktime, teacher_pay, teacher_intro,
                             teacher_image_path);
                     try {
                         state = teacherInsert.execute().get().trim();

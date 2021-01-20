@@ -18,17 +18,17 @@ import java.nio.charset.Charset;
 import static com.example.myproject.Common.Common.ipConfig;
 
 public class TeacherInsert extends AsyncTask<Void, Void, String> {
-    String teacher_id,teacher_univ,teacher_major,teacher_univNum,teacher_subject,
+    String teacher_id,teacher_univ,teacher_major,teacher_univnum,teacher_subject,
             teacher_worktime,teacher_pay,teacher_intro,teacher_image_path;
 
     public TeacherInsert(String teacher_id, String teacher_univ, String teacher_major,
-                         String teacher_univNum, String teacher_subject,
+                         String teacher_univnum, String teacher_subject,
                          String teacher_worktime, String teacher_pay, String teacher_intro,
                          String teacher_image_path) {
         this.teacher_id = teacher_id;
         this.teacher_univ = teacher_univ;
         this.teacher_major = teacher_major;
-        this.teacher_univNum = teacher_univNum;
+        this.teacher_univnum = teacher_univnum;
         this.teacher_subject = teacher_subject;
         this.teacher_worktime = teacher_worktime;
         this.teacher_pay = teacher_pay;
@@ -58,7 +58,7 @@ public class TeacherInsert extends AsyncTask<Void, Void, String> {
             builder.addTextBody("teacher_id", teacher_id, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("teacher_univ", teacher_univ, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("teacher_major", teacher_major, ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("teacher_univNum", teacher_univNum, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("teacher_univnum", teacher_univnum, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("teacher_subject", teacher_subject, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("teacher_worktime", teacher_worktime, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("teacher_pay", teacher_pay, ContentType.create("Multipart/related", "UTF-8"));

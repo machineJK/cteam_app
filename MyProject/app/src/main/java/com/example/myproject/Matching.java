@@ -103,7 +103,7 @@ public class Matching extends AppCompatActivity {
         talk = findViewById(R.id.matchingst_talk);
         board = findViewById(R.id.matchingst_board);
         my = findViewById(R.id.matchingst_my);
-        
+
         talk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,7 +127,7 @@ public class Matching extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+
     }
 
     // 이미 화면이 있을때 받는곳
@@ -161,6 +161,10 @@ public class Matching extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
     }
+
+
+
+
 
 
 }

@@ -130,9 +130,8 @@ public class ListSelect extends AsyncTask<Void,Void,Void> {
     public TeacherDTO readMessage(JsonReader reader) throws IOException {
         String teacher_id="",teacher_univ="",teacher_major="",teacher_univNum="",
                 teacher_subject="", teacher_worktime="",teacher_pay="",
-                teacher_intro="",teacher_image_path="";
+                teacher_intro="",teacher_image_path="", teacher_date="";
         int teacher_matching=-1;
-        Date teacher_date = null;
 
         reader.beginObject();
         while (reader.hasNext()) {
@@ -142,7 +141,9 @@ public class ListSelect extends AsyncTask<Void,Void,Void> {
             } else if (readStr.equals("teacher_univ")) {
                 teacher_univ = reader.nextString();
             } else if (readStr.equals("teacher_date")) {
-               teacher_date = Date.valueOf(reader.nextString());
+                String[] temp = reader.nextString().replace("월", "-").replace(",", "-")
+                        .replace(" ", "").split("-");
+                teacher_date = temp[2] + "-" + temp[0] + "-" + temp[1];
             } else if (readStr.equals("teacher_major")) {
                 teacher_major = reader.nextString();
             } else if (readStr.equals("teacher_univNum")) {
@@ -157,6 +158,8 @@ public class ListSelect extends AsyncTask<Void,Void,Void> {
                 teacher_intro = reader.nextString();
             } else if (readStr.equals("teacher_matching")) {
                 teacher_matching = reader.nextInt();
+            } else if (readStr.equals("teacher_image_path")) {
+                teacher_image_path = reader.nextString();
             }else {
                 reader.skipValue();
             }

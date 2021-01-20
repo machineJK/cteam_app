@@ -58,8 +58,7 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
 
                 selItem = arrayList.get(position);
 
-                Toast.makeText(mContext, "Onclick " + arrayList.get(position).getTeacher_id(), Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(mContext, "img_path : " + arrayList.get(position).getTeacher_image_path(), Toast.LENGTH_SHORT).show();
             }
         });
     }
