@@ -32,7 +32,7 @@
                     android:layout_margin="3dp">
 
                     <ImageView
-                        android:id="@+id/tv_img"
+                        android:id="@+id/tv_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY"/>
@@ -58,8 +58,8 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/tv_addr"
-                    android:text="서강대 생명과학과"
+                    android:id="@+id/tv_grade"
+                    android:text="고1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -68,8 +68,8 @@
                     android:gravity="center_vertical" />
 
                 <TextView
-                    android:id="@+id/tv_subject"
-                    android:text="과학"
+                    android:id="@+id/tv_address"
+                    android:text="광주 북구"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -78,14 +78,13 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/tv_worktime_pay"
+                    android:id="@+id/tv_subject2"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:textColor="#ff0000"
-                    android:text="3시간 50만원"
-                    android:textSize="24sp"
+                    android:text="과학"
+                    android:textSize="14sp"
                     android:textStyle="normal|bold" />
 
             </LinearLayout>

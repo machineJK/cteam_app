@@ -1,13 +1,12 @@
 package com.example.myproject.Dto;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class TeacherDTO implements Serializable {
     private String teacher_id, teacher_univ, teacher_major, teacher_univnum,
-            teacher_subject, teacher_worktime, teacher_pay, teacher_intro, teacher_image_path;
+            teacher_subject, teacher_worktime, teacher_pay, teacher_intro, teacher_image_path,
+            teacher_date;
     private int teacher_matching;
-    private String teacher_date;
 
     public TeacherDTO(String teacher_id, String teacher_univ, String teacher_major,
                       String teacher_univnum, String teacher_subject, String teacher_worktime,

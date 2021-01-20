@@ -23,13 +23,13 @@ import java.sql.Date;
 import java.util.ArrayList;
 import static com.example.myproject.Common.Common.ipConfig;
 
-public class ListSelect extends AsyncTask<Void,Void,Void> {
+public class TeacherListSelect extends AsyncTask<Void,Void,Void> {
     // 생성자
     ArrayList<TeacherDTO> myItemArrayList;
     MyRecyclerviewAdapter adapter;
     ProgressDialog progressDialog;
 
-    public ListSelect(ArrayList<TeacherDTO> myItemArrayList, MyRecyclerviewAdapter adapter, ProgressDialog progressDialog) {
+    public TeacherListSelect(ArrayList<TeacherDTO> myItemArrayList, MyRecyclerviewAdapter adapter, ProgressDialog progressDialog) {
         this.myItemArrayList = myItemArrayList;
         this.adapter = adapter;
         this.progressDialog = progressDialog;

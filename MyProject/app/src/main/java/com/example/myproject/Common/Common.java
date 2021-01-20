@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.util.Log;
 
 import com.example.myproject.Dto.MemberDTO;
+import com.example.myproject.Dto.StudentDTO;
 import com.example.myproject.Dto.TeacherDTO;
 
 import java.io.File;
@@ -22,6 +23,7 @@ public class Common {
 
     public static MemberDTO loginDTO = null;
     public static TeacherDTO selItem = null;
+    public static StudentDTO selItem2 = null;
 
 
     // 네트워크에 연결되어 있는가

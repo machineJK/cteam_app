@@ -15,22 +15,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.myproject.Dto.TeacherDTO;
+import com.example.myproject.Dto.StudentDTO;
 import com.example.myproject.R;
 
 import java.util.ArrayList;
 
 import static com.example.myproject.Common.Common.loginDTO;
-import static com.example.myproject.Common.Common.selItem;
+import static com.example.myproject.Common.Common.selItem2;
 
 
-public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAdapter.ItemViewHolder>{
-    private static final String TAG = "MyRecyclerviewAdapter";
+public class MyRecyclerviewAdapter2 extends RecyclerView.Adapter<MyRecyclerviewAdapter2.ItemViewHolder>{
+    private static final String TAG = "MyRecyclerviewAdapter2";
 
     Context mContext;
-    ArrayList<TeacherDTO> arrayList;
+    ArrayList<StudentDTO> arrayList;
 
-    public MyRecyclerviewAdapter(Context mContext, ArrayList<TeacherDTO> arrayList) {
+    public MyRecyclerviewAdapter2(Context mContext, ArrayList<StudentDTO> arrayList) {
         this.mContext = mContext;
         this.arrayList = arrayList;
     }
@@ -40,7 +40,7 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.teacherlist_view, parent, false);
+        View itemView = inflater.inflate(R.layout.studentlist_view, parent, false);
 
         return new ItemViewHolder(itemView);
     }
@@ -49,7 +49,7 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
     public void onBindViewHolder(@NonNull ItemViewHolder holder, final int position) {
         Log.d("main:adapter", "" + position);
 
-        TeacherDTO item = arrayList.get(position);
+        StudentDTO item = arrayList.get(position);
         holder.setItem(item);
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
@@ -57,9 +57,9 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
             public void onClick(View view) {
                 Log.d(TAG, "onClick: " + position);
 
-                selItem = arrayList.get(position);
+                selItem2 = arrayList.get(position);
 
-                Toast.makeText(mContext, "img_path : " + arrayList.get(position).getTeacher_image_path(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "img_path : " + arrayList.get(position).getStudent_image_path(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -78,48 +78,48 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
     }
 
     // 특정 인덱스 항목 가져오기
-    public TeacherDTO getItem(int position) {
+    public StudentDTO getItem(int position) {
         return arrayList.get(position);
     }
 
     // 특정 인덱스 항목 셋팅하기
-    public void setItem(int position, TeacherDTO item){
+    public void setItem(int position, StudentDTO item){
         arrayList.set(position, item);
     }
 
     // arrayList 통째로 셋팅하기
-    public void setItems(ArrayList<TeacherDTO> arrayList){
+    public void setItems(ArrayList<StudentDTO> arrayList){
         this.arrayList = arrayList;
     }
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder{
 
         public LinearLayout parentLayout;
-        public TextView teacher_addr;
-        public TextView teacher_subject;
-        public TextView teacher_worktime_pay;
-        public ImageView teacher_picture;
+        public TextView student_grade;
+        public TextView student_address;
+        public TextView student_subject;
+        public ImageView student_picture;
         public ProgressBar progressBar;
 
         public ItemViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             parentLayout = itemView.findViewById(R.id.parentLayout);
-            teacher_addr = itemView.findViewById(R.id.tv_addr);
-            teacher_subject = itemView.findViewById(R.id.tv_subject);
-            teacher_worktime_pay = itemView.findViewById(R.id.tv_worktime_pay);
-            teacher_picture = itemView.findViewById(R.id.tv_img);
+            student_grade = itemView.findViewById(R.id.tv_grade);
+            student_address = itemView.findViewById(R.id.tv_address);
+            student_subject = itemView.findViewById(R.id.tv_subject2);
+            student_picture = itemView.findViewById(R.id.tv_image);
             progressBar = itemView.findViewById(R.id.progressBar);
 
         }
 
-        public void setItem(TeacherDTO dto){
+        public void setItem(StudentDTO dto){
 
-            teacher_addr.setText(loginDTO.getAddr1() + " " + loginDTO.getAddr2());
-            teacher_subject.setText(dto.getTeacher_subject());
-            teacher_worktime_pay.setText(dto.getTeacher_worktime() + " " + dto.getTeacher_pay());
+            student_grade.setText(dto.getStudent_grade());
+            student_address.setText(loginDTO.getAddr1() + " " + loginDTO.getAddr2());
+            student_subject.setText(dto.getStudent_subject());
 
-            Glide.with(itemView).load(dto.getTeacher_image_path()).into(teacher_picture);
+            Glide.with(itemView).load(dto.getStudent_image_path()).into(student_picture);
         }
     }
 

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,13 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myproject.Adapter.MyRecyclerviewAdapter;
-import com.example.myproject.Atask.ListSelect;
+import com.example.myproject.Atask.TeacherListSelect;
 import com.example.myproject.Dto.TeacherDTO;
 
 import java.util.ArrayList;
 import static com.example.myproject.Common.Common.isNetworkConnected;
-
-import static com.example.myproject.Common.Common.loginDTO;
 
 //과외 매칭
 public class Matching extends AppCompatActivity {
@@ -30,7 +27,7 @@ public class Matching extends AppCompatActivity {
     ProgressDialog progressDialog;
     ArrayList<TeacherDTO> myItemArrayList;
     MyRecyclerviewAdapter adapter;
-    ListSelect listSelect;
+    TeacherListSelect listSelect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +46,7 @@ public class Matching extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         if(isNetworkConnected(this) == true){
-            listSelect = new ListSelect(myItemArrayList, adapter, progressDialog);
+            listSelect = new TeacherListSelect(myItemArrayList, adapter, progressDialog);
             listSelect.execute();
         }else {
             Toast.makeText(this, "인터넷이 연결되어 있지 않습니다.",
@@ -151,7 +148,7 @@ public class Matching extends AppCompatActivity {
 
     private void processIntent(Intent intent){
         if(intent != null){
-            listSelect = new ListSelect(myItemArrayList, adapter, progressDialog);
+            listSelect = new TeacherListSelect(myItemArrayList, adapter, progressDialog);
             listSelect.execute();
         }
     }
