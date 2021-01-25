@@ -35,7 +35,6 @@ public class TeacherListSelect extends AsyncTask<Void,Void,Void> {
         this.progressDialog = progressDialog;
     }
 
-
     HttpClient httpClient;
     HttpPost httpPost;
     HttpResponse httpResponse;
