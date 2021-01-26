@@ -22,11 +22,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 
 import com.example.myproject.util.ImageResizeUtils;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 import com.soundcloud.android.crop.Crop;
+=======
+import com.bumptech.glide.Glide;
+import com.example.myproject.Common.Common;
+import com.example.myproject.Dto.Myupdate;
+>>>>>>> fbacea1dbe17220e4180323db0052cfc44ae9f2e
 
 import java.io.File;
 import java.io.IOException;
@@ -92,7 +98,11 @@ public class ModifyMyInfo extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
         /*etUPw = findViewById(R.id.etUPw);
+=======
+/*        etUPw = findViewById(R.id.etUPw);
+>>>>>>> fbacea1dbe17220e4180323db0052cfc44ae9f2e
         etUNickname = findViewById(R.id.etUNick);
         etUEmail = findViewById(R.id.etUEmail);*/
 
@@ -105,6 +115,7 @@ public class ModifyMyInfo extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
         findViewById(R.id.btnPhoto).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,6 +124,41 @@ public class ModifyMyInfo extends AppCompatActivity {
                 else Toast.makeText(view.getContext(), getResources().getString(R.string.permission_2), Toast.LENGTH_LONG).show();
             }
         });
+=======
+        photoLoad = findViewById(R.id.btnLoad);
+        photoBtn = findViewById(R.id.btnPhoto);
+
+        // 보내온 값 파싱
+        Intent intent = getIntent();
+        Myupdate selItem = (Myupdate) intent.getSerializableExtra("selItem");
+
+        pw = selItem.getPw();
+        nickname = selItem.getNickname();
+        email = selItem.getEmail();
+
+        etUPw.setText(pw);
+        etUNickname.setText(nickname);
+        etUEmail.setText(email);
+
+        imagePath = selItem.getImage_path();
+        pImgDbPathU = imagePath;
+        imageDbPathU = imagePath;
+
+        imageView8.setVisibility(View.VISIBLE);
+        // 선택된 이미지 보여주기
+        Glide.with(this).load(imagePath).into(imageView8);*/
+
+/*        photoBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            try{
+                try{
+                    file = createFile();
+                    Log.d("Sub1Update:FilePath ", file.getAbsolutePath());
+                }catch(Exception e){
+                    Log.d("Sub1Update:error1", "Something Wrong", e);
+                }
+>>>>>>> fbacea1dbe17220e4180323db0052cfc44ae9f2e
 
 
     }
@@ -132,6 +178,14 @@ public class ModifyMyInfo extends AppCompatActivity {
                     }
                 }
             }
+<<<<<<< HEAD
+=======
+        });*/
+/*        photoLoad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView8.setVisibility(View.VISIBLE);
+>>>>>>> fbacea1dbe17220e4180323db0052cfc44ae9f2e
 
             return;
         }
@@ -146,10 +200,14 @@ public class ModifyMyInfo extends AppCompatActivity {
 
                 break;
             }
+<<<<<<< HEAD
             case PICK_FROM_CAMERA: {
 
                 Uri photoUri = Uri.fromFile(tempFile);
                 Log.d(TAG, "takePhoto photoUri : " + photoUri);
+=======
+        });*/
+>>>>>>> fbacea1dbe17220e4180323db0052cfc44ae9f2e
 
                 cropImage(photoUri);
 
@@ -168,15 +226,30 @@ public class ModifyMyInfo extends AppCompatActivity {
     private void goToAlbum() {
         isCamera = false;
 
+<<<<<<< HEAD
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
         startActivityForResult(intent, PICK_FROM_ALBUM);
     }
+=======
+/*    private File createFile() throws IOException {
+        java.text.SimpleDateFormat tmpDateFormat = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss");
+>>>>>>> fbacea1dbe17220e4180323db0052cfc44ae9f2e
 
     /* 카메라 사진 찍기 */
     private void takePhoto() {
 
+<<<<<<< HEAD
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+=======
+        return curFile;
+    }*/
+
+/*    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
+>>>>>>> fbacea1dbe17220e4180323db0052cfc44ae9f2e
 
         try {
             tempFile = createImageFile();
@@ -222,6 +295,7 @@ public class ModifyMyInfo extends AppCompatActivity {
             }
         }
 
+<<<<<<< HEAD
         //크롭 후 저장할 Uri
         Uri savingUri = Uri.fromFile(tempFile);
 
@@ -248,6 +322,28 @@ public class ModifyMyInfo extends AppCompatActivity {
 
     /* tempFile 을 bitmap 으로 변환 후 ImageView 에 설정한다. */
     private void setImage() {
+=======
+    }*/
+
+/*    public String getPathFromURI(Uri contentUri) {
+        String res = null;
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
+        if (cursor.moveToFirst()) {
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            res = cursor.getString(column_index);
+        }
+        cursor.close();
+        return res;
+    }*/
+
+/*    public void btnUpdateClicked(View view){
+        if(isNetworkConnected(this) == true){
+            if(fileSize <= 500000000) {  // 파일크기가 500메가 보다 작아야 업로드 할수 있음
+                pw = etUPw.getText().toString();
+                nickname = etUNickname.getText().toString();
+                email = etUEmail.getText().toString();
+>>>>>>> fbacea1dbe17220e4180323db0052cfc44ae9f2e
 
         ImageView imageView = findViewById(R.id.imageView8);
 
@@ -266,6 +362,7 @@ public class ModifyMyInfo extends AppCompatActivity {
          */
 
 
+<<<<<<< HEAD
     }
 
 
@@ -299,4 +396,10 @@ public class ModifyMyInfo extends AppCompatActivity {
 
     }
 
+=======
+    }*/
+/*    public void btnCancelClicked(View view){
+        finish();
+    }*/
+>>>>>>> fbacea1dbe17220e4180323db0052cfc44ae9f2e
 }

@@ -40,7 +40,7 @@ public class MyInfo extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyInfo.this, Slider_6.class);
+                Intent intent = new Intent(MyInfo.this, TeacherDetail.class);
                 startActivity(intent);
             }
         });

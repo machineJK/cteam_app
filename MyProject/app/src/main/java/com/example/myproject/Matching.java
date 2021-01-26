@@ -1,28 +1,62 @@
 package com.example.myproject;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myproject.Adapter.MyRecyclerviewAdapter;
+import com.example.myproject.Atask.TeacherListSelect;
+import com.example.myproject.Dto.TeacherDTO;
+
+import java.util.ArrayList;
+import static com.example.myproject.Common.Common.isNetworkConnected;
 
 //과외 매칭
 public class Matching extends AppCompatActivity {
 
     Button teacher, student, add, matching, talk, board, my;
-    ImageButton imageButton1, imageButton2;
+    RecyclerView recyclerView;
+    ProgressDialog progressDialog;
+    ArrayList<TeacherDTO> myItemArrayList;
+    MyRecyclerviewAdapter adapter;
+    TeacherListSelect listSelect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matching);
-        teacher = findViewById(R.id.teacher2);
+
+        // 리사이클러 뷰 시작
+        myItemArrayList = new ArrayList();
+        adapter = new MyRecyclerviewAdapter(this, myItemArrayList);
+        recyclerView = findViewById(R.id.recyclerView);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,
+                RecyclerView.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        recyclerView.setAdapter(adapter);
+
+        if(isNetworkConnected(this) == true){
+            listSelect = new TeacherListSelect(myItemArrayList, adapter, progressDialog);
+            listSelect.execute();
+        }else {
+            Toast.makeText(this, "인터넷이 연결되어 있지 않습니다.",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+
+        teacher = findViewById(R.id.teacher);
         student = findViewById(R.id.student);
         add = findViewById(R.id.add2);
-        imageButton1 = findViewById(R.id.imageButton1);
-        imageButton2 = findViewById(R.id.imageButton2);
 
         //과외 등록 했을 때 액티비티 넘어가는 것!!!!
         add.setOnClickListener(new View.OnClickListener() {
@@ -33,22 +67,6 @@ public class Matching extends AppCompatActivity {
             }
         });
 
-        //누르면 선생님 상세 정보로 이동합니다.
-        imageButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Matching.this, Slider_6.class);
-                startActivity(intent);
-            }
-        });
-
-/*        imageButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Slider_4.this, Slider_6.class);
-                startActivity(intent);
-            }
-        });*/
 
         //학생 등록 화면 이동
         student.setOnClickListener(new View.OnClickListener() {
@@ -58,14 +76,14 @@ public class Matching extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
-        
-        //화면이동
+
+
+        //하단 화면이동
         matching = findViewById(R.id.matchingst_matching);
         talk = findViewById(R.id.matchingst_talk);
         board = findViewById(R.id.matchingst_board);
         my = findViewById(R.id.matchingst_my);
-        
+
         talk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +107,44 @@ public class Matching extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+
     }
+
+    // 이미 화면이 있을때 받는곳
+    @Override
+    protected void onNewIntent(Intent intent) {
+        Log.d("Sub1", "onNewIntent() 호출됨");
+
+        // 새로고침하면서 이미지가 겹치는 현상 없애기 위해...
+        adapter.removeAllItem();
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("데이터 업로딩");
+        progressDialog.setMessage("데이터 업로딩 중입니다\n" + "잠시만 기다려주세요 ...");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+        processIntent(intent);
+
+        super.onNewIntent(intent);
+
+    }
+
+    private void processIntent(Intent intent){
+        if(intent != null){
+            listSelect = new TeacherListSelect(myItemArrayList, adapter, progressDialog);
+            listSelect.execute();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
+
+
+
+
+
+
 }

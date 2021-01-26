@@ -12,6 +12,8 @@ import android.os.Build;
 import android.util.Log;
 
 import com.example.myproject.Dto.MemberDTO;
+import com.example.myproject.Dto.StudentDTO;
+import com.example.myproject.Dto.TeacherDTO;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +26,15 @@ public class Common {
     public static String ipConfig = "http://192.168.0.33:80"; //소영 컴
     //public static String ipConfig = "http://192.168.123.109:80"; //소영 집 ip
 
+    //로그인 멤버 정보
     public static MemberDTO loginDTO = null;
+    
+    //과외매칭 선생 리스트뷰 아이템
+    public static TeacherDTO selItem = null;
+    
+    //과외매칭 학생 리스트뷰 아이템
+    public static StudentDTO selItem2 = null;
+
 
 
     // 네트워크에 연결되어 있는가
