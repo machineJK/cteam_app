@@ -3,18 +3,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 29
     buildToolsVersion "29"
 
     defaultConfig {
         applicationId "com.example.myproject"
-<<<<<<< HEAD
-        minSdkVersion 16
-        targetSdkVersion 30
-=======
         minSdkVersion 17
         targetSdkVersion 29
->>>>>>> fbacea1dbe17220e4180323db0052cfc44ae9f2e
         versionCode 1
         versionName "1.0"
 
@@ -58,10 +53,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.android.support:design:29.0.0'
 
-    /* 카메라 갤러기 불러오기 */
-    implementation "gun0912.ted:tedpermission:2.1.0"
-    /* Crop */
-    implementation 'com.soundcloud.android:android-crop:1.0.1@aar'
     // URL 이미지로더
     // 사용법
     // Glide.with(this).load("http://www.selphone.co.kr/homepage/img/team/3.jpg").into(imageView);
@@ -69,10 +60,4 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
 
-
-<<<<<<< HEAD
-=======
-
     }
->>>>>>> 7ae1adb9cb33e4b66a44229947dab236014621da
-}
