@@ -6,7 +6,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.util.Log;
 
 import com.example.myproject.Dto.MemberDTO;
@@ -16,10 +18,14 @@ import java.io.IOException;
 
 public class Common {
     /*public static String  ipConfig = "http://192.168.200.151:8989";*/
-    public static String ipConfig = "http://192.168.0.31:8080";
+    //public static String ipConfig = "http://192.168.0.31:8080";
     //public static String ipConfig = "http://121.148.239.200:80";
+    //public static String ipConfig = "http://192.168.0.71:80";   //소영 노트북
+    public static String ipConfig = "http://192.168.0.33:80"; //소영 컴
+    //public static String ipConfig = "http://192.168.123.109:80"; //소영 집 ip
 
     public static MemberDTO loginDTO = null;
+
 
     // 네트워크에 연결되어 있는가
     public static boolean isNetworkConnected(Context context) {
@@ -40,6 +46,8 @@ public class Common {
         }
 
     }
+
+
 
     // 이미지 로테이트 및 사이즈 변경
     public static Bitmap imageRotateAndResize(String path){ // state 1:insert, 2:update

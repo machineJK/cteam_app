@@ -1,4 +1,4 @@
-package com.tistory.black_jin0427.myimagesample.util;
+package com.example.myproject.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
