@@ -47,7 +47,8 @@ dependencies {
     implementation group: 'org.apache.httpcomponents', name: 'httpclient-android', version: '4.3.5.1'
     implementation('org.apache.httpcomponents:httpmime:4.3') {
         exclude module: "httpclient"
-
+    }
+    
     /* 리사이클러 뷰 사용하기 */
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.android.support:design:29.0.0'
@@ -59,5 +60,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
 
-    }
+
 }
