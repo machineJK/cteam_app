@@ -21,12 +21,13 @@ public class Common {
     public static String ipConfig = "http://192.168.0.31:8080";
     //public static String ipConfig = "http://121.148.239.200:80";
 
+    //로그인 멤버 정보
     public static MemberDTO loginDTO = null;
     
-    //과외매칭 선생 리스트뷰
+    //과외매칭 선생 리스트뷰 아이템
     public static TeacherDTO selItem = null;
     
-    //과외매칭 학생 리스트뷰
+    //과외매칭 학생 리스트뷰 아이템
     public static StudentDTO selItem2 = null;
 
 

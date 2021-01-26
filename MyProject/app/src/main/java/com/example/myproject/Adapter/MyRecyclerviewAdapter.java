@@ -1,6 +1,7 @@
 package com.example.myproject.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myproject.Dto.TeacherDTO;
+import com.example.myproject.Matching;
 import com.example.myproject.R;
+import com.example.myproject.TeacherDetail;
 
 import java.util.ArrayList;
 
@@ -59,7 +62,10 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
 
                 selItem = arrayList.get(position);
 
-                Toast.makeText(mContext, "img_path : " + arrayList.get(position).getTeacher_image_path(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext, "teacher_id : " + arrayList.get(position).getTeacher_id(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, TeacherDetail.class);
+                mContext.startActivity(intent);
+
             }
         });
     }

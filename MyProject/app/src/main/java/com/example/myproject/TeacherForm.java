@@ -101,10 +101,12 @@ public class TeacherForm extends AppCompatActivity {
                     String teacher_pay = et_teacher_pay.getText().toString();
                     String teacher_intro = et_teacher_intro.getText().toString();
                     String teacher_image_path = loginDTO.getdbImgPath();
+                    String teacher_nickname = loginDTO.getNickname();
+                    String teacher_addr = loginDTO.getAddr1() + " " + loginDTO.getAddr2();
 
-                    TeacherInsert teacherInsert = new TeacherInsert(teacher_id, teacher_univ, teacher_major,
-                            teacher_univnum, teacher_subject, teacher_worktime, teacher_pay, teacher_intro,
-                            teacher_image_path);
+                    TeacherInsert teacherInsert = new TeacherInsert(teacher_id,teacher_univ,teacher_major,
+                            teacher_univnum,teacher_subject,teacher_worktime,teacher_pay,teacher_intro,
+                            teacher_image_path,teacher_nickname,teacher_addr);
                     try {
                         state = teacherInsert.execute().get().trim();
                         Log.d("main:joinact0 : ", state);

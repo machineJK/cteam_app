@@ -19,12 +19,13 @@ import static com.example.myproject.Common.Common.ipConfig;
 
 public class TeacherInsert extends AsyncTask<Void, Void, String> {
     String teacher_id,teacher_univ,teacher_major,teacher_univnum,teacher_subject,
-            teacher_worktime,teacher_pay,teacher_intro,teacher_image_path;
+            teacher_worktime,teacher_pay,teacher_intro,teacher_image_path,
+            teacher_nickname,teahcer_addr;
 
     public TeacherInsert(String teacher_id, String teacher_univ, String teacher_major,
-                         String teacher_univnum, String teacher_subject,
-                         String teacher_worktime, String teacher_pay, String teacher_intro,
-                         String teacher_image_path) {
+                         String teacher_univnum, String teacher_subject, String teacher_worktime,
+                         String teacher_pay, String teacher_intro, String teacher_image_path,
+                         String teacher_nickname, String teahcer_addr) {
         this.teacher_id = teacher_id;
         this.teacher_univ = teacher_univ;
         this.teacher_major = teacher_major;
@@ -34,6 +35,8 @@ public class TeacherInsert extends AsyncTask<Void, Void, String> {
         this.teacher_pay = teacher_pay;
         this.teacher_intro = teacher_intro;
         this.teacher_image_path = teacher_image_path;
+        this.teacher_nickname = teacher_nickname;
+        this.teahcer_addr = teahcer_addr;
     }
 
     // 데이터베이스에 삽입결과 0보다크면 삽입성공, 같거나 작으면 실패
@@ -64,6 +67,8 @@ public class TeacherInsert extends AsyncTask<Void, Void, String> {
             builder.addTextBody("teacher_pay", teacher_pay, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("teacher_intro", teacher_intro, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("teacher_image_path", teacher_image_path, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("teacher_nickname", teacher_nickname, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("teahcer_addr", teahcer_addr, ContentType.create("Multipart/related", "UTF-8"));
 
             String postURL = ipConfig + "/app/anTeacher";
             // 전송

@@ -5,13 +5,14 @@ import java.io.Serializable;
 public class TeacherDTO implements Serializable {
     private String teacher_id, teacher_univ, teacher_major, teacher_univnum,
             teacher_subject, teacher_worktime, teacher_pay, teacher_intro, teacher_image_path,
-            teacher_date;
+            teacher_date,teacher_nickname,teacher_addr;
     private int teacher_matching;
 
     public TeacherDTO(String teacher_id, String teacher_univ, String teacher_major,
                       String teacher_univnum, String teacher_subject, String teacher_worktime,
-                      String teacher_pay, String teacher_intro, int teacher_matching,
-                      String teacher_date, String teacher_image_path) {
+                      String teacher_pay, String teacher_intro, String teacher_image_path,
+                      int teacher_matching,String teacher_date, String teacher_nickname,
+                      String teacher_addr) {
         this.teacher_id = teacher_id;
         this.teacher_univ = teacher_univ;
         this.teacher_major = teacher_major;
@@ -20,9 +21,27 @@ public class TeacherDTO implements Serializable {
         this.teacher_worktime = teacher_worktime;
         this.teacher_pay = teacher_pay;
         this.teacher_intro = teacher_intro;
-        this.teacher_matching = teacher_matching;
-        this.teacher_date = teacher_date;
         this.teacher_image_path = teacher_image_path;
+        this.teacher_date = teacher_date;
+        this.teacher_matching = teacher_matching;
+        this.teacher_nickname = teacher_nickname;
+        this.teacher_addr = teacher_addr;
+    }
+
+    public String getTeacher_nickname() {
+        return teacher_nickname;
+    }
+
+    public void setTeacher_nickname(String teacher_nickname) {
+        this.teacher_nickname = teacher_nickname;
+    }
+
+    public String getTeacher_addr() {
+        return teacher_addr;
+    }
+
+    public void setTeacher_addr(String teacher_addr) {
+        this.teacher_addr = teacher_addr;
     }
 
     public String getTeacher_id() {

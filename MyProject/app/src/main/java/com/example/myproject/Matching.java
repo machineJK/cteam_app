@@ -54,23 +54,6 @@ public class Matching extends AppCompatActivity {
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         teacher = findViewById(R.id.teacher);
         student = findViewById(R.id.student);
         add = findViewById(R.id.add2);
