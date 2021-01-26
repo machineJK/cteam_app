@@ -60,4 +60,9 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
 
+    //ted permission
+    implementation "gun0912.ted:tedpermission:2.1.0"
+    //crop
+    implementation 'com.soundcloud.android:android-crop:1.0.1@aar'
+
     }

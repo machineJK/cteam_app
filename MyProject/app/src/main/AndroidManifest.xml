@@ -83,7 +83,15 @@
         <activity android:name=".BoardWriteForm" />
         <activity android:name=".BoardDetailForm" />
         <activity android:name=".StudentForm" />
+        <activity
+            android:name="com.soundcloud.android.crop.CropImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <!-- 사진 촬영을 위한 provide -->
+
         <activity android:name=".MainActivity">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
