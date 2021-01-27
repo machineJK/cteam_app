@@ -4,7 +4,7 @@ plugins {
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29"
+    buildToolsVersion "29.0.2"
 
     defaultConfig {
         applicationId "com.example.myproject"
@@ -31,6 +31,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+
+apply plugin: 'com.google.gms.google-services'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -65,4 +67,12 @@ dependencies {
     //crop
     implementation 'com.soundcloud.android:android-crop:1.0.1@aar'
 
-    }
+    //firebase chat impl
+    implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
+    implementation platform('com.google.firebase:firebase-bom:26.2.0')
+    implementation 'com.google.firebase:firebase-database:19.1.0'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation platform('com.google.firebase:firebase-bom:26.1.1')
+
+}
