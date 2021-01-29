@@ -82,8 +82,8 @@ public class ChatStartActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(loginDTO.getName()).child(selItem.getTeacher_nickname());
-        toRef = database.getReference(selItem.getTeacher_nickname()).child(loginDTO.getName());
+        myRef = database.getReference(loginDTO.getId()).child(selItem.getTeacher_id());
+        toRef = database.getReference(selItem.getTeacher_id()).child(loginDTO.getId());
 
         /*  ChatDTO dto = new ChatDTO();
         dto.setNickname(nick);
