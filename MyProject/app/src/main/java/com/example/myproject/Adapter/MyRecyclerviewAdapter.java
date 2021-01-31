@@ -10,20 +10,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myproject.Dto.TeacherDTO;
-import com.example.myproject.Matching;
 import com.example.myproject.R;
 import com.example.myproject.TeacherDetail;
 
 import java.util.ArrayList;
 
-import static com.example.myproject.Common.Common.loginDTO;
 import static com.example.myproject.Common.Common.selItem;
 
 
@@ -127,6 +124,8 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
 
             Glide.with(itemView).load(dto.getTeacher_image_path()).into(teacher_picture);
         }
+
+
     }
 
 }

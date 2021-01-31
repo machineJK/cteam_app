@@ -15,6 +15,8 @@ import android.widget.ImageView;
 
 public class MyInfo extends AppCompatActivity {
 
+
+
     Button matching, talk, board, my, modify;
     ImageView imageView6;
     ImageButton imageButton;
