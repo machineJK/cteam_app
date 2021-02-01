@@ -129,7 +129,7 @@ public class StudentListSelect extends AsyncTask<Void,Void,Void> {
 
     public StudentDTO readMessage(JsonReader reader) throws IOException {
         String student_id="",student_subject="",student_grade="",
-                student_intro="",student_image_path="", student_date="";
+                student_intro="",student_image_path="", student_date="", student_addr="";
         int student_matching=-1;
 
         reader.beginObject();
@@ -151,13 +151,15 @@ public class StudentListSelect extends AsyncTask<Void,Void,Void> {
                 student_image_path = reader.nextString();
             } else if (readStr.equals("student_matching")) {
                 student_matching = reader.nextInt();
+            } else if(readStr.equals("student_addr")){
+                student_addr = reader.nextString();
             } else {
                 reader.skipValue();
             }
         }
         reader.endObject();
         return new StudentDTO(student_id, student_subject,
-                student_grade, student_intro, student_image_path, student_matching, student_date);
+                student_grade, student_intro, student_image_path, student_matching, student_date,student_addr);
 
     }
 }

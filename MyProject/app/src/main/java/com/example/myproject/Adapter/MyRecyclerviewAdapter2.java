@@ -1,6 +1,7 @@
 package com.example.myproject.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.myproject.Dto.StudentDTO;
 import com.example.myproject.R;
+import com.example.myproject.StudentDetail;
 
 import java.util.ArrayList;
 
@@ -58,8 +60,9 @@ public class MyRecyclerviewAdapter2 extends RecyclerView.Adapter<MyRecyclerviewA
                 Log.d(TAG, "onClick: " + position);
 
                 selItem2 = arrayList.get(position);
-
-                Toast.makeText(mContext, "img_path : " + arrayList.get(position).getStudent_image_path(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, StudentDetail.class);
+                mContext.startActivity(intent);
+                //Toast.makeText(mContext, "img_path : " + arrayList.get(position).getStudent_image_path(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -116,7 +119,7 @@ public class MyRecyclerviewAdapter2 extends RecyclerView.Adapter<MyRecyclerviewA
         public void setItem(StudentDTO dto){
 
             student_grade.setText(dto.getStudent_grade());
-            student_address.setText(loginDTO.getAddr1() + " " + loginDTO.getAddr2());
+            student_address.setText(dto.getStudent_addr());
             student_subject.setText(dto.getStudent_subject());
 
             Glide.with(itemView).load(dto.getStudent_image_path()).into(student_picture);

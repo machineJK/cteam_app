@@ -4,13 +4,14 @@ import java.io.Serializable;
 
 public class StudentDTO implements Serializable {
     private String student_id,student_subject,student_grade,student_intro,
-                student_image_path,student_date;
+                student_image_path,student_date,student_addr;
 
     private int student_matching;
 
     public StudentDTO(String student_id, String student_subject,
                       String student_grade, String student_intro,
-                      String student_image_path, int student_matching, String student_date) {
+                      String student_image_path, int student_matching, String student_date,
+                      String student_addr) {
         this.student_id = student_id;
         this.student_subject = student_subject;
         this.student_grade = student_grade;
@@ -18,6 +19,15 @@ public class StudentDTO implements Serializable {
         this.student_image_path = student_image_path;
         this.student_date = student_date;
         this.student_matching = student_matching;
+        this.student_addr = student_addr;
+    }
+
+    public String getStudent_addr() {
+        return student_addr;
+    }
+
+    public void setStudent_addr(String student_addr) {
+        this.student_addr = student_addr;
     }
 
     public String getStudent_id() {

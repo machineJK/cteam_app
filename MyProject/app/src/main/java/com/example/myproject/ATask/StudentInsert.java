@@ -19,16 +19,17 @@ import java.nio.charset.Charset;
 import static com.example.myproject.Common.Common.ipConfig;
 
 public class StudentInsert extends AsyncTask<Void, Void, String> {
-    String student_id,student_subject,student_grade,student_intro,student_image_path;
+    String student_id,student_subject,student_grade,student_intro,student_image_path,student_addr;
 
     public StudentInsert(String student_id, String student_subject,
                          String student_grade, String student_intro,
-                         String student_image_path) {
+                         String student_image_path,String student_addr) {
         this.student_id = student_id;
         this.student_subject = student_subject;
         this.student_grade = student_grade;
         this.student_intro = student_intro;
         this.student_image_path = student_image_path;
+        this.student_addr = student_addr;
     }
 
     // 데이터베이스에 삽입결과 0보다크면 삽입성공, 같거나 작으면 실패
@@ -54,6 +55,7 @@ public class StudentInsert extends AsyncTask<Void, Void, String> {
             builder.addTextBody("student_grade", student_grade, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("student_intro", student_intro, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("student_image_path", student_image_path, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("student_addr", student_addr, ContentType.create("Multipart/related", "UTF-8"));
 
             String postURL = ipConfig + "/app/anStudent";
             // 전송
