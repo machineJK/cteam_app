@@ -121,11 +121,7 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
 
         public void setItem(TeacherDTO dto){
 
-<<<<<<< HEAD
             teacher_addr.setText(dto.getTeacher_addr());
-=======
-            teacher_addr.setText(dto.getTeacher_nickname() + ' ' + dto.getTeacher_addr());
->>>>>>> be54423595173429f14fc7e2e149e367fc04e46d
             teacher_subject.setText(dto.getTeacher_subject());
             teacher_worktime_pay.setText(dto.getTeacher_worktime() + " " + dto.getTeacher_pay());
 

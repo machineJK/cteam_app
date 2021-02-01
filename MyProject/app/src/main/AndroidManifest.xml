@@ -21,16 +21,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject"
-<<<<<<< HEAD
-
-        android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true" >
 
         <activity android:name=".StudentDetail" />
-=======
+
         android:usesCleartextTraffic="true">
-        <activity android:name=".ChatStartActivity"></activity>
->>>>>>> be54423595173429f14fc7e2e149e367fc04e46d
+        <activity android:name=".ChatStartActivity"/>
         <activity android:name=".TeacherDetail" />
         <activity android:name=".MatchingStudent" />
         <activity android:name=".TeacherForm" />
