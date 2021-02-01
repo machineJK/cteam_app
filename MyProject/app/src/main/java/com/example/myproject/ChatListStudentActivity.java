@@ -10,19 +10,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import static com.example.myproject.Common.Common.loginDTO;
-
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ChatListActivity extends AppCompatActivity {
-    Button matching,talk,board,my;
-    Button btn_studentList;
+import static com.example.myproject.Common.Common.loginDTO;
 
-    private ListView chat_teacherList;
+public class ChatListStudentActivity extends AppCompatActivity {
+
+    Button matching,talk,board,my;
+    Button btn_teacherList;
+
+    private ListView chat_studentList;
     private String teacher ;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
@@ -30,23 +31,23 @@ public class ChatListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat_list);
+        setContentView(R.layout.activity_chat_list_student);
 
-        databaseReference = firebaseDatabase.getReference(loginDTO.getId() + "2");
-        chat_teacherList = findViewById(R.id.chat_studentList);
+        databaseReference = firebaseDatabase.getReference(loginDTO.getId() + "1");
+        chat_studentList = findViewById(R.id.chat_studentList);
 
         showChatList();
 
-        btn_studentList = findViewById(R.id.btn_studentList);
+        btn_teacherList = findViewById(R.id.btn_teacherList);
         matching = findViewById(R.id.talk_matching);
         talk = findViewById(R.id.talk_talk);
         board = findViewById(R.id.talk_board);
         my = findViewById(R.id.talk_my);
 
-        btn_studentList.setOnClickListener(new View.OnClickListener() {
+        btn_teacherList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChatListActivity.this, ChatListStudentActivity.class);
+                Intent intent = new Intent(ChatListStudentActivity.this, ChatListActivity.class);
                 startActivity(intent);
             }
         });
@@ -54,7 +55,7 @@ public class ChatListActivity extends AppCompatActivity {
         matching.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChatListActivity.this, Matching.class);
+                Intent intent = new Intent(ChatListStudentActivity.this, Matching.class);
                 startActivity(intent);
             }
         });
@@ -62,7 +63,7 @@ public class ChatListActivity extends AppCompatActivity {
         board.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChatListActivity.this, Board.class);
+                Intent intent = new Intent(ChatListStudentActivity.this, Board.class);
                 startActivity(intent);
             }
         });
@@ -70,7 +71,7 @@ public class ChatListActivity extends AppCompatActivity {
         my.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChatListActivity.this, MyInfo.class);
+                Intent intent = new Intent(ChatListStudentActivity.this, MyInfo.class);
                 startActivity(intent);
             }
         });
@@ -80,12 +81,12 @@ public class ChatListActivity extends AppCompatActivity {
         // 리스트 어댑터 생성 및 세팅
         final ArrayAdapter<String> adapter
                 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1);
-        chat_teacherList.setAdapter(adapter);
+        chat_studentList.setAdapter(adapter);
 
-        chat_teacherList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        chat_studentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ChatListActivity.this , ChatStartActivity.class);
+                Intent intent = new Intent(ChatListStudentActivity.this , ChatStartStudentActivity.class);
                 startActivity(intent);
 
             }

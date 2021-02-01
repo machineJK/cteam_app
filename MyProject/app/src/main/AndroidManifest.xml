@@ -21,12 +21,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject"
-        android:usesCleartextTraffic="true" >
-
-        <activity android:name=".StudentDetail" />
-
         android:usesCleartextTraffic="true">
-        <activity android:name=".ChatStartActivity"/>
+        <activity android:name=".ChatListStudentActivity"></activity>
+        <activity android:name=".ChatStartStudentActivity" />
+        <activity android:name=".StudentDetail" />
+        <activity android:name=".ChatStartActivity" />
         <activity android:name=".TeacherDetail" />
         <activity android:name=".MatchingStudent" />
         <activity android:name=".TeacherForm" />

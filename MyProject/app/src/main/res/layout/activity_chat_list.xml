@@ -8,6 +8,7 @@
     tools:context=".ChatListActivity" >
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:orientation="vertical"
@@ -21,8 +22,9 @@
             android:layout_weight="2"
             android:orientation="vertical">
 
+
             <TextView
-                android:id="@+id/text_teacherList"
+                android:id="@+id/text_studentList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -31,7 +33,7 @@
                 android:textSize="20dp" />
 
             <ListView
-                android:id="@+id/chat_teacherList"
+                android:id="@+id/chat_studentList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -126,4 +128,15 @@
         android:text="과외매칭"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_studentList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="216dp"
+        android:text="학생목록이동"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

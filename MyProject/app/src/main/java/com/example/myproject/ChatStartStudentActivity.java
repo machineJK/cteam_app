@@ -11,12 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import static com.example.myproject.Common.Common.loginDTO;
-import static com.example.myproject.Common.Common.selItem;
-
 import com.example.myproject.Adapter.ChatAdpter;
 import com.example.myproject.Dto.ChatDTO;
-import com.example.myproject.Dto.TeacherDTO;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,8 +24,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static com.example.myproject.Common.Common.loginDTO;
+import static com.example.myproject.Common.Common.selItem;
+import static com.example.myproject.Common.Common.selItem2;
 
-public class ChatStartActivity extends AppCompatActivity {
+public class ChatStartStudentActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -45,7 +44,7 @@ public class ChatStartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat_start);
+        setContentView(R.layout.activity_chat_start_student);
 
         btn_send = findViewById(R.id.btn_send);
         edt_chat = findViewById(R.id.edt_chat);
@@ -78,17 +77,12 @@ public class ChatStartActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         chatDTOList = new ArrayList<>();
-        mAdapter = new ChatAdpter(chatDTOList , ChatStartActivity.this , loginDTO.getName());
+        mAdapter = new ChatAdpter(chatDTOList , ChatStartStudentActivity.this , loginDTO.getName());
         mRecyclerView.setAdapter(mAdapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(loginDTO.getId() + "2").child(selItem.getTeacher_id() + "1");
-        toRef = database.getReference(selItem.getTeacher_id() + "1").child(loginDTO.getId() + "2");
-
-        /*  ChatDTO dto = new ChatDTO();
-        dto.setNickname(nick);
-        dto.setMsg("hi");
-        myRef.setValue(dto);*/
+        myRef = database.getReference(loginDTO.getId() + "1").child(selItem2.getStudent_id() + "2");
+        toRef = database.getReference(selItem2.getStudent_id() + "2").child(loginDTO.getId() + "1");
 
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -118,6 +112,4 @@ public class ChatStartActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }
