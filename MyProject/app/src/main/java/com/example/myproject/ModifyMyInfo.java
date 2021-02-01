@@ -2,17 +2,17 @@ package com.example.myproject;
 
 import androidx.annotation.Nullable;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
-
-import android.Manifest;
-
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -23,54 +23,48 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-
-
-import com.example.myproject.util.ImageResizeUtils;
-import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.TedPermission;
-import com.soundcloud.android.crop.Crop;
-
-
-
+import com.bumptech.glide.Glide;
+import com.example.myproject.ATask.ListModify;
+import com.example.myproject.Common.Common;
+import com.example.myproject.Dto.MemberDTO;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import static com.example.myproject.Common.Common.ipConfig;
 import static com.example.myproject.Common.Common.isNetworkConnected;
+import static com.example.myproject.Common.Common.selItem;
 
 
 public class ModifyMyInfo extends AppCompatActivity {
 
-    private static final String TAG = "Study";
 
-    private Boolean isPermission = true;
+    public String imagePath;
+    public String pImgDbPathU;
+    public String imageRealPathU = "", imageDbPathU = "";
 
-    private static final int PICK_FROM_ALBUM = 1;
-    private static final int PICK_FROM_CAMERA = 2;
+    final int CAMERA_REQUEST = 1010;
+    final int LOAD_IMAGE = 1011;
 
-    private Boolean isCamera = false;
-    private File tempFile;
+    File file = null;
+    long fileSize = 0;
 
-    Button modify,cancel;
+    Button photoBtn, photoLoad;
     ImageView imageView8;
-    String pw, nickname, email;
-    EditText etUPw, etUNickname, etUEmail;
+    String id, pw, nickname, email;
+    EditText etUId, etUPw, etUNickname, etUEmail;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_my_info);
 
-
+        etUId = findViewById(R.id.etUId);
         etUPw = findViewById(R.id.etUPw);
         etUNickname = findViewById(R.id.etUNick);
         etUEmail = findViewById(R.id.etUEmail);
-
-        tedPermission();
 
         imageView8 = findViewById(R.id.imageView8);
         imageView8.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +75,7 @@ public class ModifyMyInfo extends AppCompatActivity {
             }
         });
 
-        modify = findViewById(R.id.modify_modify);
+        /*modify = findViewById(R.id.modify_modify);
         cancel = findViewById(R.id.modify_cancel);
 
         modify.setOnClickListener(new View.OnClickListener() {
@@ -97,210 +91,217 @@ public class ModifyMyInfo extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
             }
+        });*/
+
+        // 업데이트시 아이디 변경불가
+        etUId.setEnabled(false);
+
+        // 보내온 값 파싱
+        Intent intent = getIntent();
+        //MyModify selItem = (MyModify) intent.getSerializableExtra("selItem");
+        /*MemberDTO selItem = (MemberDTO) intent.getSerializableExtra("selItem");
+
+        id = selItem.getId();
+        pw = selItem.getPw();
+        nickname = selItem.getNickname();
+        email = selItem.getEmail();
+
+        // 가져온 값 써 넣기
+        etUId.setText(id);
+        etUPw.setText(pw);
+        etUNickname.setText(nickname);
+        etUEmail.setText(email);*/
+
+        //imagePath = selItem.getImage_path();
+        pImgDbPathU = imagePath;
+        imageDbPathU = imagePath;
+
+        imageView8.setVisibility(View.VISIBLE);
+        // 선택된 이미지 보여주기
+        Glide.with(this).load(imagePath).into(imageView8);
+
+        //카메라, 앨범
+        photoBtn = findViewById(R.id.btnPhoto);
+        photoLoad = findViewById(R.id.btnLoad);
+
+        //사진찍기
+        photoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    try{
+                        file = createFile();
+                        Log.d("ModifyMyInfo:FilePath ", file.getAbsolutePath());
+                    }catch(Exception e){
+                        Log.d("ModifyMyInfo:error1", "Something Wrong", e);
+                    }
+
+                    imageView8.setVisibility(View.VISIBLE);
+
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { // API24 이상 부터
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT,
+                                FileProvider.getUriForFile(getApplicationContext(),
+                                        getApplicationContext().getPackageName() + ".fileprovider", file));
+                        Log.d("sub1:appId", getApplicationContext().getPackageName());
+                    }else {
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+                    }
+
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivityForResult(intent, CAMERA_REQUEST);
+                    }
+
+                }catch(Exception e){
+                    Log.d("ModifyMyInfo:error2", "Something Wrong", e);
+                }
+
+            }
         });
 
-
-
-
-        findViewById(R.id.btnLoad).setOnClickListener(new View.OnClickListener() {
+        //앨범로드
+        photoLoad.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // 권한 허용에 동의하지 않았을 경우 토스트를 띄웁니다.
-                if(isPermission) goToAlbum();
-                else Toast.makeText(view.getContext(), getResources().getString(R.string.permission_2), Toast.LENGTH_LONG).show();
+            public void onClick(View v) {
+                imageView8.setVisibility(View.VISIBLE);
+
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_PICK);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), LOAD_IMAGE);
             }
         });
 
 
-        findViewById(R.id.btnPhoto).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 권한 허용에 동의하지 않았을 경우 토스트를 띄웁니다.
-                if(isPermission)  takePhoto();
-                else Toast.makeText(view.getContext(), getResources().getString(R.string.permission_2), Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
+    //사진을 저장할 파일 생성
+    private File createFile() throws  IOException {
+        java.text.SimpleDateFormat tmpDateFormat = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss");
+
+        String imageFileName = "My" + tmpDateFormat.format(new Date()) + ".jpg";
+        File storageDir = Environment.getExternalStorageDirectory();
+        File curFile = new File(storageDir, imageFileName);
+
+        return curFile;
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode != RESULT_OK) {
-            Toast.makeText(this, "취소 되었습니다.", Toast.LENGTH_SHORT).show();
 
-            if (tempFile != null) {
-                if (tempFile.exists()) {
+        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
 
-                    if (tempFile.delete()) {
-                        Log.e(TAG, tempFile.getAbsolutePath() + " 삭제 성공");
-                        tempFile = null;
-                    }
-                }
-            }
-            return;
-        }
-
-        switch (requestCode) {
-            case PICK_FROM_ALBUM: {
-
-                Uri photoUri = data.getData();
-                Log.d(TAG, "PICK_FROM_ALBUM photoUri : " + photoUri);
-
-                cropImage(photoUri);
-
-                break;
-            }
-            case PICK_FROM_CAMERA: {
-
-                Uri photoUri = Uri.fromFile(tempFile);
-                Log.d(TAG, "takePhoto photoUri : " + photoUri);
-
-                cropImage(photoUri);
-
-                break;
-            }
-            case Crop.REQUEST_CROP: {
-
-                setImage();
-            }
-        }
-    }
-
-
-    /* 앨범에서 이미지 가져오기 */
-    private void goToAlbum() {
-        isCamera = false;
-
-
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
-        startActivityForResult(intent, PICK_FROM_ALBUM);
-    }
-
-    /* 카메라 사진 찍기 */
-    private void takePhoto() {
-        isCamera = true;
-
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        try {
-            tempFile = createImageFile();
-        } catch (IOException e) {
-            Toast.makeText(this, "이미지 처리 오류! 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
-            finish();
-            e.printStackTrace();
-        }
-        if (tempFile != null) {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-
-                Uri photoUri = FileProvider.getUriForFile(this,
-                        "study", tempFile);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
-                startActivityForResult(intent, PICK_FROM_CAMERA);
-
-            } else {
-
-                Uri photoUri = Uri.fromFile(tempFile);
-                Log.d(TAG, "takePhoto photoUri : " + photoUri);
-
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
-                startActivityForResult(intent, PICK_FROM_CAMERA);
-
-            }
-        }
-    }
-
-    /* Crop 기능 */
-    private void cropImage(Uri photoUri) {
-
-        Log.d(TAG, "tempFile : " + tempFile);
-
-        /**
-         *  갤러리에서 선택한 경우에는 tempFile 이 없으므로 새로 생성해줍니다.
-         */
-        if(tempFile == null) {
             try {
-                tempFile = createImageFile();
-            } catch (IOException e) {
-                Toast.makeText(this, "이미지 처리 오류! 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
-                finish();
+                // 이미지 돌리기 및 리사이즈
+                Bitmap newBitmap = Common.imageRotateAndResize(file.getAbsolutePath());
+                if(newBitmap != null){
+                    imageView8.setImageBitmap(newBitmap);
+                }else{
+                    Toast.makeText(this, "이미지가 null 입니다...", Toast.LENGTH_SHORT).show();
+                }
+
+                imageRealPathU = file.getAbsolutePath();
+                String uploadFileName = imageRealPathU.split("/")[imageRealPathU.split("/").length - 1];
+                imageDbPathU = ipConfig + "/app/resources/" + uploadFileName;
+
+                ImageView imageView8 = (ImageView) findViewById(R.id.imageView8);
+                imageView8.setImageBitmap(BitmapFactory.decodeFile(file.getAbsolutePath()));
+
+                Log.d("ModifyMyInfo:picPath", file.getAbsolutePath());
+
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }else if (requestCode == LOAD_IMAGE && resultCode == RESULT_OK) {
+
+            try {
+                String path = "";
+                // Get the url from data
+                Uri selectedImageUri = data.getData();
+                if (selectedImageUri != null) {
+                    // Get the path from the Uri
+                    path = getPathFromURI(selectedImageUri);
+                }
+
+                // 이미지 돌리기 및 리사이즈
+                Bitmap newBitmap = Common.imageRotateAndResize(path);
+                if(newBitmap != null){
+                    imageView8.setImageBitmap(newBitmap);
+                }else{
+                    Toast.makeText(this, "이미지가 null 입니다...", Toast.LENGTH_SHORT).show();
+                }
+
+                imageRealPathU = path;
+                String uploadFileName = imageRealPathU.split("/")[imageRealPathU.split("/").length - 1];
+                imageDbPathU = ipConfig + "/app/resources/" + uploadFileName;
+
+            } catch (Exception e){
                 e.printStackTrace();
             }
         }
 
-
-        //크롭 후 저장할 Uri
-        Uri savingUri = Uri.fromFile(tempFile);
-
-        Crop.of(photoUri, savingUri).asSquare().start(this);
     }
-
-    /* 폴더 및 파일 만들기 */
-    private File createImageFile() throws IOException {
-
-        // 이미지 파일 이름 ( study_{시간}_ )
-        String timeStamp = new SimpleDateFormat("HHmmss").format(new Date());
-        String imageFileName = "study_" + timeStamp + "_";
-
-        // 이미지가 저장될 폴더 이름 ( study )
-        File storageDir = new File(Environment.getExternalStorageDirectory() + "/blackJin/");
-        if (!storageDir.exists()) storageDir.mkdirs();
-
-        // 파일 생성
-        File image = File.createTempFile(imageFileName, ".jpg", storageDir);
-        Log.d(TAG, "createImageFile : " + image.getAbsolutePath());
-
-        return image;
+    // Get the real path from the URI
+    public String getPathFromURI(Uri contentUri) {
+        String res = null;
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
+        if (cursor.moveToFirst()) {
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            res = cursor.getString(column_index);
+        }
+        cursor.close();
+        return res;
     }
-
-    /* tempFile 을 bitmap 으로 변환 후 ImageView 에 설정한다. */
-    private void setImage() {
-
-        ImageView imageView8 = findViewById(R.id.imageView8);
-
-        ImageResizeUtils.resizeFile(tempFile, tempFile, 1280, isCamera);
-
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
-        Log.d(TAG, "setImage : " + tempFile.getAbsolutePath());
-
-        imageView8.setImageBitmap(originalBm);
-
-        tempFile = null;
+    //수정버튼
+    public void btnUpdateClicked(View view){
+        if(isNetworkConnected(this) == true){
+            if(fileSize <= 30000000) {  // 파일크기가 30메가 보다 작아야 업로드 할수 있음
+                id = etUId.getText().toString();
+                pw = etUPw.getText().toString();
+                nickname = etUNickname.getText().toString();
+                email = etUEmail.getText().toString();
 
 
-    }
+                ListModify listModify = new ListModify(id, pw, nickname, email, pImgDbPathU, imageDbPathU, imageRealPathU);
+                listModify.execute();
 
 
+                //Toast.makeText(getApplicationContext(), "수정성공", Toast.LENGTH_LONG).show();
 
+                Intent showIntent = new Intent(getApplicationContext(), MyInfo.class);
+                showIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |   // 이 엑티비티 플래그를 사용하여 엑티비티를 호출하게 되면 새로운 태스크를 생성하여 그 태스크안에 엑티비티를 추가하게 됩니다. 단, 기존에 존재하는 태스크들중에 생성하려는 엑티비티와 동일한 affinity(관계, 유사)를 가지고 있는 태스크가 있다면 그곳으로 새 엑티비티가 들어가게됩니다.
+                        Intent.FLAG_ACTIVITY_SINGLE_TOP | // 엑티비티를 호출할 경우 호출된 엑티비티가 현재 태스크의 최상단에 존재하고 있었다면 새로운 인스턴스를 생성하지 않습니다. 예를 들어 ABC가 엑티비티 스택에 존재하는 상태에서 C를 호출하였다면 여전히 ABC가 존재하게 됩니다.
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP); // 만약에 엑티비티스택에 호출하려는 엑티비티의 인스턴스가 이미 존재하고 있을 경우에 새로운 인스턴스를 생성하는 것 대신에 존재하고 있는 엑티비티를 포그라운드로 가져옵니다. 그리고 엑티비티스택의 최상단 엑티비티부터 포그라운드로 가져올 엑티비티까지의 모든 엑티비티를 삭제합니다.
+                startActivity(showIntent);
 
-
-
-    private void tedPermission() {
-        PermissionListener permissionListener = new PermissionListener() {
-            @Override
-            public void onPermissionGranted() {
-                // 권한 요청 성공
-                isPermission = true;
-
+                finish();
+            }else{
+                // 알림창 띄움
+                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("알림");
+                builder.setMessage("파일 크기가 30MB초과하는 파일은 업로드가 제한되어 있습니다.\n30MB이하 파일로 선택해 주십시요!!!");
+                builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.show();
             }
 
-            @Override
-            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
-                // 권한 요청 실패
-                isPermission = false;
-
-            }
-        };
-
-        TedPermission.with(this)
-                .setPermissionListener(permissionListener)
-                .setRationaleMessage(getResources().getString(R.string.permission_2))
-                .setDeniedMessage(getResources().getString(R.string.permission_1))
-                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
-                .check();
-
+        }else {
+            Toast.makeText(this, "인터넷이 연결되어 있지 않습니다.",
+                    Toast.LENGTH_SHORT).show();
+        }
 
     }
+    //취소버튼
+    public void btnCancelClicked(View view){
+        finish();
+    }
+
+
+
 }
