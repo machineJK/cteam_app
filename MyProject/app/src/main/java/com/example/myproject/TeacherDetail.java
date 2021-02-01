@@ -49,7 +49,7 @@ public class TeacherDetail extends AppCompatActivity {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TeacherDetail.this, Chat.class);
+                Intent intent = new Intent(TeacherDetail.this, ChatStartActivity.class);
                 startActivity(intent);
             }
         });
