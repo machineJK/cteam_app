@@ -87,7 +87,7 @@ public class Matching extends AppCompatActivity {
         talk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Matching.this, Chat.class);
+                Intent intent = new Intent(Matching.this, ChatListActivity.class);
                 startActivity(intent);
             }
         });

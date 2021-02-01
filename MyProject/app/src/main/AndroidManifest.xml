@@ -31,7 +31,7 @@
         <activity android:name=".MatchingStudent" />
         <activity android:name=".TeacherForm" />
         <activity android:name=".Board" />
-        <activity android:name=".Chat" />
+        <activity android:name=".ChatListActivity" />
         <activity android:name=".JoinActivity" /> <!-- API24 이상부터 Url 이 file:// 로 시작되면 안되서 content:// 으로 변환시키는 부분 -->
         <provider
             android:name="androidx.core.content.FileProvider"

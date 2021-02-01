@@ -44,7 +44,7 @@ public class Board extends AppCompatActivity {
         talk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Board.this, Chat.class);
+                Intent intent = new Intent(Board.this, ChatListActivity.class);
                 startActivity(intent);
             }
         });
