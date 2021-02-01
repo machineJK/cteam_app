@@ -26,23 +26,28 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.myproject.ATask.ListModify;
 import com.example.myproject.Common.Common;
-import com.example.myproject.Dto.MemberDTO;
+
+import static com.example.myproject.Common.Common.loginDTO;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static com.example.myproject.Common.Common.ipConfig;
 import static com.example.myproject.Common.Common.isNetworkConnected;
-import static com.example.myproject.Common.Common.selItem;
+
 
 
 public class ModifyMyInfo extends AppCompatActivity {
 
+    private static final String TAG = "Main:ModifyMyInfo";
 
     public String imagePath;
     public String pImgDbPathU;
     public String imageRealPathU = "", imageDbPathU = "";
+    //public String imageRealPathU, imageDbPathU;
+    java.text.SimpleDateFormat tmpDateFormat;
 
     final int CAMERA_REQUEST = 1010;
     final int LOAD_IMAGE = 1011;
@@ -99,30 +104,34 @@ public class ModifyMyInfo extends AppCompatActivity {
         // 보내온 값 파싱
         Intent intent = getIntent();
         //MyModify selItem = (MyModify) intent.getSerializableExtra("selItem");
-        /*MemberDTO selItem = (MemberDTO) intent.getSerializableExtra("selItem");
+        //MemberDTO loginDTO = (MemberDTO) intent.getSerializableExtra("loginDTO");
 
-        id = selItem.getId();
-        pw = selItem.getPw();
-        nickname = selItem.getNickname();
-        email = selItem.getEmail();
+        id = loginDTO.getId();
+        //pw = loginDTO.getPw();
+        nickname = loginDTO.getNickname();
+        email = loginDTO.getEmail();
+
+        Log.d(TAG, "onCreate: " + email);
 
         // 가져온 값 써 넣기
         etUId.setText(id);
-        etUPw.setText(pw);
+        //etUPw.setText(pw);
         etUNickname.setText(nickname);
-        etUEmail.setText(email);*/
+        etUEmail.setText(email);
 
-        //imagePath = selItem.getImage_path();
+        imagePath = loginDTO.getdbImgPath();
         pImgDbPathU = imagePath;
         imageDbPathU = imagePath;
 
         imageView8.setVisibility(View.VISIBLE);
         // 선택된 이미지 보여주기
-        Glide.with(this).load(imagePath).into(imageView8);
+        Glide.with(ModifyMyInfo.this).load(imagePath).into(imageView8);
 
         //카메라, 앨범
         photoBtn = findViewById(R.id.btnPhoto);
         photoLoad = findViewById(R.id.btnLoad);
+        tmpDateFormat = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss");
+
 
         //사진찍기
         photoBtn.setOnClickListener(new View.OnClickListener() {
@@ -171,19 +180,66 @@ public class ModifyMyInfo extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), LOAD_IMAGE);
             }
         });
+        /*//사진 찍기
+        photoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    file = createFile();
+                    Log.d("FilePath ", file.getAbsolutePath());
+
+                }catch(Exception e){
+                    Log.d("Sub1Add:filepath", "Something Wrong", e);
+                }
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { // API24 이상 부터
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT,
+                            FileProvider.getUriForFile(getApplicationContext(),
+                                    getApplicationContext().getPackageName() + ".fileprovider", file));
+                    Log.d("sub1:appId", getApplicationContext().getPackageName());
+                }else {
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+                }
+
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(intent, CAMERA_REQUEST);
+                }
+            }
+        });
+
+        //앨범에서 로드
+        photoLoad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView8.setVisibility(View.VISIBLE);
+
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_PICK);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), LOAD_IMAGE);
+            }
+        });*/
 
 
     }
 
     //사진을 저장할 파일 생성
     private File createFile() throws  IOException {
-        java.text.SimpleDateFormat tmpDateFormat = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss");
-
+/*
         String imageFileName = "My" + tmpDateFormat.format(new Date()) + ".jpg";
         File storageDir = Environment.getExternalStorageDirectory();
         File curFile = new File(storageDir, imageFileName);
 
         return curFile;
+    }*/
+
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+
+        String imageFileName="My" + tmpDateFormat.format(new Date()) + ".jpg";
+
+        File photo = new File(Environment.getExternalStorageDirectory(),  imageFileName);
+
+        return photo;
     }
 
     @Override
@@ -242,6 +298,55 @@ public class ModifyMyInfo extends AppCompatActivity {
         }
 
     }
+    /*    if (requestCode == CAMERA_REQUEST && data != null) {
+            Toast.makeText(this, "카메라에서 이미지 넘어옴", Toast.LENGTH_SHORT).show();
+            try {
+                // 이미지 돌리기 및 리사이즈
+                Bitmap newBitmap = Common.imageRotateAndResize(file.getAbsolutePath());
+                if(newBitmap != null){
+                    imageView8.setImageBitmap(newBitmap);
+                }else{
+                    Toast.makeText(this, "이미지가 null 입니다...", Toast.LENGTH_SHORT).show();
+                }
+                //imageRealPathU, imageDbPathU;
+                imageRealPathU = file.getAbsolutePath();
+                String uploadFileName = imageRealPathU.split("/")[imageRealPathU.split("/").length - 1];
+                ///참고!!!!!!///////////////////////////////////////////////////
+                imageDbPathU = ipConfig + "/app/resources/" + uploadFileName;
+                ///참고!!!!!!///////////////////////////////////////////////////
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }else if (requestCode == LOAD_IMAGE && data != null) {
+            try {
+                String path = "";
+                // Get the url from data
+                Uri selectedImageUri = data.getData();
+                if (selectedImageUri != null) {
+                    // Get the path from the Uri
+                    path = getPathFromURI(selectedImageUri);
+                }
+                // 이미지 돌리기 및 리사이즈
+                Bitmap newBitmap = Common.imageRotateAndResize(path);
+                if(newBitmap != null){
+                    imageView8.setImageBitmap(newBitmap);
+                }else{
+                    Toast.makeText(this, "이미지가 null 입니다...", Toast.LENGTH_SHORT).show();
+                }
+
+                imageRealPathU = path;
+                Log.d("Sub1Add", "imageFilePathA Path : " + imageRealPathU);
+                String uploadFileName = imageRealPathU.split("/")[imageRealPathU.split("/").length - 1];
+                imageDbPathU = ipConfig + "/app/resources/" + uploadFileName;
+
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }else if(requestCode == CAMERA_REQUEST && resultCode != RESULT_OK){
+            Toast.makeText(this, "사진 못넘어옴", Toast.LENGTH_SHORT).show();
+        }
+
+    }*/
     // Get the real path from the URI
     public String getPathFromURI(Uri contentUri) {
         String res = null;
@@ -257,7 +362,7 @@ public class ModifyMyInfo extends AppCompatActivity {
     //수정버튼
     public void btnUpdateClicked(View view){
         if(isNetworkConnected(this) == true){
-            if(fileSize <= 30000000) {  // 파일크기가 30메가 보다 작아야 업로드 할수 있음
+            if(fileSize <= 300000000) {  // 파일크기가 300메가 보다 작아야 업로드 할수 있음
                 id = etUId.getText().toString();
                 pw = etUPw.getText().toString();
                 nickname = etUNickname.getText().toString();

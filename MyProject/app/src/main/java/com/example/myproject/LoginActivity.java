@@ -36,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
         et_id = findViewById(R.id.et_id);
         et_pw = findViewById(R.id.et_pw);
 
+        et_id.setText("admin");
+        et_pw.setText("0000");
 
         checkDangerousPermissions();
 

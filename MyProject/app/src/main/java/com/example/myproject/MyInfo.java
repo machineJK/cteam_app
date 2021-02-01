@@ -13,13 +13,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import static com.example.myproject.Common.Common.loginDTO;
+
 
 public class MyInfo extends AppCompatActivity {
 
     Button matching, talk, board, my, modify;
     ImageView imageView6;
     ImageButton imageButton;
-    TextView textView44;
+    TextView my_nickname;
+    String nickname;
 
 
 
@@ -27,6 +30,10 @@ public class MyInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_info);
+
+        my_nickname = findViewById(R.id.my_nickname);
+        nickname = loginDTO.getNickname();
+        my_nickname.setText(nickname);
 
 
         imageView6 = findViewById(R.id.imageView6);
