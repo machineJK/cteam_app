@@ -24,7 +24,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.myproject.ATask.ListModify;
+//import com.example.myproject.Atask.ListModify;
 import com.example.myproject.Common.Common;
 
 import static com.example.myproject.Common.Common.loginDTO;
@@ -369,7 +369,7 @@ public class ModifyMyInfo extends AppCompatActivity {
                 email = etUEmail.getText().toString();
 
 
-                ListModify listModify = new ListModify(id, pw, nickname, email, pImgDbPathU, imageDbPathU, imageRealPathU);
+                com.example.myproject.ATask.ListModify listModify = new com.example.myproject.ATask.ListModify(id, pw, nickname, email, pImgDbPathU, imageDbPathU, imageRealPathU);
                 listModify.execute();
 
 

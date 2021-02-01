@@ -72,9 +72,10 @@ public class StudentForm extends AppCompatActivity {
                     String student_grade = spinner_student_grade.getSelectedItem().toString();
                     String student_intro = et_student_intro.getText().toString();
                     String student_image_path = loginDTO.getdbImgPath();
+                    String student_addr = loginDTO.getAddr1() + " " + loginDTO.getAddr2();
 
                     StudentInsert studentInsert = new StudentInsert(student_id,student_subject,
-                            student_grade,student_intro,student_image_path);
+                            student_grade,student_intro,student_image_path,student_addr);
 
                     try {
                         state = studentInsert.execute().get().trim();
