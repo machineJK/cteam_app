@@ -20,11 +20,12 @@ import java.nio.charset.Charset;
 
 import static com.example.myproject.Common.Common.ipConfig;
 
-public class ListMyInfo extends AsyncTask<Void, Void, Void> {
+public class ListModify extends AsyncTask<Void, Void, Void> {
 
-    String pw, nickname, email, pImgDbPathU, imageDbPathU, imageRealPathU;
+    String  id, pw, nickname, email, pImgDbPathU, imageDbPathU, imageRealPathU;
 
-    public ListMyInfo(String pw, String nickname, String email, String pImgDbPathU, String imageDbPathU, String imageRealPathU) {
+    public ListModify(String id, String pw, String nickname, String email, String pImgDbPathU, String imageDbPathU, String imageRealPathU) {
+        this.id = id;
         this.pw = pw;
         this.nickname = nickname;
         this.email = email;
@@ -43,25 +44,26 @@ public class ListMyInfo extends AsyncTask<Void, Void, Void> {
         try {
             // MultipartEntityBuild 생성
             String postURL = "";
-
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();
             builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
             builder.setCharset(Charset.forName("UTF-8"));
 
             // 문자열 및 데이터 추가
+            builder.addTextBody("id", id, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("pw", pw, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("nickname", nickname, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("email", email, ContentType.create("Multipart/related", "UTF-8"));
 
-            Log.d("Sub1Update11", pw);
-            Log.d("Sub1Update12", nickname);
-            Log.d("Sub1Update13", email);
-            Log.d("Sub1Update16", pImgDbPathU);
-            Log.d("Sub1Update17", imageDbPathU);
+            Log.d("ModifyMyInfo11", id);
+            Log.d("ModifyMyInfo12", pw);
+            Log.d("ModifyMyInfo13", nickname);
+            Log.d("ModifyMyInfo14", email);
+            Log.d("ModifyMyInfo15", pImgDbPathU);
+            Log.d("ModifyMyInfo16", imageDbPathU);
 
             // 이미지를 새로 선택했으면 선택한 이미지와 기존에 이미지 경로를 같이 보낸다
             if(!imageRealPathU.equals("")){
-                Log.d("Sub1Update:postURL", "1");
+                Log.d("ModifyMyInfo:postURL", "1");
                 // 기존에 있던 DB 경로
                 builder.addTextBody("pDbImgPath", pImgDbPathU, ContentType.create("Multipart/related", "UTF-8"));
                 // DB에 저장할 경로
@@ -72,7 +74,7 @@ public class ListMyInfo extends AsyncTask<Void, Void, Void> {
                 postURL = ipConfig + "/app/anUpdateMulti";
 
             }else if(imageRealPathU.equals("")){  // 이미지를 바꾸지 않았다면
-                Log.d("Sub1Update:postURL", "3");
+                Log.d("ModifyMyInfo:postURL", "3");
                 postURL = ipConfig + "/app/anUpdateMultiNo";
             }else{
                 Log.d("Sub1Update:postURL", "5 : error");

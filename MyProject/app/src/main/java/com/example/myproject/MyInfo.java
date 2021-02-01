@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class MyInfo extends AppCompatActivity {
@@ -18,6 +19,7 @@ public class MyInfo extends AppCompatActivity {
     Button matching, talk, board, my, modify;
     ImageView imageView6;
     ImageButton imageButton;
+    TextView textView44;
 
 
 
