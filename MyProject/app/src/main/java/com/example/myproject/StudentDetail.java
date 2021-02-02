@@ -18,7 +18,7 @@ public class StudentDetail extends AppCompatActivity {
         setContentView(R.layout.activity_student_detail);
 
         //상담하기
-        chat = findViewById(R.id.btn_goChat);
+        chat = findViewById(R.id.chat);
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

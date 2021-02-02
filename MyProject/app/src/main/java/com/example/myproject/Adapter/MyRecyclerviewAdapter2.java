@@ -62,7 +62,6 @@ public class MyRecyclerviewAdapter2 extends RecyclerView.Adapter<MyRecyclerviewA
                 selItem2 = arrayList.get(position);
                 Intent intent = new Intent(mContext, StudentDetail.class);
                 mContext.startActivity(intent);
-                //Toast.makeText(mContext, "img_path : " + arrayList.get(position).getStudent_image_path(), Toast.LENGTH_SHORT).show();
             }
         });
     }
