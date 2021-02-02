@@ -34,7 +34,7 @@ public class ChatListStudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat_list_student);
 
         databaseReference = firebaseDatabase.getReference(loginDTO.getId() + "1");
-        chat_studentList = findViewById(R.id.chat_studentList);
+        chat_studentList = findViewById(R.id.chat_teacherList);
 
         showChatList();
 

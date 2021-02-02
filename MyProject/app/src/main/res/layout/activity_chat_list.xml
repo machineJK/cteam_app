@@ -24,7 +24,7 @@
 
 
             <TextView
-                android:id="@+id/text_studentList"
+                android:id="@+id/text_teacherList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -33,7 +33,7 @@
                 android:textSize="20dp" />
 
             <ListView
-                android:id="@+id/chat_studentList"
+                android:id="@+id/chat_teacherList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
