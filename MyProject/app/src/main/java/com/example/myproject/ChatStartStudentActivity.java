@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +38,7 @@ public class ChatStartStudentActivity extends AppCompatActivity {
 
     private EditText edt_chat;
     private Button btn_send;
+    private String student;
 
     private DatabaseReference myRef;
     private DatabaseReference toRef;
@@ -45,6 +47,10 @@ public class ChatStartStudentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_start_student);
+
+
+        Intent intent = getIntent();
+        student = intent.getStringExtra("chatSelect");
 
         btn_send = findViewById(R.id.btn_send);
         edt_chat = findViewById(R.id.edt_chat);
@@ -81,8 +87,15 @@ public class ChatStartStudentActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(loginDTO.getId() + "1").child(selItem2.getStudent_id() + "2");
-        toRef = database.getReference(selItem2.getStudent_id() + "2").child(loginDTO.getId() + "1");
+
+        if(student == null || student.length() < 1){
+            myRef = database.getReference(loginDTO.getId() + "1").child(selItem2.getStudent_id() + "2");
+            toRef = database.getReference(selItem2.getStudent_id() + "2").child(loginDTO.getId() + "1");
+        }else {
+            myRef = database.getReference(loginDTO.getId() + "1").child(student);
+            toRef = database.getReference(student).child(loginDTO.getId() + "1");
+        }
+
 
         myRef.addChildEventListener(new ChildEventListener() {
             @Override

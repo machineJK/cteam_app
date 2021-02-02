@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import static com.example.myproject.Common.Common.loginDTO;
+import static com.example.myproject.Common.Common.selItem;
+import static com.example.myproject.Common.Common.selItem2;
 
 public class ChatListStudentActivity extends AppCompatActivity {
 
@@ -34,7 +36,7 @@ public class ChatListStudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat_list_student);
 
         databaseReference = firebaseDatabase.getReference(loginDTO.getId() + "1");
-        chat_studentList = findViewById(R.id.chat_teacherList);
+        chat_studentList = findViewById(R.id.chat_studentList);
 
         showChatList();
 
@@ -87,6 +89,7 @@ public class ChatListStudentActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ChatListStudentActivity.this , ChatStartStudentActivity.class);
+                intent.putExtra("chatSelect", adapter.getItem(position).toString());
                 startActivity(intent);
 
             }

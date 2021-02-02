@@ -86,6 +86,7 @@ public class ChatListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ChatListActivity.this , ChatStartActivity.class);
+                intent.putExtra("chatSelect", adapter.getItem(position).toString());
                 startActivity(intent);
 
             }
