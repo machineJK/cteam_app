@@ -10,7 +10,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,15 +22,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-//import com.example.myproject.Atask.ListModify;
+import com.example.myproject.Atask.ListModify;
 import com.example.myproject.Common.Common;
 
 import static com.example.myproject.Common.Common.loginDTO;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static com.example.myproject.Common.Common.ipConfig;
@@ -45,8 +42,8 @@ public class ModifyMyInfo extends AppCompatActivity {
 
     public String imagePath;
     public String pImgDbPathU;
-    public String imageRealPathU = "", imageDbPathU = "";
-    //public String imageRealPathU, imageDbPathU;
+    //public String imageRealPathU = "", imageDbPathU = "";
+    public String imageRealPathU, imageDbPathU;
     java.text.SimpleDateFormat tmpDateFormat;
 
     final int CAMERA_REQUEST = 1010;
@@ -72,13 +69,6 @@ public class ModifyMyInfo extends AppCompatActivity {
         etUEmail = findViewById(R.id.etUEmail);
 
         imageView8 = findViewById(R.id.imageView8);
-        imageView8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-            }
-        });
 
         /*modify = findViewById(R.id.modify_modify);
         cancel = findViewById(R.id.modify_cancel);
@@ -111,6 +101,7 @@ public class ModifyMyInfo extends AppCompatActivity {
         nickname = loginDTO.getNickname();
         email = loginDTO.getEmail();
 
+
         Log.d(TAG, "onCreate: " + email);
 
         // 가져온 값 써 넣기
@@ -123,9 +114,10 @@ public class ModifyMyInfo extends AppCompatActivity {
         pImgDbPathU = imagePath;
         imageDbPathU = imagePath;
 
-        imageView8.setVisibility(View.VISIBLE);
+        //imageView8.setVisibility(View.VISIBLE);
         // 선택된 이미지 보여주기
-        Glide.with(ModifyMyInfo.this).load(imagePath).into(imageView8);
+        //Glide.with(this).load(imagePath).into(imageView8);
+
 
         //카메라, 앨범
         photoBtn = findViewById(R.id.btnPhoto);
@@ -133,7 +125,7 @@ public class ModifyMyInfo extends AppCompatActivity {
         tmpDateFormat = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss");
 
 
-        //사진찍기
+        /*//사진찍기
         photoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -179,8 +171,8 @@ public class ModifyMyInfo extends AppCompatActivity {
                 intent.setAction(Intent.ACTION_PICK);
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), LOAD_IMAGE);
             }
-        });
-        /*//사진 찍기
+        });*/
+        //사진 찍기
         photoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,35 +210,24 @@ public class ModifyMyInfo extends AppCompatActivity {
                 intent.setAction(Intent.ACTION_PICK);
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), LOAD_IMAGE);
             }
-        });*/
-
+        });
 
     }
 
     //사진을 저장할 파일 생성
     private File createFile() throws  IOException {
-/*
         String imageFileName = "My" + tmpDateFormat.format(new Date()) + ".jpg";
         File storageDir = Environment.getExternalStorageDirectory();
         File curFile = new File(storageDir, imageFileName);
 
         return curFile;
-    }*/
-
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-
-        String imageFileName="My" + tmpDateFormat.format(new Date()) + ".jpg";
-
-        File photo = new File(Environment.getExternalStorageDirectory(),  imageFileName);
-
-        return photo;
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
+        /*if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
 
             try {
                 // 이미지 돌리기 및 리사이즈
@@ -297,8 +278,8 @@ public class ModifyMyInfo extends AppCompatActivity {
             }
         }
 
-    }
-    /*    if (requestCode == CAMERA_REQUEST && data != null) {
+    }*/
+        if (requestCode == CAMERA_REQUEST && data != null) {
             Toast.makeText(this, "카메라에서 이미지 넘어옴", Toast.LENGTH_SHORT).show();
             try {
                 // 이미지 돌리기 및 리사이즈
@@ -308,7 +289,7 @@ public class ModifyMyInfo extends AppCompatActivity {
                 }else{
                     Toast.makeText(this, "이미지가 null 입니다...", Toast.LENGTH_SHORT).show();
                 }
-                //imageRealPathU, imageDbPathU;
+//imageRealPathU, imageDbPathU
                 imageRealPathU = file.getAbsolutePath();
                 String uploadFileName = imageRealPathU.split("/")[imageRealPathU.split("/").length - 1];
                 ///참고!!!!!!///////////////////////////////////////////////////
@@ -346,7 +327,8 @@ public class ModifyMyInfo extends AppCompatActivity {
             Toast.makeText(this, "사진 못넘어옴", Toast.LENGTH_SHORT).show();
         }
 
-    }*/
+    }
+
     // Get the real path from the URI
     public String getPathFromURI(Uri contentUri) {
         String res = null;
@@ -362,18 +344,18 @@ public class ModifyMyInfo extends AppCompatActivity {
     //수정버튼
     public void btnUpdateClicked(View view){
         if(isNetworkConnected(this) == true){
-            if(fileSize <= 300000000) {  // 파일크기가 300메가 보다 작아야 업로드 할수 있음
+            if(fileSize <= 300000000) {  // 파일크기가 30메가 보다 작아야 업로드 할수 있음
                 id = etUId.getText().toString();
                 pw = etUPw.getText().toString();
                 nickname = etUNickname.getText().toString();
                 email = etUEmail.getText().toString();
 
 
-                com.example.myproject.ATask.ListModify listModify = new com.example.myproject.ATask.ListModify(id, pw, nickname, email, pImgDbPathU, imageDbPathU, imageRealPathU);
+                ListModify listModify = new ListModify(id, pw, nickname, email, pImgDbPathU, imageDbPathU, imageRealPathU);
                 listModify.execute();
 
 
-                //Toast.makeText(getApplicationContext(), "수정성공", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "수정성공", Toast.LENGTH_LONG).show();
 
                 Intent showIntent = new Intent(getApplicationContext(), MyInfo.class);
                 showIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |   // 이 엑티비티 플래그를 사용하여 엑티비티를 호출하게 되면 새로운 태스크를 생성하여 그 태스크안에 엑티비티를 추가하게 됩니다. 단, 기존에 존재하는 태스크들중에 생성하려는 엑티비티와 동일한 affinity(관계, 유사)를 가지고 있는 태스크가 있다면 그곳으로 새 엑티비티가 들어가게됩니다.

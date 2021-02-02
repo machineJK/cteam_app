@@ -1,4 +1,4 @@
-package com.example.myproject.ATask;
+package com.example.myproject.Atask;
 
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
