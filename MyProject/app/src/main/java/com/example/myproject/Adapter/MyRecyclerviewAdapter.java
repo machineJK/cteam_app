@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -27,15 +29,17 @@ import static com.example.myproject.Common.Common.loginDTO;
 import static com.example.myproject.Common.Common.selItem;
 
 
-public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAdapter.ItemViewHolder>{
+public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAdapter.ItemViewHolder> implements Filterable {
     private static final String TAG = "MyRecyclerviewAdapter";
 
     Context mContext;
     ArrayList<TeacherDTO> arrayList;
+    ArrayList<TeacherDTO> arrayList_filter;
 
     public MyRecyclerviewAdapter(Context mContext, ArrayList<TeacherDTO> arrayList) {
         this.mContext = mContext;
         this.arrayList = arrayList;
+        this.arrayList_filter = arrayList;
     }
 
 
@@ -52,7 +56,7 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
     public void onBindViewHolder(@NonNull ItemViewHolder holder, final int position) {
         Log.d("main:adapter", "" + position);
 
-        TeacherDTO item = arrayList.get(position);
+        TeacherDTO item = arrayList_filter.get(position);
         holder.setItem(item);
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +64,7 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
             public void onClick(View view) {
                 Log.d(TAG, "onClick: " + position);
 
-                selItem = arrayList.get(position);
+                selItem = arrayList_filter.get(position);
 
                 //Toast.makeText(mContext, "teacher_id : " + arrayList.get(position).getTeacher_id(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext, TeacherDetail.class);
@@ -72,7 +76,7 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return arrayList_filter.size();
     }
 
 
@@ -97,6 +101,44 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
     public void setItems(ArrayList<TeacherDTO> arrayList){
         this.arrayList = arrayList;
     }
+
+    ////Filter
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    arrayList_filter = arrayList;
+                } else {
+                    ArrayList<TeacherDTO> filteringList = new ArrayList<>();
+                    for (TeacherDTO dto : arrayList_filter) {
+                        //필터조건
+                        if (dto.getTeacher_addr().toLowerCase().contains(charString.toLowerCase())
+                                || dto.getTeacher_worktime().contains(charString.toLowerCase())
+                                || dto.getTeacher_pay().toLowerCase().contains(charString.toLowerCase())
+                                || dto.getTeacher_nickname().toLowerCase().contains(charString.toLowerCase())) {
+                            filteringList.add(dto);
+                        }
+                    }
+
+                    arrayList_filter = filteringList;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = arrayList_filter;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                arrayList_filter = (ArrayList<TeacherDTO>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
+
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder{
 

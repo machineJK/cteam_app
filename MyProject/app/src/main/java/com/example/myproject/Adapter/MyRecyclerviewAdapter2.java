@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -26,15 +28,17 @@ import static com.example.myproject.Common.Common.loginDTO;
 import static com.example.myproject.Common.Common.selItem2;
 
 
-public class MyRecyclerviewAdapter2 extends RecyclerView.Adapter<MyRecyclerviewAdapter2.ItemViewHolder>{
+public class MyRecyclerviewAdapter2 extends RecyclerView.Adapter<MyRecyclerviewAdapter2.ItemViewHolder> implements Filterable {
     private static final String TAG = "MyRecyclerviewAdapter2";
 
     Context mContext;
     ArrayList<StudentDTO> arrayList;
+    ArrayList<StudentDTO> arrayList_filter;
 
     public MyRecyclerviewAdapter2(Context mContext, ArrayList<StudentDTO> arrayList) {
         this.mContext = mContext;
         this.arrayList = arrayList;
+        this.arrayList_filter = arrayList;
     }
 
 
@@ -51,7 +55,7 @@ public class MyRecyclerviewAdapter2 extends RecyclerView.Adapter<MyRecyclerviewA
     public void onBindViewHolder(@NonNull ItemViewHolder holder, final int position) {
         Log.d("main:adapter", "" + position);
 
-        StudentDTO item = arrayList.get(position);
+        StudentDTO item = arrayList_filter.get(position);
         holder.setItem(item);
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +63,7 @@ public class MyRecyclerviewAdapter2 extends RecyclerView.Adapter<MyRecyclerviewA
             public void onClick(View view) {
                 Log.d(TAG, "onClick: " + position);
 
-                selItem2 = arrayList.get(position);
+                selItem2 = arrayList_filter.get(position);
                 Intent intent = new Intent(mContext, StudentDetail.class);
                 mContext.startActivity(intent);
             }
@@ -68,7 +72,7 @@ public class MyRecyclerviewAdapter2 extends RecyclerView.Adapter<MyRecyclerviewA
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return arrayList_filter.size();
     }
 
 
@@ -92,6 +96,41 @@ public class MyRecyclerviewAdapter2 extends RecyclerView.Adapter<MyRecyclerviewA
     // arrayList 통째로 셋팅하기
     public void setItems(ArrayList<StudentDTO> arrayList){
         this.arrayList = arrayList;
+    }
+
+    ////Filter
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    arrayList_filter = arrayList;
+                } else {
+                    ArrayList<StudentDTO> filteringList = new ArrayList<>();
+                    for (StudentDTO dto : arrayList) {
+                        //필터조건
+                        if (dto.getStudent_subject().toLowerCase().contains(charString.toLowerCase())
+                                || dto.getStudent_grade().contains(charString.toLowerCase())
+                                || dto.getStudent_addr().toLowerCase().contains(charString.toLowerCase())) {
+                            filteringList.add(dto);
+                        }
+                    }
+
+                    arrayList_filter = filteringList;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = arrayList_filter;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                arrayList_filter = (ArrayList<StudentDTO>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder{
