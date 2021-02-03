@@ -1,6 +1,8 @@
 package com.example.myproject;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -15,7 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.myproject.Atask.DeleteTokenTask;
 import com.example.myproject.Atask.LoginSelect;
+import com.example.myproject.Atask.NaverRequestApiTask;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -28,6 +32,9 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.nhn.android.naverlogin.OAuthLogin;
+import com.nhn.android.naverlogin.OAuthLoginHandler;
+import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
 
 import java.util.concurrent.ExecutionException;
 
@@ -41,9 +48,15 @@ public class LoginActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 9001;
     private SignInButton signInButton;
 
-    Button btnLogin, btnSignUp;
+    Button btnLogin, btnSignUp,logout;
     EditText et_id, et_pw;
     String id,pw;
+
+    //네이버 로그인
+    OAuthLogin mOAuthLoginModule;
+    Context mContext;
+    OAuthLoginButton naver_login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,6 +148,58 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mContext = this;
+
+        //네이버 로그인
+        naver_login = findViewById(R.id.naver_login);
+        naver_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mOAuthLoginModule = OAuthLogin.getInstance();
+                mOAuthLoginModule.init(mContext,"M2lOgOAPfpTZBvZEv6r1",
+                        "5RHMuUjq1t","안드로이드_과외");
+
+                @SuppressLint("HandlerLeak")
+                OAuthLoginHandler mOAuthLoginHandler = new OAuthLoginHandler() {
+                    @Override
+                    public void run(boolean success) {
+                        if(success){
+                            String accessToken = mOAuthLoginModule.getAccessToken(mContext);
+                            String refreshToken = mOAuthLoginModule.getRefreshToken(mContext);
+                            long expiresAt = mOAuthLoginModule.getExpiresAt(mContext);
+                            String tokenType = mOAuthLoginModule.getTokenType(mContext);
+
+                            new NaverRequestApiTask(mContext, mOAuthLoginModule).execute();
+
+
+                            //Intent intent = new Intent(LoginActivity.this, Matching.class);
+                            //startActivity(intent);
+                        }else{
+                            String errorCode = mOAuthLoginModule.getLastErrorCode(mContext).getCode();
+                            String errorDesc = mOAuthLoginModule.getLastErrorDesc(mContext);
+                            Toast.makeText(mContext, "errorCode : " + errorCode
+                                    + ", errorDesc : " + errorDesc, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                };
+
+                mOAuthLoginModule.startOauthLoginActivity(LoginActivity.this,mOAuthLoginHandler);
+            }
+        });
+
+        logout = findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mOAuthLoginModule!=null){
+                    mOAuthLoginModule.logout(getApplicationContext());
+                    Toast.makeText(mContext, "로그아웃 하셨습니다." , Toast.LENGTH_SHORT).show();
+                    new DeleteTokenTask(mContext, mOAuthLoginModule).execute();
+                }
+            }
+        });
+
 
     }
     //구글 로그인 처리
