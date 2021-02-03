@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.myproject.Atask.ListModify;
 import com.example.myproject.Common.Common;
 
@@ -116,7 +117,7 @@ public class ModifyMyInfo extends AppCompatActivity {
 
         //imageView8.setVisibility(View.VISIBLE);
         // 선택된 이미지 보여주기
-        //Glide.with(this).load(imagePath).into(imageView8);
+        Glide.with(this).load(loginDTO.getdbImgPath()).into(imageView8);
 
 
         //카메라, 앨범

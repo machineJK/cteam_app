@@ -13,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import static com.example.myproject.Common.Common.loginDTO;
 
 
@@ -37,6 +39,7 @@ public class MyInfo extends AppCompatActivity {
 
 
         imageView6 = findViewById(R.id.imageView6);
+        Glide.with(this).load(loginDTO.getdbImgPath()).into(imageView6);
         modify = findViewById(R.id.my_modify);
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
