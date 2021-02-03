@@ -3,6 +3,8 @@ package com.example.myproject.Dto;
 public class MemberDTO {
     String id, pw, nickname, name, gender,
             birth, email, addr1, addr2, dbImgPath;
+    //소셜로그인 정보 임시 저장용
+    public MemberDTO(){}
 
     //회원가입
     public MemberDTO(String id, String pw, String nickname, String name, String gender,

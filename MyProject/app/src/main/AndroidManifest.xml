@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ChatListStudentActivity"></activity>
+        <activity android:name=".SocialLoginAddr"></activity>
+        <activity android:name=".ChatListStudentActivity" />
         <activity android:name=".ChatStartStudentActivity" />
         <activity android:name=".StudentDetail" />
         <activity android:name=".ChatStartActivity" />

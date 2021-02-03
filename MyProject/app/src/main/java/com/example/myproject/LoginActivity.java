@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat;
 import com.example.myproject.Atask.DeleteTokenTask;
 import com.example.myproject.Atask.LoginSelect;
 import com.example.myproject.Atask.NaverRequestApiTask;
+import com.example.myproject.Dto.MemberDTO;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -39,6 +40,7 @@ import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
 import java.util.concurrent.ExecutionException;
 
 import static com.example.myproject.Common.Common.loginDTO;
+import static com.example.myproject.Common.Common.socialDTO;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -171,10 +173,6 @@ public class LoginActivity extends AppCompatActivity {
                             String tokenType = mOAuthLoginModule.getTokenType(mContext);
 
                             new NaverRequestApiTask(mContext, mOAuthLoginModule).execute();
-
-
-                            //Intent intent = new Intent(LoginActivity.this, Matching.class);
-                            //startActivity(intent);
                         }else{
                             String errorCode = mOAuthLoginModule.getLastErrorCode(mContext).getCode();
                             String errorDesc = mOAuthLoginModule.getLastErrorDesc(mContext);
@@ -184,7 +182,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 };
 
-                mOAuthLoginModule.startOauthLoginActivity(LoginActivity.this,mOAuthLoginHandler);
+                mOAuthLoginModule.startOauthLoginActivity(LoginActivity.this, mOAuthLoginHandler);
             }
         });
 
