@@ -75,8 +75,8 @@ public class StudentListSelect extends AsyncTask<Void,Void,Void> {
                 stringBuilder.append(line + "\n");
             }
             String jsonStr = stringBuilder.toString();
-
-            inputStream.close();*/
+*/
+            inputStream.close();
 
         } catch (Exception e) {
             Log.d("Matching", e.getMessage());
