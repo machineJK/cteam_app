@@ -1,12 +1,9 @@
 package com.example.myproject;
 
-import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,11 +22,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import com.example.myproject.Atask.JoinInsert;
@@ -37,8 +31,6 @@ import com.example.myproject.Common.Common;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.concurrent.ExecutionException;
 import static com.example.myproject.Common.Common.ipConfig;
@@ -66,8 +58,6 @@ public class JoinActivity extends AppCompatActivity {
     String gender, picture;
     RadioGroup rg_gender;
     RadioButton rb_male,rb_female;
-    //ImageView picture;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
