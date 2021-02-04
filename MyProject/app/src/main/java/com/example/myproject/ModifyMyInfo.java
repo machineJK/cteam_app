@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.myproject.Atask.ListModify;
 import com.example.myproject.Common.Common;
+import com.example.myproject.Dto.MemberDTO;
 
 import static com.example.myproject.Common.Common.loginDTO;
 
@@ -43,8 +45,8 @@ public class ModifyMyInfo extends AppCompatActivity {
 
     public String imagePath;
     public String pImgDbPathU;
-    //public String imageRealPathU = "", imageDbPathU = "";
-    public String imageRealPathU, imageDbPathU;
+    public String imageRealPathU = "", imageDbPathU = "";
+    //public String imageRealPathU, imageDbPathU;
     java.text.SimpleDateFormat tmpDateFormat;
 
     final int CAMERA_REQUEST = 1010;
@@ -115,7 +117,7 @@ public class ModifyMyInfo extends AppCompatActivity {
         pImgDbPathU = imagePath;
         imageDbPathU = imagePath;
 
-        //imageView8.setVisibility(View.VISIBLE);
+        imageView8.setVisibility(View.VISIBLE);
         // 선택된 이미지 보여주기
         Glide.with(this).load(loginDTO.getdbImgPath()).into(imageView8);
 
@@ -126,7 +128,7 @@ public class ModifyMyInfo extends AppCompatActivity {
         tmpDateFormat = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss");
 
 
-        /*//사진찍기
+        //사진찍기
         photoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -172,8 +174,8 @@ public class ModifyMyInfo extends AppCompatActivity {
                 intent.setAction(Intent.ACTION_PICK);
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), LOAD_IMAGE);
             }
-        });*/
-        //사진 찍기
+        });
+        /*//사진 찍기
         photoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -212,7 +214,7 @@ public class ModifyMyInfo extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), LOAD_IMAGE);
             }
         });
-
+*/
     }
 
     //사진을 저장할 파일 생성
@@ -228,7 +230,8 @@ public class ModifyMyInfo extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        /*if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
+
+        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
 
             try {
                 // 이미지 돌리기 및 리사이즈
@@ -279,8 +282,8 @@ public class ModifyMyInfo extends AppCompatActivity {
             }
         }
 
-    }*/
-        if (requestCode == CAMERA_REQUEST && data != null) {
+    }
+/*        if (requestCode == CAMERA_REQUEST && data != null) {
             Toast.makeText(this, "카메라에서 이미지 넘어옴", Toast.LENGTH_SHORT).show();
             try {
                 // 이미지 돌리기 및 리사이즈
@@ -328,7 +331,7 @@ public class ModifyMyInfo extends AppCompatActivity {
             Toast.makeText(this, "사진 못넘어옴", Toast.LENGTH_SHORT).show();
         }
 
-    }
+    }*/
 
     // Get the real path from the URI
     public String getPathFromURI(Uri contentUri) {
@@ -342,6 +345,9 @@ public class ModifyMyInfo extends AppCompatActivity {
         cursor.close();
         return res;
     }
+
+
+
     //수정버튼
     public void btnUpdateClicked(View view){
         if(isNetworkConnected(this) == true){
@@ -355,14 +361,23 @@ public class ModifyMyInfo extends AppCompatActivity {
                 ListModify listModify = new ListModify(id, pw, nickname, email, pImgDbPathU, imageDbPathU, imageRealPathU);
                 listModify.execute();
 
+                //
+                String imgPath = imageDbPathU;
+                loginDTO.setdbImgPath(imgPath);
+                loginDTO.setId(id);
+                loginDTO.setNickname(nickname);
+                loginDTO.setEmail(email);
+
+
 
                 Toast.makeText(getApplicationContext(), "수정성공", Toast.LENGTH_LONG).show();
 
                 Intent showIntent = new Intent(getApplicationContext(), MyInfo.class);
-                showIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |   // 이 엑티비티 플래그를 사용하여 엑티비티를 호출하게 되면 새로운 태스크를 생성하여 그 태스크안에 엑티비티를 추가하게 됩니다. 단, 기존에 존재하는 태스크들중에 생성하려는 엑티비티와 동일한 affinity(관계, 유사)를 가지고 있는 태스크가 있다면 그곳으로 새 엑티비티가 들어가게됩니다.
-                        Intent.FLAG_ACTIVITY_SINGLE_TOP | // 엑티비티를 호출할 경우 호출된 엑티비티가 현재 태스크의 최상단에 존재하고 있었다면 새로운 인스턴스를 생성하지 않습니다. 예를 들어 ABC가 엑티비티 스택에 존재하는 상태에서 C를 호출하였다면 여전히 ABC가 존재하게 됩니다.
-                        Intent.FLAG_ACTIVITY_CLEAR_TOP); // 만약에 엑티비티스택에 호출하려는 엑티비티의 인스턴스가 이미 존재하고 있을 경우에 새로운 인스턴스를 생성하는 것 대신에 존재하고 있는 엑티비티를 포그라운드로 가져옵니다. 그리고 엑티비티스택의 최상단 엑티비티부터 포그라운드로 가져올 엑티비티까지의 모든 엑티비티를 삭제합니다.
+                //showIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |   // 이 엑티비티 플래그를 사용하여 엑티비티를 호출하게 되면 새로운 태스크를 생성하여 그 태스크안에 엑티비티를 추가하게 됩니다. 단, 기존에 존재하는 태스크들중에 생성하려는 엑티비티와 동일한 affinity(관계, 유사)를 가지고 있는 태스크가 있다면 그곳으로 새 엑티비티가 들어가게됩니다.
+                //        Intent.FLAG_ACTIVITY_SINGLE_TOP | // 엑티비티를 호출할 경우 호출된 엑티비티가 현재 태스크의 최상단에 존재하고 있었다면 새로운 인스턴스를 생성하지 않습니다. 예를 들어 ABC가 엑티비티 스택에 존재하는 상태에서 C를 호출하였다면 여전히 ABC가 존재하게 됩니다.
+                //        Intent.FLAG_ACTIVITY_CLEAR_TOP); // 만약에 엑티비티스택에 호출하려는 엑티비티의 인스턴스가 이미 존재하고 있을 경우에 새로운 인스턴스를 생성하는 것 대신에 존재하고 있는 엑티비티를 포그라운드로 가져옵니다. 그리고 엑티비티스택의 최상단 엑티비티부터 포그라운드로 가져올 엑티비티까지의 모든 엑티비티를 삭제합니다.
                 startActivity(showIntent);
+
 
                 finish();
             }else{
@@ -393,3 +408,5 @@ public class ModifyMyInfo extends AppCompatActivity {
 
 
 }
+
+
