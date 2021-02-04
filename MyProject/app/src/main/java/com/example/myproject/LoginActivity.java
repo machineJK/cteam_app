@@ -1,7 +1,6 @@
 package com.example.myproject;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,10 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.example.myproject.Atask.DeleteTokenTask;
 import com.example.myproject.Atask.LoginSelect;
 import com.example.myproject.Atask.NaverRequestApiTask;
-import com.example.myproject.Dto.MemberDTO;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -40,7 +37,6 @@ import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
 import java.util.concurrent.ExecutionException;
 
 import static com.example.myproject.Common.Common.loginDTO;
-import static com.example.myproject.Common.Common.socialDTO;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -55,9 +51,9 @@ public class LoginActivity extends AppCompatActivity {
     String id,pw;
 
     //네이버 로그인
-    OAuthLogin mOAuthLoginModule;
-    Context mContext;
-    OAuthLoginButton naver_login;
+    private static OAuthLogin mOAuthLoginModule;
+    private static Context nContext;
+    private OAuthLoginButton naver_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,55 +147,41 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        mContext = this;
-
         //네이버 로그인
-        naver_login = findViewById(R.id.naver_login);
-        naver_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mOAuthLoginModule = OAuthLogin.getInstance();
-                mOAuthLoginModule.init(mContext,"M2lOgOAPfpTZBvZEv6r1",
-                        "5RHMuUjq1t","안드로이드_과외");
-
-                @SuppressLint("HandlerLeak")
-                OAuthLoginHandler mOAuthLoginHandler = new OAuthLoginHandler() {
-                    @Override
-                    public void run(boolean success) {
-                        if(success){
-                            String accessToken = mOAuthLoginModule.getAccessToken(mContext);
-                            String refreshToken = mOAuthLoginModule.getRefreshToken(mContext);
-                            long expiresAt = mOAuthLoginModule.getExpiresAt(mContext);
-                            String tokenType = mOAuthLoginModule.getTokenType(mContext);
-
-                            new NaverRequestApiTask(mContext, mOAuthLoginModule).execute();
-                        }else{
-                            String errorCode = mOAuthLoginModule.getLastErrorCode(mContext).getCode();
-                            String errorDesc = mOAuthLoginModule.getLastErrorDesc(mContext);
-                            Toast.makeText(mContext, "errorCode : " + errorCode
-                                    + ", errorDesc : " + errorDesc, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                };
-
-                mOAuthLoginModule.startOauthLoginActivity(LoginActivity.this, mOAuthLoginHandler);
-            }
-        });
-
-        logout = findViewById(R.id.logout);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mOAuthLoginModule!=null){
-                    mOAuthLoginModule.logout(getApplicationContext());
-                    Toast.makeText(mContext, "로그아웃 하셨습니다." , Toast.LENGTH_SHORT).show();
-                    new DeleteTokenTask(mContext, mOAuthLoginModule).execute();
-                }
-            }
-        });
-
+        nContext = this;
+        initData();
 
     }
+
+    //네이버 로그인 처리
+    private void initData(){
+        mOAuthLoginModule = OAuthLogin.getInstance();
+        mOAuthLoginModule.init(nContext,"M2lOgOAPfpTZBvZEv6r1",
+                "5RHMuUjq1t","안드로이드_과외");
+        naver_login = (OAuthLoginButton) findViewById(R.id.naver_login);
+        naver_login.setOAuthLoginHandler(mOAuthLoginHandler);
+    }
+
+    private OAuthLoginHandler mOAuthLoginHandler = new OAuthLoginHandler() {
+        @Override
+        public void run(boolean success) {
+            String accessToken = mOAuthLoginModule.getAccessToken(nContext);
+            String refreshToken = mOAuthLoginModule.getRefreshToken(nContext);
+            long expiresAt = mOAuthLoginModule.getExpiresAt(nContext);
+            String tokenType = mOAuthLoginModule.getTokenType(nContext);
+
+            new NaverRequestApiTask(nContext, mOAuthLoginModule).execute();
+/*            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(LoginActivity.this, SocialLoginAddr.class);
+                    startActivity(intent);
+                }
+            },2000);*/
+        }
+    };
+
     //구글 로그인 처리
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -237,7 +219,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d("logd", String.valueOf(account.getPhotoUrl()));
 
 
-                            Intent intent = new Intent(LoginActivity.this, Matching.class);
+                            Intent intent = new Intent(LoginActivity.this, NaverExtraInfo.class);
 
                             startActivity(intent);
 
@@ -249,6 +231,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
 
 
     //권한 위임
