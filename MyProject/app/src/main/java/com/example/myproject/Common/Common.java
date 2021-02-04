@@ -11,6 +11,7 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.util.Log;
 
+import com.example.myproject.Dto.IdCheckDTO;
 import com.example.myproject.Dto.MemberDTO;
 import com.example.myproject.Dto.StudentDTO;
 import com.example.myproject.Dto.TeacherDTO;
@@ -29,8 +30,8 @@ public class Common {
     //로그인 멤버 정보
     public static MemberDTO loginDTO = null;
 
-    //소셜로그인 임시 정보 저장용
-    public static MemberDTO socialDTO = null;
+    //아이디 중복확인
+    public static IdCheckDTO checkDTO = null;
 
     //과외매칭 선생 리스트뷰 아이템
     public static TeacherDTO selItem = null;

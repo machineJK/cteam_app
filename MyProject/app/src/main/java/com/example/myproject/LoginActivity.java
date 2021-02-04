@@ -1,10 +1,12 @@
 package com.example.myproject;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +19,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.myproject.Atask.LoginSelect;
+import com.example.myproject.Atask.IdCheck;
 import com.example.myproject.Atask.NaverRequestApiTask;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -36,6 +39,7 @@ import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
 
 import java.util.concurrent.ExecutionException;
 
+import static com.example.myproject.Common.Common.checkDTO;
 import static com.example.myproject.Common.Common.loginDTO;
 
 public class LoginActivity extends AppCompatActivity {
@@ -162,6 +166,7 @@ public class LoginActivity extends AppCompatActivity {
         naver_login.setOAuthLoginHandler(mOAuthLoginHandler);
     }
 
+    @SuppressLint("HandlerLeak")
     private OAuthLoginHandler mOAuthLoginHandler = new OAuthLoginHandler() {
         @Override
         public void run(boolean success) {
@@ -171,14 +176,30 @@ public class LoginActivity extends AppCompatActivity {
             String tokenType = mOAuthLoginModule.getTokenType(nContext);
 
             new NaverRequestApiTask(nContext, mOAuthLoginModule).execute();
-/*            Handler handler = new Handler();
+            Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(LoginActivity.this, SocialLoginAddr.class);
-                    startActivity(intent);
+                    //여기서 if문 나누기
+                    IdCheck naverIdCheck = new IdCheck(loginDTO.getId());
+                    try {
+                        naverIdCheck.execute().get();
+                    } catch (ExecutionException e) {
+                        e.getMessage();
+                    } catch (InterruptedException e) {
+                        e.getMessage();
+                    }
+
+                    if(checkDTO.getIdchk() == 0){
+                        Intent intent = new Intent(LoginActivity.this, NaverExtraInfo.class);
+                        startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(LoginActivity.this, Matching.class);
+                        startActivity(intent);
+                    }
+
                 }
-            },2000);*/
+            },2000);
         }
     };
 

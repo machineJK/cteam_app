@@ -13,7 +13,7 @@ import com.nhn.android.naverlogin.OAuthLogin;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.example.myproject.Common.Common.socialDTO;
+import static com.example.myproject.Common.Common.loginDTO;
 
 
 
@@ -53,45 +53,19 @@ public class NaverRequestApiTask extends AsyncTask<Void,Void,String> {
                 birthyear = response.getString("birthyear"); //1995
                 birthday = response.getString("birthday");   //01-05
                 birthday_split = birthday.split("-");  //["01","05"]
-                profile_image = response.getString("profile_image");
 
-                socialDTO = new MemberDTO();
-                socialDTO.setId(id);
-                socialDTO.setEmail(email);
-                socialDTO.setNickname(nickname);
-                socialDTO.setName(name);
-                socialDTO.setGender(gender);
-                socialDTO.setBirth(birthyear + "." + birthday_split[0] + "." + birthday_split[1]);
-                socialDTO.setdbImgPath(profile_image);
+                //profile_image = response.getString("profile_image");
 
-                Intent intent = new Intent(nContext, NaverExtraInfo.class);
-                nContext.startActivity(intent);
-
-                /*loginDTO = new MemberDTO();
+                loginDTO = new MemberDTO();
                 loginDTO.setId(id);
                 loginDTO.setEmail(email);
                 loginDTO.setNickname(nickname);
                 loginDTO.setName(name);
                 loginDTO.setGender(gender);
                 loginDTO.setBirth(birthyear + "." + birthday_split[0] + "." + birthday_split[1]);
-                loginDTO.setdbImgPath(profile_image);
-                loginDTO.setAddr1("광주");
-                loginDTO.setAddr2("북구");*/
-
-                //Intent intent = new Intent(nContext, Matching.class);
-                //nContext.startActivity(intent);
 
 
-                //Toast.makeText(mContext, "" + socialDTO.getId(), Toast.LENGTH_SHORT).show();
-
-
-                //Toast.makeText(mContext, "id : " + socialDTO.getId(), Toast.LENGTH_SHORT).show();
-                //Toast.makeText(mContext, "email : " + socialDTO.getEmail(), Toast.LENGTH_SHORT).show();
-                //Toast.makeText(mContext, "nickname : " + socialDTO.getNickname(), Toast.LENGTH_SHORT).show();
-                //Toast.makeText(mContext, "name : " + socialDTO.getName(), Toast.LENGTH_SHORT).show();
-                //Toast.makeText(mContext, "gender : " + socialDTO.getGender(), Toast.LENGTH_SHORT).show();
-                //Toast.makeText(mContext, "birth : " + socialDTO.getBirth(), Toast.LENGTH_SHORT).show();
-                //Toast.makeText(mContext, "profile_image : " + socialDTO.getdbImgPath(), Toast.LENGTH_SHORT).show();
+                // loginDTO.setdbImgPath(profile_image);
 
                 //Toast.makeText(mContext, ""+birthyear + "." + birthday_split[0] + "." + birthday_split[1], Toast.LENGTH_SHORT).show();
                 //Toast.makeText(mContext, "id : " + id, Toast.LENGTH_SHORT).show();

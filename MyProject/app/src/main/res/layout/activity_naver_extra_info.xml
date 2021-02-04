@@ -7,7 +7,7 @@
     tools:context=".NaverExtraInfo">
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/naverAddr2"
         android:layout_width="134dp"
         android:layout_height="63dp"
         android:layout_marginTop="220dp"
@@ -18,13 +18,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/naverAddr1"
         android:layout_width="134dp"
         android:layout_height="63dp"
         android:layout_marginTop="220dp"
         android:dropDownWidth="200dp"
         android:spinnerMode="dialog"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintEnd_toStartOf="@+id/naverAddr2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,6 +39,49 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.588"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnExtraJoin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="508dp"
+        android:text="완료"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/n_imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="368dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/blank" />
+
+    <ImageButton
+        android:id="@+id/n_btnLoad"
+        android:layout_width="32dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="368dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/photo_default"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/n_btnPhoto"
+        android:layout_width="32dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="424dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/camera_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
