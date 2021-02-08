@@ -90,6 +90,7 @@ dependencies {
     implementation "androidx.browser:browser:$android_x_version"
     implementation "androidx.legacy:legacy-support-v4:$android_x_version"
 
-
+    //카카오 로그인
+    implementation 'com.kakao.sdk:usermgmt:1.16.0'
 
 }

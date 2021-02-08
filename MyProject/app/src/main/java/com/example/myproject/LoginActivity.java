@@ -180,7 +180,7 @@ public class LoginActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    //여기서 if문 나누기
+                    //id 중복체크 이후
                     IdCheck naverIdCheck = new IdCheck(loginDTO.getId());
                     try {
                         naverIdCheck.execute().get();
@@ -190,6 +190,7 @@ public class LoginActivity extends AppCompatActivity {
                         e.getMessage();
                     }
 
+                    //0이면 db에 없음, 1이면 db에 있음
                     if(checkDTO.getIdchk() == 0){
                         Intent intent = new Intent(LoginActivity.this, NaverExtraInfo.class);
                         startActivity(intent);

@@ -24,4 +24,10 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-
+//카카오 로그인
+subprojects {
+    repositories {
+        mavenCentral()
+        maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
+    }
+}
