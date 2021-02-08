@@ -11,6 +11,7 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.util.Log;
 
+import com.example.myproject.Dto.BoardDTO;
 import com.example.myproject.Dto.IdCheckDTO;
 import com.example.myproject.Dto.MemberDTO;
 import com.example.myproject.Dto.StudentDTO;
@@ -21,7 +22,6 @@ import java.io.IOException;
 
 public class Common {
     /*public static String  ipConfig = "http://192.168.200.151:8989";*/
-    public static String ipConfig = "http://192.168.0.31:8080";
     //public static String ipConfig = "http://121.148.239.200:80";
     //public static String ipConfig = "http://192.168.0.71:80";   //소영 노트북
     //public static String ipConfig = "http://192.168.0.33:80"; //소영 컴
@@ -38,6 +38,9 @@ public class Common {
     
     //과외매칭 학생 리스트뷰 아이템
     public static StudentDTO selItem2 = null;
+
+    //게시판 리스트뷰 아이템
+    public static BoardDTO selItem3 = null;
 
 
 
