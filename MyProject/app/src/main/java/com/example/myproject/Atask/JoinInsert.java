@@ -23,11 +23,12 @@ import static com.example.myproject.Common.Common.ipConfig;
 public class JoinInsert extends AsyncTask<Void, Void, String> {
 
     String id,pw,nickname,name,gender,
-            birth, email, addr1, addr2, imageDbPathA, imageRealPathA ;
+            birth, email, addr1, addr2, imageDbPathA,
+            imageRealPathA,kakao_login, naver_login;
 
-    public JoinInsert(String id, String pw, String nickname, String name,
-                      String gender, String birth, String email, String addr1,
-                      String addr2, String imageDbPathA, String imageRealPathA) {
+    public JoinInsert(String id, String pw, String nickname, String name, String gender,
+                      String birth, String email, String addr1, String addr2,
+                      String imageDbPathA, String imageRealPathA, String kakao_login, String naver_login) {
         this.id = id;
         this.pw = pw;
         this.nickname = nickname;
@@ -39,6 +40,8 @@ public class JoinInsert extends AsyncTask<Void, Void, String> {
         this.addr2 = addr2;
         this.imageDbPathA = imageDbPathA;
         this.imageRealPathA = imageRealPathA;
+        this.kakao_login = kakao_login;
+        this.naver_login = naver_login;
     }
 
     // 데이터베이스에 삽입결과 0보다크면 삽입성공, 같거나 작으면 실패
@@ -70,6 +73,8 @@ public class JoinInsert extends AsyncTask<Void, Void, String> {
             builder.addTextBody("addr2", addr2, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("dbImgPath", imageDbPathA, ContentType.create("Multipart/related", "UTF-8"));
             builder.addPart("image", new FileBody(new File(imageRealPathA)));
+            builder.addTextBody("kakao_login", kakao_login, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("naver_login", naver_login, ContentType.create("Multipart/related", "UTF-8"));
 
             String postURL = ipConfig + "/app/anJoin";
             // 전송

@@ -24,6 +24,7 @@ import com.example.myproject.Dto.TeacherDTO;
 
 import java.util.ArrayList;
 import static com.example.myproject.Common.Common.isNetworkConnected;
+import static com.example.myproject.Common.Common.loginDTO;
 
 //과외 매칭
 public class Matching extends AppCompatActivity implements TextWatcher {
@@ -39,6 +40,20 @@ public class Matching extends AppCompatActivity implements TextWatcher {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matching);
+
+        Log.d("kakanav", "id" + loginDTO.getId());
+        Log.d("kakanav", "pw" + loginDTO.getPw());
+        Log.d("kakanav", "nick" + loginDTO.getNickname());
+        Log.d("kakanav", "name" + loginDTO.getName());
+        Log.d("kakanav", "gender" + loginDTO.getGender());
+        Log.d("kakanav", "birth" + loginDTO.getBirth());
+        Log.d("kakanav", "email" + loginDTO.getEmail());
+        Log.d("kakanav", "addr1" + loginDTO.getAddr1());
+        Log.d("kakanav", "addr2" + loginDTO.getAddr2());
+        Log.d("kakanav", "kakao" + loginDTO.getKakao_login());
+        Log.d("kakanav", "naver" + loginDTO.getNaver_login());
+        Log.d("kakanav", "img" + loginDTO.getdbImgPath());
+
 
         // 리사이클러 뷰 시작
         myItemArrayList = new ArrayList();

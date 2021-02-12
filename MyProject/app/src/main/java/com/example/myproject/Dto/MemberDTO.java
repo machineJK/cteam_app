@@ -2,13 +2,14 @@ package com.example.myproject.Dto;
 
 public class MemberDTO {
     String id, pw, nickname, name, gender,
-            birth, email, addr1, addr2, dbImgPath;
-    //소셜로그인 정보 임시 저장용
-    public MemberDTO(){}
+            birth, email, addr1, addr2, dbImgPath,kakao_login, naver_login;
 
     //회원가입
+    public MemberDTO(){}
+
     public MemberDTO(String id, String pw, String nickname, String name, String gender,
-                     String birth, String email, String addr1, String addr2, String dbImgPath) {
+                     String birth, String email, String addr1, String addr2,
+                     String dbImgPath, String kakao_login, String naver_login) {
         this.id = id;
         this.pw = pw;
         this.nickname = nickname;
@@ -19,6 +20,24 @@ public class MemberDTO {
         this.addr1 = addr1;
         this.addr2 = addr2;
         this.dbImgPath = dbImgPath;
+        this.kakao_login = kakao_login;
+        this.naver_login = naver_login;
+    }
+
+    public String getKakao_login() {
+        return kakao_login;
+    }
+
+    public void setKakao_login(String kakao_login) {
+        this.kakao_login = kakao_login;
+    }
+
+    public String getNaver_login() {
+        return naver_login;
+    }
+
+    public void setNaver_login(String naver_login) {
+        this.naver_login = naver_login;
     }
 
     public String getId() {

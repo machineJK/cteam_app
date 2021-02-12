@@ -164,7 +164,7 @@ public class NaverExtraInfo extends AppCompatActivity {
 
                     if(fileSize <= 30000000){  // 파일크기가 30메가 보다 작아야 업로드 할수 있음
                         String id = loginDTO.getId();
-                        String pw = "";
+                        String pw = "social";
                         String nickname = loginDTO.getNickname();
                         String name = loginDTO.getName();
                         String gender = loginDTO.getGender();
@@ -172,10 +172,18 @@ public class NaverExtraInfo extends AppCompatActivity {
                         String birth = loginDTO.getBirth();
                         String addr1 = naverAddr1.getSelectedItem().toString();
                         String addr2 = naverAddr2.getSelectedItem().toString();
+                        String kakao_login = "0";
+                        String naver_login = "1";
+
+                        loginDTO.setAddr1(addr1);
+                        loginDTO.setAddr2(addr2);
+                        loginDTO.setdbImgPath(imageDbPathA);
+                        loginDTO.setKakao_login(kakao_login);
+                        loginDTO.setNaver_login(naver_login);
 
                         //서버와의 연결을 위한 JoinInsert(AsyncTest 상속받음)
                         JoinInsert joinInsert = new JoinInsert(id,pw,nickname, name,gender,
-                                birth,email,addr1, addr2, imageDbPathA, imageRealPathA);
+                                birth,email,addr1, addr2, imageDbPathA, imageRealPathA,kakao_login,naver_login);
 
                         try{
                             state = joinInsert.execute().get().trim();

@@ -63,6 +63,8 @@ public class NaverRequestApiTask extends AsyncTask<Void,Void,String> {
                 loginDTO.setName(name);
                 loginDTO.setGender(gender);
                 loginDTO.setBirth(birthyear + "." + birthday_split[0] + "." + birthday_split[1]);
+                loginDTO.setNaver_login("1");
+                loginDTO.setKakao_login("0");
 
 
                 // loginDTO.setdbImgPath(profile_image);
