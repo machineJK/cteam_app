@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="10dp"
-            android:text="문제등록"
+            android:text="글쓰기"
             android:textSize="14sp" />
 
 

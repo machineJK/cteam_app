@@ -11,78 +11,83 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
-        app:cardUseCompatPadding="true"> <!--  app:cardBackgroundColor="#FFFFFFFF" -->
+        app:cardUseCompatPadding="true">
 
         <LinearLayout
             android:id="@+id/brd_parentLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                android:gravity="center_vertical"
-                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="3dp">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/brd_img"
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="fitXY"/>
+                        android:layout_margin="3dp">
 
-                </FrameLayout>
+                        <ImageView
+                            android:id="@+id/brd_detail_id_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY" />
 
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/brd_nickname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="닉네임" />
+
+                    <TextView
+                        android:id="@+id/brd_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="날짜" />
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:orientation="vertical"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="5dp"
-                android:weightSum="3">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/brd_id"
-                    android:text="mem02"
+                    android:id="@+id/brd_content"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:textSize="14sp"
-                    android:textStyle="normal|bold"
-                    android:gravity="center_vertical" />
-
-                <TextView
-                    android:id="@+id/brd_title"
-                    android:text="이것 좀 풀어주세요"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:textStyle="bold"
-                    android:gravity="center_vertical"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/brd_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="2021-01-31"
-                    android:textSize="14sp"
-                    android:textStyle="normal|bold" />
-
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:maxLines="12"
+                    android:text="내용" />
             </LinearLayout>
 
         </LinearLayout>
+
+
 
     </androidx.cardview.widget.CardView>
 

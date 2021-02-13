@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.myproject.Board_Detail;
+import com.example.myproject.BoardDetailForm;
 import com.example.myproject.Dto.BoardDTO;
 import com.example.myproject.R;
 
@@ -61,7 +61,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
                 selItem3 = arrayList.get(position);
 
                 //Toast.makeText(mContext, "board_id : " + arrayList.get(position).getBoard_id(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext, Board_Detail.class);
+                Intent intent = new Intent(mContext, BoardDetailForm.class);
                 mContext.startActivity(intent);
             }
         });
@@ -98,8 +98,8 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
     public static class ItemViewHolder extends RecyclerView.ViewHolder{
 
         public LinearLayout parentLayout;
-        public TextView brd_id;
-        public TextView brd_title;
+        public TextView brd_nickname;
+        public TextView brd_content;
         public TextView brd_date;
         public ImageView board_picture;
 
@@ -107,20 +107,19 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
             super(itemView);
 
             parentLayout = itemView.findViewById(R.id.brd_parentLayout);
-            brd_id = itemView.findViewById(R.id.brd_id);
-            brd_title = itemView.findViewById(R.id.brd_title);
+            brd_nickname = itemView.findViewById(R.id.brd_nickname);
+            brd_content = itemView.findViewById(R.id.brd_content);
             brd_date = itemView.findViewById(R.id.brd_date);
-            board_picture = itemView.findViewById(R.id.brd_img);
-
+            board_picture = itemView.findViewById(R.id.brd_detail_id_img);
         }
 
         public void setItem(BoardDTO dto){
 
-            brd_id.setText(dto.getBoard_id());
-            brd_title.setText(dto.getBoard_title());
+            brd_nickname.setText(dto.getBoard_nickname());
+            brd_content.setText(dto.getBoard_content());
             brd_date.setText(dto.getBoard_write_date());
 
-            Glide.with(itemView).load(dto.getId_image_path()).into(board_picture);
+            Glide.with(itemView).load(dto.getId_image_path()).circleCrop().into(board_picture);
         }
     }
 

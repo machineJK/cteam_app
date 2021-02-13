@@ -50,7 +50,7 @@ public class Board extends AppCompatActivity {
         findViewById(R.id.btn_brd_QnA2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Board.this, Board_Write.class);
+                Intent intent = new Intent(Board.this, BoardDetailForm.class);
                 startActivity(intent);
             }
         });

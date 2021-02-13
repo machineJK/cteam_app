@@ -128,7 +128,7 @@ public class BoardListSelect extends AsyncTask<Void,Void,Void> {
 
     public BoardDTO readMessage(JsonReader reader) throws IOException {
         int board_readcount = 0, board_notice = 1, qna_ref_num = 0;
-        String board_id = "", board_title = "", board_content = "";
+        String board_id = "", board_nickname = "", board_content = "";
         String board_write_date = "", board_image_path = "", id_image_path = "";
         reader.beginObject();
         while (reader.hasNext()) {
@@ -145,8 +145,8 @@ public class BoardListSelect extends AsyncTask<Void,Void,Void> {
                 qna_ref_num = reader.nextInt();
             } else if (readStr.equals("board_readcount")) {
                 board_readcount = reader.nextInt();
-            } else if (readStr.equals("board_title")) {
-                board_title = reader.nextString();
+            } else if (readStr.equals("board_nickname")) {
+                board_nickname = reader.nextString();
             } else if (readStr.equals("board_content")) {
                 board_content = reader.nextString();
             } else if (readStr.equals("board_image_path")) {
@@ -158,7 +158,7 @@ public class BoardListSelect extends AsyncTask<Void,Void,Void> {
             }
         }
         reader.endObject();
-        BoardDTO boardDTO = new BoardDTO(board_id, board_title, board_content, board_write_date,
+        BoardDTO boardDTO = new BoardDTO(board_id, board_nickname, board_content, board_write_date,
                 board_readcount, board_image_path, board_notice, qna_ref_num, id_image_path);
         return boardDTO;
 

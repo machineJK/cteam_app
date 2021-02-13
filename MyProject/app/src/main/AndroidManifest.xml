@@ -33,7 +33,6 @@
         <activity android:name=".MatchingStudent" />
         <activity android:name=".TeacherForm" />
         <activity android:name=".Board" />
-        <activity android:name=".Board_Detail" />
         <activity android:name=".Board_Write" />
         <activity android:name=".ChatListActivity" />
         <activity android:name=".JoinActivity" /> <!-- 카카오 로그인 -->

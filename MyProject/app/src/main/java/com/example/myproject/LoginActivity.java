@@ -113,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
         et_id = findViewById(R.id.et_id);
         et_pw = findViewById(R.id.et_pw);
 
+        //미리 로그인 아이디 써놓기(개발용)(나중에 지우기)
         et_id.setText("admin");
         et_pw.setText("0000");
 

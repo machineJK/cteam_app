@@ -20,7 +20,7 @@ import static com.example.myproject.Common.Common.loginDTO;
 
 public class MyInfo extends AppCompatActivity {
 
-    Button matching, talk, board, my, modify;
+    Button matching, talk, board, my, modify,btnLogout;
     ImageView imageView6;
     ImageButton imageButton;
     TextView my_nickname;
@@ -57,7 +57,20 @@ public class MyInfo extends AppCompatActivity {
             }
         });
         
-        
+        //로그아웃
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginDTO = null;
+                Intent intent = new Intent(MyInfo.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+
         
         //화면이동
         matching = findViewById(R.id.my_matching);

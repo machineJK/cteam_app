@@ -68,6 +68,7 @@ public class StudentForm extends AppCompatActivity {
                     startActivity(intent);
                 }else{
                     String student_id = loginDTO.getId();
+                    String student_nickname = loginDTO.getNickname();
                     String student_subject = spinner_student_subject.getSelectedItem().toString();
                     String student_grade = spinner_student_grade.getSelectedItem().toString();
                     String student_intro = et_student_intro.getText().toString();
@@ -75,7 +76,7 @@ public class StudentForm extends AppCompatActivity {
                     String student_addr = loginDTO.getAddr1() + " " + loginDTO.getAddr2();
 
                     StudentInsert studentInsert = new StudentInsert(student_id,student_subject,
-                            student_grade,student_intro,student_image_path,student_addr);
+                            student_grade,student_intro,student_image_path,student_addr,student_nickname);
 
                     try {
                         state = studentInsert.execute().get().trim();

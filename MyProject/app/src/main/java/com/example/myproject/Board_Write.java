@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -50,14 +51,13 @@ public class Board_Write extends AppCompatActivity {
     ImageView brdImageView;
     java.text.SimpleDateFormat tmpDateFormat;
 
-    EditText etBrdTitle,etBrdContent;
+    EditText etBrdContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board__write);
 
-        etBrdTitle = findViewById(R.id.etBrdTitle);
         etBrdContent = findViewById(R.id.etBrdContent);
         btnBrdJoin = findViewById(R.id.btnBrdJoin);
         btnBrdJoinCancel = findViewById(R.id.btnBrdJoinCancel);
@@ -115,11 +115,6 @@ public class Board_Write extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //반드시 정보를 입력하게 하기
-                if(etBrdTitle.getText().toString().length() == 0){
-                    Toast.makeText(Board_Write.this, "제목을 작성하세요!!!", Toast.LENGTH_SHORT).show();
-                    etBrdTitle.requestFocus();
-                    return;
-                }
                 if(etBrdContent.getText().toString().length() == 0){
                     Toast.makeText(Board_Write.this, "내용을 작성하세요!!!", Toast.LENGTH_SHORT).show();
                     etBrdContent.requestFocus();
@@ -135,17 +130,22 @@ public class Board_Write extends AppCompatActivity {
                     if(fileSize <= 30000000){  // 파일크기가 30메가 보다 작아야 업로드 할수 있음
 //
                         String board_id = loginDTO.getId();
-                        String board_title = etBrdTitle.getText().toString();
+                        String board_nickname = loginDTO.getNickname();
                         String board_content = etBrdContent.getText().toString();
                         String id_image_path = loginDTO.getdbImgPath();
-                        int board_notice = 1;
+                        int board_notice = 0;
                         int qna_ref_num = 0;
+
+                        if(loginDTO.getId().equals("admin")){
+                            board_notice = 1;
+                        }
+
 
                         Log.d("main:Boardwrite", "데이터 추출 !!!" + brdimageDbPathA);
 
                         if(brdimageDbPathA == null) {
-                            BoardInsert2 brdInsert2 = new BoardInsert2(board_id, board_title, board_content,
-                                    board_notice, qna_ref_num, id_image_path );
+                            BoardInsert2 brdInsert2 = new BoardInsert2(board_id,board_nickname,board_content,
+                                    id_image_path,board_notice, qna_ref_num);
                             try {
                                 state = brdInsert2.execute().get().trim();
                                 Log.d("main:Boardwrite", "입력실행 !!!" + state);
@@ -168,7 +168,7 @@ public class Board_Write extends AppCompatActivity {
                             }
 
                         } else {
-                            BoardInsert brdInsert = new BoardInsert(board_id, board_title, board_content,
+                            BoardInsert brdInsert = new BoardInsert(board_id, board_nickname,board_content,
                                     brdimageDbPathA, brdimageRealPathA, board_notice, qna_ref_num, id_image_path);
                             try {
                                 state = brdInsert.execute().get().trim();
