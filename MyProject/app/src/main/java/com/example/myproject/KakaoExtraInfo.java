@@ -147,6 +147,26 @@ public class KakaoExtraInfo extends AppCompatActivity {
                             R.array.incheon,R.layout.spinner_design);
                     addr2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnerAddr2.setAdapter(addr2Adapter);
+                }else if(addr1_text.equals("대전")){
+                    ArrayAdapter addr2Adapter = ArrayAdapter.createFromResource(KakaoExtraInfo.this,
+                            R.array.daejeon,R.layout.spinner_design);
+                    addr2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnerAddr2.setAdapter(addr2Adapter);
+                }else if(addr1_text.equals("대구")){
+                    ArrayAdapter addr2Adapter = ArrayAdapter.createFromResource(KakaoExtraInfo.this,
+                            R.array.daegu,R.layout.spinner_design);
+                    addr2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnerAddr2.setAdapter(addr2Adapter);
+                }else if(addr1_text.equals("부산")){
+                    ArrayAdapter addr2Adapter = ArrayAdapter.createFromResource(KakaoExtraInfo.this,
+                            R.array.busan,R.layout.spinner_design);
+                    addr2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnerAddr2.setAdapter(addr2Adapter);
+                }else if(addr1_text.equals("울산")){
+                    ArrayAdapter addr2Adapter = ArrayAdapter.createFromResource(KakaoExtraInfo.this,
+                            R.array.ulsan,R.layout.spinner_design);
+                    addr2Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnerAddr2.setAdapter(addr2Adapter);
                 }
             }
 
