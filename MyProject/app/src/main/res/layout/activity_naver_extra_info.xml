@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NaverExtraInfo">
+    tools:context=".NaverExtraInfo"
+    android:background="@color/bg2">
 
     <Spinner
         android:id="@+id/naverAddr2"
@@ -30,17 +31,17 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="304dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="116dp"
-        android:text="추가 정보를 작성해주세요"
-        android:textSize="26sp"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="추가 정보를 입력해 주세요"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         android:gravity="center"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/bg"
+        android:fontFamily="@font/scd" />
 
     <Button
         android:id="@+id/btnExtraJoin"
@@ -51,7 +52,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/button_back"
+        android:fontFamily="@font/scd" />
 
     <ImageView
         android:id="@+id/n_imageView"
@@ -70,7 +73,8 @@
         android:layout_marginStart="252dp"
         android:layout_marginTop="368dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/photo_default"
+        android:src="@drawable/gallery"
+        android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,7 +85,8 @@
         android:layout_marginStart="252dp"
         android:layout_marginTop="424dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/camera_image"
+        android:src="@drawable/camera"
+        android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

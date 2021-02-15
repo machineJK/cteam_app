@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".KakaoExtraInfo">
+    tools:context=".KakaoExtraInfo"
+    android:background="@color/bg2">
 
     <EditText
         android:id="@+id/et_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="316dp"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="270dp"
+        android:background="@drawable/joined"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textView68"
@@ -22,11 +23,12 @@
         android:id="@+id/rg_gender"
         android:layout_width="207dp"
         android:layout_height="45dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="164dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.378"
-        app:layout_constraintStart_toEndOf="@+id/textView66"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
@@ -35,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
+            android:fontFamily="@font/scd"
             android:text="남자" />
 
         <RadioButton
@@ -42,17 +45,17 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:fontFamily="@font/scd"
             android:text="여자" />
 
     </RadioGroup>
 
     <Spinner
         android:id="@+id/spinnerAddr1"
-        android:layout_width="96dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginLeft="124dp"
-        android:layout_marginTop="376dp"
+        android:layout_width="95dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="320dp"
         android:dropDownWidth="200dp"
         android:spinnerMode="dialog"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,46 +64,49 @@
 
     <EditText
         android:id="@+id/et_nickname"
-        android:layout_width="277dp"
-        android:layout_height="38dp"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="88dp"
+        android:background="@drawable/joined"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/textView60"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/scd"
+        android:textColor="@color/black"
         android:text="주소"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView64" />
+        app:layout_constraintTop_toBottomOf="@+id/textView68" />
 
     <TextView
         android:id="@+id/textView65"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="26dp"
+        android:fontFamily="@font/scd"
         android:text="성별"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView64" />
 
 
     <Spinner
         android:id="@+id/spinnerAddr2"
-        android:layout_width="97dp"
-        android:layout_height="37dp"
+        android:layout_width="95dp"
+        android:layout_height="30dp"
         android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="376dp"
+        android:layout_marginTop="320dp"
         android:dropDownWidth="200dp"
         android:spinnerMode="dialog"
         app:layout_constraintStart_toEndOf="@+id/spinnerAddr1"
@@ -110,9 +116,11 @@
         android:id="@+id/textView63"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="95dp"
         android:text="닉네임"
+        android:textColor="@color/black"
+        android:fontFamily="@font/scd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -120,9 +128,11 @@
         android:id="@+id/textView68"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/scd"
         android:text="이메일"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView66" />
 
@@ -130,30 +140,37 @@
         android:id="@+id/textView64"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/scd"
         android:text="이름"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView63" />
 
     <EditText
         android:id="@+id/et_name"
-        android:layout_width="282dp"
-        android:layout_height="39dp"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/joined"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_nickname" />
 
     <TextView
         android:id="@+id/textView66"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="34dp"
+        android:fontFamily="@font/scd"
         android:text="생년월일"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView65" />
 
@@ -161,45 +178,42 @@
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:src="@drawable/blank"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.424"
+        app:layout_constraintHorizontal_bias="0.408"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.844"
-        android:src="@drawable/blank" />
+        app:layout_constraintVertical_bias="0.61" />
+
+    <Spinner
+        android:id="@+id/spinnerYear"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="220dp"
+        android:dropDownWidth="200dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinnerMonth"
-        android:layout_width="76dp"
-        android:layout_height="32dp"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="256dp"
+        android:layout_marginTop="220dp"
         android:dropDownWidth="200dp"
         android:spinnerMode="dialog"
         app:layout_constraintStart_toEndOf="@+id/spinnerYear"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinnerYear"
-        android:layout_width="85dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginLeft="112dp"
-        android:layout_marginTop="252dp"
-        android:dropDownWidth="200dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
         android:id="@+id/spinnerDay"
-        android:layout_width="70dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="256dp"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="220dp"
         android:dropDownWidth="200dp"
         android:spinnerMode="dialog"
         app:layout_constraintStart_toEndOf="@+id/spinnerMonth"
@@ -210,21 +224,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/scd"
         android:text="프로필 사진"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView68" />
+        app:layout_constraintTop_toBottomOf="@+id/textView60" />
 
     <ImageButton
         android:id="@+id/btnLoad"
         android:layout_width="32dp"
         android:layout_height="37dp"
-        android:layout_marginStart="248dp"
-        android:layout_marginLeft="248dp"
-        android:layout_marginTop="428dp"
+        android:layout_marginStart="244dp"
+        android:layout_marginTop="384dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/photo_default"
+        android:src="@drawable/gallery"
+        android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -232,11 +247,11 @@
         android:id="@+id/btnPhoto"
         android:layout_width="32dp"
         android:layout_height="37dp"
-        android:layout_marginStart="248dp"
-        android:layout_marginLeft="248dp"
-        android:layout_marginTop="464dp"
+        android:layout_marginStart="244dp"
+        android:layout_marginTop="420dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/camera_image"
+        android:scaleType="fitCenter"
+        android:src="@drawable/camera"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -244,23 +259,27 @@
         android:id="@+id/btnJoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="536dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="540dp"
+        android:background="@drawable/button_back"
+        android:fontFamily="@font/scd"
         android:text="완료"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="292dp"
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
         android:layout_height="52dp"
         android:text="추가 정보를 입력해 주세요"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/bg"
+        android:fontFamily="@font/scd" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

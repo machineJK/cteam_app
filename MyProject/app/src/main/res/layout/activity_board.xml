@@ -5,47 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Board">
+    tools:context=".Board"
+    android:background="@color/bg2"
+    android:weightSum="12"
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
+        android:layout_weight="0.5"
+        android:background="@color/bg"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/TextView_brd"
-            android:layout_width="170dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
             android:text="게시판"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             android:gravity="center"
-            android:textSize="40sp"
-            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btn_brd_QnA2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="10dp"
-            android:text="글쓰기"
-            android:textSize="14sp" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/bg"
+            android:fontFamily="@font/scd" />
 
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btn_brd_QnA2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_back"
+        android:fontFamily="@font/scd"
+        android:text="문제등록"
+        android:textColor="@color/bg"
+        android:textSize="18dp" />
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="480dp">
+        android:layout_height="480dp"
+        android:layout_weight="11.3">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_brd"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="561dp">
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -56,36 +64,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:layout_weight="0.2">
 
-        <Button
+        <ImageButton
             android:id="@+id/matchingst_matching"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:text="과외매칭"/>
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            android:src="@drawable/home3" />
 
-        <Button
+        <ImageButton
             android:id="@+id/matchingst_talk"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:text="문의하기" />
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            android:src="@drawable/q" />
 
-        <Button
+        <ImageButton
             android:id="@+id/matchingst_board"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:text="게시판"
-            app:backgroundTint="#DD8181"  />
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cboard" />
 
-        <Button
+        <ImageButton
             android:id="@+id/matchingst_my"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:text="My" />
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            android:src="@drawable/mymy" />
     </LinearLayout>
 
 

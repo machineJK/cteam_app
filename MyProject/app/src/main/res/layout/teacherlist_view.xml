@@ -65,7 +65,8 @@
                     android:layout_weight="1"
                     android:textSize="14sp"
                     android:textStyle="normal|bold"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/scd"/>
 
                 <TextView
                     android:id="@+id/tv_subject"
@@ -75,7 +76,8 @@
                     android:layout_weight="1"
                     android:textStyle="bold"
                     android:gravity="center_vertical"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:fontFamily="@font/scd"/>
 
                 <TextView
                     android:id="@+id/tv_worktime_pay"
@@ -86,7 +88,8 @@
                     android:textColor="#ff0000"
                     android:text="3시간 50만원"
                     android:textSize="24sp"
-                    android:textStyle="normal|bold" />
+                    android:textStyle="normal|bold"
+                    android:fontFamily="@font/scd"/>
 
             </LinearLayout>
 

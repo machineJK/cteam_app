@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="ExtraText">
+
+    <solid android:color="#836875DD"/>
+    //배경 색
+    <size android:height="50dp" android:width="50dp"/>
+    //크기
+    <corners android:radius="30dp"/>
+</shape>

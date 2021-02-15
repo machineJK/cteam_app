@@ -4,29 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/bg">
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="213dp"
-        android:layout_height="243dp"
-        android:layout_marginTop="136dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/loading_image" />
-
-    <TextView
-        android:id="@+id/textView59"
-        android:layout_width="212dp"
-        android:layout_height="82dp"
+        android:layout_width="670dp"
+        android:layout_height="687dp"
         android:layout_marginTop="48dp"
-        android:text="튜더스"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:textSize="24sp"
+        android:src="@drawable/main2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--    <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="670dp"
+            android:layout_height="687dp"
+            android:layout_marginTop="48dp"
+            android:src="@drawable/main3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentForm">
+    tools:context=".StudentForm"
+    android:background="@color/bg2">
 
     <Spinner
         android:id="@+id/spinner_student_subject"
@@ -27,7 +28,9 @@
         android:layout_marginTop="260dp"
         android:text="한줄소개"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/scd"
+        android:textColor="@color/black"/>
 
     <Spinner
         android:id="@+id/spinner_student_grade"
@@ -49,6 +52,8 @@
         android:layout_marginLeft="76dp"
         android:layout_marginTop="172dp"
         android:text="학력"
+        android:fontFamily="@font/scd"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,6 +65,8 @@
         android:layout_marginLeft="56dp"
         android:layout_marginTop="92dp"
         android:text="희망과목"
+        android:fontFamily="@font/scd"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,7 +79,9 @@
         android:layout_marginTop="536dp"
         android:text="등록"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/button_back"
+        android:fontFamily="@font/scd" />
 
     <Button
         android:id="@+id/student_cancel"
@@ -83,7 +92,9 @@
         android:layout_marginTop="536dp"
         android:text="취소"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/button_back"
+        android:fontFamily="@font/scd" />
 
     <EditText
         android:id="@+id/et_student_intro"
@@ -93,6 +104,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="292dp"
         android:ems="10"
+        android:background="@drawable/joined"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

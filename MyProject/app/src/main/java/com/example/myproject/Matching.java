@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +30,8 @@ import static com.example.myproject.Common.Common.loginDTO;
 //과외 매칭
 public class Matching extends AppCompatActivity implements TextWatcher {
 
-    Button teacher, student, add, matching, talk, board, my;
+    Button teacher, student, add;
+    ImageButton matching, talk, board, my;
     RecyclerView recyclerView;
     ProgressDialog progressDialog;
     ArrayList<TeacherDTO> myItemArrayList;

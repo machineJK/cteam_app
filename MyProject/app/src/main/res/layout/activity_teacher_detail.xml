@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TeacherDetail" >
+    tools:context=".TeacherDetail"
+    android:background="@color/bg2">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,9 +21,11 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="선생 상세정보"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/scd"
+                android:text="선생님정보"
                 android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textSize="20sp" />
 
 
             <LinearLayout
@@ -49,7 +52,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="닉네임" />
+                        android:text="닉네임"
+                        android:fontFamily="@font/scd"/>
 
                     <TextView
                         android:id="@+id/et_tdetail_univ"
@@ -57,7 +61,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="학력" />
+                        android:text="학력"
+                        android:fontFamily="@font/scd"/>
 
                     <TextView
                         android:id="@+id/et_tdetail_subject"
@@ -65,7 +70,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="과목" />
+                        android:text="과목"
+                        android:fontFamily="@font/scd"/>
 
                     <TextView
                         android:id="@+id/et_tdetail_addr"
@@ -73,7 +79,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="주소" />
+                        android:text="주소"
+                        android:fontFamily="@font/scd"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -84,7 +91,9 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="30dp"
                 android:text="상담하기"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:background="@drawable/button_back"
+                android:fontFamily="@font/scd"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -99,6 +108,7 @@
                     android:layout_weight="1"
                     android:paddingLeft="50dp"
                     android:text="페이"
+                    android:fontFamily="@font/scd"
                     android:textColor="@color/black"
                     android:textSize="24sp" />
 
@@ -110,7 +120,8 @@
                     android:gravity="center_vertical"
                     android:text="TextView"
                     android:textColor="#ff0000"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:fontFamily="@font/scd"/>
             </LinearLayout>
 
             <LinearLayout
@@ -125,6 +136,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="50dp"
                     android:text="소개"
+                    android:fontFamily="@font/scd"
                     android:textColor="@color/black"
                     android:textSize="24sp" />
             </LinearLayout>
@@ -133,7 +145,8 @@
                 android:id="@+id/et_dteacher_intro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="TextView"
+                android:fontFamily="@font/scd"/>
 
 
         </LinearLayout>

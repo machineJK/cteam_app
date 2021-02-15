@@ -12,6 +12,7 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.myproject.Adapter.BoardAdapter;
@@ -25,7 +26,8 @@ import static com.example.myproject.Common.Common.isNetworkConnected;
 
 public class Board extends AppCompatActivity {
 
-    Button btnQnA, matching, talk, board, my;
+    Button btnQnA;
+    ImageButton matching, talk, board, my;
     RecyclerView recyclerView;
     ProgressDialog progressDialog;
     ArrayList<BoardDTO> brdArrayList;

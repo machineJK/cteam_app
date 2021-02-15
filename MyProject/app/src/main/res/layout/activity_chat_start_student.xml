@@ -32,7 +32,11 @@
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:text="send"
-            android:id="@+id/btn_send"/>
+            android:id="@+id/btn_send"
+            app:backgroundTint="#6875DD"
+            android:background="@drawable/button"
+            android:fontFamily="@font/scd"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 

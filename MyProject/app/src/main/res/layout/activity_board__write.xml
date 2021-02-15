@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Board_Write">
+    tools:context=".Board_Write"
+    android:background="@color/bg2">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,7 +24,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:text="Name" />
+                android:text="Name"
+                android:background="@drawable/joined"
+                android:fontFamily="@font/scd"/>
 
             <ImageView
                 android:id="@+id/brdImageView"
@@ -45,7 +48,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/camera_image"
+            android:src="@drawable/camera"
+            android:scaleType="fitCenter"
             android:layout_gravity="start"/>
 
         <ImageButton
@@ -55,6 +59,7 @@
             android:layout_marginLeft="20dp"
             android:background="@android:color/transparent"
             android:src="@drawable/gallery"
+            android:scaleType="fitCenter"
             android:layout_gravity="start"/>
 
         <View
@@ -66,15 +71,21 @@
             android:id="@+id/btnBrdJoin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="완료"
-            android:layout_gravity="end"/>
+            android:layout_gravity="end"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_back"
+            android:fontFamily="@font/scd"
+            android:text="완료" />
 
         <Button
             android:id="@+id/btnBrdJoinCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="취소"
-            android:layout_gravity="end"/>
+            android:layout_gravity="end"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_back"
+            android:fontFamily="@font/scd"
+            android:text="취소" />
     </LinearLayout>
 
 </LinearLayout>

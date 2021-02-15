@@ -20,7 +20,8 @@ import static com.example.myproject.Common.Common.loginDTO;
 
 public class MyInfo extends AppCompatActivity {
 
-    Button matching, talk, board, my, modify,btnLogout;
+    Button modify, btnLogout;
+    ImageButton matching, talk, board, my;
     ImageView imageView6;
     ImageButton imageButton;
     TextView my_nickname;

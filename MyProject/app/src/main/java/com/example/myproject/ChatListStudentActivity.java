@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -22,7 +23,7 @@ import static com.example.myproject.Common.Common.selItem2;
 
 public class ChatListStudentActivity extends AppCompatActivity {
 
-    Button matching,talk,board,my;
+    ImageButton matching,talk,board,my;
     Button btn_teacherList;
 
     private ListView chat_studentList;

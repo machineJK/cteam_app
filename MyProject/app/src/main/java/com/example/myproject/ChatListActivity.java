@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import static com.example.myproject.Common.Common.loginDTO;
@@ -19,7 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ChatListActivity extends AppCompatActivity {
-    Button matching,talk,board,my;
+    ImageButton matching,talk,board,my;
     Button btn_studentList;
 
     private ListView chat_teacherList;

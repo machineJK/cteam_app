@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -55,7 +56,7 @@ public class ModifyMyInfo extends AppCompatActivity {
     File file = null;
     long fileSize = 0;
 
-    Button photoBtn, photoLoad;
+    ImageButton photoBtn, photoLoad;
     ImageView imageView8;
     String id, pw, nickname, email;
     EditText etUId, etUPw, etUNickname, etUEmail;

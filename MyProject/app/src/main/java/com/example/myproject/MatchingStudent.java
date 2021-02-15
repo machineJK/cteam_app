@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.myproject.Adapter.MyRecyclerviewAdapter2;
@@ -27,7 +28,8 @@ import java.util.ArrayList;
 import static com.example.myproject.Common.Common.isNetworkConnected;
 
 public class MatchingStudent extends AppCompatActivity implements TextWatcher {
-    Button matching, talk, board, my, add2, teacher2;
+    Button add2, teacher2;
+    ImageButton matching, talk, board, my;
     RecyclerView recyclerView;
     ProgressDialog progressDialog;
     ArrayList<StudentDTO> myItemArrayList;
