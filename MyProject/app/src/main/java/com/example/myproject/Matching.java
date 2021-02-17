@@ -1,6 +1,7 @@
 package com.example.myproject;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -43,6 +44,7 @@ public class Matching extends AppCompatActivity implements TextWatcher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matching);
 
+        //데이터 체크용
         Log.d("kakanav", "id : " + loginDTO.getId());
         Log.d("kakanav", "pw : " + loginDTO.getPw());
         Log.d("kakanav", "nickname : " + loginDTO.getNickname());
@@ -55,7 +57,6 @@ public class Matching extends AppCompatActivity implements TextWatcher {
         Log.d("kakanav", "kakao : " + loginDTO.getKakao_login());
         Log.d("kakanav", "naver : " + loginDTO.getNaver_login());
         Log.d("kakanav", "img : " + loginDTO.getdbImgPath());
-
 
         // 리사이클러 뷰 시작
         myItemArrayList = new ArrayList();
@@ -87,6 +88,7 @@ public class Matching extends AppCompatActivity implements TextWatcher {
             public void onClick(View v) {
                 Intent intent = new Intent(Matching.this, TeacherForm.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -135,7 +137,6 @@ public class Matching extends AppCompatActivity implements TextWatcher {
 
 
 
-
     // 이미 화면이 있을때 받는곳
     @Override
     protected void onNewIntent(Intent intent) {
@@ -143,14 +144,13 @@ public class Matching extends AppCompatActivity implements TextWatcher {
 
         // 새로고침하면서 이미지가 겹치는 현상 없애기 위해...
         adapter.removeAllItem();
-
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("데이터 업로딩");
         progressDialog.setMessage("데이터 업로딩 중입니다\n" + "잠시만 기다려주세요 ...");
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
         processIntent(intent);
-
+        Toast.makeText(this, "onNewIntent다시부름", Toast.LENGTH_SHORT).show();
         super.onNewIntent(intent);
 
     }
@@ -207,4 +207,6 @@ public class Matching extends AppCompatActivity implements TextWatcher {
     public void afterTextChanged(Editable editable) {
 
     }
+
+
 }

@@ -26,8 +26,8 @@ public class BoardDetailForm extends AppCompatActivity {
         brd_detail_date = findViewById(R.id.brd_detail_date);
         brd_content = findViewById(R.id.brd_content);
         brd_detail_image = findViewById(R.id.brd_detail_image);
+        Glide.with(this).load(selItem3.getId_image_path()).circleCrop().into(brd_detail_id_img);
 
-        Glide.with(this).load(selItem3.getId_image_path()).into(brd_detail_id_img);
         brd_detail_nickname.setText(selItem3.getBoard_nickname());
         brd_detail_date.setText(selItem3.getBoard_write_date());
         brd_content.setText(selItem3.getBoard_content());

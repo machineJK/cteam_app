@@ -86,6 +86,8 @@
                     android:ellipsize="end"
                     android:maxLines="12"
                     android:text="내용"
+                    android:gravity="start"
+                    android:padding="10dp"
                     android:fontFamily="@font/scd"/>
             </LinearLayout>
 

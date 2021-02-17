@@ -23,19 +23,18 @@ import static com.example.myproject.Common.Common.ipConfig;
 public class BoardInsert extends AsyncTask<Void, Void, String> {
     String board_id, board_nickname,board_content;
     String brdImageDbPathA, brdImageRealPathA, id_image_path;
-    int board_notice, qna_ref_num;
+    int board_notice;
     //board_num, board_write_date, board_readcount
 
     public BoardInsert(String board_id, String board_nickname, String board_content,
                        String brdImageDbPathA, String brdImageRealPathA,
-                       int board_notice, int qna_ref_num, String id_image_path) {
+                       int board_notice, String id_image_path) {
         this.board_id = board_id;
         this.board_nickname = board_nickname;
         this.board_content = board_content;
         this.brdImageDbPathA = brdImageDbPathA;
         this.brdImageRealPathA = brdImageRealPathA;
         this.board_notice = board_notice;
-        this.qna_ref_num = qna_ref_num;
         this.id_image_path = id_image_path;
     }
 
@@ -62,7 +61,6 @@ public class BoardInsert extends AsyncTask<Void, Void, String> {
             builder.addTextBody("board_nickname", board_nickname, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("board_content", board_content, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("board_notice", board_notice + "", ContentType.create("Multipart/related", "UTF-8"));
-            builder.addTextBody("qna_ref_num", qna_ref_num + "", ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("brdDbImgPath", brdImageDbPathA, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("id_image_path", id_image_path, ContentType.create("Multipart/related", "UTF-8"));
             builder.addPart("brdImage", new FileBody(new File(brdImageRealPathA)));

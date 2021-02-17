@@ -135,7 +135,6 @@ public class Board_Write extends AppCompatActivity {
                         String board_content = etBrdContent.getText().toString();
                         String id_image_path = loginDTO.getdbImgPath();
                         int board_notice = 0;
-                        int qna_ref_num = 0;
 
                         if(loginDTO.getId().equals("admin")){
                             board_notice = 1;
@@ -146,7 +145,7 @@ public class Board_Write extends AppCompatActivity {
 
                         if(brdimageDbPathA == null) {
                             BoardInsert2 brdInsert2 = new BoardInsert2(board_id,board_nickname,board_content,
-                                    id_image_path,board_notice, qna_ref_num);
+                                    id_image_path,board_notice);
                             try {
                                 state = brdInsert2.execute().get().trim();
                                 Log.d("main:Boardwrite", "입력실행 !!!" + state);
@@ -170,7 +169,7 @@ public class Board_Write extends AppCompatActivity {
 
                         } else {
                             BoardInsert brdInsert = new BoardInsert(board_id, board_nickname,board_content,
-                                    brdimageDbPathA, brdimageRealPathA, board_notice, qna_ref_num, id_image_path);
+                                    brdimageDbPathA, brdimageRealPathA, board_notice, id_image_path);
                             try {
                                 state = brdInsert.execute().get().trim();
                                 Log.d("main:Boardwrite", "입력실행 !!!" + state);

@@ -56,7 +56,6 @@
         <activity android:name=".ModifyMyInfo" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MyInfo" />
-        <activity android:name=".BoardWriteForm" />
         <activity android:name=".BoardDetailForm" />
         <activity android:name=".StudentForm" />
         <activity

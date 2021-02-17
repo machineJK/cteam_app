@@ -22,11 +22,13 @@
             <EditText
                 android:id="@+id/etBrdContent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:text="Name"
+                android:layout_height="300dp"
                 android:background="@drawable/joined"
-                android:fontFamily="@font/scd"/>
+                android:ems="10"
+                android:fontFamily="@font/scd"
+                android:gravity="start"
+                android:padding="10dp"
+                android:hint="내용을 입력하세요" />
 
             <ImageView
                 android:id="@+id/brdImageView"

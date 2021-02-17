@@ -32,7 +32,6 @@ public class TeacherForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_form);
 
-
         spinner_teacher_subject = findViewById(R.id.spinner_teacher_subject);
 
         ArrayAdapter subjectAdapter = ArrayAdapter.createFromResource(this,R.array.tSubject,
@@ -91,6 +90,7 @@ public class TeacherForm extends AppCompatActivity {
                     Toast.makeText(TeacherForm.this, "로그인을 해주세요!!!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(TeacherForm.this, LoginActivity.class);
                     startActivity(intent);
+                    finish();
                 }else{
                     String teacher_id = loginDTO.getId();
                     String teacher_univ = et_teacher_univ.getText().toString();
@@ -119,19 +119,19 @@ public class TeacherForm extends AppCompatActivity {
                     if(state.equals("1")){
                         Toast.makeText(TeacherForm.this, "삽입성공 !!!", Toast.LENGTH_SHORT).show();
                         Log.d("main:joinact", "삽입성공 !!!");
-                        finish();
+                        Intent intent = new Intent(TeacherForm.this,Matching.class);
+                        startActivity(intent);
                     }else{
                         Toast.makeText(TeacherForm.this, "삽입실패 !!!", Toast.LENGTH_SHORT).show();
                         Log.d("main:joinact", "삽입실패 !!!");
-                        finish();
+                        Intent intent = new Intent(TeacherForm.this,Matching.class);
+                        startActivity(intent);
                     }
 
 
                 }
 
 
-                /*Intent intent = new Intent(TeacherForm.this, Matching.class);
-                startActivity(intent);*/
             }
         });
 
@@ -139,8 +139,10 @@ public class TeacherForm extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(TeacherForm.this, Matching.class);
+                startActivity(intent);
             }
         });
     }
+
 }
