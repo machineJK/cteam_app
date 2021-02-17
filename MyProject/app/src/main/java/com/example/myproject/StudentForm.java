@@ -90,11 +90,13 @@ public class StudentForm extends AppCompatActivity {
                     if(state.equals("1")){
                         Toast.makeText(StudentForm.this, "삽입성공 !!!", Toast.LENGTH_SHORT).show();
                         Log.d("main:joinact", "삽입성공 !!!");
-                        finish();
+                        Intent intent = new Intent(StudentForm.this, MatchingStudent.class);
+                        startActivity(intent);
                     }else{
                         Toast.makeText(StudentForm.this, "삽입실패 !!!", Toast.LENGTH_SHORT).show();
                         Log.d("main:joinact", "삽입실패 !!!");
-                        finish();
+                        Intent intent = new Intent(StudentForm.this, MatchingStudent.class);
+                        startActivity(intent);
                     }
 
 

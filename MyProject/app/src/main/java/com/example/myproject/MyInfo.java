@@ -40,7 +40,7 @@ public class MyInfo extends AppCompatActivity {
 
 
         imageView6 = findViewById(R.id.imageView6);
-        Glide.with(this).load(loginDTO.getdbImgPath()).into(imageView6);
+        Glide.with(this).load(loginDTO.getdbImgPath()).circleCrop().into(imageView6);
         modify = findViewById(R.id.my_modify);
         modify.setOnClickListener(new View.OnClickListener() {
             @Override

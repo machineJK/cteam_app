@@ -87,11 +87,13 @@
                     android:id="@+id/brd_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="내용"
                     android:textSize="24dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/scd"
-                    />
+                    android:gravity="start"
+                    android:padding="10dp"
+                    android:text="내용" />
+
 
                 <ImageView
                     android:id="@+id/brd_detail_image"

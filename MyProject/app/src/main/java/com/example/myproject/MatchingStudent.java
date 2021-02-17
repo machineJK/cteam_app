@@ -41,6 +41,7 @@ public class MatchingStudent extends AppCompatActivity implements TextWatcher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matching_student);
 
+
         // 리사이클러 뷰 시작
         myItemArrayList = new ArrayList();
         adapter = new MyRecyclerviewAdapter2(this, myItemArrayList);
@@ -49,8 +50,8 @@ public class MatchingStudent extends AppCompatActivity implements TextWatcher {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,
                 RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-
         recyclerView.setAdapter(adapter);
+
 
         if(isNetworkConnected(this) == true){
             listSelect = new StudentListSelect(myItemArrayList, adapter, progressDialog);
@@ -76,6 +77,7 @@ public class MatchingStudent extends AppCompatActivity implements TextWatcher {
             public void onClick(View v) {
                 Intent intent = new Intent(MatchingStudent.this, StudentForm.class);
                 startActivity(intent);
+                finish();
             }
         });
         
