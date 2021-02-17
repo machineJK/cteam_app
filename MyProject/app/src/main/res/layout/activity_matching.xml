@@ -38,7 +38,7 @@
             android:fontFamily="@font/scd"
             android:background="@drawable/button"
             android:textColor="@color/white"
-            android:layout_margin="5dp"/>
+            android:layout_margin="10dp"/>
 
         <Button
             android:id="@+id/student"
@@ -49,7 +49,7 @@
             android:fontFamily="@font/scd"
             android:background="@drawable/btn2"
             android:textColor="@color/bg"
-            android:layout_margin="5dp"/>
+            android:layout_margin="10dp"/>
     </LinearLayout>
 
     <Button
@@ -60,7 +60,10 @@
         android:background="@drawable/btn3"
         android:textColor="@color/white"
         android:fontFamily="@font/scd"
-        android:layout_margin="5dp"/>
+
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -70,7 +73,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="566dp">
+            android:layout_height="566dp"
+            android:layout_margin="20dp">
 
         </androidx.recyclerview.widget.RecyclerView>
 

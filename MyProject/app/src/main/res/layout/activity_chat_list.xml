@@ -37,25 +37,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
 
 
             <TextView
                 android:id="@+id/text_teacherList"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="33dp"
                 android:layout_marginBottom="20dp"
+                android:fontFamily="@font/scd"
                 android:gravity="center"
                 android:text="선생님 목록"
-                android:fontFamily="@font/scd"
                 android:textSize="20dp" />
 
             <ListView
                 android:id="@+id/chat_teacherList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="163dp">
 
             </ListView>
+
         </LinearLayout>
     </LinearLayout>
 
@@ -63,11 +65,13 @@
         android:id="@+id/btn_studentList"
         android:layout_width="116dp"
         android:layout_height="39dp"
-        android:layout_marginTop="216dp"
-        android:background="@drawable/button_back"
+        android:layout_marginTop="304dp"
+        android:background="@drawable/button"
         android:fontFamily="@font/scd"
         android:text="학생목록이동"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
@@ -121,5 +125,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/talk_board" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

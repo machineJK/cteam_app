@@ -261,8 +261,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="180dp"
         android:layout_marginTop="540dp"
-        android:background="@drawable/button_back"
+        android:background="@drawable/button"
         android:fontFamily="@font/scd"
+        android:textColor="@color/white"
         android:text="완료"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

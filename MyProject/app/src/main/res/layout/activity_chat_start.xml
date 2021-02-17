@@ -14,7 +14,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scrollbars="vertical"
-        android:background="#99CCFF"
+        android:background="@color/bg4"
         />
 
     <LinearLayout
@@ -27,16 +27,19 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/edt_chat"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:background="@drawable/btn2"
+            android:layout_margin="10dp"
+            android:paddingLeft="10dp"/>
         <Button
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:text="send"
             android:id="@+id/btn_send"
-            app:backgroundTint="#6875DD"
             android:background="@drawable/button"
             android:fontFamily="@font/scd"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:layout_margin="10dp"/>
 
     </LinearLayout>
 

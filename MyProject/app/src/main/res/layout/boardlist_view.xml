@@ -9,7 +9,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="187dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:cardUseCompatPadding="true">
@@ -22,18 +22,18 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="80dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
 
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <FrameLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="69dp"
                         android:layout_height="match_parent"
                         android:layout_margin="3dp">
 
@@ -41,6 +41,7 @@
                             android:id="@+id/brd_detail_id_img"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="5dp"
                             android:scaleType="fitXY" />
 
                     </FrameLayout>
@@ -58,17 +59,25 @@
                         android:id="@+id/brd_nickname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/scd"
                         android:text="닉네임"
-                        android:fontFamily="@font/scd"/>
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/brd_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/scd"
                         android:text="날짜"
-                        android:fontFamily="@font/scd"/>
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -82,15 +91,19 @@
                 <TextView
                     android:id="@+id/brd_content"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:ellipsize="end"
+                    android:fontFamily="@font/scd"
                     android:maxLines="12"
                     android:text="내용"
-                    android:fontFamily="@font/scd"/>
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
             </LinearLayout>
 
         </LinearLayout>
-
 
 
     </androidx.cardview.widget.CardView>

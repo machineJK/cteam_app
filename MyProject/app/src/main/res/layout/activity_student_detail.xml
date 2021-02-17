@@ -18,12 +18,12 @@
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:background="@color/bg"
                 android:fontFamily="@font/scd"
-                android:text="선생님 상세정보"
+                android:text="  학생정보"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:padding="10dp"/>
 
 
@@ -31,7 +31,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="30dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_margin="20dp">
 
                 <ImageView
                     android:id="@+id/sdetail_imageView"
@@ -52,6 +53,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="닉네임"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/scd"/>
 
                     <TextView
@@ -61,6 +63,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="과목"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/scd"/>
 
                     <TextView
@@ -70,6 +73,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="주소"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/scd"/>
                 </LinearLayout>
             </LinearLayout>
@@ -85,7 +89,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:fontFamily="@font/scd"
-                android:background="@drawable/button_back"/>
+                android:background="@drawable/button"
+                android:textColor="@color/white"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

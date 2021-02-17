@@ -270,8 +270,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="296dp"
         android:layout_marginTop="444dp"
-        android:background="@drawable/button_back"
+        android:background="@drawable/button"
         android:fontFamily="@font/scd"
+        android:textColor="@color/white"
         android:text="체크용"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -319,7 +320,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="90dp"
         android:layout_marginTop="584dp"
-        android:background="@drawable/button_back"
+        android:background="@drawable/button"
+        android:textColor="@color/white"
         android:fontFamily="@font/scd"
         android:text="가입"
         app:layout_constraintStart_toStartOf="parent"
@@ -333,7 +335,8 @@
         android:layout_marginEnd="90dp"
         android:fontFamily="@font/scd"
         android:text="취소"
-        android:background="@drawable/button_back"
+        android:background="@drawable/button"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

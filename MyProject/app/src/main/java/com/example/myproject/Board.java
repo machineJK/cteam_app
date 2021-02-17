@@ -26,7 +26,7 @@ import static com.example.myproject.Common.Common.isNetworkConnected;
 
 public class Board extends AppCompatActivity {
 
-    Button btnQnA;
+    ImageButton btnQnA;
     ImageButton matching, talk, board, my;
     RecyclerView recyclerView;
     ProgressDialog progressDialog;

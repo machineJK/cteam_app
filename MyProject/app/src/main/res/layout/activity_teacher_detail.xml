@@ -8,6 +8,17 @@
     tools:context=".TeacherDetail"
     android:background="@color/bg2">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/bg"
+        android:fontFamily="@font/scd"
+        android:text="  선생님정보"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:padding="10dp"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -15,17 +26,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="20dp">
 
-            <TextView
+<!--            <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:fontFamily="@font/scd"
                 android:text="선생님정보"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />-->
 
 
             <LinearLayout
@@ -53,6 +65,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="닉네임"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/scd"/>
 
                     <TextView
@@ -62,6 +75,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="학력"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/scd"/>
 
                     <TextView
@@ -71,6 +85,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="과목"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/scd"/>
 
                     <TextView
@@ -80,6 +95,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="주소"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/scd"/>
                 </LinearLayout>
             </LinearLayout>
@@ -92,7 +108,8 @@
                 android:layout_marginBottom="30dp"
                 android:text="상담하기"
                 android:textSize="16sp"
-                android:background="@drawable/button_back"
+                android:background="@drawable/button"
+                android:textColor="@color/white"
                 android:fontFamily="@font/scd"/>
 
             <LinearLayout
@@ -144,9 +161,13 @@
             <TextView
                 android:id="@+id/et_dteacher_intro"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="246dp"
+                android:background="@color/white"
+                android:fontFamily="@font/scd"
                 android:text="TextView"
-                android:fontFamily="@font/scd"/>
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                android:layout_margin="15dp"/>
 
 
         </LinearLayout>
