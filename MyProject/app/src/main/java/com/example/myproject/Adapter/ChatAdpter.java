@@ -27,7 +27,7 @@ public class ChatAdpter extends RecyclerView.Adapter<com.example.myproject.Adapt
         public TextView txt_nickName , txt_msg , txt_date;
         public TextView txt_msg2 , txt_date2;
         public LinearLayout ln1 ;
-        public ImageView down_arrow , down_arrow2;
+        public ImageView down_arrow, down_arrow2;
         public View rootView;
 
         public MyViewHolder(View v){

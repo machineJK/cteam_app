@@ -67,13 +67,13 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_marginStart="108dp"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="88dp"
-        android:src="@drawable/blank"
+        android:layout_marginTop="84dp"
         android:scaleType="fitXY"
+        android:src="@drawable/blank"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,12 +81,12 @@
         android:id="@+id/my_modify"
         android:layout_width="75dp"
         android:layout_height="40dp"
-        android:layout_marginStart="308dp"
+        android:layout_marginStart="300dp"
         android:layout_marginTop="104dp"
         android:background="@drawable/button"
         android:fontFamily="@font/scd"
-        android:textColor="@color/white"
         android:text="수정"
+        android:textColor="@color/white"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -109,12 +109,12 @@
         android:id="@+id/my_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="200dp"
         android:fontFamily="@font/scd"
         android:textColor="@color/black"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -136,6 +136,7 @@
         android:layout_marginTop="300dp"
         android:fontFamily="@font/scd"
         android:text="매칭된 사람"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -160,6 +161,7 @@
         android:layout_marginTop="372dp"
         android:fontFamily="@font/scd"
         android:text="매칭된 과외"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"

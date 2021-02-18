@@ -106,6 +106,7 @@
         android:layout_marginTop="292dp"
         android:background="@drawable/joined"
         android:ems="10"
+        android:maxLength="200"
         android:gravity="start"
         android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"

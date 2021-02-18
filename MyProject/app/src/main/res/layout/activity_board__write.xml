@@ -8,6 +8,21 @@
     tools:context=".Board_Write"
     android:background="@color/bg2">
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/bg"
+        android:fontFamily="@font/scd"
+        android:gravity="center"
+        android:text="게시판"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -28,12 +43,13 @@
                 android:fontFamily="@font/scd"
                 android:gravity="start"
                 android:padding="10dp"
-                android:hint="내용을 입력하세요" />
+                android:hint="내용을 입력하세요"
+                android:layout_margin="20dp"/>
 
             <ImageView
                 android:id="@+id/brdImageView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="251dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
         </LinearLayout>
@@ -46,23 +62,23 @@
 
         <ImageButton
             android:id="@+id/btnPhoto"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="start"
             android:layout_marginLeft="10dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/camera"
             android:scaleType="fitCenter"
-            android:layout_gravity="start"/>
+            android:src="@drawable/camera" />
 
         <ImageButton
             android:id="@+id/btnLoad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
             android:layout_marginLeft="20dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/gallery"
             android:scaleType="fitCenter"
-            android:layout_gravity="start"/>
+            android:src="@drawable/gallery" />
 
         <View
             android:layout_width="0dp"
@@ -72,22 +88,24 @@
         <Button
             android:id="@+id/btnBrdJoin"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="end"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_back"
+            android:layout_margin="10dp"
+            android:background="@drawable/button"
             android:fontFamily="@font/scd"
-            android:text="완료" />
+            android:text="완료"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnBrdJoinCancel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="end"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_back"
+            android:layout_margin="10dp"
+            android:background="@drawable/button"
             android:fontFamily="@font/scd"
-            android:text="취소" />
+            android:text="취소"
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </LinearLayout>
