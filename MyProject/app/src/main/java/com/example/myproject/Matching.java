@@ -1,7 +1,6 @@
 package com.example.myproject;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -15,14 +14,19 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myproject.Adapter.MyRecyclerviewAdapter;
+import com.example.myproject.Atask.SetToken;
 import com.example.myproject.Atask.TeacherListSelect;
 import com.example.myproject.Dto.TeacherDTO;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 import static com.example.myproject.Common.Common.isNetworkConnected;
@@ -30,6 +34,8 @@ import static com.example.myproject.Common.Common.loginDTO;
 
 //과외 매칭
 public class Matching extends AppCompatActivity implements TextWatcher {
+
+    private String TAG = "Matching";
 
     Button teacher, student, add;
     ImageButton matching, talk, board, my;
@@ -43,6 +49,35 @@ public class Matching extends AppCompatActivity implements TextWatcher {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matching);
+
+        //token 얻어오기
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@NonNull Task<String> task) {
+                if (!task.isSuccessful()) {
+                    Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                    return;
+                }
+
+                // Get new FCM registration token
+                String token = task.getResult();
+
+                // Log and toast
+                String msg = getString(R.string.msg_token_fmt, token);
+                Log.d(TAG, msg);
+                Toast.makeText(Matching.this, msg, Toast.LENGTH_SHORT).show();
+
+                SetToken setToken = new SetToken(loginDTO.getId(), token);
+                try {
+                    String state = setToken.execute().get();
+                    Log.d(TAG, state);
+
+                } catch (Exception e){
+                    Log.d(TAG, e.getMessage());
+                }
+
+            }
+        });
 
         //데이터 체크용
         Log.d("kakanav", "id : " + loginDTO.getId());
