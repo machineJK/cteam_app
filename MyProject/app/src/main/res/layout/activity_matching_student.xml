@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/textVie8"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="50dp"
         android:text="과외매칭"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -33,7 +33,7 @@
             android:id="@+id/teacher"
             android:layout_width="138dp"
             android:layout_height="48dp"
-            android:text="선생님"
+            android:text="학생 구해요"
             android:fontFamily="@font/scd"
             android:background="@drawable/btn2"
             android:textColor="@color/bg"
@@ -43,7 +43,7 @@
             android:id="@+id/student"
             android:layout_width="138dp"
             android:layout_height="48dp"
-            android:text="학생"
+            android:text="선생님 구해요"
             android:fontFamily="@font/scd"
             android:background="@drawable/button"
             android:textColor="@color/white"
@@ -54,11 +54,12 @@
         android:id="@+id/add2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="과외 등록하기"
+        android:text="과외 신청하기"
         android:background="@drawable/btn3"
         android:textColor="@color/white"
         android:fontFamily="@font/scd"
-        android:layout_margin="5dp"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -69,7 +70,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
         </androidx.recyclerview.widget.RecyclerView>
 

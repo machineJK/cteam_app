@@ -19,7 +19,7 @@
         <TextView
             android:id="@+id/textView8"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="50dp"
             android:text="문의하기"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -41,10 +41,10 @@
             <TextView
                 android:id="@+id/text_studentList"
                 android:layout_width="match_parent"
-                android:layout_height="66dp"
+                android:layout_height="60dp"
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
-                android:text="학생 목록"
+                android:text="학생과의 대화"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:fontFamily="@font/scd"
@@ -53,7 +53,7 @@
             <ListView
                 android:id="@+id/chat_studentList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="380dp">
 
             </ListView>
         </LinearLayout>
@@ -116,16 +116,16 @@
 
     <Button
         android:id="@+id/btn_teacherList"
-        android:layout_width="105dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="464dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="300dp"
         android:background="@drawable/button"
         android:fontFamily="@font/scd"
-        android:text="선생님목록 이동"
+        android:text="선생님 목록 이동"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

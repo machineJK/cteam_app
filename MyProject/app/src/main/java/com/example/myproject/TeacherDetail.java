@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 
+import static com.example.myproject.Common.Common.loginDTO;
 import static com.example.myproject.Common.Common.selItem;
 
 public class TeacherDetail extends AppCompatActivity {
@@ -41,7 +42,7 @@ public class TeacherDetail extends AppCompatActivity {
         teacher_addr.setText(selItem.getTeacher_addr());
         teacher_pay_worktime.setText(selItem.getTeacher_pay() + " " + selItem.getTeacher_worktime());
         teacher_intro.setText(selItem.getTeacher_intro());
-        Glide.with(this).load(selItem.getTeacher_image_path()).into(teacher_picture);
+        Glide.with(this).load(selItem.getTeacher_image_path()).circleCrop().into(teacher_picture);
 
 
         //상담하기

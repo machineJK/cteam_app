@@ -112,7 +112,8 @@
         android:layout_marginTop="200dp"
         android:fontFamily="@font/scd"
         android:textColor="@color/black"
-        android:textSize="24dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
@@ -170,7 +171,7 @@
     <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="50dp"
         android:text="마이페이지"
         android:textColor="@color/white"
         android:textSize="20sp"

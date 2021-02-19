@@ -61,6 +61,7 @@
                 <TextView
                     android:id="@+id/tv_grade"
                     android:text="고1"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -73,6 +74,7 @@
                 <TextView
                     android:id="@+id/tv_address"
                     android:text="광주 북구"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -90,6 +92,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="과학"
+                    android:layout_marginLeft="10dp"
                     android:textStyle="normal|bold"
                     android:fontFamily="@font/scd"
                     android:textColor="@color/black"

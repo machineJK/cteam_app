@@ -61,6 +61,7 @@
                 <TextView
                     android:id="@+id/tv_addr"
                     android:text="서강대 생명과학과"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -73,6 +74,7 @@
                 <TextView
                     android:id="@+id/tv_subject"
                     android:text="과학"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -89,6 +91,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="3시간 50만원"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="normal|bold"

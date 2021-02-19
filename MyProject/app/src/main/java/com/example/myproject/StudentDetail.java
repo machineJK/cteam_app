@@ -32,7 +32,7 @@ public class StudentDetail extends AppCompatActivity {
         et_sdetail_addr = findViewById(R.id.et_sdetail_addr);
         et_dstudent_intro = findViewById(R.id.et_dstudent_intro);
 
-        Glide.with(this).load(selItem2.getStudent_image_path()).into(sdetail_imageView);
+        Glide.with(this).load(selItem2.getStudent_image_path()).circleCrop().into(sdetail_imageView);
         et_sdetail_addr.setText(selItem2.getStudent_addr());
         et_dstudent_intro.setText(selItem2.getStudent_intro());
         et_sdetail_subject.setText(selItem2.getStudent_subject());

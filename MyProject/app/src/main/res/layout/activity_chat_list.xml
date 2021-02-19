@@ -21,7 +21,7 @@
         <TextView
             android:id="@+id/textView8"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="50dp"
             android:text="문의하기"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -44,11 +44,11 @@
             <TextView
                 android:id="@+id/text_teacherList"
                 android:layout_width="match_parent"
-                android:layout_height="66dp"
+                android:layout_height="60dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/scd"
                 android:gravity="center"
-                android:text="선생님 목록"
+                android:text="선생님과의 대화"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
@@ -56,7 +56,7 @@
             <ListView
                 android:id="@+id/chat_teacherList"
                 android:layout_width="match_parent"
-                android:layout_height="163dp">
+                android:layout_height="380dp">
 
             </ListView>
 
@@ -65,12 +65,12 @@
 
     <Button
         android:id="@+id/btn_studentList"
-        android:layout_width="116dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="304dp"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="300dp"
         android:background="@drawable/button"
         android:fontFamily="@font/scd"
-        android:text="학생목록이동"
+        android:text="학생 목록 이동"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
