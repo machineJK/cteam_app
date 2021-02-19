@@ -14,7 +14,9 @@ import android.widget.EditText;
 
 import static com.example.myproject.Common.Common.loginDTO;
 import static com.example.myproject.Common.Common.selItem;
+import static com.example.myproject.Common.Common.selItem2;
 
+import com.example.myproject.Atask.FirebaseNotification;
 import com.example.myproject.Adapter.ChatAdpter;
 import com.example.myproject.Dto.ChatDTO;
 import com.example.myproject.Dto.TeacherDTO;
@@ -72,6 +74,9 @@ public class ChatStartActivity extends AppCompatActivity {
                     myRef.push().setValue(dto);
                     toRef.push().setValue(dto);
                     edt_chat.setText("");
+
+                    FirebaseNotification firebaseNotification = new FirebaseNotification(selItem.getTeacher_id(), dto);
+                    firebaseNotification.execute();
                 }
 
             }

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.myproject.Atask.FirebaseNotification;
 import com.example.myproject.Adapter.ChatAdpter;
 import com.example.myproject.Dto.ChatDTO;
 import com.google.firebase.database.ChildEventListener;
@@ -26,7 +27,6 @@ import java.util.Date;
 import java.util.List;
 
 import static com.example.myproject.Common.Common.loginDTO;
-import static com.example.myproject.Common.Common.selItem;
 import static com.example.myproject.Common.Common.selItem2;
 
 public class ChatStartStudentActivity extends AppCompatActivity {
@@ -72,6 +72,9 @@ public class ChatStartStudentActivity extends AppCompatActivity {
                     myRef.push().setValue(dto);
                     toRef.push().setValue(dto);
                     edt_chat.setText("");
+
+                    FirebaseNotification firebaseNotification = new FirebaseNotification(selItem2.getStudent_id(), dto);
+                    firebaseNotification.execute();
                 }
 
             }
