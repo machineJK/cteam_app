@@ -8,6 +8,7 @@ public class TeacherDTO implements Serializable {
             teacher_date,teacher_nickname,teacher_addr;
     private int teacher_matching;
 
+    public TeacherDTO(){}
     public TeacherDTO(String teacher_id, String teacher_univ, String teacher_major,
                       String teacher_univnum, String teacher_subject, String teacher_worktime,
                       String teacher_pay, String teacher_intro, String teacher_image_path,

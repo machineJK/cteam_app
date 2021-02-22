@@ -9,6 +9,13 @@
     android:background="@color/bg4"
     android:weightSum="1">
 
+    <Button
+        android:id="@+id/btn_require"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.05"
+        android:text="요청하기" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcview"
         android:layout_width="match_parent"

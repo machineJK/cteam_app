@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myproject.Adapter.MyRecyclerviewAdapter;
+import com.example.myproject.Atask.MyTeacherDetail;
 import com.example.myproject.Atask.SetToken;
 import com.example.myproject.Atask.TeacherListSelect;
 import com.example.myproject.Dto.TeacherDTO;
@@ -29,8 +30,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
+
 import static com.example.myproject.Common.Common.isNetworkConnected;
 import static com.example.myproject.Common.Common.loginDTO;
+import static com.example.myproject.Common.Common.myDetail;
 
 //과외 매칭
 public class Matching extends AppCompatActivity implements TextWatcher {
@@ -50,6 +55,15 @@ public class Matching extends AppCompatActivity implements TextWatcher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matching);
 
+        MyTeacherDetail myTeacherDetail = new MyTeacherDetail(loginDTO.getId());
+        try {
+            myTeacherDetail.execute().get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         //token 얻어오기
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
             @Override
@@ -64,8 +78,8 @@ public class Matching extends AppCompatActivity implements TextWatcher {
 
                 // Log and toast
                 String msg = getString(R.string.msg_token_fmt, token);
-                Log.d(TAG, msg);
-                Toast.makeText(Matching.this, msg, Toast.LENGTH_SHORT).show();
+                //Log.d(TAG, msg);
+                //Toast.makeText(Matching.this, msg, Toast.LENGTH_SHORT).show();
 
                 SetToken setToken = new SetToken(loginDTO.getId(), token);
                 try {
