@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.myproject.Atask.FirebaseNotification;
 import com.example.myproject.Adapter.ChatAdpter;
+import com.example.myproject.Atask.SetMatch;
 import com.example.myproject.Dto.ChatDTO;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import static com.example.myproject.Common.Common.loginDTO;
 import static com.example.myproject.Common.Common.selItem2;
@@ -65,6 +67,7 @@ public class ChatStartStudentActivity extends AppCompatActivity {
                 dto.setNickname(loginDTO.getName());
                 dto.setMsg(msgRequire + "\n 한울은행 : 123-456123-456");
 
+
                 long now = System.currentTimeMillis();
                 Date mDate = new Date(now);
                 SimpleDateFormat simpleDate = new SimpleDateFormat("hh:mm:aa");
@@ -73,6 +76,15 @@ public class ChatStartStudentActivity extends AppCompatActivity {
                 myRef.push().setValue(dto);
                 toRef.push().setValue(dto);
                 edt_chat.setText("");
+
+                SetMatch setMatch = new SetMatch(loginDTO.getId(), selItem2.getStudent_id());
+                try {
+                    setMatch.execute().get();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
                 FirebaseNotification firebaseNotification = new FirebaseNotification(selItem2.getStudent_id(), dto);
                 firebaseNotification.execute();
