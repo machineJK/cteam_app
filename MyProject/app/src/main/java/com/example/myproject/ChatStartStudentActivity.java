@@ -11,9 +11,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.myproject.Atask.FirebaseNotification;
 import com.example.myproject.Adapter.ChatAdpter;
+import com.example.myproject.Atask.SetMatch;
 import com.example.myproject.Dto.ChatDTO;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -25,9 +27,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import static com.example.myproject.Common.Common.loginDTO;
 import static com.example.myproject.Common.Common.selItem2;
+import static com.example.myproject.Common.Common.myDetail;
 
 public class ChatStartStudentActivity extends AppCompatActivity {
 
@@ -37,7 +41,7 @@ public class ChatStartStudentActivity extends AppCompatActivity {
     private List<ChatDTO> chatDTOList;
 
     private EditText edt_chat;
-    private Button btn_send;
+    private Button btn_send, btn_require;
     private String student;
 
     private DatabaseReference myRef;
@@ -48,12 +52,44 @@ public class ChatStartStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_start_student);
 
+        String msgRequire = myDetail.getTeacher_pay();
 
         Intent intent = getIntent();
         student = intent.getStringExtra("chatSelect");
 
         btn_send = findViewById(R.id.btn_send);
         edt_chat = findViewById(R.id.edt_chat);
+        btn_require = findViewById(R.id.btn_require);
+        btn_require.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChatDTO dto = new ChatDTO();
+                dto.setNickname(loginDTO.getName());
+                dto.setMsg(msgRequire + "\n 한울은행 : 123-456123-456");
+
+
+                long now = System.currentTimeMillis();
+                Date mDate = new Date(now);
+                SimpleDateFormat simpleDate = new SimpleDateFormat("hh:mm:aa");
+                String getTime = simpleDate.format(mDate);
+                dto.setDate(getTime);
+                myRef.push().setValue(dto);
+                toRef.push().setValue(dto);
+                edt_chat.setText("");
+
+                SetMatch setMatch = new SetMatch(loginDTO.getId(), selItem2.getStudent_id());
+                try {
+                    setMatch.execute().get();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                FirebaseNotification firebaseNotification = new FirebaseNotification(selItem2.getStudent_id(), dto);
+                firebaseNotification.execute();
+            }
+        });
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override

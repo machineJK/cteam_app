@@ -43,6 +43,8 @@ public class Common {
     //게시판 리스트뷰 아이템
     public static BoardDTO selItem3 = null;
 
+    //내가 선생님으로 등록한 정보.
+    public static TeacherDTO myDetail = null;
 
     // 네트워크에 연결되어 있는가
     public static boolean isNetworkConnected(Context context) {
