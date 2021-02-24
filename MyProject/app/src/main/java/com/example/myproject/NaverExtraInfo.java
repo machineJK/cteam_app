@@ -6,6 +6,7 @@ import androidx.core.content.FileProvider;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -200,6 +201,7 @@ public class NaverExtraInfo extends AppCompatActivity {
                         loginDTO.setdbImgPath(imageDbPathA);
                         loginDTO.setKakao_login(kakao_login);
                         loginDTO.setNaver_login(naver_login);
+
 
                         //서버와의 연결을 위한 JoinInsert(AsyncTest 상속받음)
                         JoinInsert joinInsert = new JoinInsert(id,pw,nickname, name,gender,

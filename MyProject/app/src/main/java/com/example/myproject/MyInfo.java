@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.view.View;
@@ -12,11 +13,15 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
+import com.nhn.android.naverlogin.OAuthLogin;
 
 import static com.example.myproject.Common.Common.loginDTO;
-
+import static com.example.myproject.LoginActivity.mOAuthLoginModule;
 
 public class MyInfo extends AppCompatActivity {
 
@@ -26,8 +31,6 @@ public class MyInfo extends AppCompatActivity {
     ImageButton imageButton;
     TextView my_nickname;
     String nickname;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +66,57 @@ public class MyInfo extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginDTO = null;
-                Intent intent = new Intent(MyInfo.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                //카카오 로그아웃
+                if (loginDTO.getKakao_login().equals("1") && loginDTO.getNaver_login().equals("0")){
+                    UserManagement.getInstance().requestLogout(new LogoutResponseCallback() { //로그아웃 실행
+                        @Override
+                        public void onCompleteLogout() {
+                            //로그아웃 성공 시 로그인 화면(LoginActivity)로 이동
+                            SharedPreferences kakaoLogin = getSharedPreferences("kakaoLogin", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = kakaoLogin.edit();
+                            editor.clear();
+                            editor.commit();
+
+                            loginDTO = null;
+                            Intent intent = new Intent(MyInfo.this, LoginActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+                }
+
+                //일반 로그아웃
+                if(loginDTO.getKakao_login().equals("0") && loginDTO.getNaver_login().equals("0")){
+                    SharedPreferences normalLogin = getSharedPreferences("normalLogin", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = normalLogin.edit();
+                    editor.clear();
+                    editor.commit();
+
+                    loginDTO = null;
+                    Intent intent = new Intent(MyInfo.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+                if(loginDTO.getKakao_login().equals("0") && loginDTO.getNaver_login().equals("1")){
+                    SharedPreferences naverLogin = getSharedPreferences("naverLogin", MODE_PRIVATE);
+                    SharedPreferences.Editor editor1 = naverLogin.edit();
+                    editor1.clear();
+                    editor1.commit();
+
+                    SharedPreferences naverDTO = getSharedPreferences("naverDTO", MODE_PRIVATE);
+                    SharedPreferences.Editor editor2 = naverDTO.edit();
+                    editor2.clear();
+                    editor2.commit();
+
+                    //mOAuthLoginModule.logout(MyInfo.this);
+                    loginDTO = null;
+                    Intent intent = new Intent(MyInfo.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         });
 

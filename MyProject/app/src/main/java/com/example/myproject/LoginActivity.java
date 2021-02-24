@@ -4,12 +4,15 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,6 +24,7 @@ import androidx.core.content.ContextCompat;
 import com.example.myproject.Atask.LoginSelect;
 import com.example.myproject.Atask.IdCheck;
 import com.example.myproject.Atask.NaverRequestApiTask;
+import com.example.myproject.Dto.MemberDTO;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -57,26 +61,115 @@ public class LoginActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 9001;
     private SignInButton signInButton;
 
-    Button btnLogin, btnSignUp,logout;
+    Button btnLogin, btnSignUp;
     EditText et_id, et_pw;
     String id,pw;
 
+    CheckBox chkAuto;
+
     //네이버 로그인
-    private static OAuthLogin mOAuthLoginModule;
-    private static Context nContext;
+    public static OAuthLogin mOAuthLoginModule;
+    private Context lContext = LoginActivity.this;
     private OAuthLoginButton naver_login;
 
     private ISessionCallback sessionCallback;
+
+    SharedPreferences autoLogin,normalLogin,kakaoLogin,naverLogin,naverDTO;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        chkAuto = findViewById(R.id.chkAuto);
+
         //카카오 로그인
         sessionCallback = new SessionCallback();
         Session.getCurrentSession().addCallback(sessionCallback);
         //Session.getCurrentSession().checkAndImplicitOpen();   //카카오톡 자동로그인
+
+        //자동로그인 체크박스 설정
+        autoLogin = getSharedPreferences("autoLogin",MODE_PRIVATE);
+        if(!autoLogin.getString("isChecked", "").equals("")){
+            if(autoLogin.getString("isChecked","").equals("checked")){
+                chkAuto.setChecked(true);
+            }else if(autoLogin.getString("isChecked","").equals("notChecked")){
+                chkAuto.setChecked(false);
+            }
+        }
+
+        chkAuto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    SharedPreferences.Editor editor = autoLogin.edit();
+                    editor.putString("isChecked", "checked");
+                    editor.commit();
+                }else{
+                    SharedPreferences.Editor editor = autoLogin.edit();
+                    editor.putString("isChecked", "notChecked");
+                    editor.commit();
+                }
+            }
+        });
+
+        normalLogin = getSharedPreferences("normalLogin",MODE_PRIVATE);
+        kakaoLogin = getSharedPreferences("kakaoLogin", MODE_PRIVATE);
+        naverLogin = getSharedPreferences("naverLogin", MODE_PRIVATE);
+        naverDTO = getSharedPreferences("naverDTO", MODE_PRIVATE);
+
+        //자동로그인이 체크되어있을 경우 자동 로그인
+        if(chkAuto.isChecked()){
+            if(!normalLogin.getString("id", "").equals("")){
+                loginDTO = new MemberDTO();
+                loginDTO.setId(normalLogin.getString("id",""));
+                loginDTO.setPw(normalLogin.getString("pw",""));
+                loginDTO.setNickname(normalLogin.getString("nickname",""));
+                loginDTO.setName(normalLogin.getString("name",""));
+                loginDTO.setGender(normalLogin.getString("gender",""));
+                loginDTO.setBirth(normalLogin.getString("birth",""));
+                loginDTO.setEmail(normalLogin.getString("email",""));
+                loginDTO.setAddr1(normalLogin.getString("addr1",""));
+                loginDTO.setAddr2(normalLogin.getString("addr2",""));
+                loginDTO.setdbImgPath(normalLogin.getString("dbimgpath",""));
+                loginDTO.setKakao_login(normalLogin.getString("kakao_login",""));
+                loginDTO.setNaver_login(normalLogin.getString("naver_login",""));
+
+                Intent intent = new Intent(LoginActivity.this, Matching.class);
+                startActivity(intent);
+                finish();
+            }
+            //카카오톡 자동로그인
+            if(kakaoLogin.getString("kakaoLogin","").equals("kakaoLogin")){
+                //Toast.makeText(this, kakaoLogin.getString("kakaoLogin","") ,Toast.LENGTH_SHORT).show();
+                Session.getCurrentSession().checkAndImplicitOpen();
+            }
+
+            //네이버 자동로그인
+            if(naverLogin.getString("naverLogin","").equals("naverLogin")){
+                Toast.makeText(LoginActivity.this, "네이버 값 있음", Toast.LENGTH_SHORT).show();
+                loginDTO = new MemberDTO();
+                loginDTO.setId(naverDTO.getString("id",""));
+                loginDTO.setPw(naverDTO.getString("pw",""));
+                loginDTO.setNickname(naverDTO.getString("nickname",""));
+                loginDTO.setName(naverDTO.getString("name",""));
+                loginDTO.setGender(naverDTO.getString("gender",""));
+                loginDTO.setBirth(naverDTO.getString("birth",""));
+                loginDTO.setEmail(naverDTO.getString("email",""));
+                loginDTO.setAddr1(naverDTO.getString("addr1",""));
+                loginDTO.setAddr2(naverDTO.getString("addr2",""));
+                loginDTO.setdbImgPath(naverDTO.getString("dbimgpath",""));
+                loginDTO.setKakao_login(naverDTO.getString("kakao_login",""));
+                loginDTO.setNaver_login(naverDTO.getString("naver_login",""));
+
+                Intent intent = new Intent(LoginActivity.this, Matching.class);
+                startActivity(intent);
+                finish();
+            }
+        }
+
+
 
 
                 //구글 로그인 버튼
@@ -114,10 +207,11 @@ public class LoginActivity extends AppCompatActivity {
         et_pw = findViewById(R.id.et_pw);
 
 
-        //미리 로그인 아이디 써놓기(개발용)(나중에 지우기)
+        //미리 로그인 아이디 써놓기(개발용)(나중에 지우기)////////////
         et_id.setText("admin");
         et_pw.setText("0000");
 
+        //권한 주기
         checkDangerousPermissions();
 
         //로그인
@@ -146,8 +240,26 @@ public class LoginActivity extends AppCompatActivity {
                 if(loginDTO != null){
                     Toast.makeText(LoginActivity.this, "로그인 되었습니다 !!!", Toast.LENGTH_SHORT).show();
                     Log.d("main:login", loginDTO.getId() + "님 로그인 되었습니다 !!!");
+
+                    normalLogin = getSharedPreferences("normalLogin",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = normalLogin.edit();
+                    editor.putString("id", loginDTO.getId());
+                    editor.putString("pw", loginDTO.getPw());
+                    editor.putString("nickname", loginDTO.getNickname());
+                    editor.putString("name", loginDTO.getName());
+                    editor.putString("gender", loginDTO.getGender());
+                    editor.putString("birth", loginDTO.getBirth());
+                    editor.putString("email", loginDTO.getEmail());
+                    editor.putString("addr1", loginDTO.getAddr1());
+                    editor.putString("addr2", loginDTO.getAddr2());
+                    editor.putString("dbimgpath", loginDTO.getdbImgPath());
+                    editor.putString("kakao_login", loginDTO.getKakao_login());
+                    editor.putString("naver_login", loginDTO.getNaver_login());
+                    editor.commit();
+
                     Intent intent = new Intent(LoginActivity.this, Matching.class);
                     startActivity(intent);
+                    finish();
                 }else {
                     Toast.makeText(LoginActivity.this, "아이디나 비밀번호가 일치안함 !!!", Toast.LENGTH_SHORT).show();
                     Log.d("main:login", "아이디나 비밀번호가 일치안함 !!!");
@@ -169,7 +281,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //네이버 로그인
-        nContext = this;
+        //lContext = LoginActivity.this;
         initData();
 
     }
@@ -177,7 +289,7 @@ public class LoginActivity extends AppCompatActivity {
     //네이버 로그인 처리
     private void initData(){
         mOAuthLoginModule = OAuthLogin.getInstance();
-        mOAuthLoginModule.init(nContext,"M2lOgOAPfpTZBvZEv6r1",
+        mOAuthLoginModule.init(lContext,"M2lOgOAPfpTZBvZEv6r1",
                 "5RHMuUjq1t","안드로이드_과외");
         naver_login = (OAuthLoginButton) findViewById(R.id.naver_login);
         naver_login.setOAuthLoginHandler(mOAuthLoginHandler);
@@ -187,12 +299,12 @@ public class LoginActivity extends AppCompatActivity {
     private OAuthLoginHandler mOAuthLoginHandler = new OAuthLoginHandler() {
         @Override
         public void run(boolean success) {
-            String accessToken = mOAuthLoginModule.getAccessToken(nContext);
-            String refreshToken = mOAuthLoginModule.getRefreshToken(nContext);
-            long expiresAt = mOAuthLoginModule.getExpiresAt(nContext);
-            String tokenType = mOAuthLoginModule.getTokenType(nContext);
+            String accessToken = mOAuthLoginModule.getAccessToken(lContext);
+            String refreshToken = mOAuthLoginModule.getRefreshToken(lContext);
+            long expiresAt = mOAuthLoginModule.getExpiresAt(lContext);
+            String tokenType = mOAuthLoginModule.getTokenType(lContext);
 
-            new NaverRequestApiTask(nContext, mOAuthLoginModule).execute();
+            new NaverRequestApiTask(lContext, mOAuthLoginModule).execute();
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -211,20 +323,26 @@ public class LoginActivity extends AppCompatActivity {
                     if(checkDTO.getIdchk() == 0){
                         Intent intent = new Intent(LoginActivity.this, NaverExtraInfo.class);
                         startActivity(intent);
+                        finish();
                     }else{
                         id = loginDTO.getId();
                         pw = "social";
 
                         LoginSelect loginSelect = new LoginSelect(id, pw);
+
                         try {
                             loginSelect.execute().get();
+
+                            Intent intent = new Intent(LoginActivity.this, Matching.class);
+                            startActivity(intent);
+                            finish();
+
                         } catch (ExecutionException e) {
                             e.getMessage();
                         } catch (InterruptedException e) {
                             e.getMessage();
                         }
-                        Intent intent = new Intent(LoginActivity.this, Matching.class);
-                        startActivity(intent);
+
                     }
 
                 }
@@ -265,7 +383,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onSessionClosed(ErrorResult errorResult) {
-                    Toast.makeText(getApplicationContext(),"세션이 닫혔습니다. 다시 시도해 주세요: "+errorResult.getErrorMessage(),Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"세션이 닫혔습니다. 다시 시도해 주세요: "+errorResult.getErrorMessage(),Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -288,6 +406,11 @@ public class LoginActivity extends AppCompatActivity {
                         id = String.valueOf(result.getId());
                         pw = "social";
                         LoginSelect loginSelect = new LoginSelect(id, pw);
+
+                        SharedPreferences.Editor editor = kakaoLogin.edit();
+                        editor.putString("kakaoLogin", "kakaoLogin");
+                        editor.commit();
+
                         try {
                             loginSelect.execute().get();
                         } catch (ExecutionException e) {

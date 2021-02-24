@@ -25,10 +25,50 @@
         android:id="@+id/kakao_login"
         android:layout_width="259dp"
         android:layout_height="63dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/naver_login" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="104dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/scd"
+        android:text="로그인"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnSignUp"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_pw" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="133dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="68dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/scd"
+        android:text="회원가입"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_pw" />
+
+    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
+        android:id="@+id/naver_login"
+        android:layout_width="341dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="512dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/logo"
@@ -75,43 +115,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="104dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/button"
-        android:fontFamily="@font/scd"
-        android:textColor="@color/white"
-        android:text="로그인"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/btnSignUp"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_pw" />
-
-    <Button
-        android:id="@+id/btnSignUp"
-        android:layout_width="133dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="68dp"
-        android:background="@drawable/button"
-        android:fontFamily="@font/scd"
-        android:textColor="@color/white"
-        android:text="회원가입"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_pw" />
-
-    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
-        android:id="@+id/naver_login"
-        android:layout_width="341dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="484dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <CheckBox
+        android:id="@+id/chkAuto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="392dp"
+        android:text="자동로그인"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

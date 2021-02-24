@@ -2,6 +2,7 @@ package com.example.myproject;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -92,6 +93,29 @@ public class Matching extends AppCompatActivity implements TextWatcher {
         Log.d("kakanav", "kakao : " + loginDTO.getKakao_login());
         Log.d("kakanav", "naver : " + loginDTO.getNaver_login());
         Log.d("kakanav", "img : " + loginDTO.getdbImgPath());
+
+        if(loginDTO.getNaver_login().equals("1")){
+            SharedPreferences naverDTO = getSharedPreferences("naverDTO",MODE_PRIVATE);
+            SharedPreferences.Editor editor2 = naverDTO.edit();
+            editor2.putString("id", loginDTO.getId());
+            editor2.putString("pw", loginDTO.getPw());
+            editor2.putString("nickname", loginDTO.getNickname());
+            editor2.putString("name", loginDTO.getName());
+            editor2.putString("gender", loginDTO.getGender());
+            editor2.putString("birth", loginDTO.getBirth());
+            editor2.putString("email", loginDTO.getEmail());
+            editor2.putString("addr1", loginDTO.getAddr1());
+            editor2.putString("addr2", loginDTO.getAddr2());
+            editor2.putString("dbimgpath", loginDTO.getdbImgPath());
+            editor2.putString("kakao_login", loginDTO.getKakao_login());
+            editor2.putString("naver_login", loginDTO.getNaver_login());
+            editor2.commit();
+
+            SharedPreferences naverLogin = getSharedPreferences("naverLogin",MODE_PRIVATE);
+            SharedPreferences.Editor editor1 = naverLogin.edit();
+            editor1.putString("naverLogin", "naverLogin");
+            editor1.commit();
+        }
 
         // 리사이클러 뷰 시작
         myItemArrayList = new ArrayList();
