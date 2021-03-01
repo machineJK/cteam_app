@@ -121,11 +121,13 @@ public class TeacherForm extends AppCompatActivity {
                         Log.d("main:joinact", "삽입성공 !!!");
                         Intent intent = new Intent(TeacherForm.this,Matching.class);
                         startActivity(intent);
+                        finish();
                     }else{
                         Toast.makeText(TeacherForm.this, "삽입실패 !!!", Toast.LENGTH_SHORT).show();
                         Log.d("main:joinact", "삽입실패 !!!");
                         Intent intent = new Intent(TeacherForm.this,Matching.class);
                         startActivity(intent);
+                        finish();
                     }
 
 
@@ -141,6 +143,7 @@ public class TeacherForm extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TeacherForm.this, Matching.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

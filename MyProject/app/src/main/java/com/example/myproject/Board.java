@@ -23,6 +23,7 @@ import com.example.myproject.Dto.MemberDTO;
 import java.util.ArrayList;
 
 import static com.example.myproject.Common.Common.isNetworkConnected;
+import static com.example.myproject.Common.Common.loginDTO;
 
 public class Board extends AppCompatActivity {
 
@@ -38,7 +39,23 @@ public class Board extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
         // 리사이클러 뷰 시작
-        selectBoard();
+
+        brdArrayList = new ArrayList<>();
+        adapter = new BoardAdapter(this, brdArrayList);
+        recyclerView = findViewById(R.id.recyclerView_brd);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,
+                RecyclerView.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        recyclerView.setAdapter(adapter);
+        if(isNetworkConnected(this) == true){
+            listSelect = new BoardListSelect( brdArrayList, adapter, progressDialog);
+            listSelect.execute();
+        }else {
+            Toast.makeText(this, "인터넷이 연결되어 있지 않습니다.",
+                    Toast.LENGTH_SHORT).show();
+        }
 
         //상세 내용(문의내용 작성 이동)
 //        btnQnA = findViewById(R.id.btn_brd_QnA);
@@ -54,6 +71,7 @@ public class Board extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Board.this, Board_Write.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -68,6 +86,7 @@ public class Board extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Board.this, ChatListActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -76,14 +95,24 @@ public class Board extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Board.this, Matching.class);
                 startActivity(intent);
+                finish();
             }
         });
 
         my.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Board.this, MyInfo.class);
-                startActivity(intent);
+                if(loginDTO.getId().equals("admin")){
+                    Intent intent = new Intent(Board.this, AdminMyInfo.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Intent intent = new Intent(Board.this, MyInfo.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+
             }
         });
     }
@@ -120,24 +149,5 @@ public class Board extends AppCompatActivity {
 
     }
 
-    public void selectBoard(){
-
-        brdArrayList = new ArrayList<>();
-        adapter = new BoardAdapter(this, brdArrayList);
-        recyclerView = findViewById(R.id.recyclerView_brd);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this,
-                RecyclerView.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-
-        recyclerView.setAdapter(adapter);
-        if(isNetworkConnected(this) == true){
-            listSelect = new BoardListSelect( brdArrayList, adapter, progressDialog);
-            listSelect.execute();
-        }else {
-            Toast.makeText(this, "인터넷이 연결되어 있지 않습니다.",
-                    Toast.LENGTH_SHORT).show();
-        }
-    }
 
 }

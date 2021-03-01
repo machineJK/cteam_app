@@ -23,7 +23,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject"
         android:usesCleartextTraffic="true">
-        <activity android:name=".KakaoExtraInfo"></activity>
+        <activity
+            android:name=".AdminMyInfo"
+            android:label="@string/title_activity_admin_my_info"
+            android:theme="@style/Theme.MyProject.NoActionBar"></activity>
+        <activity android:name=".KakaoExtraInfo" />
         <activity android:name=".NaverExtraInfo" />
         <activity android:name=".ChatListStudentActivity" />
         <activity android:name=".ChatStartStudentActivity" />
@@ -81,7 +85,6 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="2000" />
-
     </application>
 
 </manifest>

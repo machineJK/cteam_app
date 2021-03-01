@@ -20,7 +20,8 @@ import static com.example.myproject.Common.Common.ipConfig;
 
 public class BoardInsert2 extends AsyncTask<Void, Void, String> {
     String board_id, board_nickname,board_content, id_image_path;
-    int board_notice;
+    String isComment="";
+    int board_notice,postOriginal=0;
 
     public BoardInsert2(String board_id, String board_nickname, String board_content,
                         String id_image_path, int board_notice) {
@@ -29,6 +30,17 @@ public class BoardInsert2 extends AsyncTask<Void, Void, String> {
         this.board_content = board_content;
         this.id_image_path = id_image_path;
         this.board_notice = board_notice;
+    }
+
+    public BoardInsert2(String board_id, String board_nickname, String board_content,
+                        String id_image_path, int board_notice, String isComment, int postOriginal) {
+        this.board_id = board_id;
+        this.board_nickname = board_nickname;
+        this.board_content = board_content;
+        this.id_image_path = id_image_path;
+        this.board_notice = board_notice;
+        this.isComment = isComment;
+        this.postOriginal = postOriginal;
     }
 
     // 데이터베이스에 삽입결과 0보다크면 삽입성공, 같거나 작으면 실패
@@ -55,6 +67,9 @@ public class BoardInsert2 extends AsyncTask<Void, Void, String> {
             builder.addTextBody("board_content", board_content, ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("board_notice", board_notice + "", ContentType.create("Multipart/related", "UTF-8"));
             builder.addTextBody("id_image_path", id_image_path, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("isComment", isComment, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("postOriginal", String.valueOf(postOriginal), ContentType.create("Multipart/related", "UTF-8"));
+
 
             String postURL = ipConfig + "/app/anBoard2";
             // 전송

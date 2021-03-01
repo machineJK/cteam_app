@@ -52,6 +52,7 @@ public class ChatListStudentActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ChatListStudentActivity.this, ChatListActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -60,6 +61,7 @@ public class ChatListStudentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ChatListStudentActivity.this, Matching.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -68,14 +70,24 @@ public class ChatListStudentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ChatListStudentActivity.this, Board.class);
                 startActivity(intent);
+                finish();
             }
         });
 
         my.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChatListStudentActivity.this, MyInfo.class);
-                startActivity(intent);
+                if(loginDTO.getId().equals("admin")){
+                    Intent intent = new Intent(ChatListStudentActivity.this, AdminMyInfo.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Intent intent = new Intent(ChatListStudentActivity.this, MyInfo.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+
             }
         });
     }

@@ -2,7 +2,10 @@ package com.example.myproject;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
@@ -16,21 +19,35 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.myproject.Adapter.Matched_RV_Adapter;
+import com.example.myproject.Adapter.MyRecyclerviewAdapter;
+import com.example.myproject.Adapter.WantMatching_RV_Adapter;
+import com.example.myproject.Atask.MatchedListSelect;
+import com.example.myproject.Atask.TeacherListSelect;
+import com.example.myproject.Atask.WantMatchingListSelect;
+import com.example.myproject.Dto.MatchingDTO;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
-import com.nhn.android.naverlogin.OAuthLogin;
 
+import java.util.ArrayList;
+
+import static com.example.myproject.Common.Common.isNetworkConnected;
 import static com.example.myproject.Common.Common.loginDTO;
-import static com.example.myproject.LoginActivity.mOAuthLoginModule;
 
 public class MyInfo extends AppCompatActivity {
 
     Button modify, btnLogout;
     ImageButton matching, talk, board, my;
     ImageView imageView6;
-    ImageButton imageButton;
     TextView my_nickname;
     String nickname;
+
+    RecyclerView recyclerView1,recyclerView2;
+    ArrayList<MatchingDTO> myItemArrayList1,myItemArrayList2;
+    WantMatching_RV_Adapter adapter1;
+    Matched_RV_Adapter adapter2;
+    WantMatchingListSelect listSelect1;
+    MatchedListSelect listSelect2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,18 +65,55 @@ public class MyInfo extends AppCompatActivity {
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyInfo.this, ModifyMyInfo.class);
-                startActivity(intent);
+                if(loginDTO.getNaver_login().equals("0") && loginDTO.getKakao_login().equals("0")){
+                    Intent intent = new Intent(MyInfo.this, ModifyMyInfo.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
-        imageButton = findViewById(R.id.imageButton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MyInfo.this, TeacherDetail.class);
-                startActivity(intent);
-            }
-        });
+
+
+        // 매칭희망 리사이클러 뷰 시작
+        myItemArrayList1 = new ArrayList();
+        adapter1 = new WantMatching_RV_Adapter(this, myItemArrayList1);
+        recyclerView1 = findViewById(R.id.recyclerView1);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,
+                RecyclerView.VERTICAL, false);
+        recyclerView1.setLayoutManager(layoutManager);
+
+        recyclerView1.setAdapter(adapter1);
+
+        if(isNetworkConnected(this) == true){
+            listSelect1 = new WantMatchingListSelect(myItemArrayList1, adapter1);
+            listSelect1.execute();
+        }else {
+            Toast.makeText(this, "인터넷이 연결되어 있지 않습니다.",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        // 매칭완료 리사이클러 뷰 시작
+        myItemArrayList2 = new ArrayList();
+        adapter2 = new Matched_RV_Adapter(this, myItemArrayList2);
+        recyclerView2 = findViewById(R.id.recyclerView2);
+
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(this,
+                RecyclerView.VERTICAL, false);
+        recyclerView2.setLayoutManager(layoutManager2);
+
+        recyclerView2.setAdapter(adapter2);
+
+        if(isNetworkConnected(this) == true){
+            listSelect2 = new MatchedListSelect(myItemArrayList2, adapter2);
+            listSelect2.execute();
+        }else {
+            Toast.makeText(this, "인터넷이 연결되어 있지 않습니다.",
+                    Toast.LENGTH_SHORT).show();
+        }
+        
+        
+        
         
         //로그아웃
         btnLogout = findViewById(R.id.btnLogout);
@@ -134,6 +188,7 @@ public class MyInfo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MyInfo.this, Matching.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -142,6 +197,7 @@ public class MyInfo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MyInfo.this, ChatListActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -150,6 +206,7 @@ public class MyInfo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MyInfo.this, Board.class);
                 startActivity(intent);
+                finish();
             }
         });
 

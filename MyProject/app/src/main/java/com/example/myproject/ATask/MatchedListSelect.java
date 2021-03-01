@@ -1,39 +1,38 @@
 package com.example.myproject.Atask;
 
-import android.app.ProgressDialog;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.util.JsonReader;
 import android.util.Log;
 
-import com.example.myproject.Adapter.MyRecyclerviewAdapter;
-import com.example.myproject.Dto.TeacherDTO;
+import com.example.myproject.Adapter.Matched_RV_Adapter;
+import com.example.myproject.Adapter.WantMatching_RV_Adapter;
+import com.example.myproject.Dto.MatchingDTO;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.sql.Date;
 import java.util.ArrayList;
+
 import static com.example.myproject.Common.Common.ipConfig;
 import static com.example.myproject.Common.Common.loginDTO;
 
-public class TeacherListSelect extends AsyncTask<Void,Void,Void> {
+public class MatchedListSelect extends AsyncTask<Void,Void,Void> {
     // 생성자
-    ArrayList<TeacherDTO> myItemArrayList;
-    MyRecyclerviewAdapter adapter;
-    ProgressDialog progressDialog;
+    ArrayList<MatchingDTO> myItemArrayList;
+    Matched_RV_Adapter adapter;
 
-    public TeacherListSelect(ArrayList<TeacherDTO> myItemArrayList, MyRecyclerviewAdapter adapter, ProgressDialog progressDialog) {
+    public MatchedListSelect(ArrayList<MatchingDTO> myItemArrayList, Matched_RV_Adapter adapter) {
         this.myItemArrayList = myItemArrayList;
         this.adapter = adapter;
-        this.progressDialog = progressDialog;
     }
 
     HttpClient httpClient;
@@ -46,16 +45,19 @@ public class TeacherListSelect extends AsyncTask<Void,Void,Void> {
         super.onPreExecute();
     }
 
+
     @Override
     protected Void doInBackground(Void... voids) {
         myItemArrayList.clear();
         String result = "";
-        String postURL = ipConfig + "/app/anSelectMulti";
+        String postURL = ipConfig + "/app/MatchedList";
 
         try {
             // MultipartEntityBuild 생성
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();
             builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+
+            builder.addTextBody("id", loginDTO.getId(), ContentType.create("Multipart/related", "UTF-8"));
 
             // 전송
             InputStream inputStream = null;
@@ -104,12 +106,6 @@ public class TeacherListSelect extends AsyncTask<Void,Void,Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-        if(progressDialog != null){
-            progressDialog.dismiss();
-        }
-
-        Log.d("Matching", "List Select Complete!!!");
-
         adapter.notifyDataSetChanged();
     }
 
@@ -127,56 +123,34 @@ public class TeacherListSelect extends AsyncTask<Void,Void,Void> {
         }
     }
 
-    public TeacherDTO readMessage(JsonReader reader) throws IOException {
-        String teacher_id="",teacher_univ="",teacher_major="",teacher_univNum="",
-                teacher_subject="", teacher_worktime="",teacher_pay="",
-                teacher_intro="",teacher_image_path="", teacher_date="",teacher_nickname="",
-                teacher_addr="";
-        int teacher_matching=-1;
+    public MatchingDTO readMessage(JsonReader reader) throws IOException {
+        String teacher_id = "",student_id = "", teacher_value ="", student_value="", admin_value="",
+                teacher_nickname="",student_nickname="";
 
         reader.beginObject();
         while (reader.hasNext()) {
             String readStr = reader.nextName();
             if (readStr.equals("teacher_id")) {
                 teacher_id = reader.nextString();
-            } else if (readStr.equals("teacher_univ")) {
-                teacher_univ = reader.nextString();
-            } else if (readStr.equals("teacher_date")) {
-                String[] temp = reader.nextString().replace("월", "-").replace(",", "-")
-                        .replace(" ", "").split("-");
-                teacher_date = temp[2] + "-" + temp[0] + "-" + temp[1];
-            } else if (readStr.equals("teacher_major")) {
-                teacher_major = reader.nextString();
-            } else if (readStr.equals("teacher_univNum")) {
-                teacher_univNum = reader.nextString();
-            } else if (readStr.equals("teacher_subject")) {
-                teacher_subject = reader.nextString();
-            } else if (readStr.equals("teacher_worktime")) {
-                teacher_worktime = reader.nextString();
-            } else if (readStr.equals("teacher_pay")) {
-                teacher_pay = reader.nextString();
-            } else if (readStr.equals("teacher_intro")) {
-                teacher_intro = reader.nextString();
-            } else if (readStr.equals("teacher_matching")) {
-                teacher_matching = reader.nextInt();
-            } else if (readStr.equals("teacher_image_path")) {
-                teacher_image_path = reader.nextString();
-            }else if (readStr.equals("teacher_nickname")) {
+            } else if (readStr.equals("student_id")) {
+                student_id = reader.nextString();
+            } else if (readStr.equals("teacher_value")) {
+                teacher_value = reader.nextString();
+            } else if (readStr.equals("student_value")) {
+                student_value = reader.nextString();
+            } else if (readStr.equals("admin_value")) {
+                admin_value = reader.nextString();
+            } else if (readStr.equals("teacher_nickname")) {
                 teacher_nickname = reader.nextString();
-            }else if (readStr.equals("teacher_addr")) {
-                teacher_addr = reader.nextString();
-            }else {
+            } else if (readStr.equals("student_nickname")) {
+                student_nickname = reader.nextString();
+            } else {
                 reader.skipValue();
             }
         }
         reader.endObject();
-        return new TeacherDTO(teacher_id, teacher_univ, teacher_major,
-                teacher_univNum, teacher_subject, teacher_worktime,
-                teacher_pay, teacher_intro,teacher_image_path, teacher_matching,
-                teacher_date,teacher_nickname,teacher_addr);
+        return new MatchingDTO(teacher_id,student_id,teacher_value,student_value,admin_value,teacher_nickname,student_nickname);
 
     }
+
 }
-
-
-

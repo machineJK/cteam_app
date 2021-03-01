@@ -108,6 +108,7 @@ public class Matching extends AppCompatActivity implements TextWatcher {
         Log.d("kakanav", "naver : " + loginDTO.getNaver_login());
         Log.d("kakanav", "img : " + loginDTO.getdbImgPath());
 
+        //네이버 자동 로그인 할때 정보 저장하기
         if(loginDTO.getNaver_login().equals("1")){
             SharedPreferences naverDTO = getSharedPreferences("naverDTO",MODE_PRIVATE);
             SharedPreferences.Editor editor2 = naverDTO.edit();
@@ -172,6 +173,7 @@ public class Matching extends AppCompatActivity implements TextWatcher {
             public void onClick(View v) {
                 Intent intent = new Intent(Matching.this, MatchingStudent.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -187,6 +189,7 @@ public class Matching extends AppCompatActivity implements TextWatcher {
             public void onClick(View v) {
                 Intent intent = new Intent(Matching.this, ChatListActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -195,14 +198,23 @@ public class Matching extends AppCompatActivity implements TextWatcher {
             public void onClick(View v) {
                 Intent intent = new Intent(Matching.this, Board.class);
                 startActivity(intent);
+                finish();
             }
         });
 
         my.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Matching.this, MyInfo.class);
-                startActivity(intent);
+                if(loginDTO.getId().equals("admin")){
+                    Intent intent = new Intent(Matching.this, AdminMyInfo.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Intent intent = new Intent(Matching.this, MyInfo.class);
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         });
 

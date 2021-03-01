@@ -26,6 +26,7 @@ import com.example.myproject.Dto.StudentDTO;
 import java.util.ArrayList;
 
 import static com.example.myproject.Common.Common.isNetworkConnected;
+import static com.example.myproject.Common.Common.loginDTO;
 
 public class MatchingStudent extends AppCompatActivity implements TextWatcher {
     Button add2, teacher2;
@@ -88,6 +89,7 @@ public class MatchingStudent extends AppCompatActivity implements TextWatcher {
             public void onClick(View v) {
                 Intent intent = new Intent(MatchingStudent.this, Matching.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -103,6 +105,7 @@ public class MatchingStudent extends AppCompatActivity implements TextWatcher {
             public void onClick(View v) {
                 Intent intent = new Intent(MatchingStudent.this, ChatListActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -111,14 +114,23 @@ public class MatchingStudent extends AppCompatActivity implements TextWatcher {
             public void onClick(View v) {
                 Intent intent = new Intent(MatchingStudent.this, Board.class);
                 startActivity(intent);
+                finish();
             }
         });
 
         my.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MatchingStudent.this, MyInfo.class);
-                startActivity(intent);
+                if(loginDTO.getId().equals("admin")){
+                    Intent intent = new Intent(MatchingStudent.this, AdminMyInfo.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Intent intent = new Intent(MatchingStudent.this, MyInfo.class);
+                    startActivity(intent);
+                    finish();
+
+                }
             }
         });
 

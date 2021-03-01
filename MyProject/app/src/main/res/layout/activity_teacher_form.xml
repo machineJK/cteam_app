@@ -37,15 +37,17 @@
 
     <EditText
         android:id="@+id/et_teacher_pay"
-        android:layout_width="100dp"
-        android:layout_height="38dp"
+        android:layout_width="209dp"
+        android:layout_height="40dp"
         android:layout_marginStart="156dp"
         android:layout_marginTop="256dp"
         android:background="@drawable/joined"
         android:ems="10"
-        android:padding="10dp"
         android:fontFamily="@font/scd"
-        android:inputType="textPersonName"
+        android:hint="만원 단위 입니다"
+        android:inputType="number"
+        android:maxLength="3"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,15 +95,17 @@
 
     <EditText
         android:id="@+id/et_teacher_worktime"
-        android:layout_width="100dp"
-        android:layout_height="38dp"
+        android:layout_width="205dp"
+        android:layout_height="45dp"
         android:layout_marginStart="156dp"
         android:layout_marginTop="300dp"
         android:background="@drawable/joined"
         android:ems="10"
-        android:padding="10dp"
         android:fontFamily="@font/scd"
-        android:inputType="textPersonName"
+        android:hint="매주 할 시간"
+        android:inputType="number"
+        android:maxLength="3"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -127,9 +131,10 @@
         android:layout_marginTop="164dp"
         android:background="@drawable/joined"
         android:ems="10"
-        android:padding="10dp"
         android:fontFamily="@font/scd"
+        android:hint="ex) 생명공학과"
         android:inputType="textPersonName"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -141,9 +146,10 @@
         android:layout_marginTop="120dp"
         android:background="@drawable/joined"
         android:ems="10"
-        android:padding="10dp"
         android:fontFamily="@font/scd"
+        android:hint="ex) 서강대학교"
         android:inputType="textPersonName"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -155,9 +161,11 @@
         android:layout_marginTop="210dp"
         android:background="@drawable/joined"
         android:ems="10"
-        android:padding="10dp"
         android:fontFamily="@font/scd"
-        android:inputType="textPersonName"
+        android:hint="ex) 20131217"
+        android:inputType="number"
+        android:maxLength="8"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

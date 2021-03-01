@@ -82,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //자동로그인 체크박스
         chkAuto = findViewById(R.id.chkAuto);
 
         //카카오 로그인
@@ -121,6 +122,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //자동로그인이 체크되어있을 경우 자동 로그인
         if(chkAuto.isChecked()){
+            //일반 자동로그인
             if(!normalLogin.getString("id", "").equals("")){
                 loginDTO = new MemberDTO();
                 loginDTO.setId(normalLogin.getString("id",""));
@@ -277,6 +279,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(com.example.myproject.LoginActivity.this, JoinActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -420,6 +423,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         Intent intent = new Intent(LoginActivity.this, Matching.class);
                         startActivity(intent);
+                        finish();
                     }
                 }
             });

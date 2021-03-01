@@ -50,8 +50,11 @@ public class TeacherDetail extends AppCompatActivity {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TeacherDetail.this, ChatStartActivity.class);
-                startActivity(intent);
+                if(!loginDTO.getId().equals(selItem.getTeacher_id())){
+                    Intent intent = new Intent(TeacherDetail.this, ChatStartActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 

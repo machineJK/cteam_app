@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 
-import static com.example.myproject.Common.Common.selItem;
+import static com.example.myproject.Common.Common.loginDTO;
 import static com.example.myproject.Common.Common.selItem2;
 
 
@@ -45,9 +45,11 @@ public class StudentDetail extends AppCompatActivity {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StudentDetail.this, ChatStartStudentActivity.class);
-
-                startActivity(intent);
+                if(!loginDTO.getId().equals(selItem2.getStudent_id())){
+                    Intent intent = new Intent(StudentDetail.this, ChatStartStudentActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 

@@ -14,10 +14,10 @@ import android.widget.EditText;
 
 import static com.example.myproject.Common.Common.loginDTO;
 import static com.example.myproject.Common.Common.selItem;
-import static com.example.myproject.Common.Common.selItem2;
 
 import com.example.myproject.Atask.FirebaseNotification;
 import com.example.myproject.Adapter.ChatAdpter;
+import com.example.myproject.Atask.SetMatch;
 import com.example.myproject.Dto.ChatDTO;
 import com.example.myproject.Dto.TeacherDTO;
 import com.google.firebase.database.ChildEventListener;
@@ -30,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 
 public class ChatStartActivity extends AppCompatActivity {
@@ -40,7 +41,7 @@ public class ChatStartActivity extends AppCompatActivity {
     private List<ChatDTO> chatDTOList;
 
     private EditText edt_chat;
-    private Button btn_send;
+    private Button btn_send,btn_require;
     private String teacher;
 
     private DatabaseReference myRef;
@@ -56,6 +57,36 @@ public class ChatStartActivity extends AppCompatActivity {
 
         btn_send = findViewById(R.id.btn_send);
         edt_chat = findViewById(R.id.edt_chat);
+        btn_require = findViewById(R.id.btn_require);
+        btn_require.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChatDTO dto = new ChatDTO();
+                dto.setNickname(loginDTO.getNickname());
+                dto.setMsg(loginDTO.getNickname() + "님이 매칭을 요청하였습니다.\nMy Info 화면에서 수락 또는 거절을 눌러주세요!");
+
+                long now = System.currentTimeMillis();
+                Date mDate = new Date(now);
+                SimpleDateFormat simpleDate = new SimpleDateFormat("hh:mm:aa");
+                String getTime = simpleDate.format(mDate);
+                dto.setDate(getTime);
+                myRef.push().setValue(dto);
+                toRef.push().setValue(dto);
+                edt_chat.setText("");
+
+                SetMatch setMatch = new SetMatch(selItem.getTeacher_id(),selItem.getTeacher_nickname(),loginDTO.getId(),loginDTO.getNickname());
+                try {
+                    setMatch.execute().get();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                FirebaseNotification firebaseNotification = new FirebaseNotification(selItem.getTeacher_id(), dto);
+                firebaseNotification.execute();
+            }
+        });
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override

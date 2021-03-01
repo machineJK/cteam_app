@@ -20,20 +20,17 @@ import com.example.myproject.R;
 
 import java.util.ArrayList;
 
-import static com.example.myproject.Common.Common.selItem3;
+import static com.example.myproject.Common.Common.selItem7;
 
 
-public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHolder>{
-    private static final String TAG = "BoardAdapter";
+public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ItemViewHolder>{
 
     Context mContext;
     ArrayList<BoardDTO> arrayList;
-   // ArrayList<BoardDTO> arrayList_filter;
 
-    public BoardAdapter(Context mContext, ArrayList<BoardDTO> arrayList) {
+    public CommentAdapter(Context mContext, ArrayList<BoardDTO> arrayList) {
         this.mContext = mContext;
         this.arrayList = arrayList;
-    //  this.arrayList_filter = arrayList;
     }
 
 
@@ -56,14 +53,8 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick: " + position);
 
-                selItem3 = arrayList.get(position);
-
-                //Toast.makeText(mContext, "board_id : " + arrayList.get(position).getBoard_id(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext, BoardDetailForm.class);
-                mContext.startActivity(intent);
-
+                selItem7 = arrayList.get(position);
             }
         });
     }

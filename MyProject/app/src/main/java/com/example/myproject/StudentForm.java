@@ -66,6 +66,7 @@ public class StudentForm extends AppCompatActivity {
                     Toast.makeText(StudentForm.this, "로그인을 해주세요!!!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(StudentForm.this, LoginActivity.class);
                     startActivity(intent);
+                    finish();
                 }else{
                     String student_id = loginDTO.getId();
                     String student_nickname = loginDTO.getNickname();
@@ -92,11 +93,13 @@ public class StudentForm extends AppCompatActivity {
                         Log.d("main:joinact", "삽입성공 !!!");
                         Intent intent = new Intent(StudentForm.this, MatchingStudent.class);
                         startActivity(intent);
+                        finish();
                     }else{
                         Toast.makeText(StudentForm.this, "삽입실패 !!!", Toast.LENGTH_SHORT).show();
                         Log.d("main:joinact", "삽입실패 !!!");
                         Intent intent = new Intent(StudentForm.this, MatchingStudent.class);
                         startActivity(intent);
+                        finish();
                     }
 
 
@@ -110,6 +113,8 @@ public class StudentForm extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(StudentForm.this, MatchingStudent.class);
+                startActivity(intent);
                 finish();
             }
         });

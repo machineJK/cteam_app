@@ -13,6 +13,7 @@ import android.util.Log;
 
 import com.example.myproject.Dto.BoardDTO;
 import com.example.myproject.Dto.IdCheckDTO;
+import com.example.myproject.Dto.MatchingDTO;
 import com.example.myproject.Dto.MemberDTO;
 import com.example.myproject.Dto.StudentDTO;
 import com.example.myproject.Dto.TeacherDTO;
@@ -45,6 +46,18 @@ public class Common {
 
     //내가 선생님으로 등록한 정보.
     public static TeacherDTO myDetail = null;
+    
+    //매칭희망 리스트
+    public static MatchingDTO selItem4 = null;
+
+    //매칭완료 리스트
+    public static MatchingDTO selItem5 = null;
+
+    //관리자한테 매칭요청 리스트
+    public static MatchingDTO selItem6 = null;
+
+    //답글 리스트
+    public static BoardDTO selItem7 = null;
 
     // 네트워크에 연결되어 있는가
     public static boolean isNetworkConnected(Context context) {

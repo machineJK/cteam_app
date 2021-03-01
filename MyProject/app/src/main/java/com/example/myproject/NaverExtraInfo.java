@@ -253,6 +253,7 @@ public class NaverExtraInfo extends AppCompatActivity {
                             "인터넷이 연결되어 있지 않습니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(NaverExtraInfo.this, LoginActivity.class);
                     startActivity(intent);
+                    finish();
                 }
 
 

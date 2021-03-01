@@ -158,12 +158,14 @@ public class Board_Write extends AppCompatActivity {
                             if(state.equals("1")){
                                 Toast.makeText(Board_Write.this, "삽입성공 !!!", Toast.LENGTH_SHORT).show();
                                 Log.d("main:Boardwrite", "삽입성공 !!!");
-                                Board board = new Board();
-                                board.selectBoard();
+                                Intent intent = new Intent(Board_Write.this, Board.class);
+                                startActivity(intent);
                                 finish();
                             } else{
                                 Toast.makeText(Board_Write.this, "삽입실패 !!!", Toast.LENGTH_SHORT).show();
                                 Log.d("main:Boardwrite", "삽입실패 !!!");
+                                Intent intent = new Intent(Board_Write.this, Board.class);
+                                startActivity(intent);
                                 finish();
                             }
 
@@ -182,12 +184,14 @@ public class Board_Write extends AppCompatActivity {
                             if(state.equals("1")){
                                 Toast.makeText(Board_Write.this, "삽입성공 !!!", Toast.LENGTH_SHORT).show();
                                 Log.d("main:Boardwrite", "삽입성공 !!!");
-                                Board board = new Board();
-                                board.selectBoard();
+                                Intent intent = new Intent(Board_Write.this, Board.class);
+                                startActivity(intent);
                                 finish();
                             } else{
                                 Toast.makeText(Board_Write.this, "삽입실패 !!!", Toast.LENGTH_SHORT).show();
                                 Log.d("main:Boardwrite", "삽입실패 !!!");
+                                Intent intent = new Intent(Board_Write.this, Board.class);
+                                startActivity(intent);
                                 finish();
                             }
                         }
@@ -215,6 +219,8 @@ public class Board_Write extends AppCompatActivity {
         btnBrdJoinCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(Board_Write.this, Board.class);
+                startActivity(intent);
                 finish();
             }
         });

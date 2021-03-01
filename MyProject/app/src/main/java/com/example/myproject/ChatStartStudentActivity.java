@@ -41,7 +41,7 @@ public class ChatStartStudentActivity extends AppCompatActivity {
     private List<ChatDTO> chatDTOList;
 
     private EditText edt_chat;
-    private Button btn_send, btn_require;
+    private Button btn_send;
     private String student;
 
     private DatabaseReference myRef;
@@ -59,37 +59,6 @@ public class ChatStartStudentActivity extends AppCompatActivity {
 
         btn_send = findViewById(R.id.btn_send);
         edt_chat = findViewById(R.id.edt_chat);
-        btn_require = findViewById(R.id.btn_require);
-        btn_require.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ChatDTO dto = new ChatDTO();
-                dto.setNickname(loginDTO.getName());
-                dto.setMsg(msgRequire + "\n 한울은행 : 123-456123-456");
-
-
-                long now = System.currentTimeMillis();
-                Date mDate = new Date(now);
-                SimpleDateFormat simpleDate = new SimpleDateFormat("hh:mm:aa");
-                String getTime = simpleDate.format(mDate);
-                dto.setDate(getTime);
-                myRef.push().setValue(dto);
-                toRef.push().setValue(dto);
-                edt_chat.setText("");
-
-                SetMatch setMatch = new SetMatch(loginDTO.getId(), selItem2.getStudent_id());
-                try {
-                    setMatch.execute().get();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                FirebaseNotification firebaseNotification = new FirebaseNotification(selItem2.getStudent_id(), dto);
-                firebaseNotification.execute();
-            }
-        });
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override

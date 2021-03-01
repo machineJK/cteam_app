@@ -349,6 +349,7 @@ public class KakaoExtraInfo extends AppCompatActivity {
                             "인터넷이 연결되어 있지 않습니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(KakaoExtraInfo.this, LoginActivity.class);
                     startActivity(intent);
+                    finish();
                 }
 
                /* Toast.makeText(JoinActivity.this, "" + id, Toast.LENGTH_SHORT).show();
