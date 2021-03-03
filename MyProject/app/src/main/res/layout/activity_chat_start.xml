@@ -18,8 +18,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="373dp"
+        android:layout_height="602dp"
         android:layout_margin="10dp"
         android:layout_weight="1"
         android:scrollbars="vertical" />
@@ -29,16 +29,17 @@
         android:layout_height="80dp"
         android:orientation="horizontal"
         android:weightSum="1"
-        android:background="@color/white"
         >
+
         <EditText
+            android:id="@+id/edt_chat"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/edt_chat"
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/btn2"
-            android:layout_margin="10dp"
             android:padding="10dp" />
+
         <Button
             android:layout_width="80dp"
             android:layout_height="match_parent"

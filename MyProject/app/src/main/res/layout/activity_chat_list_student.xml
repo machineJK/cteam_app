@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+<!--        <TextView
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -28,7 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@color/bg"
-            android:fontFamily="@font/scd" />
+            android:fontFamily="@font/scd" />-->
 
 
         <LinearLayout
@@ -53,6 +53,7 @@
             <ListView
                 android:id="@+id/chat_studentList"
                 android:layout_width="match_parent"
+                android:textColor="@color/black"
                 android:layout_height="380dp">
 
             </ListView>

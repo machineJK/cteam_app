@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+<!--    <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/bg"
-        android:fontFamily="@font/scd" />
+        android:fontFamily="@font/scd" />-->
 
     <Button
         android:id="@+id/btnExtraJoin"

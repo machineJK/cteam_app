@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">튜더스</string>
+    <string name="app_name">Tutors</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -8,7 +8,17 @@
     <string name="permission_1">[설정] > [권한] 에서 권한을 허용할 수 있습니다.</string>
     <string name="permission_2">사진 및 파일을 저장하기 위하여 접근 권한이 필요합니다.</string>
     <string name="msg_token_fmt">토큰 : %s</string>
-    <string name="title_activity_admin_my_info">AdminMyInfo</string>
+    <string name="title_activity_admin_my_info">관리자</string>
+    <string name="title_activity_my_info">마이페이지</string>
+    <string name="title_activity_mathing">과외매칭</string>
+    <string name="title_activity_board">게시판</string>
+    <string name="title_activity_chat">채팅</string>
+    <string name="title_activity_kakao">추가정보를 입력해주세요</string>
+    <string name="title_activity_student">학생정보</string>
+    <string name="title_activity_teacher">선생님 정보</string>
+    <string name="title_activity_teacher_f">과외등록하기</string>
+    <string name="title_activity_student_f">과외신청하기</string>
+    <string name="title_activity_join">회원가입</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

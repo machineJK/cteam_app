@@ -8,7 +8,7 @@
     tools:context=".BoardDetailForm"
     android:background="@color/bg2">
 
-    <TextView
+<!--    <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -21,7 +21,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ScrollView
         android:layout_width="match_parent"
