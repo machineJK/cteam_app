@@ -9,12 +9,14 @@
     android:background="@color/bg4"
     android:weightSum="1">
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_require"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
         android:layout_weight="0.05"
-        android:text="요청하기" />
+        android:scaleType="center"
+        android:src="@drawable/btnn" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcview"
@@ -38,6 +40,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/btn2"
+            android:layout_gravity="center"
             android:padding="10dp" />
 
         <Button
@@ -48,6 +51,7 @@
             android:background="@drawable/button"
             android:fontFamily="@font/scd"
             android:textColor="@color/white"
+            android:layout_gravity="center"
             android:layout_margin="10dp"/>
 
     </LinearLayout>

@@ -68,7 +68,7 @@
         android:id="@+id/btn_studentList"
         android:layout_width="140dp"
         android:layout_height="40dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="260dp"
         android:background="@drawable/button"
         android:fontFamily="@font/scd"
         android:text="학생 목록 이동"

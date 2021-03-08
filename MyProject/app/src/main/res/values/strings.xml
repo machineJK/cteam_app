@@ -10,9 +10,9 @@
     <string name="msg_token_fmt">토큰 : %s</string>
     <string name="title_activity_admin_my_info">관리자</string>
     <string name="title_activity_my_info">마이페이지</string>
-    <string name="title_activity_mathing">과외매칭</string>
+    <string name="title_activity_matching">과외매칭</string>
     <string name="title_activity_board">게시판</string>
-    <string name="title_activity_chat">채팅</string>
+    <string name="title_activity_chat">튜터챗</string>
     <string name="title_activity_kakao">추가정보를 입력해주세요</string>
     <string name="title_activity_student">학생정보</string>
     <string name="title_activity_teacher">선생님 정보</string>

@@ -26,7 +26,7 @@
         <activity
             android:name=".AdminMyInfo"
             android:label="@string/title_activity_admin_my_info"
-            android:theme="@style/Theme.MyProject"></activity>
+            android:theme="@style/Theme.MyProject"/>
         <activity android:name=".KakaoExtraInfo"
             android:label="@string/title_activity_kakao"
             android:theme="@style/Theme.MyProject"/>
@@ -49,7 +49,7 @@
             android:label="@string/title_activity_teacher"
             android:theme="@style/Theme.MyProject"/>
         <activity android:name=".MatchingStudent"
-            android:label="@string/title_activity_mathing"
+            android:label="@string/title_activity_matching"
             android:theme="@style/Theme.MyProject"/>
         <activity android:name=".TeacherForm"
             android:label="@string/title_activity_teacher_f"
@@ -83,7 +83,7 @@
             android:required="false" />
 
         <activity android:name=".Matching"
-            android:label="@string/title_activity_mathing"
+            android:label="@string/title_activity_matching"
             android:theme="@style/Theme.MyProject"/>
         <activity android:name=".ModifyMyInfo"
             android:label="@string/title_activity_my_info"

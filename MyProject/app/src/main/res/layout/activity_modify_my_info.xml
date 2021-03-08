@@ -163,8 +163,8 @@
 
     <Button
         android:id="@+id/modify_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="100dp"
         android:onClick="btnCancelClicked"
         android:text="취소"
@@ -177,8 +177,8 @@
 
     <Button
         android:id="@+id/modify_modify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         android:layout_marginStart="96dp"
         android:onClick="btnUpdateClicked"
         android:text="수정"

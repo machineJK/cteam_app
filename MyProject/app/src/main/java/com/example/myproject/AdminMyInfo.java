@@ -5,17 +5,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.myproject.Adapter.AdminMatching_RV_Adapter;
-import com.example.myproject.Adapter.Matched_RV_Adapter;
-import com.example.myproject.Adapter.WantMatching_RV_Adapter;
 import com.example.myproject.Atask.AdminMatchingListSelect;
-import com.example.myproject.Atask.MatchedListSelect;
-import com.example.myproject.Atask.WantMatchingListSelect;
 import com.example.myproject.Dto.MatchingDTO;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +28,7 @@ public class AdminMyInfo extends AppCompatActivity {
     ImageButton matching, talk, board, my;
     Button btnLogout;
 
+
     RecyclerView recyclerView;
     ArrayList<MatchingDTO> myItemArrayList;
     AdminMatching_RV_Adapter adapter;
@@ -43,6 +38,10 @@ public class AdminMyInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_my_info);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.cadmin);
+
 
         // 매칭희망 리사이클러 뷰 시작
         myItemArrayList = new ArrayList();

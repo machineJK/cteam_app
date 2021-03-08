@@ -149,7 +149,7 @@
                         android:isScrollContainer="true"
                         android:maxHeight="80dp"
                         android:inputType="textMultiLine"
-                        android:hint="답글을 입력하세요!" />
+                        android:hint="댓글을 입력하세요" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -162,9 +162,10 @@
 
                     <Button
                         android:id="@+id/btnComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Button" />
+                        android:layout_width="70dp"
+                        android:layout_height="45dp"
+                        android:text="등록"
+                        android:textColor="#737373"/>
                 </LinearLayout>
             </LinearLayout>
 
