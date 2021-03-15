@@ -40,7 +40,7 @@ public class TeacherDetail extends AppCompatActivity {
         teacher_univ.setText(selItem.getTeacher_univ());
         teacher_subject.setText(selItem.getTeacher_subject());
         teacher_addr.setText(selItem.getTeacher_addr());
-        teacher_pay_worktime.setText(selItem.getTeacher_pay() + " " + selItem.getTeacher_worktime());
+        teacher_pay_worktime.setText(selItem.getTeacher_worktime() + "주 " + selItem.getTeacher_pay() + "만원");
         teacher_intro.setText(selItem.getTeacher_intro());
         Glide.with(this).load(selItem.getTeacher_image_path()).circleCrop().into(teacher_picture);
 
