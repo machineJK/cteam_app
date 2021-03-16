@@ -109,7 +109,7 @@
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/button"
                 android:fontFamily="@font/scd"
-                android:text="튜더챗으로 상담하기"
+                android:text="튜터챗으로 상담하기"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -128,7 +128,7 @@
                     android:paddingLeft="50dp"
                     android:text="페이"
                     android:textColor="@color/black"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/et_tdetail_paywork"
@@ -137,8 +137,8 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/scd"
                     android:gravity="center_vertical"
-                    android:textColor="#ff0000"
-                    android:textSize="24sp" />
+                    android:textColor="#B53E46FD"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -155,7 +155,7 @@
                     android:text="소개"
                     android:fontFamily="@font/scd"
                     android:textColor="@color/black"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <TextView

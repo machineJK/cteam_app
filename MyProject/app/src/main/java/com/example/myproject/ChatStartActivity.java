@@ -2,6 +2,7 @@ package com.example.myproject;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import static com.example.myproject.Common.Common.loginDTO;
 import static com.example.myproject.Common.Common.selItem;
@@ -41,7 +43,8 @@ public class ChatStartActivity extends AppCompatActivity {
     private List<ChatDTO> chatDTOList;
 
     private EditText edt_chat;
-    private Button btn_send,btn_require;
+    private Button btn_send;
+    private ImageButton btn_require;
     private String teacher;
 
     private DatabaseReference myRef;
@@ -51,6 +54,10 @@ public class ChatStartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_start);
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.cchat);
 
         Intent intent = getIntent();
         teacher = intent.getStringExtra("chatSelect");

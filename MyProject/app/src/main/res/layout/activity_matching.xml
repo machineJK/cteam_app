@@ -61,6 +61,7 @@
         android:background="@drawable/btn3"
         android:textColor="@color/white"
         android:fontFamily="@font/scd"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
 

@@ -83,7 +83,7 @@
                 android:id="@+id/chat"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="튜더챗으로 상담하기"
+                android:text="튜터챗으로 상담하기"
                 android:layout_marginBottom="30dp"
                 android:layout_gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"

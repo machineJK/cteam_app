@@ -23,7 +23,6 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
-        android:background="@color/white"
         android:weightSum="1"
         >
         <EditText
@@ -33,6 +32,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn2"
             android:layout_margin="10dp"
+            android:layout_gravity="center"
             android:padding="10dp"/>
         <Button
             android:layout_width="80dp"
@@ -41,6 +41,7 @@
             android:id="@+id/btn_send"
             android:background="@drawable/button"
             android:fontFamily="@font/scd"
+            android:layout_gravity="center"
             android:textColor="@color/white"
             android:layout_margin="10dp"/>
 
