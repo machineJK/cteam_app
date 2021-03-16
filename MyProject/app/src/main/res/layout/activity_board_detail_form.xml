@@ -125,7 +125,8 @@
                 <ImageView
                     android:id="@+id/brd_detail_image"
                     android:layout_width="match_parent"
-                    android:layout_height="320dp"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
                     tools:srcCompat="@tools:sample/avatars" />
             </LinearLayout>
 
@@ -165,7 +166,8 @@
                         android:layout_width="70dp"
                         android:layout_height="45dp"
                         android:text="등록"
-                        android:textColor="#737373"/>
+                        android:background="@drawable/button"
+                        android:textColor="@color/white"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -176,7 +178,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView_comment"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp">
+                    android:layout_height="wrap_content">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
