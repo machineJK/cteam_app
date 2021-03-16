@@ -167,6 +167,11 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
             teacher_subject.setText(dto.getTeacher_subject());
             teacher_worktime_pay.setText("주 " + dto.getTeacher_worktime() + "시간 " + dto.getTeacher_pay() + "만원");
 
+            Log.d("teaitem", dto.getTeacher_image_path());
+
+            if( ! dto.getTeacher_image_path().contains("http") ){
+                dto.setTeacher_image_path( "http://192.168.0.31:8080/tutors/" + dto.getTeacher_image_path() );
+            }
             Glide.with(itemView).load(dto.getTeacher_image_path()).into(teacher_picture);
         }
     }

@@ -7,99 +7,170 @@
         android:id="@+id/et_id"
         android:layout_width="250dp"
         android:layout_height="30dp"
-        android:layout_marginTop="98dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/joined"
         android:ems="10"
-        android:padding="5dp"
         android:inputType="textPersonName"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toEndOf="@+id/textView61"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinnerAddr2"
-        android:layout_width="95dp"
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="250dp"
         android:layout_height="30dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="394dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="280dp"
+        android:background="@drawable/joined"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        app:layout_constraintStart_toEndOf="@+id/textView68"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView66"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/scd"
+        android:text="생년월일"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView65" />
+
+    <TextView
+        android:id="@+id/textView62"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/scd"
+        android:text="비밀번호"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView61" />
+
+    <Spinner
+        android:id="@+id/spinnerMonth"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="236dp"
         android:dropDownWidth="200dp"
         android:spinnerMode="dialog"
-        app:layout_constraintStart_toEndOf="@+id/spinnerAddr1"
+        app:layout_constraintStart_toEndOf="@+id/spinnerYear"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerDay"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="236dp"
+        android:dropDownWidth="200dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintStart_toEndOf="@+id/spinnerMonth"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerYear"
+        android:layout_width="114dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="232dp"
+        android:dropDownWidth="200dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+
+        android:id="@+id/et_nickname"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/joined"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintStart_toEndOf="@+id/textView61"
+        app:layout_constraintTop_toBottomOf="@+id/et_pw" />
 
     <EditText
         android:id="@+id/et_name"
         android:layout_width="250dp"
         android:layout_height="30dp"
         android:layout_marginStart="6dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/joined"
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintHorizontal_bias="0.569"
         app:layout_constraintStart_toEndOf="@+id/textView64"
         app:layout_constraintTop_toBottomOf="@+id/et_nickname" />
 
-    <TextView
-        android:id="@+id/textView68"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/scd"
-        android:text="이메일"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView66" />
-
-    <TextView
-        android:id="@+id/textView63"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/scd"
-        android:text="닉네임"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView62" />
-
-    <TextView
-        android:id="@+id/textView64"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/scd"
-        android:text="이름"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView63" />
-
-    <EditText
-        android:id="@+id/et_pw"
-        android:layout_width="250dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/joined"
-        android:ems="10"
-        android:padding="5dp"
-        android:inputType="textPersonName"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/blank"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/textView61"
-        app:layout_constraintTop_toBottomOf="@+id/et_id" />
+        app:layout_constraintHorizontal_bias="0.424"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.721" />
+
+    <ImageButton
+        android:id="@+id/btnPhoto"
+        android:layout_width="32dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="424dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/camera"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnLoad"
+        android:layout_width="32dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="388dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/gallery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView61"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/scd"
+        android:text="아이디"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView65"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/scd"
         android:text="성별"
         android:textColor="@color/black"
@@ -107,49 +178,90 @@
         app:layout_constraintTop_toBottomOf="@+id/textView64" />
 
     <TextView
+        android:id="@+id/textView63"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/scd"
+        android:text="닉네임"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView62" />
+
+    <Button
+        android:id="@+id/btnJoinCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="512dp"
+        android:layout_marginEnd="88dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/scd"
+        android:text="취소"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_pw"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/joined"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintStart_toEndOf="@+id/textView61"
+        app:layout_constraintTop_toBottomOf="@+id/et_id" />
+
+    <Button
+        android:id="@+id/btnJoin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="512dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/scd"
+        android:text="가입"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView60"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/scd"
         android:text="주소"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView68" />
 
-    <Spinner
-        android:id="@+id/spinnerYear"
-        android:layout_width="80dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="304dp"
-        android:dropDownWidth="200dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/textView66"
+        android:id="@+id/textView64"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/scd"
-        android:text="생년월일"
+        android:text="이름"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView65" />
+        app:layout_constraintTop_toBottomOf="@+id/textView63" />
 
     <RadioGroup
         android:id="@+id/rg_gender"
         android:layout_width="220dp"
         android:layout_height="42dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_name">
 
@@ -165,8 +277,8 @@
 
         <RadioButton
             android:id="@+id/rb_female"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/scd"
             android:text="여자"
@@ -174,180 +286,54 @@
 
     </RadioGroup>
 
-    <EditText
-
-        android:id="@+id/et_nickname"
-        android:layout_width="250dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/joined"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/textView61"
-        app:layout_constraintTop_toBottomOf="@+id/et_pw" />
-
-    <Spinner
-        android:id="@+id/spinnerDay"
-        android:layout_width="80dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="304dp"
-        android:dropDownWidth="200dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintStart_toEndOf="@+id/spinnerMonth"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView62"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="22dp"
-        android:fontFamily="@font/scd"
-        android:text="비밀번호"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView61" />
-
-    <Spinner
-        android:id="@+id/spinnerAddr1"
-        android:layout_width="95dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="394dp"
-        android:dropDownWidth="200dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinnerMonth"
-        android:layout_width="80dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="304dp"
-        android:dropDownWidth="200dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintStart_toEndOf="@+id/spinnerYear"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/et_email"
-        android:layout_width="250dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="352dp"
-        android:background="@drawable/joined"
-        android:ems="10"
-        android:padding="5dp"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/textView68"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView61"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="104dp"
-        android:fontFamily="@font/scd"
-        android:text="아이디"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/blank"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.385"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.703" />
-
-    <Button
-        android:id="@+id/btnCheck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="296dp"
-        android:layout_marginTop="444dp"
-        android:background="@drawable/button"
-        android:fontFamily="@font/scd"
-        android:textColor="@color/white"
-        android:text="체크용"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView67"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="124dp"
         android:fontFamily="@font/scd"
         android:text="프로필 사진"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView68" />
 
-
-    <ImageButton
-        android:id="@+id/btnLoad"
-        android:layout_width="32dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="232dp"
-        android:layout_marginTop="452dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/gallery"
+    <Spinner
+        android:id="@+id/spinnerAddr1"
+        android:layout_width="95dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="324dp"
+        android:dropDownWidth="200dp"
+        android:spinnerMode="dialog"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btnPhoto"
-        android:layout_width="32dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="232dp"
-        android:layout_marginTop="488dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/camera"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnJoin"
+    <TextView
+        android:id="@+id/textView68"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="584dp"
-        android:background="@drawable/button"
-        android:textColor="@color/white"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/scd"
-        android:text="가입"
+        android:text="이메일"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView66" />
+
+    <Spinner
+        android:id="@+id/spinnerAddr2"
+        android:layout_width="95dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="324dp"
+        android:dropDownWidth="200dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintStart_toEndOf="@+id/spinnerAddr1"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnJoinCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="584dp"
-        android:layout_marginEnd="90dp"
-        android:fontFamily="@font/scd"
-        android:text="취소"
-        android:background="@drawable/button"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <TextView
+    <!--    <TextView
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="50dp"
