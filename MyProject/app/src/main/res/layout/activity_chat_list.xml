@@ -9,16 +9,15 @@
     android:background="@color/bg2">
 
 
-
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_width="413dp"
+        android:layout_height="481dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-<!--        <TextView
+        <!--        <TextView
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -35,10 +34,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="460dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="2"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp">
+            android:orientation="vertical">
 
 
             <TextView
@@ -49,15 +48,15 @@
                 android:fontFamily="@font/scd"
                 android:gravity="center"
                 android:text="선생님과의 대화"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <ListView
                 android:id="@+id/chat_teacherList"
                 android:layout_width="match_parent"
-                android:textColor="@color/black"
-                android:layout_height="380dp">
+                android:layout_height="380dp"
+                android:textColor="@color/black">
 
             </ListView>
 
@@ -68,7 +67,7 @@
         android:id="@+id/btn_studentList"
         android:layout_width="140dp"
         android:layout_height="40dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/button"
         android:fontFamily="@font/scd"
         android:text="학생 목록 이동"

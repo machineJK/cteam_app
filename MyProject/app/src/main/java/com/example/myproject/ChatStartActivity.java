@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +36,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 
+
 public class ChatStartActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
@@ -50,6 +52,8 @@ public class ChatStartActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private DatabaseReference toRef;
 
+    private TeacherDTO chat_tDto = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +64,6 @@ public class ChatStartActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.cchat);
 
         Intent intent = getIntent();
-        teacher = intent.getStringExtra("chatSelect");
 
         btn_send = findViewById(R.id.btn_send);
         edt_chat = findViewById(R.id.edt_chat);
@@ -81,7 +84,7 @@ public class ChatStartActivity extends AppCompatActivity {
                 toRef.push().setValue(dto);
                 edt_chat.setText("");
 
-                SetMatch setMatch = new SetMatch(selItem.getTeacher_id(),selItem.getTeacher_nickname(),loginDTO.getId(),loginDTO.getNickname());
+                SetMatch setMatch = new SetMatch(chat_tDto.getTeacher_id(),chat_tDto.getTeacher_nickname(),loginDTO.getId(),loginDTO.getNickname());
                 try {
                     setMatch.execute().get();
                 } catch (ExecutionException e) {
@@ -90,7 +93,7 @@ public class ChatStartActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                FirebaseNotification firebaseNotification = new FirebaseNotification(selItem.getTeacher_id(), dto);
+                FirebaseNotification firebaseNotification = new FirebaseNotification(chat_tDto.getTeacher_id(), dto);
                 firebaseNotification.execute();
             }
         });
@@ -112,9 +115,13 @@ public class ChatStartActivity extends AppCompatActivity {
                     myRef.push().setValue(dto);
                     toRef.push().setValue(dto);
                     edt_chat.setText("");
+                    if(chat_tDto != null){
 
+                    String id = chat_tDto.getTeacher_id();
+                    Log.d("id", "onClick: " + id);
                     FirebaseNotification firebaseNotification = new FirebaseNotification(selItem.getTeacher_id(), dto);
                     firebaseNotification.execute();
+                    }
                 }
 
             }
