@@ -105,7 +105,7 @@ public class ChatStartActivity extends AppCompatActivity {
 
                 if(msg != null){
                     ChatDTO dto = new ChatDTO();
-                    dto.setNickname(loginDTO.getName());
+                    dto.setNickname(loginDTO.getNickname());
                     dto.setMsg(msg);
                     long now = System.currentTimeMillis();
                     Date mDate = new Date(now);
@@ -133,7 +133,7 @@ public class ChatStartActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         chatDTOList = new ArrayList<>();
-        mAdapter = new ChatAdpter(chatDTOList , ChatStartActivity.this , loginDTO.getName());
+        mAdapter = new ChatAdpter(chatDTOList , ChatStartActivity.this , loginDTO.getNickname());
         mRecyclerView.setAdapter(mAdapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();

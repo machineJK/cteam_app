@@ -77,7 +77,7 @@ public class ChatAdpter extends RecyclerView.Adapter<com.example.myproject.Adapt
             LinearLayout ln11 =  (LinearLayout) holder.ln1.getParent();
             LinearLayout ln12 =  (LinearLayout) holder.ln1;
             ln11.setGravity(Gravity.RIGHT);
-            holder.txt_msg.setBackgroundColor(Color.WHITE);
+            holder.txt_msg.setBackgroundColor(Color.YELLOW);
 
         }else{
             holder.txt_msg.setVisibility(View.GONE);
