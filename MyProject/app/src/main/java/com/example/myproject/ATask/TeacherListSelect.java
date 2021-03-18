@@ -29,11 +29,14 @@ public class TeacherListSelect extends AsyncTask<Void,Void,Void> {
     ArrayList<TeacherDTO> myItemArrayList;
     MyRecyclerviewAdapter adapter;
     ProgressDialog progressDialog;
-
     public TeacherListSelect(ArrayList<TeacherDTO> myItemArrayList, MyRecyclerviewAdapter adapter, ProgressDialog progressDialog) {
         this.myItemArrayList = myItemArrayList;
         this.adapter = adapter;
         this.progressDialog = progressDialog;
+    }
+    public TeacherListSelect(  ArrayList<TeacherDTO> myItemArrayList_t , MyRecyclerviewAdapter adapter_t) {
+        this.myItemArrayList = myItemArrayList_t;
+        this.adapter = adapter_t;
     }
 
     HttpClient httpClient;

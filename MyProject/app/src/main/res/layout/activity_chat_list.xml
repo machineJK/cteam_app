@@ -6,35 +6,34 @@
     android:layout_height="match_parent"
     android:background="@color/bg2"
     android:orientation="vertical"
-    tools:context=".ChatListActivity"
-    android:weightSum="11">
+    android:weightSum="11"
+    tools:context=".ChatListActivity">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="1">
-
-        <TextView
-            android:id="@+id/text_teacherList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:fontFamily="@font/scd"
-            android:text="선생님과의 대화"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="8">
+        android:layout_weight="1"
+        android:gravity="center">
 
+        <TextView
+            android:id="@+id/text_teacherList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/scd"
+            android:gravity="center"
+            android:text="선생님과의 대화"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
 
         <ListView
             android:id="@+id/chat_teacherList"
@@ -49,13 +48,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
         android:layout_weight="1"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_studentList"
-            android:layout_width="200dp"
+            android:layout_width="140dp"
             android:layout_height="40dp"
             android:background="@drawable/button"
             android:fontFamily="@font/scd"
@@ -66,16 +65,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal"
-        android:weightSum="4"
-        android:layout_weight="1">
+        android:weightSum="4">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_weight="1"
-            android:gravity="center">
+            android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/talk_matching"
@@ -87,11 +85,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_weight="1"
-            android:gravity="center">
+            android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/talk_talk"
@@ -103,11 +100,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_weight="1"
-            android:gravity="center">
+            android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/talk_board"
@@ -119,11 +115,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_weight="1"
-            android:gravity="center">
+            android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/talk_my"

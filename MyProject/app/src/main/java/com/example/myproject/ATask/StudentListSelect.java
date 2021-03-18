@@ -35,6 +35,11 @@ public class StudentListSelect extends AsyncTask<Void,Void,Void> {
         this.progressDialog = progressDialog;
     }
 
+    public StudentListSelect(ArrayList<StudentDTO> myItemArrayList_s, MyRecyclerviewAdapter2 adapter_s) {
+        this.myItemArrayList = myItemArrayList_s;
+        this.adapter = adapter_s;
+    }
+
 
     HttpClient httpClient;
     HttpPost httpPost;
