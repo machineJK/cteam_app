@@ -24,7 +24,7 @@ import java.io.IOException;
 public class Common {
     //public static String ipConfig = "http://192.168.200.151:8989";//
     //public static String ipConfig = "http://121.148.239.200:80";
-    public static String ipConfig = "http://192.168.0.31:8080";
+    public static String ipConfig = "http://112.164.58.217:8080";   //발표용
     //public static String ipConfig = "http://192.168.0.71:80";   //소영 노트북
     //public static String ipConfig = "http://192.168.0.33:80"; //소영 컴
     //public static String ipConfig = "http://192.168.123.109:80"; //소영 집 ip

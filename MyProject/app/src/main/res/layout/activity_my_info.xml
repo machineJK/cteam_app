@@ -6,31 +6,13 @@
     android:layout_height="match_parent"
     android:background="@color/bg2"
     android:orientation="vertical"
-    tools:context=".MyInfo">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
-
-<!--        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/bg"
-            android:fontFamily="@font/scd"
-            android:gravity="center"
-            android:text="마이페이지"
-            android:textColor="@color/white"
-            android:textSize="20sp" />-->
-
-    </LinearLayout>
+    tools:context=".MyInfo"
+    android:weightSum="11">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="608dp"
-        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_weight="9"
         android:padding="10dp">
 
         <LinearLayout
@@ -215,60 +197,90 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:gravity="end"
         android:orientation="vertical"
-        android:layout_marginBottom="5dp">
+        android:layout_weight="1">
 
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/button"
             android:fontFamily="@font/scd"
             android:text="로그아웃"
             android:textColor="@color/white"
-            android:layout_margin="10dp"
             android:textSize="16dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_weight="1">
 
-        <ImageButton
-            android:id="@+id/my_matching"
-            android:layout_width="105dp"
-            android:layout_height="60dp"
-            android:background="@color/white"
-            android:scaleType="fitCenter"
-            android:src="@drawable/home3" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
 
-        <ImageButton
-            android:id="@+id/my_talk"
-            android:layout_width="105dp"
-            android:layout_height="60dp"
-            android:background="@color/white"
-            android:scaleType="fitCenter"
-            android:src="@drawable/q" />
+            <ImageButton
+                android:id="@+id/my_matching"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:scaleType="fitCenter"
+                android:src="@drawable/home3" />
+        </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/my_board"
-            android:layout_width="105dp"
-            android:layout_height="60dp"
-            android:background="@color/white"
-            android:scaleType="fitCenter"
-            android:src="@drawable/board" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
 
-        <ImageButton
-            android:id="@+id/my_my"
-            android:layout_width="105dp"
-            android:layout_height="60dp"
-            android:background="@color/white"
-            android:scaleType="fitCenter"
-            android:src="@drawable/cmymy" />
+            <ImageButton
+                android:id="@+id/my_talk"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:scaleType="fitCenter"
+                android:src="@drawable/q" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/my_board"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:scaleType="fitCenter"
+                android:src="@drawable/board" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/my_my"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:scaleType="fitCenter"
+                android:src="@drawable/cmymy" />
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -7,56 +7,49 @@
     android:orientation="vertical"
     tools:context=".Board"
     android:background="@color/bg2"
-    android:weightSum="12"
+    android:weightSum="11"
     android:gravity="center">
 
-<!--    <LinearLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_weight="0.5"
-        android:background="@color/bg"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:weightSum="10">
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/bg"
-            android:fontFamily="@font/scd"
-            android:gravity="center"
-            android:text="게시판"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="8"/>
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="2">
 
-    </LinearLayout>-->
+            <ImageButton
+                android:id="@+id/btn_brd_QnA2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/bg2"
+                android:scaleType="fitCenter"
+                android:src="@drawable/docu" />
+        </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/btn_brd_QnA2"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/docu"
-        android:background="@color/bg2"
-        android:scaleType="fitCenter"
-        android:layout_gravity="right"/>
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="480dp"
-        android:layout_weight="11.3">
+        android:layout_height="0dp"
+        android:layout_weight="9">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_brd"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            >
+            android:layout_height="match_parent">
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -65,14 +58,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="0.2">
+        android:layout_weight="1"
+        android:weightSum="4">
 
         <ImageButton
             android:id="@+id/matchingst_matching"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
             android:scaleType="fitCenter"
@@ -80,8 +74,8 @@
 
         <ImageButton
             android:id="@+id/matchingst_talk"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
             android:scaleType="fitCenter"
@@ -89,8 +83,8 @@
 
         <ImageButton
             android:id="@+id/matchingst_board"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
             android:scaleType="fitCenter"
@@ -98,8 +92,8 @@
 
         <ImageButton
             android:id="@+id/matchingst_my"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
             android:scaleType="fitCenter"

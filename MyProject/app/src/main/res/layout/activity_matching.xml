@@ -9,72 +9,80 @@
     android:background="@color/bg2"
     android:weightSum="11">
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView7"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:text="과외매칭"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="20sp"-->
-<!--        android:gravity="center"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:background="@color/bg"-->
-<!--        android:fontFamily="@font/scd" />-->
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:paddingTop="10dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:weightSum="2">
 
-        <Button
-            android:id="@+id/teacher"
-            android:layout_width="138dp"
-            android:layout_height="48dp"
-            android:text="학생 구해요"
-            android:fontFamily="@font/scd"
-            android:background="@drawable/button"
-            android:textColor="@color/white"
-            android:layout_margin="5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:paddingRight="1dp"
+            android:gravity="end">
 
-        <Button
-            android:id="@+id/student"
-            android:layout_width="138dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="5dp"
-            android:text="선생님 구해요"
-            android:fontFamily="@font/scd"
-            android:background="@drawable/btn2"
-            android:textColor="@color/bg"
-            android:layout_margin="5dp"/>
+            <Button
+                android:id="@+id/student"
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/btn2"
+                android:fontFamily="@font/scd"
+                android:text="선생님 구해요"
+                android:textColor="@color/bg" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:paddingLeft="1dp"
+            android:gravity="start">
+
+            <Button
+                android:id="@+id/teacher"
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button"
+                android:fontFamily="@font/scd"
+                android:text="학생 구해요"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/add2"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="과외 등록하기"
-        android:background="@drawable/btn3"
-        android:textColor="@color/white"
-        android:fontFamily="@font/scd"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="10dp">
+
+        <Button
+            android:id="@+id/add2"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn3"
+            android:fontFamily="@font/scd"
+            android:text="과외 등록하기"
+            android:textColor="@color/white" />
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="463dp"
-        android:layout_weight="9.7">
+        android:layout_height="0dp"
+        android:layout_weight="8">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:layout_height="match_parent">
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -91,46 +99,71 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_weight="0.3">
+        android:weightSum="4"
+        android:layout_weight="1">
 
-        <ImageButton
-            android:id="@+id/matchingst_matching"
-            android:layout_width="105dp"
-            android:layout_height="60dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/white"
-            android:scaleType="fitCenter"
-            android:src="@drawable/chome" />
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/matchingst_talk"
-            android:layout_width="105dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:scaleType="fitCenter"
-            android:src="@drawable/q" />
+            <ImageButton
+                android:id="@+id/matchingst_matching"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:scaleType="fitCenter"
+                android:src="@drawable/chome" />
+        </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/matchingst_board"
-            android:layout_width="105dp"
-            android:layout_height="60dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/white"
-            android:scaleType="fitCenter"
-            android:src="@drawable/board" />
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/matchingst_my"
-            android:layout_width="105dp"
-            android:layout_height="60dp"
+            <ImageButton
+                android:id="@+id/matchingst_talk"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:scaleType="fitCenter"
+                android:src="@drawable/q" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/white"
-            android:scaleType="fitCenter"
-            android:src="@drawable/mymy" />
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/matchingst_board"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:scaleType="fitCenter"
+                android:src="@drawable/board" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/matchingst_my"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mymy" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

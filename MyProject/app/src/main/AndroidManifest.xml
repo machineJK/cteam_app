@@ -50,7 +50,8 @@
             android:theme="@style/Theme.MyProject"/>
         <activity android:name=".MatchingStudent"
             android:label="@string/title_activity_matching"
-            android:theme="@style/Theme.MyProject"/>
+            android:theme="@style/Theme.MyProject"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".TeacherForm"
             android:label="@string/title_activity_teacher_f"
             android:theme="@style/Theme.MyProject"/>
@@ -59,7 +60,8 @@
             android:theme="@style/Theme.MyProject"/>
         <activity android:name=".Board_Write"
             android:label="@string/title_activity_board"
-            android:theme="@style/Theme.MyProject"/>
+            android:theme="@style/Theme.MyProject"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".ChatListActivity"
             android:label="@string/title_activity_chat"
             android:theme="@style/Theme.MyProject"/>
@@ -84,7 +86,8 @@
 
         <activity android:name=".Matching"
             android:label="@string/title_activity_matching"
-            android:theme="@style/Theme.MyProject"/>
+            android:theme="@style/Theme.MyProject"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".ModifyMyInfo"
             android:label="@string/title_activity_my_info"
             android:theme="@style/Theme.MyProject"/>

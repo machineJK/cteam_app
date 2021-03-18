@@ -129,6 +129,16 @@ public class ChatStartActivity extends AppCompatActivity {
         mAdapter = new ChatAdpter(chatDTOList , ChatStartActivity.this , loginDTO.getName());
         mRecyclerView.setAdapter(mAdapter);
 
+        //스크롤 되냐?
+        mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                mRecyclerView.scrollToPosition(mRecyclerView.getAdapter().getItemCount() - 1);
+            }
+        });
+
+
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 

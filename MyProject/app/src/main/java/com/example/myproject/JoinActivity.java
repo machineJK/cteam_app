@@ -9,7 +9,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,6 +39,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.concurrent.ExecutionException;
+import java.util.regex.Pattern;
+
 import static com.example.myproject.Common.Common.ipConfig;
 import static com.example.myproject.Common.Common.isNetworkConnected;
 
@@ -284,8 +291,23 @@ public class JoinActivity extends AppCompatActivity {
         });
 
 
-
-
+        //스페이스바 막기 및 글자 수 제한
+        InputFilter filter = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end,
+                                       Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    if (Character.isWhitespace(source.charAt(i))) {
+                        return "";
+                    }
+                }
+                return null;
+            }
+        };
+        et_id.setFilters(new InputFilter[] { filter, new InputFilter.LengthFilter(13) });
+        et_pw.setFilters(new InputFilter[] { filter, new InputFilter.LengthFilter(13)  });
+        et_name.setFilters(new InputFilter[] { filter, new InputFilter.LengthFilter(10) });
+        et_nickname.setFilters(new InputFilter[] { filter });
+        et_email.setFilters(new InputFilter[] { filter });
 
 
 
@@ -305,14 +327,14 @@ public class JoinActivity extends AppCompatActivity {
                     et_pw.requestFocus();
                     return;
                 }
+                if(et_name.getText().toString().length() == 0){
+                    Toast.makeText(JoinActivity.this, "이름을 작성하세요!!!", Toast.LENGTH_SHORT).show();
+                    et_name.requestFocus();
+                    return;
+                }
                 if(et_nickname.getText().toString().length() == 0){
                     Toast.makeText(JoinActivity.this, "닉네임을 작성하세요!!!", Toast.LENGTH_SHORT).show();
                     et_nickname.requestFocus();
-                    return;
-                }
-                if(et_name.getText().toString().length() == 0){
-                    Toast.makeText(JoinActivity.this, "이름은 작성하세요!!!", Toast.LENGTH_SHORT).show();
-                    et_name.requestFocus();
                     return;
                 }
                 if(et_email.getText().toString().length() == 0){
@@ -320,6 +342,46 @@ public class JoinActivity extends AppCompatActivity {
                     et_email.requestFocus();
                     return;
                 }
+
+                //정규식 검사
+                String pattern;
+                String val;
+                boolean regex;
+
+                //아이디 유효성 검사
+                pattern = "^[a-z0-9]{6,13}$";
+                val = et_id.getText().toString();
+                regex = Pattern.matches(pattern, val);
+                if(regex == false){
+                    Toast.makeText(JoinActivity.this, "아이디를 유형에 맞춰 작성해 주세요!!!", Toast.LENGTH_SHORT).show();
+                    et_id.setText("");
+                    et_id.requestFocus();
+                    return;
+                }
+
+                //비밀번호 유효성 검사
+                pattern = "^(?=.*[a-z])(?=.*\\d)(?=.*[$@$!%*#?&])[a-z\\d$@$!%*#?&]{6,13}$";
+                val = et_pw.getText().toString();
+                if(!Pattern.matches(pattern,val)){
+                    Toast.makeText(JoinActivity.this, "비밀번호를 유형에 맞춰 작성해 주세요!!!", Toast.LENGTH_SHORT).show();
+                    et_pw.setText("");
+                    et_pw.requestFocus();
+                    return;
+                }
+                
+                //이메일 유효성 검사
+                pattern = "^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\\.[a-zA-Z]{2,3}$";
+                val = et_email.getText().toString();
+                regex = Pattern.matches(pattern,val);
+                if(regex == false){
+                    Toast.makeText(JoinActivity.this, "이메일을 바르게 작성해주세요!!!", Toast.LENGTH_SHORT).show();
+                    et_email.setText("");
+                    et_email.requestFocus();
+                    return;
+                }
+                
+
+
 
                 if(isNetworkConnected(JoinActivity.this) == true){
 
@@ -409,10 +471,32 @@ public class JoinActivity extends AppCompatActivity {
         btnJoinCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(JoinActivity.this, LoginActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
-    }
+    }//OnCreate
+
+    //스페이스바 막기
+/*    private void setListener(){
+        et_id = findViewById(R.id.et_id);
+        et_pw = findViewById(R.id.et_pw);
+        et_nickname = findViewById(R.id.et_nickname);
+        et_name = findViewById(R.id.et_name);
+        et_email = findViewById(R.id.et_email);
+
+        et_id.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                Toast.makeText(JoinActivity.this, "작동됨", Toast.LENGTH_SHORT).show();
+                if(i == keyEvent.KEYCODE_SPACE) return true;
+                return false;
+            }
+        });
+
+
+    }*/
 
     //사진을 저장할 파일 생성
     private File createFile() throws IOException {
@@ -491,6 +575,8 @@ public class JoinActivity extends AppCompatActivity {
         cursor.close();
         return res;
     }
+
+
 
 
 

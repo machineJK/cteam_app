@@ -99,6 +99,14 @@ public class ChatStartStudentActivity extends AppCompatActivity {
         mAdapter = new ChatAdpter(chatDTOList , ChatStartStudentActivity.this , loginDTO.getName());
         mRecyclerView.setAdapter(mAdapter);
 
+        //스크롤 되냐?
+        mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                mRecyclerView.scrollToPosition(mRecyclerView.getAdapter().getItemCount() - 1);
+            }
+        });
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         if(student == null || student.length() < 1){
