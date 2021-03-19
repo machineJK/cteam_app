@@ -17,6 +17,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +37,7 @@ import static com.example.myproject.Common.Common.loginDTO;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 import static com.example.myproject.Common.Common.ipConfig;
 import static com.example.myproject.Common.Common.isNetworkConnected;
@@ -61,6 +64,7 @@ public class ModifyMyInfo extends AppCompatActivity {
     ImageView imageView8;
     String id, pw, nickname, email;
     EditText etUId, etUPw, etUNickname, etUEmail;
+    Button modify, cancel;
 
 
     @Override
@@ -80,23 +84,10 @@ public class ModifyMyInfo extends AppCompatActivity {
 
         imageView8 = findViewById(R.id.imageView8);
 
-        /*modify = findViewById(R.id.modify_modify);
+
+        modify = findViewById(R.id.modify_modify);
         cancel = findViewById(R.id.modify_cancel);
 
-        modify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ModifyMyInfo.this, MyInfo.class);
-                startActivity(intent);
-            }
-        });
-
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });*/
 
         // 업데이트시 아이디 변경불가
         etUId.setEnabled(false);
@@ -139,23 +130,23 @@ public class ModifyMyInfo extends AppCompatActivity {
         photoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
-                    try{
+                try {
+                    try {
                         file = createFile();
                         Log.d("ModifyMyInfo:FilePath ", file.getAbsolutePath());
-                    }catch(Exception e){
+                    } catch (Exception e) {
                         Log.d("ModifyMyInfo:error1", "Something Wrong", e);
                     }
 
                     imageView8.setVisibility(View.VISIBLE);
 
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { // API24 이상 부터
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { // API24 이상 부터
                         intent.putExtra(MediaStore.EXTRA_OUTPUT,
                                 FileProvider.getUriForFile(getApplicationContext(),
                                         getApplicationContext().getPackageName() + ".fileprovider", file));
                         Log.d("sub1:appId", getApplicationContext().getPackageName());
-                    }else {
+                    } else {
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
                     }
 
@@ -163,7 +154,7 @@ public class ModifyMyInfo extends AppCompatActivity {
                         startActivityForResult(intent, CAMERA_REQUEST);
                     }
 
-                }catch(Exception e){
+                } catch (Exception e) {
                     Log.d("ModifyMyInfo:error2", "Something Wrong", e);
                 }
 
@@ -182,6 +173,26 @@ public class ModifyMyInfo extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), LOAD_IMAGE);
             }
         });
+
+        //스페이스바 막기 및 글자 수 제한
+        InputFilter filter = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end,
+                                       Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    if (Character.isWhitespace(source.charAt(i))) {
+                        return "";
+                    }
+                }
+                return null;
+            }
+        };
+
+        //etUPw, etUNickname, etUEmail;
+        etUPw.setFilters(new InputFilter[]{filter, new InputFilter.LengthFilter(13)});
+        etUNickname.setFilters(new InputFilter[]{filter});
+        etUEmail.setFilters(new InputFilter[]{filter});
+
+
         /*//사진 찍기
         photoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,7 +233,116 @@ public class ModifyMyInfo extends AppCompatActivity {
             }
         });
 */
+        modify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (etUPw.getText().toString().length() == 0) {
+                    Toast.makeText(ModifyMyInfo.this, "비밀번호를 작성하세요!!!", Toast.LENGTH_SHORT).show();
+                    etUPw.requestFocus();
+                    return;
+                }
+                if (etUNickname.getText().toString().length() == 0) {
+                    Toast.makeText(ModifyMyInfo.this, "닉네임을 작성하세요!!!", Toast.LENGTH_SHORT).show();
+                    etUNickname.requestFocus();
+                    return;
+                }
+                if (etUEmail.getText().toString().length() == 0) {
+                    Toast.makeText(ModifyMyInfo.this, "이메일을 작성하세요!!!", Toast.LENGTH_SHORT).show();
+                    etUEmail.requestFocus();
+                    return;
+                }
+
+                //정규식 검사
+                String pattern;
+                String val;
+                boolean regex;
+
+                //비밀번호 유효성 검사
+                pattern = "^(?=.*[a-z])(?=.*\\d)(?=.*[$@$!%*#?&])[a-z\\d$@$!%*#?&]{6,13}$";
+                val = etUPw.getText().toString();
+                if (!Pattern.matches(pattern, val)) {
+                    Toast.makeText(ModifyMyInfo.this, "비밀번호를 유형에 맞춰 작성해 주세요!!!", Toast.LENGTH_SHORT).show();
+                    etUPw.setText("");
+                    etUPw.requestFocus();
+                    return;
+                }
+
+                //이메일 유효성 검사
+                pattern = "^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\\.[a-zA-Z]{2,3}$";
+                val = etUEmail.getText().toString();
+                regex = Pattern.matches(pattern, val);
+                if (regex == false) {
+                    Toast.makeText(ModifyMyInfo.this, "이메일을 바르게 작성해주세요!!!", Toast.LENGTH_SHORT).show();
+                    etUEmail.setText("");
+                    etUEmail.requestFocus();
+                    return;
+                }
+
+                if (isNetworkConnected(ModifyMyInfo.this) == true) {
+                    if (fileSize <= 300000000) {  // 파일크기가 30메가 보다 작아야 업로드 할수 있음
+                        id = etUId.getText().toString();
+                        pw = etUPw.getText().toString();
+                        nickname = etUNickname.getText().toString();
+                        email = etUEmail.getText().toString();
+
+
+                        ListModify listModify = new ListModify(id, pw, nickname, email, pImgDbPathU, imageDbPathU, imageRealPathU);
+                        listModify.execute();
+
+                        //
+                        String imgPath = imageDbPathU;
+                        loginDTO.setdbImgPath(imgPath);
+                        loginDTO.setId(id);
+                        loginDTO.setNickname(nickname);
+                        loginDTO.setEmail(email);
+
+
+                        Toast.makeText(getApplicationContext(), "수정성공", Toast.LENGTH_LONG).show();
+
+                        Intent showIntent = new Intent(getApplicationContext(), MyInfo.class);
+                        //showIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |   // 이 엑티비티 플래그를 사용하여 엑티비티를 호출하게 되면 새로운 태스크를 생성하여 그 태스크안에 엑티비티를 추가하게 됩니다. 단, 기존에 존재하는 태스크들중에 생성하려는 엑티비티와 동일한 affinity(관계, 유사)를 가지고 있는 태스크가 있다면 그곳으로 새 엑티비티가 들어가게됩니다.
+                        //        Intent.FLAG_ACTIVITY_SINGLE_TOP | // 엑티비티를 호출할 경우 호출된 엑티비티가 현재 태스크의 최상단에 존재하고 있었다면 새로운 인스턴스를 생성하지 않습니다. 예를 들어 ABC가 엑티비티 스택에 존재하는 상태에서 C를 호출하였다면 여전히 ABC가 존재하게 됩니다.
+                        //        Intent.FLAG_ACTIVITY_CLEAR_TOP); // 만약에 엑티비티스택에 호출하려는 엑티비티의 인스턴스가 이미 존재하고 있을 경우에 새로운 인스턴스를 생성하는 것 대신에 존재하고 있는 엑티비티를 포그라운드로 가져옵니다. 그리고 엑티비티스택의 최상단 엑티비티부터 포그라운드로 가져올 엑티비티까지의 모든 엑티비티를 삭제합니다.
+                        startActivity(showIntent);
+
+
+                        finish();
+                    } else {
+                        // 알림창 띄움
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(ModifyMyInfo.this);
+                        builder.setTitle("알림");
+                        builder.setMessage("파일 크기가 30MB초과하는 파일은 업로드가 제한되어 있습니다.\n30MB이하 파일로 선택해 주십시요!!!");
+                        builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.show();
+                    }
+
+                } else {
+                    Toast.makeText(ModifyMyInfo.this, "인터넷이 연결되어 있지 않습니다.",
+                            Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ModifyMyInfo.this, MyInfo.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ModifyMyInfo.this, MyInfo.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
+
 
     //사진을 저장할 파일 생성
     private File createFile() throws  IOException {
@@ -238,7 +358,7 @@ public class ModifyMyInfo extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
 
-        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
+        /*if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
 
             try {
                 // 이미지 돌리기 및 리사이즈
@@ -287,10 +407,12 @@ public class ModifyMyInfo extends AppCompatActivity {
             } catch (Exception e){
                 e.printStackTrace();
             }
+        }else if(requestCode == CAMERA_REQUEST && resultCode != RESULT_OK){
+            Toast.makeText(this, "사진 못넘어옴", Toast.LENGTH_SHORT).show();
         }
 
-    }
-/*        if (requestCode == CAMERA_REQUEST && data != null) {
+    }*/
+        if (requestCode == CAMERA_REQUEST && data != null) {
             Toast.makeText(this, "카메라에서 이미지 넘어옴", Toast.LENGTH_SHORT).show();
             try {
                 // 이미지 돌리기 및 리사이즈
@@ -338,7 +460,7 @@ public class ModifyMyInfo extends AppCompatActivity {
             Toast.makeText(this, "사진 못넘어옴", Toast.LENGTH_SHORT).show();
         }
 
-    }*/
+    }
 
     // Get the real path from the URI
     public String getPathFromURI(Uri contentUri) {
@@ -355,7 +477,7 @@ public class ModifyMyInfo extends AppCompatActivity {
 
 
 
-    //수정버튼
+/*    //수정버튼
     public void btnUpdateClicked(View view){
         if(isNetworkConnected(this) == true){
             if(fileSize <= 300000000) {  // 파일크기가 30메가 보다 작아야 업로드 할수 있음
@@ -412,7 +534,7 @@ public class ModifyMyInfo extends AppCompatActivity {
         Intent intent = new Intent(ModifyMyInfo.this, MyInfo.class);
         startActivity(intent);
         finish();
-    }
+    }*/
 
 
 
