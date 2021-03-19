@@ -83,7 +83,7 @@ public class ChatStartActivity extends AppCompatActivity {
                 myRef.push().setValue(dto);
                 toRef.push().setValue(dto);
                 edt_chat.setText("");
-
+                chat_tDto = selItem;
                 SetMatch setMatch = new SetMatch(chat_tDto.getTeacher_id(),chat_tDto.getTeacher_nickname(),loginDTO.getId(),loginDTO.getNickname());
                 try {
                     setMatch.execute().get();
