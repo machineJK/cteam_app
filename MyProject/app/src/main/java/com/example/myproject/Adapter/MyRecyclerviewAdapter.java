@@ -65,8 +65,6 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
                 Log.d(TAG, "onClick: " + position);
 
                 selItem = arrayList_filter.get(position);
-
-                //Toast.makeText(mContext, "teacher_id : " + arrayList.get(position).getTeacher_id(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext, TeacherDetail.class);
                 mContext.startActivity(intent);
 
@@ -113,7 +111,7 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
                     arrayList_filter = arrayList;
                 } else {
                     ArrayList<TeacherDTO> filteringList = new ArrayList<>();
-                    for (TeacherDTO dto : arrayList_filter) {
+                    for (TeacherDTO dto : arrayList) {
                         //필터조건
                         if (dto.getTeacher_addr().toLowerCase().contains(charString.toLowerCase())
                                 || dto.getTeacher_worktime().contains(charString.toLowerCase())

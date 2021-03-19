@@ -97,11 +97,17 @@ public class BoardDetailForm extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String board_id = loginDTO.getId();
-
                 String board_content = et_comment.getText().toString();
                 String id_image_path = loginDTO.getdbImgPath();
                 String board_nickname = loginDTO.getNickname();
                 String isComment = "y";
+
+                BoardDTO dto = new BoardDTO();
+                dto.setBoard_id(board_id);
+                dto.setBoard_content(board_content);
+                dto.setId_image_path(id_image_path);
+                dto.setBoard_nickname(board_nickname);
+
                 int board_notice = 0;
                 if(loginDTO.getId().equals("admin")) {
                     board_notice = 1;
@@ -113,6 +119,8 @@ public class BoardDetailForm extends AppCompatActivity {
                     String state;
                     state = brdInsert2.execute().get().trim();
                     Log.d("main:Boardwrite", "입력실행 !!!" + state);
+
+                    adapter.updateList(dto);
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {

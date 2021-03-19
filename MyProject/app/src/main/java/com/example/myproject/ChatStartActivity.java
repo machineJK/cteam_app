@@ -136,7 +136,7 @@ public class ChatStartActivity extends AppCompatActivity {
         mAdapter = new ChatAdpter(chatDTOList , ChatStartActivity.this , loginDTO.getNickname());
         mRecyclerView.setAdapter(mAdapter);
 
-        //스크롤 되냐?
+        //스크롤
         mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onItemRangeInserted(int positionStart, int itemCount) {

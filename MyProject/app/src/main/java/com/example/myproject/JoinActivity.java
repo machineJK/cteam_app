@@ -32,6 +32,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import com.example.myproject.Atask.IdCheck;
 import com.example.myproject.Atask.JoinInsert;
 import com.example.myproject.Common.Common;
 
@@ -42,6 +43,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.regex.Pattern;
 
 import static com.example.myproject.Common.Common.ipConfig;
+import static com.example.myproject.Common.Common.checkDTO;
 import static com.example.myproject.Common.Common.isNetworkConnected;
 
 public class JoinActivity extends AppCompatActivity {
@@ -309,7 +311,31 @@ public class JoinActivity extends AppCompatActivity {
         et_nickname.setFilters(new InputFilter[] { filter });
         et_email.setFilters(new InputFilter[] { filter });
 
+        et_id.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
 
+                if(!hasFocus){
+                    String inputID = et_id.getText().toString();
+                    Toast.makeText(JoinActivity.this, "false", Toast.LENGTH_SHORT).show();
+
+                    //회원가입 id 중복체크
+                    IdCheck student_id_check = new IdCheck(inputID,"m");
+                    try {
+                        student_id_check.execute().get();
+                        if(checkDTO.getIdchk() == 1){
+                            Toast.makeText(JoinActivity.this, "중복되는 아이디 입니다!!!", Toast.LENGTH_SHORT).show();
+                            et_id.setText("");
+                        }
+                    } catch (ExecutionException e) {
+                        e.getMessage();
+                    } catch (InterruptedException e) {
+                        e.getMessage();
+                    }
+                }
+
+            }
+        });
 
 
         //회원가입 버튼

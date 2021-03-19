@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg2"
+    android:orientation="vertical"
     tools:context=".TeacherForm"
-    android:background="@color/bg2">
+    android:weightSum="11">
 
-<!--    <TextView
+    <!--    <TextView
         android:id="@+id/textView7"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -22,232 +24,363 @@
         android:fontFamily="@font/scd" />-->
 
 
-    <Spinner
-        android:id="@+id/spinner_teacher_subject"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="25dp"
-        android:dropDownWidth="200dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:weightSum="2">
 
-    </Spinner>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
 
-    <EditText
-        android:id="@+id/et_teacher_pay"
-        android:layout_width="209dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="210dp"
-        android:background="@drawable/joined"
-        android:ems="10"
-        android:fontFamily="@font/scd"
-        android:hint="만원 단위 입니다"
-        android:inputType="number"
-        android:maxLength="3"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/address2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/scd"
+                android:text="가능과목"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/address6"
-        android:layout_width="50dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/scd"
-        android:text="페이"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.077"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address5" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/address7"
-        android:layout_width="56dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/scd"
-        android:text="시간"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address6" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:gravity="center">
 
-    <TextView
-        android:id="@+id/address3"
-        android:layout_width="109dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/scd"
-        android:text="학교"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address2" />
+                <Spinner
+                    android:id="@+id/spinner_teacher_subject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:dropDownWidth="200dp"
+                    android:spinnerMode="dialog">
 
-    <EditText
-        android:id="@+id/et_teacher_worktime"
-        android:layout_width="205dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="258dp"
-        android:background="@drawable/joined"
-        android:ems="10"
-        android:fontFamily="@font/scd"
-        android:hint="매주 할 시간"
-        android:inputType="number"
-        android:maxLength="3"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                </Spinner>
+        </LinearLayout>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/address4"
-        android:layout_width="109dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/scd"
-        android:text="학과"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address3" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:weightSum="2">
 
-    <EditText
-        android:id="@+id/et_teacher_major"
-        android:layout_width="210dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="118dp"
-        android:background="@drawable/joined"
-        android:ems="10"
-        android:fontFamily="@font/scd"
-        android:hint="ex) 생명공학과"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
 
-    <EditText
-        android:id="@+id/et_teacher_univ"
-        android:layout_width="210dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="72dp"
-        android:background="@drawable/joined"
-        android:ems="10"
-        android:fontFamily="@font/scd"
-        android:hint="ex) 서강대학교"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/address3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/scd"
+                android:text="학교"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/et_teacher_univnum"
-        android:layout_width="210dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="164dp"
-        android:background="@drawable/joined"
-        android:ems="10"
-        android:fontFamily="@font/scd"
-        android:hint="ex) 20131217"
-        android:inputType="number"
-        android:maxLength="8"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/address5"
-        android:layout_width="109dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/scd"
-        android:text="학번"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address4" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:gravity="center">
 
-    <TextView
-        android:id="@+id/address2"
-        android:layout_width="109dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/scd"
-        android:text="가능과목"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/et_teacher_univ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/joined"
+                android:ems="10"
+                android:fontFamily="@font/scd"
+                android:hint="ex) 서강대학교"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:layout_marginRight="10dp"/>
 
-    <Button
-        android:id="@+id/teacher_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="232dp"
-        android:layout_marginTop="560dp"
-        android:background="@drawable/button"
-        android:fontFamily="@font/scd"
-        android:text="취소"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/teacher_join"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="560dp"
-        android:background="@drawable/button"
-        android:fontFamily="@font/scd"
-        android:text="등록"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:weightSum="2">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="97dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/scd"
-        android:text="간단소개"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address7" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
 
-    <EditText
-        android:id="@+id/et_teacher_intro"
-        android:layout_width="364dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="340dp"
-        android:background="@drawable/joined"
-        android:ems="10"
-        android:fontFamily="@font/scd"
-        android:gravity="start"
-        android:padding="10dp"
-        android:maxLength="200"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/address4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/scd"
+                android:text="학과"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/et_teacher_major"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/joined"
+                android:ems="10"
+                android:fontFamily="@font/scd"
+                android:hint="ex) 생명공학과"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:layout_marginRight="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/address5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/scd"
+                android:text="학번"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/et_teacher_univnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/joined"
+                android:ems="10"
+                android:fontFamily="@font/scd"
+                android:hint="ex) 20131217"
+                android:inputType="number"
+                android:maxLength="8"
+                android:padding="10dp"
+                android:layout_marginRight="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/address6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/scd"
+                android:text="페이"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/et_teacher_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/joined"
+                android:ems="10"
+                android:fontFamily="@font/scd"
+                android:hint="만원 단위 입니다"
+                android:inputType="number"
+                android:maxLength="3"
+                android:padding="10dp"
+                android:layout_marginRight="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/address7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/scd"
+                android:text="시간"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/et_teacher_worktime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/joined"
+                android:ems="10"
+                android:fontFamily="@font/scd"
+                android:hint="매주 할 시간"
+                android:inputType="number"
+                android:maxLength="2"
+                android:padding="10dp"
+                android:layout_marginRight="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/scd"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="간단소개"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="3">
+
+        <EditText
+            android:id="@+id/et_teacher_intro"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/joined"
+            android:ems="10"
+            android:hint="소개말을 작성하세요"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:fontFamily="@font/scd"
+            android:gravity="start"
+            android:maxLength="200"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/teacher_join"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button"
+                android:fontFamily="@font/scd"
+                android:text="등록"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="start">
+
+            <Button
+                android:id="@+id/teacher_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/scd"
+                android:text="취소"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

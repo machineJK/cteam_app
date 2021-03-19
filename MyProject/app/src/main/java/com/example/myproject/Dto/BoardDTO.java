@@ -7,7 +7,7 @@ public class BoardDTO {
     int board_notice, qna_ref_num;
     //board_notice : 공지사항:0, QnA:1
     //qna_ref_num : Question의 board_num
-
+    public BoardDTO(){}
     public BoardDTO(String board_id, String board_nickname,
                     String board_content, String board_write_date, int board_readcount,
                     String board_image_path, int board_notice, int qna_ref_num, String id_image_path) {
@@ -21,6 +21,7 @@ public class BoardDTO {
         this.qna_ref_num = qna_ref_num;
         this.id_image_path = id_image_path;
     }
+
 
     public String getId_image_path() {
         return id_image_path;

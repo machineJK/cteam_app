@@ -6,15 +6,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.myproject.Atask.IdCheck;
+
+import java.util.concurrent.ExecutionException;
 
 import static com.example.myproject.Common.Common.loginDTO;
 import static com.example.myproject.Common.Common.selItem2;
-
+import static com.example.myproject.Common.Common.checkDTO;
 
 public class StudentDetail extends AppCompatActivity {
 
@@ -50,11 +54,30 @@ public class StudentDetail extends AppCompatActivity {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!loginDTO.getId().equals(selItem2.getStudent_id())){
-                    Intent intent = new Intent(StudentDetail.this, ChatStartStudentActivity.class);
-                    startActivity(intent);
-                    finish();
+                checkDTO = null;
+                //student_id 중복체크
+                IdCheck teacher_id_check = new IdCheck(loginDTO.getId(),"t");
+                try {
+                    teacher_id_check.execute().get();
+                    if(checkDTO.getIdchk() == 0){
+                        Toast.makeText(StudentDetail.this, "먼저 선생으로 등록해주세요!!!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(StudentDetail.this, TeacherForm.class);
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        //Toast.makeText(TeacherDetail.this, "이 아이디의 학생아이디는 존재!", Toast.LENGTH_SHORT).show();
+                        if(!loginDTO.getId().equals(selItem2.getStudent_id())){
+                            Intent intent = new Intent(StudentDetail.this, ChatStartStudentActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                } catch (ExecutionException e) {
+                    e.getMessage();
+                } catch (InterruptedException e) {
+                    e.getMessage();
                 }
+
             }
         });
 

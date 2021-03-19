@@ -66,6 +66,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
 
             }
         });
+
     }
 
     @Override

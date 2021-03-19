@@ -99,7 +99,7 @@ public class ChatStartStudentActivity extends AppCompatActivity {
         mAdapter = new ChatAdpter(chatDTOList , ChatStartStudentActivity.this , loginDTO.getNickname());
         mRecyclerView.setAdapter(mAdapter);
 
-        //스크롤 되냐?
+        //스크롤
         mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onItemRangeInserted(int positionStart, int itemCount) {

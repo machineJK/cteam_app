@@ -30,9 +30,11 @@ import static com.example.myproject.Common.Common.checkDTO;
 public class IdCheck extends AsyncTask<Void, Void, Void> {
 
     String id;
+    String mstWho;  //member,teacher,student 테이블 중 어디를 참조?
 
-    public IdCheck(String id) {
+    public IdCheck(String id, String mstWho) {
         this.id = id;
+        this.mstWho = mstWho;
     }
 
     HttpClient httpClient;
@@ -55,6 +57,7 @@ public class IdCheck extends AsyncTask<Void, Void, Void> {
 
             // 문자열 및 데이터 추가
             builder.addTextBody("id", id, ContentType.create("Multipart/related", "UTF-8"));
+            builder.addTextBody("mstWho", mstWho, ContentType.create("Multipart/related", "UTF-8"));
 
             String postURL = ipConfig + "/app/anIdCheck";
             // 전송

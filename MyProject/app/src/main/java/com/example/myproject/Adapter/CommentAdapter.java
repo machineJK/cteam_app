@@ -19,6 +19,7 @@ import com.example.myproject.Dto.BoardDTO;
 import com.example.myproject.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.myproject.Common.Common.selItem7;
 
@@ -57,6 +58,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ItemView
                 selItem7 = arrayList.get(position);
             }
         });
+
+
     }
 
     @Override
@@ -65,7 +68,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ItemView
     }
 
 
-    // 어댑터에 매소드 만들기
+    // 업데이트
+    public void updateList (BoardDTO bdto) {
+        arrayList.add(0,bdto);
+        notifyDataSetChanged();
+    }
+
 
     // 리사이클러뷰 내용 모두 지우기
     public void removeAllItem(){

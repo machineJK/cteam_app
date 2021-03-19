@@ -74,7 +74,6 @@ public class WantMatching_RV_Adapter extends RecyclerView.Adapter<WantMatching_R
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
                 arrayList.remove(selItem4);
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, arrayList.size());

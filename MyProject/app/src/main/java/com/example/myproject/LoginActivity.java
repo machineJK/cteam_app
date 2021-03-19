@@ -313,7 +313,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     //id 중복체크 이후
-                    IdCheck naverIdCheck = new IdCheck(loginDTO.getId());
+                    IdCheck naverIdCheck = new IdCheck(loginDTO.getId(), "m");
                     try {
                         naverIdCheck.execute().get();
                     } catch (ExecutionException e) {
@@ -392,7 +392,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(MeV2Response result) {
                     //id 중복체크 이후
-                    IdCheck kakaoIdCheck = new IdCheck(String.valueOf(result.getId()));
+                    IdCheck kakaoIdCheck = new IdCheck(String.valueOf(result.getId()),"m");
                     try {
                         kakaoIdCheck.execute().get();
                     } catch (ExecutionException e) {
