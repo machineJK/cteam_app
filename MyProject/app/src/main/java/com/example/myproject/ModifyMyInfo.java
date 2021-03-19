@@ -409,6 +409,8 @@ public class ModifyMyInfo extends AppCompatActivity {
     }
     //취소버튼
     public void btnCancelClicked(View view){
+        Intent intent = new Intent(ModifyMyInfo.this, MyInfo.class);
+        startActivity(intent);
         finish();
     }
 
