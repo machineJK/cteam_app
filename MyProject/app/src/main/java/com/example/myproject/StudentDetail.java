@@ -13,10 +13,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.myproject.Atask.IdCheck;
+import com.example.myproject.Dto.ChatDTO;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 import static com.example.myproject.Common.Common.loginDTO;
+import static com.example.myproject.Common.Common.selItem;
 import static com.example.myproject.Common.Common.selItem2;
 import static com.example.myproject.Common.Common.checkDTO;
 
@@ -26,10 +32,15 @@ public class StudentDetail extends AppCompatActivity {
     ImageView sdetail_imageView;
     TextView et_sdetail_nickname,et_sdetail_subject,et_sdetail_addr,et_dstudent_intro;
 
+    private DatabaseReference myRef;
+    private DatabaseReference toRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_detail);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -67,6 +78,27 @@ public class StudentDetail extends AppCompatActivity {
                     }else{
                         //Toast.makeText(TeacherDetail.this, "이 아이디의 학생아이디는 존재!", Toast.LENGTH_SHORT).show();
                         if(!loginDTO.getId().equals(selItem2.getStudent_id())){
+
+                            ChatDTO dto = new ChatDTO();
+                            dto.setNickname(selItem2.getStudent_nickname());
+                            if(selItem2.getStudent_intro() == ""){
+                                dto.setMsg("안녕하세요 " + selItem2.getStudent_subject() + "를 배우고 싶어요");
+                            }else {
+                                dto.setMsg(selItem2.getStudent_intro());
+                            }
+
+                            long now = System.currentTimeMillis();
+                            Date mDate = new Date(now);
+                            SimpleDateFormat simpleDate = new SimpleDateFormat("hh:mm:aa");
+                            String getTime = simpleDate.format(mDate);
+                            dto.setDate(getTime);
+
+                            myRef = database.getReference(loginDTO.getId() + "1").child(selItem2.getStudent_id() + "2");
+                            toRef = database.getReference(selItem2.getStudent_id() + "2").child(loginDTO.getId() + "1");
+
+                            myRef.push().setValue(dto);
+                            toRef.push().setValue(dto);
+
                             Intent intent = new Intent(StudentDetail.this, ChatStartStudentActivity.class);
                             startActivity(intent);
                             finish();

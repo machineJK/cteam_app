@@ -252,6 +252,26 @@ public class JoinActivity extends AppCompatActivity {
 
         tmpDateFormat = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss");
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /*try{
+            file = createFile();
+        }catch(Exception e){
+            Toast.makeText(this, "파일 생성 못함", Toast.LENGTH_SHORT).show();
+        }
+        Bitmap newBitmap = Common.imageRotateAndResize(file.getAbsolutePath());
+        if(newBitmap != null){
+            imageView.setImageBitmap(newBitmap);
+        }else{
+            Toast.makeText(this, "이미지가 null 입니다...", Toast.LENGTH_SHORT).show();
+        }
+
+        imageRealPathA = file.getAbsolutePath();
+        String uploadFileName = imageRealPathA.split("/")[imageRealPathA.split("/").length - 1];
+        imageDbPathA = ipConfig + "/app/resources/" + uploadFileName;*/
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         //사진 찍기
         photoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -311,32 +331,6 @@ public class JoinActivity extends AppCompatActivity {
         et_nickname.setFilters(new InputFilter[] { filter });
         et_email.setFilters(new InputFilter[] { filter });
 
-        et_id.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-
-                if(!hasFocus){
-                    String inputID = et_id.getText().toString();
-                    Toast.makeText(JoinActivity.this, "false", Toast.LENGTH_SHORT).show();
-
-                    //회원가입 id 중복체크
-                    IdCheck student_id_check = new IdCheck(inputID,"m");
-                    try {
-                        student_id_check.execute().get();
-                        if(checkDTO.getIdchk() == 1){
-                            Toast.makeText(JoinActivity.this, "중복되는 아이디 입니다!!!", Toast.LENGTH_SHORT).show();
-                            et_id.setText("");
-                        }
-                    } catch (ExecutionException e) {
-                        e.getMessage();
-                    } catch (InterruptedException e) {
-                        e.getMessage();
-                    }
-                }
-
-            }
-        });
-
 
         //회원가입 버튼
         btnJoin.setOnClickListener(new View.OnClickListener() {
@@ -382,6 +376,28 @@ public class JoinActivity extends AppCompatActivity {
                     Toast.makeText(JoinActivity.this, "아이디를 유형에 맞춰 작성해 주세요!!!", Toast.LENGTH_SHORT).show();
                     et_id.setText("");
                     et_id.requestFocus();
+                    return;
+                }
+
+                //id 중복체크
+                IdCheck student_id_check = new IdCheck(et_id.getText().toString(),"m");
+                try {
+                    student_id_check.execute().get();
+                    if(checkDTO.getIdchk() == 1){
+                        Toast.makeText(JoinActivity.this, "중복되는 아이디 입니다!!!", Toast.LENGTH_SHORT).show();
+                        et_id.requestFocus();
+                        et_id.setText("");
+                        return;
+                    }
+                } catch (ExecutionException e) {
+                    e.getMessage();
+                } catch (InterruptedException e) {
+                    e.getMessage();
+                }
+
+                //이미지 필수로 넣기
+                if(imageDbPathA == null || imageRealPathA == null){
+                    Toast.makeText(JoinActivity.this, "이미지를 넣어주세요!!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -540,7 +556,7 @@ public class JoinActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == CAMERA_REQUEST && data != null) {
-            Toast.makeText(this, "카메라에서 이미지 넘어옴", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "카메라에서 이미지 넘어옴", Toast.LENGTH_SHORT).show();
             try {
                 // 이미지 돌리기 및 리사이즈
                 Bitmap newBitmap = Common.imageRotateAndResize(file.getAbsolutePath());
@@ -576,7 +592,6 @@ public class JoinActivity extends AppCompatActivity {
                 }
 
                 imageRealPathA = path;
-                Log.d("Sub1Add", "imageFilePathA Path : " + imageRealPathA);
                 String uploadFileName = imageRealPathA.split("/")[imageRealPathA.split("/").length - 1];
                 imageDbPathA = ipConfig + "/app/resources/" + uploadFileName;
 

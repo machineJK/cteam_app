@@ -14,7 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.myproject.Atask.IdCheck;
+import com.example.myproject.Dto.ChatDTO;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 import static com.example.myproject.Common.Common.loginDTO;
@@ -27,10 +32,15 @@ public class TeacherDetail extends AppCompatActivity {
     ImageView teacher_picture;
     Button chat;
 
+    private DatabaseReference myRef;
+    private DatabaseReference toRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_detail);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -66,12 +76,33 @@ public class TeacherDetail extends AppCompatActivity {
                     student_id_check.execute().get();
                     if(checkDTO.getIdchk() == 0){
                         Toast.makeText(TeacherDetail.this, "먼저 학생으로 등록해주세요!!!", Toast.LENGTH_SHORT).show();
+
                         Intent intent = new Intent(TeacherDetail.this, StudentForm.class);
                         startActivity(intent);
                         finish();
                     }else{
                         //Toast.makeText(TeacherDetail.this, "이 아이디의 학생아이디는 존재!", Toast.LENGTH_SHORT).show();
                         if(!loginDTO.getId().equals(selItem.getTeacher_id())){
+                            ChatDTO dto = new ChatDTO();
+                            dto.setNickname(selItem.getTeacher_nickname());
+                            if(selItem.getTeacher_intro() == ""){
+                                dto.setMsg("안녕하세요 " + selItem.getTeacher_nickname() + "입니다. 어떤 상담을 원하시나요?");
+                            }else {
+                                dto.setMsg(selItem.getTeacher_intro());
+                            }
+
+                            long now = System.currentTimeMillis();
+                            Date mDate = new Date(now);
+                            SimpleDateFormat simpleDate = new SimpleDateFormat("hh:mm:aa");
+                            String getTime = simpleDate.format(mDate);
+                            dto.setDate(getTime);
+
+                            myRef = database.getReference(loginDTO.getId() + "2").child(selItem.getTeacher_id() + "1");
+                            toRef = database.getReference(selItem.getTeacher_id() + "1").child(loginDTO.getId() + "2");
+
+                            myRef.push().setValue(dto);
+                            toRef.push().setValue(dto);
+
                             Intent intent = new Intent(TeacherDetail.this, ChatStartActivity.class);
                             startActivity(intent);
                             finish();
