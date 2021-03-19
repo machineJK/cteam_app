@@ -21,6 +21,7 @@ import com.example.myproject.Adapter.CommentAdapter;
 import com.example.myproject.Atask.BoardInsert2;
 import com.example.myproject.Atask.BoardListSelect;
 import com.example.myproject.Atask.CommentListSelect;
+import com.example.myproject.Atask.ReadCount;
 import com.example.myproject.Dto.BoardDTO;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ import static com.example.myproject.Common.Common.selItem3;
 
 public class BoardDetailForm extends AppCompatActivity {
     ImageView brd_detail_id_img,brd_detail_image;
-    TextView brd_detail_nickname,brd_detail_date,brd_content;
+    TextView brd_detail_nickname,brd_detail_date,brd_content,brd_read_count;
     EditText et_comment;
     Button btnComment;
 
@@ -40,7 +41,7 @@ public class BoardDetailForm extends AppCompatActivity {
     ArrayList<BoardDTO> brdArrayList;
     CommentAdapter adapter;
     CommentListSelect listSelect;
-
+    String state;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,12 +56,27 @@ public class BoardDetailForm extends AppCompatActivity {
         brd_detail_date = findViewById(R.id.brd_detail_date);
         brd_content = findViewById(R.id.brd_content);
         brd_detail_image = findViewById(R.id.brd_detail_image);
+        brd_read_count = findViewById(R.id.brd_read_count);
         Glide.with(this).load(selItem3.getId_image_path()).circleCrop().into(brd_detail_id_img);
         //Glide.with(this).load(loginDTO.getdbImgPath()).circleCrop().into(brd_detail_id_img);
+
+        //조회수 증가
+        ReadCount readCount = new ReadCount(selItem3.getQna_ref_num());
+
+        try{
+            state = readCount.execute().get().trim();
+            Log.d("main:joinact0 : ", state);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ////////////
 
         brd_detail_nickname.setText(selItem3.getBoard_nickname());
         brd_detail_date.setText(selItem3.getBoard_write_date());
         brd_content.setText(selItem3.getBoard_content());
+        brd_read_count.setText("" + selItem3.getBoard_readcount());
 
         if(selItem3.getBoard_image_path() != null){
             Glide.with(this).load(selItem3.getBoard_image_path()).into(brd_detail_image);

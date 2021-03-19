@@ -45,7 +45,6 @@ public class Board extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.cboard);
 
         // 리사이클러 뷰 시작
-
         brdArrayList = new ArrayList<>();
         adapter = new BoardAdapter(this, brdArrayList);
         recyclerView = findViewById(R.id.recyclerView_brd);
@@ -63,15 +62,8 @@ public class Board extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
 
-        //상세 내용(문의내용 작성 이동)
-//        btnQnA = findViewById(R.id.btn_brd_QnA);
-//        btnQnA.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Board.this, Board_Write.class);
-//                startActivity(intent);
-//            }
-//        });
+        
+        //글쓰기 화면 이동
         findViewById(R.id.btn_brd_QnA2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

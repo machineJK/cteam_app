@@ -9,16 +9,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.myproject.Atask.JoinInsert;
+import com.example.myproject.Atask.ReadCount;
 import com.example.myproject.BoardDetailForm;
 import com.example.myproject.Dto.BoardDTO;
+import com.example.myproject.JoinActivity;
 import com.example.myproject.R;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import static com.example.myproject.Common.Common.selItem3;
 
@@ -29,6 +34,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
     Context mContext;
     ArrayList<BoardDTO> arrayList;
    // ArrayList<BoardDTO> arrayList_filter;
+    String state;
 
     public BoardAdapter(Context mContext, ArrayList<BoardDTO> arrayList) {
         this.mContext = mContext;
@@ -59,6 +65,11 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
                 Log.d(TAG, "onClick: " + position);
 
                 selItem3 = arrayList.get(position);
+
+                //////////////////////////////////////////////////////////////////////////////////////////////////////
+                //서버와의 연결을 위한 JoinInsert(AsyncTest 상속받음)
+
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                 //Toast.makeText(mContext, "board_id : " + arrayList.get(position).getBoard_id(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext, BoardDetailForm.class);
@@ -103,6 +114,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
         public TextView brd_nickname;
         public TextView brd_content;
         public TextView brd_date;
+        public TextView brd_read_count;
         public ImageView board_picture;
 
         public ItemViewHolder(@NonNull final View itemView) {
@@ -113,6 +125,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
             brd_content = itemView.findViewById(R.id.brd_content);
             brd_date = itemView.findViewById(R.id.brd_date);
             board_picture = itemView.findViewById(R.id.brd_detail_id_img);
+            brd_read_count = itemView.findViewById(R.id.brd_read_count);
         }
 
         public void setItem(BoardDTO dto){
@@ -120,6 +133,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
             brd_nickname.setText(dto.getBoard_nickname());
             brd_content.setText(dto.getBoard_content());
             brd_date.setText(dto.getBoard_write_date());
+            brd_read_count.setText("" + dto.getBoard_readcount()) ;
 
             Glide.with(itemView).load(dto.getId_image_path()).circleCrop().into(board_picture);
         }
