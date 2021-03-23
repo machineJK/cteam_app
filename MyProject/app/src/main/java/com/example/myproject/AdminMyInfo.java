@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.bumptech.glide.Glide;
 import com.example.myproject.Adapter.AdminMatching_RV_Adapter;
 import com.example.myproject.Atask.AdminMatchingListSelect;
 import com.example.myproject.Dto.MatchingDTO;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class AdminMyInfo extends AppCompatActivity {
 
     ImageButton matching, talk, board, my;
     Button btnLogout;
-
+    ImageView imageView6;
 
     RecyclerView recyclerView;
     ArrayList<MatchingDTO> myItemArrayList;
@@ -61,6 +63,12 @@ public class AdminMyInfo extends AppCompatActivity {
             Toast.makeText(this, "인터넷이 연결되어 있지 않습니다.",
                     Toast.LENGTH_SHORT).show();
         }
+
+        imageView6 = findViewById(R.id.imageView6);
+        if( !loginDTO.getdbImgPath().contains("http") ){
+            loginDTO.setdbImgPath("http://112.164.58.217:8080/tutors/" + loginDTO.getdbImgPath());
+        }
+        Glide.with(this).load(loginDTO.getdbImgPath()).into(imageView6);
 
         btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {

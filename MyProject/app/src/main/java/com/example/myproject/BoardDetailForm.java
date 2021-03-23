@@ -6,21 +6,25 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.myproject.Adapter.BoardAdapter;
 import com.example.myproject.Adapter.CommentAdapter;
+import com.example.myproject.Atask.BoardDelete;
 import com.example.myproject.Atask.BoardInsert2;
 import com.example.myproject.Atask.BoardListSelect;
 import com.example.myproject.Atask.CommentListSelect;
+import com.example.myproject.Atask.JoinInsert;
 import com.example.myproject.Atask.ReadCount;
 import com.example.myproject.Dto.BoardDTO;
 
@@ -35,7 +39,8 @@ public class BoardDetailForm extends AppCompatActivity {
     ImageView brd_detail_id_img,brd_detail_image;
     TextView brd_detail_nickname,brd_detail_date,brd_content,brd_read_count;
     EditText et_comment;
-    Button btnComment;
+    Button btnComment,btnModify,btnDelete,btnBoardList;
+    LinearLayout modifyDeleteLayout;
 
     RecyclerView recyclerView;
     ArrayList<BoardDTO> brdArrayList;
@@ -79,8 +84,63 @@ public class BoardDetailForm extends AppCompatActivity {
         brd_read_count.setText("" + selItem3.getBoard_readcount());
 
         if(selItem3.getBoard_image_path() != null){
+            if(! selItem3.getBoard_image_path().contains("http") ){
+                selItem3.setBoard_image_path("http://112.164.58.217:8080/tutors/" + selItem3.getBoard_image_path());
+            }
             Glide.with(this).load(selItem3.getBoard_image_path()).into(brd_detail_image);
         }
+
+        //게시글과 같은 아이디이거나 아이디가 admin일때 수정삭제 가능
+        modifyDeleteLayout = findViewById(R.id.modifyDeleteLayout);
+        btnModify = findViewById(R.id.btnModify);
+        btnDelete = findViewById(R.id.btnDelete);
+        
+        if(loginDTO.getId().equals(selItem3.getBoard_id()) || loginDTO.getId().equals("admin")){
+            //수정 삭제 버튼 보이게 하기
+            modifyDeleteLayout.setVisibility(View.VISIBLE);
+            
+            //게시글 삭제
+            btnDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    BoardDelete boardDelete = new BoardDelete(selItem3.getQna_ref_num());
+
+                    try{
+                        boardDelete.execute().get().trim();
+                        Intent intent = new Intent(BoardDetailForm.this,Board.class);
+                        startActivity(intent);
+                        finish();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+            
+            //게시글 수정
+            btnModify.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(BoardDetailForm.this, BoardModify.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
+
+        //목록
+        btnBoardList = findViewById(R.id.btnBoardList);
+        btnBoardList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BoardDetailForm.this, Board.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         //답글 리사이클러 뷰
         brdArrayList = new ArrayList<>();

@@ -25,6 +25,7 @@ import java.util.concurrent.ExecutionException;
 import static com.example.myproject.Common.Common.loginDTO;
 import static com.example.myproject.Common.Common.selItem;
 import static com.example.myproject.Common.Common.checkDTO;
+import static com.example.myproject.Common.Common.selItem2;
 
 public class TeacherDetail extends AppCompatActivity {
     TextView teacher_nickname,teacher_univ,teacher_subject,
@@ -61,6 +62,10 @@ public class TeacherDetail extends AppCompatActivity {
         teacher_addr.setText(selItem.getTeacher_addr());
         teacher_pay_worktime.setText(selItem.getTeacher_worktime() + "주 " + selItem.getTeacher_pay() + "만원");
         teacher_intro.setText(selItem.getTeacher_intro());
+
+        if(! selItem.getTeacher_image_path().contains("http") ){
+            selItem.setTeacher_image_path("http://112.164.58.217:8080/tutors/" + selItem.getTeacher_image_path());
+        }
         Glide.with(this).load(selItem.getTeacher_image_path()).circleCrop().into(teacher_picture);
 
 

@@ -1,5 +1,6 @@
 package com.example.myproject.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -25,6 +26,7 @@ import com.example.myproject.R;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+import static com.example.myproject.Common.Common.loginDTO;
 import static com.example.myproject.Common.Common.selItem3;
 
 
@@ -66,15 +68,9 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
 
                 selItem3 = arrayList.get(position);
 
-                //////////////////////////////////////////////////////////////////////////////////////////////////////
-                //서버와의 연결을 위한 JoinInsert(AsyncTest 상속받음)
-
-                ////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                //Toast.makeText(mContext, "board_id : " + arrayList.get(position).getBoard_id(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext, BoardDetailForm.class);
                 mContext.startActivity(intent);
-
+                ((Activity)mContext).finish();
             }
         });
 
@@ -135,6 +131,9 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
             brd_date.setText(dto.getBoard_write_date());
             brd_read_count.setText("" + dto.getBoard_readcount()) ;
 
+            if(!dto.getId_image_path().contains("http") ){
+                dto.setId_image_path("http://112.164.58.217:8080/tutors/" + dto.getId_image_path());
+            }
             Glide.with(itemView).load(dto.getId_image_path()).circleCrop().into(board_picture);
         }
     }

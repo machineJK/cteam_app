@@ -160,6 +160,9 @@ public class MyRecyclerviewAdapter2 extends RecyclerView.Adapter<MyRecyclerviewA
             student_address.setText(dto.getStudent_addr());
             student_subject.setText(dto.getStudent_subject());
 
+            if( ! dto.getStudent_image_path().contains("http") ){
+                dto.setStudent_image_path("http://112.164.58.217:8080/tutors/" + dto.getStudent_image_path());
+            }
             Glide.with(itemView).load(dto.getStudent_image_path()).into(student_picture);
         }
     }

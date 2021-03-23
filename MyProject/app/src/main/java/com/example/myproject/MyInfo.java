@@ -65,6 +65,10 @@ public class MyInfo extends AppCompatActivity {
 
 
         imageView6 = findViewById(R.id.imageView6);
+        if( !loginDTO.getdbImgPath().contains("http") ){
+            loginDTO.setdbImgPath("http://192.168.0.31:8080/tutors/" + loginDTO.getdbImgPath());
+        }
+
         Glide.with(this).load(loginDTO.getdbImgPath()).circleCrop().into(imageView6);
         modify = findViewById(R.id.my_modify);
         modify.setOnClickListener(new View.OnClickListener() {

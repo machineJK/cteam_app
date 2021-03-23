@@ -23,51 +23,65 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject"
         android:usesCleartextTraffic="true">
+        <activity android:name=".BoardModify"></activity>
         <activity
             android:name=".AdminMyInfo"
             android:label="@string/title_activity_admin_my_info"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".KakaoExtraInfo"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".KakaoExtraInfo"
             android:label="@string/title_activity_kakao"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".NaverExtraInfo"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".NaverExtraInfo"
             android:label="@string/title_activity_kakao"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".ChatListStudentActivity"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".ChatListStudentActivity"
             android:label="@string/title_activity_chat"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".ChatStartStudentActivity"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".ChatStartStudentActivity"
             android:label="@string/title_activity_chat"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".StudentDetail"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".StudentDetail"
             android:label="@string/title_activity_student"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".ChatStartActivity"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".ChatStartActivity"
             android:label="@string/title_activity_chat"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".TeacherDetail"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".TeacherDetail"
             android:label="@string/title_activity_teacher"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".MatchingStudent"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".MatchingStudent"
             android:label="@string/title_activity_matching"
             android:theme="@style/Theme.MyProject"
-            android:windowSoftInputMode="adjustNothing"/>
-        <activity android:name=".TeacherForm"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".TeacherForm"
             android:label="@string/title_activity_teacher_f"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".Board"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".Board"
             android:label="@string/title_activity_board"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".Board_Write"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".Board_Write"
             android:label="@string/title_activity_board"
             android:theme="@style/Theme.MyProject"
-            android:windowSoftInputMode="adjustNothing"/>
-        <activity android:name=".ChatListActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ChatListActivity"
             android:label="@string/title_activity_chat"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".JoinActivity"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".JoinActivity"
             android:label="@string/title_activity_join"
-            android:theme="@style/Theme.MyProject"/> <!-- 카카오 로그인 -->
+            android:theme="@style/Theme.MyProject" /> <!-- 카카오 로그인 -->
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="e4b59b3ef0a905da8d3e332f4d69a6d6" /> <!-- API24 이상부터 Url 이 file:// 로 시작되면 안되서 content:// 으로 변환시키는 부분 -->
@@ -84,29 +98,36 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".Matching"
+        <activity
+            android:name=".Matching"
             android:label="@string/title_activity_matching"
             android:theme="@style/Theme.MyProject"
-            android:windowSoftInputMode="adjustNothing"/>
-        <activity android:name=".ModifyMyInfo"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ModifyMyInfo"
             android:label="@string/title_activity_my_info"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".LoginActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".MyInfo"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".MyInfo"
             android:label="@string/title_activity_my_info"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".BoardDetailForm"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".BoardDetailForm"
             android:label="@string/title_activity_board"
-            android:theme="@style/Theme.MyProject"/>
-        <activity android:name=".StudentForm"
+            android:theme="@style/Theme.MyProject" />
+        <activity
+            android:name=".StudentForm"
             android:label="@string/title_activity_student_f"
-            android:theme="@style/Theme.MyProject"/>
+            android:theme="@style/Theme.MyProject" />
         <activity
             android:name="com.soundcloud.android.crop.CropImageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" /> <!-- 사진 촬영을 위한 provide -->
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

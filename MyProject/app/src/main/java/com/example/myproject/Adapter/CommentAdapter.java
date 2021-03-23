@@ -6,21 +6,28 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.myproject.Atask.BoardDelete;
+import com.example.myproject.Board;
 import com.example.myproject.BoardDetailForm;
 import com.example.myproject.Dto.BoardDTO;
 import com.example.myproject.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
+import static com.example.myproject.Common.Common.loginDTO;
+import static com.example.myproject.Common.Common.selItem3;
 import static com.example.myproject.Common.Common.selItem7;
 
 
@@ -57,8 +64,24 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ItemView
 
                 selItem7 = arrayList.get(position);
             }
+
         });
 
+        holder.btnCommentDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selItem7 = arrayList.get(position);
+                BoardDelete boardDelete = new BoardDelete(selItem7.getQna_ref_num(), "y",loginDTO.getId());
+                try{
+                    boardDelete.execute().get().trim();
+                    Toast.makeText(mContext, "삭제 성공", Toast.LENGTH_SHORT).show();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
     }
 
@@ -97,20 +120,24 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ItemView
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder{
 
-        public LinearLayout parentLayout;
+        public LinearLayout parentLayout,commentDeleteLayout;
         public TextView brd_nickname;
         public TextView brd_content;
         public TextView brd_date;
         public ImageView board_picture;
+        public Button btnCommentDelete;
+
 
         public ItemViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             parentLayout = itemView.findViewById(R.id.brd_parentLayout);
+            commentDeleteLayout = itemView.findViewById(R.id.commentDeleteLayout);
             brd_nickname = itemView.findViewById(R.id.brd_nickname);
             brd_content = itemView.findViewById(R.id.brd_content);
             brd_date = itemView.findViewById(R.id.brd_date);
             board_picture = itemView.findViewById(R.id.brd_detail_id_img);
+            btnCommentDelete = itemView.findViewById(R.id.btnCommentDelete);
         }
 
         public void setItem(BoardDTO dto){
@@ -118,7 +145,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ItemView
             brd_nickname.setText(dto.getBoard_nickname());
             brd_content.setText(dto.getBoard_content());
             brd_date.setText(dto.getBoard_write_date());
-
+            if(! dto.getId_image_path().contains("http") ){
+                dto.setId_image_path("http://112.164.58.217:8080/tutors/" + dto.getId_image_path());
+            }
+            /*if(loginDTO.getId().equals(dto.getBoard_id()) || loginDTO.getId().equals("admin")){
+                commentDeleteLayout.setVisibility(View.VISIBLE);
+            }*/
             Glide.with(itemView).load(dto.getId_image_path()).circleCrop().into(board_picture);
         }
     }
