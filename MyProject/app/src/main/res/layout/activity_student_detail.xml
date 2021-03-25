@@ -79,19 +79,27 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/chat"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="튜터챗으로 상담하기"
+            <LinearLayout
+                android:id="@+id/chatLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="30dp"
-                android:layout_gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:fontFamily="@font/scd"
-                android:background="@drawable/button"
-                android:textColor="@color/white"/>
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/chat"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button"
+                    android:fontFamily="@font/scd"
+                    android:text="튜터챗으로 상담하기"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

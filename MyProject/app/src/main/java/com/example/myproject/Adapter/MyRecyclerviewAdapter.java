@@ -170,6 +170,7 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
             if( ! dto.getTeacher_image_path().contains("http") ){
                 dto.setTeacher_image_path( "http://112.164.58.217:8080/tutors/" + dto.getTeacher_image_path() );
             }
+
             Glide.with(itemView).load(dto.getTeacher_image_path()).into(teacher_picture);
         }
     }

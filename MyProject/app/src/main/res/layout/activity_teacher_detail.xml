@@ -98,20 +98,30 @@
                         android:text="주소"
                         android:textColor="@color/black"
                         android:fontFamily="@font/scd"/>
+
                 </LinearLayout>
+
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/chatLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
             <Button
                 android:id="@+id/btn_goChat"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="30dp"
                 android:background="@drawable/button"
                 android:fontFamily="@font/scd"
                 android:text="튜터챗으로 상담하기"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

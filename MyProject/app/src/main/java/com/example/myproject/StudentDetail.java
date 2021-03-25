@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class StudentDetail extends AppCompatActivity {
     Button chat;
     ImageView sdetail_imageView;
     TextView et_sdetail_nickname,et_sdetail_subject,et_sdetail_addr,et_dstudent_intro;
+    LinearLayout chatLayout;
 
     private DatabaseReference myRef;
     private DatabaseReference toRef;
@@ -66,6 +68,10 @@ public class StudentDetail extends AppCompatActivity {
 
         //상담하기
         chat = findViewById(R.id.chat);
+        chatLayout = findViewById(R.id.chatLayout);
+        if(loginDTO.getId().equals(selItem2.getStudent_id())){
+            chatLayout.setVisibility(View.INVISIBLE);
+        }
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
